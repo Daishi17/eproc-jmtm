@@ -1,0 +1,834 @@
+html,
+body {
+	background-color: #f4f4f4;
+}
+
+.tulisan_jalan {
+	text-decoration: none;
+	color: white;
+	font-size: 10px;
+}
+
+.marquee {
+	height: 60px;
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+	transition: 0.5s;
+	background-size: 200% auto;
+	background-image: linear-gradient(to right, #36D1DC 0%, #5B86E5 51%, #36D1DC 100%);
+	padding: 8px 0 4px 0;
+	text-decoration: none;
+}
+
+.marquee:hover {
+	background-position: right center;
+	/* change the direction of the change here */
+	color: #fff;
+	box-shadow: 0 0 10px yellow;
+	text-decoration: none;
+}
+
+.marquee div {
+	display: inline-block;
+	width: 300%;
+	height: 40px;
+
+	position: absolute;
+	overflow: hidden;
+
+	animation: marquee 20s linear infinite;
+}
+
+.marquee span {
+	float: left;
+	width: 25%;
+}
+
+@keyframes marquee {
+	0% {
+		left: 0;
+	}
+
+	100% {
+		left: -150%;
+	}
+}
+.btn-grad {
+	background-image: linear-gradient(to right, #000046 0%, #1CB5E0 51%, #000046 100%)
+}
+
+.btn-grad {
+	text-align: center;
+	text-transform: uppercase;
+	transition: 0.5s;
+	background-size: 200% auto;
+	color: white;
+	box-shadow: 0 0 20px white;
+}
+
+.btn-grad:hover {
+	background-position: right center;
+	/* change the direction of the change here */
+	color: #fff;
+	box-shadow: 0 0 20px yellow;
+	text-decoration: none;
+}
+
+
+.btn-grad2 {
+	background-image: linear-gradient(to right, #ee0979 0%, #ff6a00 51%, #ee0979 100%)
+}
+
+.btn-grad2 {
+	text-align: center;
+	text-transform: uppercase;
+	transition: 0.5s;
+	background-size: 200% auto;
+	color: white;
+	box-shadow: 0 0 10px #ee0979;
+	border-radius: 5px;
+}
+
+.btn-grad2:hover {
+	background-position: right center;
+	/* change the direction of the change here */
+	color: #fff;
+	box-shadow: 0 0 10px yellow;
+	text-decoration: none;
+}
+
+.btn-grad3 {
+	background-image: linear-gradient(to right, #1D976C 0%, #93F9B9 51%, #1D976C 100%)
+}
+
+.btn-grad3 {
+	text-align: center;
+	text-transform: uppercase;
+	transition: 0.5s;
+	background-size: 200% auto;
+	color: white;
+	box-shadow: 0 0 10px #1D976C;
+	border-radius: 5px;
+	display: block;
+}
+
+.btn-grad3:hover {
+	background-position: right center;
+	/* change the direction of the change here */
+	color: #fff;
+	box-shadow: 0 0 10px yellow;
+	text-decoration: none;
+}
+
+.btn-grad4 {
+	background-image: linear-gradient(to right, #000428 0%, #004e92 51%, #000428 100%);
+	margin: 2px;
+	text-align: center;
+	text-transform: uppercase;
+	transition: 0.5s;
+	background-size: 200% auto;
+	color: white;
+	box-shadow: 0 0 20px #eee;
+	border-radius: 30px;
+	display: block;
+}
+
+.btn-grad4:hover {
+	background-position: right center;
+	/* change the direction of the change here */
+	color: #fff;
+	text-decoration: none;
+}
+
+.btn-grad5 {
+	width: 100%;
+	background-image: linear-gradient(to right, #000046 0%, #1CB5E0 51%, #000046 100%);
+	text-transform: uppercase;
+	transition: 0.5s;
+	background-size: 200% auto;
+	color: white;
+	box-shadow: 0 0 40px #eee;
+	border-radius: 10px;
+}
+
+.btn-grad5:hover {
+	background-position: right center;
+	/* change the direction of the change here */
+	color: #fff;
+	box-shadow: 0 0 40px #1CB5E0;
+	text-decoration: none;
+}
+
+.btn-grad6 {
+	width: 100%;
+	background-image: linear-gradient(to right, #000046 0%, #1CB5E0 51%, #000046 100%);
+	text-transform: uppercase;
+	transition: 0.5s;
+	background-size: 200% auto;
+	color: white;
+	box-shadow: 0 0 40px #eee;
+}
+
+.btn-grad6:hover {
+	background-position: right center;
+	/* change the direction of the change here */
+	color: #fff;
+	box-shadow: 0 0 10px yellow;
+	text-decoration: none;
+}
+
+
+.btn-grad7 {
+	background-image: linear-gradient(to right, #00d2ff 0%, #3a7bd5 51%, #00d2ff 100%)
+}
+
+.btn-grad7 {
+	text-transform: uppercase;
+	transition: 0.5s;
+	background-size: 200% auto;
+	color: white;
+	box-shadow: 0 0 20px #eee;
+}
+
+.btn-grad7:hover {
+	background-position: right center;
+	/* change the direction of the change here */
+	color: #00d2ff;
+	text-decoration: none;
+	box-shadow: 0 0 40px #00d2ff;
+}
+
+
+.btn-grad8 {
+	background-image: linear-gradient(to right, #1D976C 0%, #93F9B9 51%, #1D976C 100%)
+}
+
+.btn-grad8 {
+	text-transform: uppercase;
+	transition: 0.5s;
+	background-size: 200% auto;
+	color: white;
+	box-shadow: 0 0 20px #eee;
+
+}
+
+.btn-grad8:hover {
+	background-position: right center;
+	/* change the direction of the change here */
+	color: #1D976C;
+	text-decoration: none;
+	box-shadow: 0 0 40px #1D976C;
+}
+
+.btn-grad9 {
+	background-image: linear-gradient(to right, #ee0979 0%, #ff6a00 51%, #ee0979 100%)
+}
+
+.btn-grad9 {
+
+	text-transform: uppercase;
+	transition: 0.5s;
+	background-size: 200% auto;
+	color: white;
+	box-shadow: 0 0 20px #eee;
+
+}
+
+.btn-grad9:hover {
+	background-position: right center;
+	/* change the direction of the change here */
+	color: #ee0979;
+	text-decoration: none;
+	box-shadow: 0 0 40px #ee0979;
+}
+
+.btn-grad10 {
+	background-image: linear-gradient(to right, #F7971E 0%, #FFD200 51%, #F7971E 100%)
+}
+
+.btn-grad10 {
+
+	text-transform: uppercase;
+	transition: 0.5s;
+	background-size: 200% auto;
+	color: white;
+	box-shadow: 0 0 20px #eee;
+
+}
+
+.btn-grad10:hover {
+	background-position: right center;
+	/* change the direction of the change here */
+	color: #F7971E;
+	text-decoration: none;
+	box-shadow: 0 0 40px #F7971E;
+}
+
+.btn-grad20 {
+	width: 100%;
+	background-image: linear-gradient(to right, #2C3E50 0%, #FD746C 51%, #2C3E50 100%)
+}
+
+.btn-grad20 {
+	text-transform: uppercase;
+	transition: 0.5s;
+	background-size: 200% auto;
+	color: white;
+	box-shadow: 0 0 20px #eee;
+	border-radius: 10px;
+}
+
+.btn-grad20:hover {
+	background-position: right center;
+	/* change the direction of the change here */
+	color: #fff;
+	box-shadow: 0 0 40px #FD746C;
+	text-decoration: none;
+}
+
+.btn-grad21 {
+	width: 100%;
+	background-image: linear-gradient(to right, #C02425 0%, #F0CB35 51%, #C02425 100%)
+}
+
+.btn-grad21 {
+	text-transform: uppercase;
+	transition: 0.5s;
+	background-size: 200% auto;
+	color: white;
+	box-shadow: 0 0 20px #eee;
+	border-radius: 10px;
+}
+
+.btn-grad21:hover {
+	background-position: right center;
+	/* change the direction of the change here */
+	color: #fff;
+	box-shadow: 0 0 40px #F0CB35;
+	text-decoration: none;
+}
+
+.nav-daftarpemyedia {
+	background-image: linear-gradient(
+		to top,
+		rgba(248, 33, 62, 0.938),
+		rgba(211, 81, 6, 0.685)
+	);
+	color: white;
+}
+.nav-daftarpemyedia a {
+	background-image: linear-gradient(
+		to top,
+		rgba(248, 33, 62, 0.938),
+		rgba(211, 81, 6, 0.685)
+	);
+	text-decoration: none;
+	color: white !important;
+}
+.jarak {
+	margin-top: 0;
+	display: flex;
+	justify-content: space-between;
+	background-color: #dddddd;
+	font-size: 10px;
+	height: 40px;
+	align-items: center;
+}
+.anotif1 {
+	display: flex;
+	margin-right: 10px;
+	border: 5px;
+	border-color: black;
+}
+.anotif2 {
+	position: relative;
+	margin-right: 10px;
+	border: 5px;
+	border-color: black;
+	z-index: 9999;
+}
+.anotif1 a {
+	text-decoration: none;
+}
+.jarak2 {
+	display: flex;
+	justify-content: space-between;
+	margin-left: 10px;
+	background-color: #dddddd;
+	font-size: 10px;
+	height: 20px;
+	align-items: center;
+}
+.notif-info {
+	color: white;
+	border-radius: 10px;
+	position: relative;
+}
+.dropdown-toggle {
+	background-image: linear-gradient(
+		to top,
+		rgba(33, 126, 248, 0.938),
+		rgba(6, 170, 211, 0.685)
+	) !important;
+	color: white !important;
+}
+
+.breadcrumb {
+	margin-top: -10px !important;
+	margin-bottom: 20px !important;
+	width: 100% !important;
+	/* background-image: linear-gradient(to top, rgb(223, 32, 32)) !important; */
+	padding-left: 10px !important;
+	border-radius: 5px !important;
+}
+
+section.card-besar {
+	background-color: white;
+	box-shadow: 1px 4px 10px 2px black;
+	padding: 50px;
+}
+li a {
+	color: #15159b;
+}
+ul li.active a {
+	background-color: default;
+	background: default !important;
+	color: black !important;
+	text-decoration: none;
+}
+.navbar-custom {
+	background-image: linear-gradient(
+		to top,
+		rgb(236, 134, 0),
+		rgba(250, 226, 9, 0.938)
+	) !important;
+	border-top-width: 5px;
+	border-top: -10px;
+	margin: 0;
+}
+
+/* responsive mobile css */
+.navbar-toggle {
+	height: 40px;
+	justify-content: center;
+	color: black;
+	background-image: linear-gradient(
+		to top,
+		rgb(11, 113, 131),
+		rgb(255, 251, 11)
+	) !important;
+	border-color: black;
+	border: 1;
+	border-style: double;
+	position: relative !important;
+	z-index: 999 !important;
+}
+
+/* ppk dashboard css */
+/* btn btn group */
+/* content ppk*/
+
+.breadcrumb {
+	background: #ca4254;
+	font-weight: bold;
+	color: #fff;
+	margin-top: 30px;
+}
+
+.btn-btn-success {
+	padding-top: 5px;
+	background-image: linear-gradient(
+		to top,
+		rgb(32, 136, 79),
+		rgb(92, 206, 143)
+	) !important;
+	border: none;
+	width: 100px;
+	height: 40px;
+	border-radius: 10px;
+	align-items: center;
+	color: white;
+	font-weight: bold;
+	margin-bottom: 81px;
+}
+
+.btn-group {
+	display: flex !important;
+	flex-wrap: wrap !important;
+	font-weight: 1;
+}
+.btn-kintek-success {
+	background-image: linear-gradient(
+		to top,
+		rgb(32, 136, 79),
+		rgb(92, 206, 143)
+	) !important;
+	border: none;
+	width: 94px;
+	height: 34px;
+	border-radius: 5px;
+	align-items: center;
+	color: white;
+	font-weight: bold;
+}
+.btn-kintek-success a {
+	text-decoration: none;
+	color: white;
+}
+
+/* formdaftar vendor */
+
+.content {
+	border-radius: 4px;
+	background: white;
+	padding: 10px;
+}
+
+/* */
+
+.formline {
+	display: flex;
+	align-items: center;
+}
+
+table.rencanatbl {
+	width: 100%;
+	box-sizing: border-box;
+}
+.faq-cat-tabs li a {
+	background-color: #ffffffc2 !important;
+	border: 1px solid #dddddd !important;
+}
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+.bs-callout-warning {
+	background-image: linear-gradient(
+		to top,
+		rgb(247, 222, 235),
+		rgb(255, 251, 11)
+	) !important;
+	border-color: #dabc38;
+}
+.bs-callout-info {
+	margin: 5px;
+	padding: 10px;
+	background-image: linear-gradient(
+		to top,
+		rgba(103, 189, 255, 0.596),
+		rgba(103, 189, 255, 0.596)
+	) !important;
+	border-color: #e0ffff;
+	border-left: 5px solid #4682b4;
+}
+.bs-callout-pink {
+	margin: 5px;
+	padding: 10px;
+	background-image: linear-gradient(
+		to top,
+		rgba(247, 127, 127, 0.596),
+		rgba(247, 127, 127, 0.596)
+	) !important;
+	border-color: #e0ffff;
+	border-left: 5px solid #f23535;
+}
+.bs-callout-branda {
+	background-image: linear-gradient(
+		to top,
+		rgba(223, 114, 100, 0.747) gba(100, 174, 223, 0.747)
+	) !important;
+	border-color: #dabc38;
+}
+.bs-callout {
+	margin: 10px 0;
+	padding: 10px 20px 10px 10px;
+	border-left: 5px solid rgb(224, 186, 63);
+}
+
+/* footer */
+.list-inline {
+	padding-left: 0;
+	list-style: none;
+	margin-left: -3px;
+}
+.list-inline a {
+	color: white;
+}
+ul,
+ol {
+	margin-top: 0;
+	margin-bottom: 10px;
+}
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+ul {
+	display: block;
+	list-style-type: disc;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	padding-inline-start: 30px;
+}
+
+#footer {
+	background: #080822;
+	border-top: 5px solid gold;
+	color: white;
+	margin-top: 30px;
+	padding: 4px 0;
+	flex-wrap: wrap;
+}
+
+#footer2 {
+	background: #080822;
+	border-top: 5px solid gold;
+	color: white;
+	margin-top: 30px;
+	padding: 4px 0;
+	flex-wrap: wrap;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	color: white;
+}
+
+#footerInfo {
+	border-top: 1px solid white;
+	font-size: 14px;
+	overflow: hidden;
+	padding: 2px 0;
+}
+#infoRight {
+	float: right;
+	text-align: right;
+}
+
+/* css stteper Kintek */
+
+.angga {
+	color: #15159b !important;
+}
+
+/* css stteper1 kintek */
+.kintecomplete {
+	display: flex;
+	align-items: center;
+}
+
+.kintek-stepper {
+	display: flex;
+	align-items: center;
+	margin-left: 2%;
+}
+
+.kintek-step-uncomplte {
+	display: flex;
+	align-items: center;
+}
+
+.kintek-divider {
+	width: 20px;
+	height: 1px;
+	background-color: gray;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.kintek-circle-complete {
+	width: 30px;
+	height: 30px;
+	border-radius: 40px;
+	text-align: center;
+	margin-right: 5px;
+	padding-top: 5px;
+	color: white;
+	background-image: linear-gradient(
+		to top,
+		rgb(35, 32, 223),
+		rgba(11, 76, 255, 0.63)
+	);
+}
+
+.kintek-title-complete {
+	font-weight: bold;
+	color: black;
+}
+
+.kintek-circle-uncomplete {
+	width: 30px;
+	height: 30px;
+	border-radius: 40px;
+	text-align: center;
+	margin-right: 5px;
+	padding-top: 5px;
+	color: white;
+	background-color: gray;
+}
+.title {
+	margin-top: 10px !important;
+	margin-bottom: 20px !important;
+	width: 100% !important;
+	background-image: linear-gradient(
+		to top,
+		rgb(32, 179, 223),
+		rgba(32, 179, 223)
+	) !important;
+	padding: 10px !important;
+	color: #fff;
+	border-radius: 5px !important;
+}
+.kintek-title-uncomplete {
+	font-weight: bold;
+	color: gray;
+}
+/* end stteper1 */
+
+/* start steper1 */
+.kintecomplete2 {
+	display: flex;
+	align-items: center;
+}
+
+.kintek-stepper2 {
+	display: flex;
+	align-items: center;
+	margin-left: 2%;
+}
+
+.kintek-step-uncomplte2 {
+	display: flex;
+	align-items: center;
+}
+
+.kintek-divider2 {
+	width: 20px;
+	height: 1px;
+	background-color: gray;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.kintek-circle-complete2 {
+	width: 30px;
+	height: 30px;
+	border-radius: 40px;
+	text-align: center;
+	margin-right: 5px;
+	padding-top: 5px;
+	color: white;
+	background-image: linear-gradient(
+		to top,
+		rgb(35, 32, 223),
+		rgba(11, 76, 255, 0.63)
+	);
+}
+
+.kintek-title-complete2 {
+	font-weight: bold;
+	color: black;
+}
+
+.kintek-circle-uncomplete2 {
+	width: 30px;
+	height: 30px;
+	border-radius: 40px;
+	text-align: center;
+	margin-right: 5px;
+	padding-top: 5px;
+	color: white;
+	background-image: linear-gradient(
+		to top,
+		rgb(35, 32, 223),
+		rgba(11, 76, 255, 0.63)
+	);
+}
+
+.kintek-title-uncomplete2 {
+	font-weight: bold;
+	color: black;
+}
+
+/* end steeper2 */
+.btn-default {
+	margin: 5px !important;
+	margin-top: 20px !important;
+}
+
+.warning {
+	color: red;
+	font-size: 17px;
+}
+
+/* style rincian hps table */
+.graytd {
+	background-color: rgba(185, 176, 176, 0.637);
+}
+
+.form-group {
+	padding: 20px !important;
+}
+.uppercasess {
+	font-weight: normal;
+}
+.uppercasesss {
+	font-weight: normal;
+	color: gray;
+}
+td.bagidua {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+}
+.bagisatu {
+	margin-left: 5px;
+	margin-right: 5px;
+}
+.tambah {
+	width: 250px !important;
+}
+.tambah2 {
+	width: 200px !important;
+}
+.tambah3 {
+	width: 100px !important;
+}
+.tabal {
+	color: black;
+	font-weight: bold;
+}
+.jarakflexform {
+	margin-left: 5px;
+	margin-top: 5px;
+	color: gray;
+}
+/* card-kintek */
+.card-kintek {
+	padding: 5px;
+	background-color: white;
+	color: black;
+	flex-wrap: wrap;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+.bg-primary {
+	box-shadow: 1px 2px 3px rgba(13, 70, 134, 0.884);
+	border-radius: 10px;
+}
+.header-kintek {
+	padding: 8px;
+}
+.card-turun {
+	width: 300px;
+}

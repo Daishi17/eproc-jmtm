@@ -251,7 +251,7 @@ class Chat_model extends CI_Model
       return $this->db->get()->result_array();
    }
 
-   public function GetRowVendorAuction($id_vendor)
+   public function GetRowVendorAuction($id_vendor, $id_paket)
    {
       $this->db->select('*');
       $this->db->from('tbl_vendor_mengikuti_paket');
@@ -260,6 +260,7 @@ class Chat_model extends CI_Model
       $this->db->where('tbl_paket.status_tahap_tender', 2);
       $this->db->where('status_mengikuti_paket', 1);
       $this->db->where('id_mengikuti_vendor', $id_vendor);
+      $this->db->where('id_mengikuti_paket_vendor', $id_paket);
       return $this->db->get()->row_array();
    }
    public function tambah_chat_auction($data)
@@ -272,11 +273,10 @@ class Chat_model extends CI_Model
       $this->db->join('tbl_vendor', 'tbl_chat_auction.id_pengirim = tbl_vendor.id_vendor', 'left');
       $this->db->join('tbl_pegawai', 'tbl_chat_auction.id_pengirim = tbl_pegawai.id_pegawai', 'left');
       $this->db->where('tbl_chat_auction.id_paket', $id_paket);
-      $this->db->where('tbl_chat_auction.tahap_binding', $tahap_binding);
       $this->db->where('id_pengirim= ' . $id_user . ' 
-      and id_penerima=' . $id_lawan . ' 
+      and id_penerima=' . $id_lawan . ' and tahap_binding=' . $tahap_binding . ' 
       or id_pengirim= ' . $id_lawan . ' 
-      and id_penerima=' . $id_user);
+      and id_penerima=' . $id_user . ' and tahap_binding=' . $tahap_binding);
       $r = $this->db->get();
       return $r->result();
    }

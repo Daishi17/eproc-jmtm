@@ -4474,7 +4474,7 @@ class Beranda extends CI_Controller
 
         // NEW TAHAP UNTUK PRAKUALIFKASI 1 FILE
         $data['get_tahap_prakualfiikasi_satu_file_penetapan'] = $this->Rolepanitia_model->get_tahap_prakualfiikasi_satu_file_penetapan($id_paket, $id_kualifikasi);
-        $data['vendor'] = $this->Chat_model->GetRowVendorAuction($id_vendor);
+        $data['vendor'] = $this->Chat_model->GetRowVendorAuction($id_vendor, $id_paket);
         $this->load->view('template_panitia/header');
         $this->load->view('template/navlogin', $data);
         $this->load->view('panitia_view/beranda/chat_auction_menu', $data);

@@ -483,27 +483,25 @@
                                         <input type="hidden" name="id_paket" value="<?= $ambil_paket['id_paket'] ?>">
                                         <input type="hidden" name="tahap_binding" value="1">
                                         <input type="hidden" name="tahap_binding_next" value="2">
-                                        <input type="text" style="width:400px" class="form-control penawaran_binding1" value="<?= $vendor['harga_penawaran_binding_1'] ?>" name="penawaran_binding">
-                                        <input type="text" style="width:300px" id="tanpa-rupiah1" readonly class="form-control">
+                                        <input type="text" style="width:400px" readonly class="form-control penawaran_binding1" value="<?= "Rp " . number_format($vendor['harga_penawaran_binding_1'], 2, ',', '.'); ?>" name="penawaran_binding">
                                     </td>
+                                </tr>
+                                <tr>
+                                    <th>Download Dokumen Binding Penawaran</th>
                                     <td>
-                                        <a href="javascript:;" class="btn btn-success" onclick="Simpan_harga_penawaran()"> <i class="fas fa fa-save"></i> Simpan Harga Penarawan</a>
+                                        <a class="btn btn-danger btn-sm" href="https://vms.jmtm.co.id/file_binding/<?= $vendor['file_penawaran_binding_1'] ?>"><img style="width: 30px;" src="<?= base_url('assets/img/pdf.png') ?>" alt=""> <?= $vendor['file_penawaran_binding_1'] ?></a>
                                     </td>
                                 </tr>
                             <?php  } else if ($ambil_paket['tahap_binding'] == 2) { ?>
                                 <tr>
                                     <th>Input Harga Penawaran</th>
                                     <td>
-                                        <input type="hidden" name="nama_vendor" value="<?= $vendor['username_vendor'] ?>">
+                                    <input type="hidden" name="nama_vendor" value="<?= $vendor['username_vendor'] ?>">
                                         <input type="hidden" name="id_vendor" value="<?= $vendor['id_vendor'] ?>">
                                         <input type="hidden" name="id_paket" value="<?= $ambil_paket['id_paket'] ?>">
                                         <input type="hidden" name="tahap_binding" value="2">
                                         <input type="hidden" name="tahap_binding_next" value="3">
-                                        <input type="text" style="width:400px" class="form-control penawaran_binding2" value="<?= $vendor['harga_penawaran_binding_2'] ?>" name="penawaran_binding">
-                                        <input type="text" style="width:300px" id="tanpa-rupiah2" readonly class="form-control">
-                                    </td>
-                                    <td>
-                                        <a href="javascript:;" class="btn btn-success" onclick="Simpan_harga_penawaran()"> <i class="fas fa fa-save"></i> Simpan Harga Penarawan</a>
+                                        <input type="text" style="width:400px" readonly class="form-control penawaran_binding2" value="<?= "Rp " . number_format($vendor['harga_penawaran_binding_2'], 2, ',', '.'); ?>" name="penawaran_binding">
                                     </td>
                                 </tr>
                             <?php } else { ?>
@@ -515,11 +513,7 @@
                                         <input type="hidden" name="id_paket" value="<?= $ambil_paket['id_paket'] ?>">
                                         <input type="hidden" name="tahap_binding" value="3">
                                         <input type="hidden" name="tahap_binding_next" value="selesai">
-                                        <input type="text" style="width:400px" class="form-control penawaran_binding2" value="<?= $vendor['harga_penawaran_binding_3'] ?>" name="penawaran_binding">
-                                        <input type="text" style="width:300px" id="tanpa-rupiah3" readonly class="form-control">
-                                    </td>
-                                    <td>
-                                        <a href="javascript:;" class="btn btn-success" onclick="Simpan_harga_penawaran()"> <i class="fas fa fa-save"></i> Simpan Harga Penarawan</a>
+                                        <input type="text" style="width:400px" class="form-control penawaran_binding3" value="<?= $vendor['harga_penawaran_binding_3'] ?>" name="penawaran_binding">
                                     </td>
                                 </tr>
                             <?php  } ?>
@@ -544,94 +538,97 @@
             </div>
         </div>
     </div>
-    <div class="row justify-content-center h-100 mt-5 mb-5">
-        <div class="col-md-12 col-xl-3 chat">
-            <div class="card mb-sm-3 mb-md-0 contacts_card">
-                <div class="card-body contacts_body btn-grad5">
-                    <ui class="contacts">
-                        <li class="profileku">
-                            <div class="d-flex bd-highlight">
-                                <div class="img_cont">
-                                    <img src="<?= base_url('assets/img/test1.png') ?>" class="rounded-circle user_img_ku">
+    <?php if ($ambil_paket['tahap_binding'] == 1) { ?>
+    <?php } else { ?>
+        <div class="row justify-content-center h-100 mt-5 mb-5">
+            <div class="col-md-12 col-xl-3 chat">
+                <div class="card mb-sm-3 mb-md-0 contacts_card">
+                    <div class="card-body contacts_body btn-grad5">
+                        <ui class="contacts">
+                            <li class="profileku">
+                                <div class="d-flex bd-highlight">
+                                    <div class="img_cont">
+                                        <img src="<?= base_url('assets/img/test1.png') ?>" class="rounded-circle user_img_ku">
+                                    </div>
+                                    <div class="user_info_ku">
+                                        <span><?= $this->session->userdata('nama_pegawai') ?></span>
+                                    </div>
                                 </div>
-                                <div class="user_info_ku">
-                                    <span><?= $this->session->userdata('nama_pegawai') ?></span>
-                                </div>
-                            </div>
-                        </li>
-                    </ui>
+                            </li>
+                        </ui>
+                    </div>
+                    <div class="card-body contacts_body btn-grad5" style="margin-top: -400px;">
+                        <!-- ini untuk list vendor -->
+                        <ui class="contacts" id="yangAktif">
+                        </ui>
+                    </div>
+                    <div class="card-footer"></div>
                 </div>
-                <div class="card-body contacts_body btn-grad5" style="margin-top: -400px;">
-                    <!-- ini untuk list vendor -->
-                    <ui class="contacts" id="yangAktif">
-                    </ui>
-                </div>
-                <div class="card-footer"></div>
             </div>
-        </div>
-        <div class="col-md-12 col-xl-6">
-            <div class="card">
-                <div class="card-header msg_head btn-grad5">
-                    <div class="d-flex bd-highlight">
-                        <div class="img_cont">
-                            <img src="<?= base_url('assets/img/servant.png') ?>" class="rounded-circle user_img">
-                            <span class="online_icon"></span>
-                        </div>
-                        <div class="user_info">
-                            <span><?= $vendor['username_vendor'] ?></span>
-                            <p><?= $vendor['email_vendor'] ?></p>
+            <div class="col-md-12 col-xl-6">
+                <div class="card">
+                    <div class="card-header msg_head btn-grad5">
+                        <div class="d-flex bd-highlight">
+                            <div class="img_cont">
+                                <img src="<?= base_url('assets/img/servant.png') ?>" class="rounded-circle user_img">
+                                <span class="online_icon"></span>
+                            </div>
+                            <div class="user_info">
+                                <span><?= $vendor['username_vendor'] ?></span>
+                                <p><?= $vendor['email_vendor'] ?></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!-- ini untuk letakan pesanya -->
-                <div class="card-body msg_card_body" id="letakpesan">
-                </div>
-                <div class="card-footer btn-grad5">
-                    <div class="replay_orang"></div>
-                    <form id="form_auction" enctype="multipart/form-data">
-                        <input type="hidden" name="tahap_binding_chat" value="<?= $ambil_paket['tahap_binding'] ?>">
-                        <input type="hidden" name="replay_tujuan">
-                        <input type="hidden" name="replay_isi">
-                        <div class="nongol_dok" style="display: none;">
-                            <div class="bs-callout bs-callout-info ada_file" style="width: 300px;">
-                                <label class="fake_input_dok"></label>
-                                <a href="javascript:;" class="float-right" onclick="hapus_data_file()">X</a>
-                            </div>
-                        </div>
-                        <input type="hidden" name="id_paket" value="<?= $ambil_paket['id_paket'] ?>">
-                        <?php if ($vendor == null) { ?>
-
-                        <?php } else { ?>
-                            <input type="hidden" name="id_penerima" id="id_penerima" value="<?= $vendor['id_vendor'] ?>">
-                        <?php } ?>
-                        <input type="hidden" name="id_pengirim" id="id_pengirim" value="<?= $this->session->userdata('id_pegawai'); ?>">
-                        <div class="input-group">
-                            <div class="input-group-append">
-                                <div class="input-group-text attach_btn">
-                                    <button class="btn btn-danger btn-md btn-block" type="button" id="loadFileXml" value="loadXml" onclick="document.getElementById('file').click();"><i class="fas fa-paperclip"></i></button>
-                                    <br>
-                                    <button class="btn btn-primary btn-md btn-block" type="button" id="loadFileXml" value="loadXml" onclick="document.getElementById('file_img').click();"><i class="fas fa-camera-retro"></i></button>
+                    <!-- ini untuk letakan pesanya -->
+                    <div class="card-body msg_card_body" id="letakpesan">
+                    </div>
+                    <div class="card-footer btn-grad5">
+                        <div class="replay_orang"></div>
+                        <form id="form_auction" enctype="multipart/form-data">
+                            <input type="hidden" name="tahap_binding_chat" value="<?= $ambil_paket['tahap_binding'] ?>">
+                            <input type="hidden" name="replay_tujuan">
+                            <input type="hidden" name="replay_isi">
+                            <div class="nongol_dok" style="display: none;">
+                                <div class="bs-callout bs-callout-info ada_file" style="width: 300px;">
+                                    <label class="fake_input_dok"></label>
+                                    <a href="javascript:;" class="float-right" onclick="hapus_data_file()">X</a>
                                 </div>
-                                <input type="file" style="display:none;" id="file" name="dokumen_chat" />
-                                <input type="file" style="display:none;" id="file_img" name="img_chat" />
-                                <textarea name="isi" style="width: 350px;" class="form-control type_msg" placeholder="Type your message..."></textarea>
-                                <button type="submit" id="upload" name="upload" class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></button>
                             </div>
-                        </div>
-                    </form>
+                            <input type="hidden" name="id_paket" value="<?= $ambil_paket['id_paket'] ?>">
+                            <?php if ($vendor == null) { ?>
+
+                            <?php } else { ?>
+                                <input type="hidden" name="id_penerima" id="id_penerima" value="<?= $vendor['id_vendor'] ?>">
+                            <?php } ?>
+                            <input type="hidden" name="id_pengirim" id="id_pengirim" value="<?= $this->session->userdata('id_pegawai'); ?>">
+                            <div class="input-group">
+                                <div class="input-group-append">
+                                    <div class="input-group-text attach_btn">
+                                        <button class="btn btn-danger btn-md btn-block" type="button" id="loadFileXml" value="loadXml" onclick="document.getElementById('file').click();"><i class="fas fa-paperclip"></i></button>
+                                        <br>
+                                        <button class="btn btn-primary btn-md btn-block" type="button" id="loadFileXml" value="loadXml" onclick="document.getElementById('file_img').click();"><i class="fas fa-camera-retro"></i></button>
+                                    </div>
+                                    <input type="file" style="display:none;" id="file" name="dokumen_chat" />
+                                    <input type="file" style="display:none;" id="file_img" name="img_chat" />
+                                    <textarea name="isi" style="width: 350px;" class="form-control type_msg" placeholder="Type your message..."></textarea>
+                                    <button type="submit" id="upload" name="upload" class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
+                <style>
+                    div.sticky {
+                        position: sticky;
+                        top: 0;
+                        background-color: yellow;
+                        padding: 50px;
+                        font-size: 20px;
+                    }
+                </style>
             </div>
-            <style>
-                div.sticky {
-                    position: sticky;
-                    top: 0;
-                    background-color: yellow;
-                    padding: 50px;
-                    font-size: 20px;
-                }
-            </style>
         </div>
-    </div>
+    <?php  } ?>
 </div>
 <!-- Modal Chat Lihat -->
 <div class="modal fade" id="modal_liha_chat" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

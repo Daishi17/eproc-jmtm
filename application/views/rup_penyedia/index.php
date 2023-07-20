@@ -220,6 +220,7 @@ background: linear-gradient(63deg, rgba(249,249,249,0.9500175070028011) 15%, rgb
 								<thead>
 									<tr>
 										<th>Asal Dana</th>
+										<th>Pagu</th>
 										<th>HPS</th>
 									</tr>
 								</thead>

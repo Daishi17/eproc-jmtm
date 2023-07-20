@@ -61,6 +61,7 @@ $this->role_login->cek_login();
 								<i class="fas fa-chart-pie"></i> LAPORAN <i class="fas fa-angle-down"></i>
 							</a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="<?= base_url('laporan/laporan_tkdn') ?>">Laporan TKDN</a>
 								<a class="dropdown-item" href="<?= base_url('laporan') ?>">TOTAL</a>
 								<a class="dropdown-item" href="<?= base_url('laporan/grafik_dan_rekap') ?>">GRAFIK & REKAP</a>
 								<a class="dropdown-item" href="<?= base_url('laporan/kinerja_vendor') ?>">KINERJA VENDOR</a>
@@ -71,7 +72,7 @@ $this->role_login->cek_login();
 						</li>
 						<li style="font-size: 11px;font-weight:bold;"><a class="nav-link" href="<?= base_url('logakses') ?>"><i class="fas fa-user-lock"></i> LOG AKSES</a></li>
 						<li style="font-size: 11px;font-weight:bold;"><a class="nav-link" href="<?= base_url('gantipassword') ?>"><i class="fas fa-lock"></i> GANTI PASSWORD</a></li>
-												<li style="font-size: 13px;font-weight:bold;"><a class="nav-link" href="<?= base_url('upload_kontrak') ?>"><i class="fas fa-file"></i> UPLOAD KONTRAK</a></li>
+						<li style="font-size: 13px;font-weight:bold;"><a class="nav-link" href="<?= base_url('upload_kontrak') ?>"><i class="fas fa-file"></i> UPLOAD KONTRAK</a></li>
 						<!-- <li style="font-size: 11px;font-weight:bold;"><a class="nav-link" href="<?= base_url('uat') ?>"><i class="fas fa-eye"></i> UAT</a></li> -->
 					<?php } ?>
 					<?php if ($this->session->userdata('id_role') == 2) { ?>
@@ -157,7 +158,7 @@ $this->role_login->cek_login();
 
 				</div>
 				<div class="col" style="color: black;">
-					
+
 					<?= $this->session->userdata('nama_pegawai'); ?> - <?= $this->session->userdata('nama_unit_kerja'); ?>
 				</div>
 

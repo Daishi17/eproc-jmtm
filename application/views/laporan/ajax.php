@@ -434,3 +434,50 @@
 
 	});
 </script>
+
+<!-- js tkdn -->
+
+<script>
+	$(document).ready(function() {
+		$('#table_tkdn').DataTable({
+			dom: 'Bfrtip',
+			buttons: [{
+				extend: 'excel',
+				text: 'Export Excel',
+				className: 'btn btn-grad8'
+			}, {
+				extend: 'print',
+				text: 'Export PDF',
+				className: 'btn btn-grad2',
+				customize: function(win) {
+					$(win.document.body)
+						.css('font-size', '6pt')
+					$(win.document.body).find('table')
+						.addClass('compact')
+						.css('font-size', 'inherit');
+				}
+			}],
+			"responsive": true,
+			"autoWidth": false,
+			"processing": true,
+			"serverSide": true,
+			"order": [],
+			"ajax": {
+				"url": "<?= base_url('laporan/getdata_tkdn') ?>",
+				"type": "POST",
+			},
+			"columnDefs": [{
+				"target": [-1],
+				"orderable": false
+			}],
+			"oLanguage": {
+				"sSearch": "Pencarian : ",
+				"sEmptyTable": "Data Tidak Tersedia",
+				"sLoadingRecords": "Silahkan Tunggu - loading...",
+				"sLengthMenu": "Menampilkan &nbsp;  _MENU_  &nbsp;   Data",
+				"sZeroRecords": "Tidak Ada Data Yang Di Cari",
+				"sProcessing": "Memuat Data...."
+			}
+		});
+	});
+</script>

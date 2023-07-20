@@ -2700,6 +2700,7 @@ class Laporan_model extends CI_Model
 		$this->db->join('tbl_vendor', 'tbl_vendor_mengikuti_paket.id_mengikuti_vendor = tbl_vendor.id_vendor', 'left');
 		$this->db->join('tbl_sumber_dana', 'tbl_paket.id_paket = tbl_sumber_dana.id_paket');
 		$this->db->join('tbl_pegawai', 'tbl_paket.pembuat_paket = tbl_pegawai.username', 'left');
+		$this->db->join('tbl_jenis_anggaran', 'tbl_paket.id_jenis_anggaran = tbl_jenis_anggaran.id_jenis_anggaran', 'left');
 		$this->db->where('tbl_vendor_mengikuti_paket.pemenang_tender =', 1);
 		$this->db->or_where('tbl_paket.status_paket_tender', 2);
 		$this->db->group_by('tbl_paket.id_paket');
@@ -2768,4 +2769,107 @@ class Laporan_model extends CI_Model
 		WHERE pemenang_tender = 1 AND id_mengikuti_paket_vendor = $id_paket");
 		return $query->row();
 	}
+
+	public function get_pemenang_tkdn($id_paket)
+	{
+		$query = $this->db->query("SELECT * FROM tbl_vendor_mengikuti_paket
+		LEFT JOIN tbl_vendor ON tbl_vendor_mengikuti_paket.id_mengikuti_vendor = tbl_vendor.id_vendor LEFT JOIN tbl_vendor_identitas_prusahaan ON tbl_vendor.id_vendor = tbl_vendor_identitas_prusahaan.id_vendor
+		WHERE pemenang_tender = 1 AND id_mengikuti_paket_vendor = $id_paket");
+		return $query->row();
+	}
+
+	//tkdn sumberdana
+
+	function get_sumber_dana($id_paket)
+	{
+		$query = $this->db->query("SELECT SUM(hps) AS total_hps
+		FROM tbl_sumber_dana WHERE id_paket = $id_paket");
+		return $query->row();
+	}
+
+
+
+	// TKDN
+
+	var $table_tkdn = 'tbl_paket';
+	var $order_tkdn = array('tbl_paket.id_paket', 'kode_tender', 'nama_jenis_pengadaan', 'nama_metode_pemilihan', 'tanggal_buat_rup', 'tanggal_buat_rup', 'nama_paket', 'nama_unit_kerja', 'hps', 'username_vendor', 'negosiasi', 'pembuat_paket');
+	var $column_search_tkdn = array('tbl_paket.id_paket', 'kode_tender', 'nama_jenis_pengadaan', 'nama_metode_pemilihan', 'tanggal_buat_rup', 'tanggal_buat_rup', 'nama_paket', 'nama_unit_kerja', 'hps', 'username_vendor', 'negosiasi', 'pembuat_paket');
+
+	private function _get_data_query_tkdn()
+	{
+		// $sekarang = date('d-m-Y H:i');
+		$this->db->select('*');
+		$this->db->from('tbl_paket');
+		$this->db->join('tbl_jenis_pengadaan', 'tbl_paket.id_jenis_pengadaan = tbl_jenis_pengadaan.id_jenis_pengadaan', 'left');
+		$this->db->join('tbl_metode_pemilihan', 'tbl_paket.id_metode_pemilihan = tbl_metode_pemilihan.id_metode_pemilihan', 'left');
+		$this->db->join('tbl_jadwal_tender_detail', 'tbl_paket.id_paket = tbl_jadwal_tender_detail.id_paket', 'left');
+		$this->db->join('tbl_unit_kerja', 'tbl_paket.id_unit_kerja = tbl_unit_kerja.id_unit_kerja', 'left');
+		$this->db->join('tbl_vendor_mengikuti_paket', 'tbl_paket.id_paket = tbl_vendor_mengikuti_paket.id_mengikuti_paket_vendor', 'left');
+		$this->db->join('tbl_vendor', 'tbl_vendor_mengikuti_paket.id_mengikuti_vendor = tbl_vendor.id_vendor', 'left');
+		$this->db->join('tbl_sumber_dana', 'tbl_paket.id_paket = tbl_sumber_dana.id_paket');
+		$this->db->join('tbl_pegawai', 'tbl_paket.pembuat_paket = tbl_pegawai.username', 'left');
+		$this->db->join('tbl_jenis_anggaran', 'tbl_paket.id_jenis_anggaran = tbl_jenis_anggaran.id_jenis_anggaran', 'left');
+		$this->db->where('tbl_vendor_mengikuti_paket.pemenang_tender =', 1);
+		$this->db->where('tbl_paket.status_paket_tender', 2);
+		$this->db->where('tbl_paket.pencatatan !=', NULL);
+		$this->db->group_by('tbl_paket.id_paket');
+		$this->db->order_by('tbl_vendor.username_vendor', 'DESC');
+		if (isset($_POST['id_unit_kerja'], $_POST['id_jenis_pengadaan'], $_POST['tanggal_buat_rup']) && $_POST['id_unit_kerja'] != '' && $_POST['id_jenis_pengadaan'] != '' && $_POST['tanggal_buat_rup'] != '') {
+			$this->db->like('tbl_paket.id_unit_kerja', $_POST['id_unit_kerja']);
+			$this->db->like('tbl_paket.id_jenis_pengadaan', $_POST['id_jenis_pengadaan']);
+			$this->db->like('tanggal_buat_rup', $_POST['tanggal_buat_rup']);
+		}
+		$i = 0;
+		foreach ($this->order_tkdn as $item) // looping awal
+		{
+			if ($_POST['search']['value']) // jika datatable mengirimkan pencarian dengan metode POST
+			{
+
+				if ($i === 0) // looping awal
+				{
+					$this->db->group_start();
+					$this->db->like($item, $_POST['search']['value']);
+				} else {
+					$this->db->or_like(
+						$item,
+						$_POST['search']['value']
+					);
+				}
+
+				if (count($this->order_tkdn) - 1 == $i)
+					$this->db->group_end();
+			}
+			$i++;
+		}
+		if (isset($_POST['order'])) {
+			$this->db->order_by($this->column_search_tkdn[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
+		} else {
+			$this->db->order_by('tbl_paket.id_paket', 'DESC');
+		}
+	}
+
+	public function getdatatable_tkdn()
+	{
+		$this->_get_data_query_tkdn();
+		if ($_POST['length'] != -1) {
+			$this->db->limit($_POST['length'], $_POST['start']);
+		}
+		$query = $this->db->get();
+		return $query->result();
+	}
+	public function count_filtered_data_tkdn()
+	{
+		$this->_get_data_query_tkdn();
+		$query = $this->db->get();
+		return $query->num_rows();
+	}
+
+	public function count_all_data_tkdn()
+	{
+		$this->db->from($this->table);
+		$this->db->where_in('tbl_paket.status_paket_tender', [1, 2]);
+		return $this->db->count_all_results();
+	}
+	// END TKDN
+
 }

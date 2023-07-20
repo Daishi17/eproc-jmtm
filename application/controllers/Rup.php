@@ -96,6 +96,9 @@ class Rup extends CI_Controller
 		$sepesifikasi_paket = $this->input->post('sepesifikasi_paket', TRUE);
 		$kualifikasi_usaha = $this->input->post('kualifikasi_usaha', TRUE);
 		$id_kualifikasi = $this->input->post('id_kualifikasi', TRUE);
+		$pencatatan = $this->input->post('pencatatan', TRUE);
+		$persen_pencatatan = $this->input->post('persen_pencatatan', TRUE);
+		$jangka_waktu = $this->input->post('jangka_waktu', TRUE);
 		// Insert lokasi Pekerjaan
 		$id_provinsi = $this->input->post('id_provinsi', TRUE);
 		$id_kabupaten = $this->input->post('id_kabupaten', TRUE);
@@ -108,6 +111,7 @@ class Rup extends CI_Controller
 
 		// Insert Sumber Dana batchnya
 		$asal_dana = $this->input->post('asal_dana', TRUE);
+		$pagu = $this->input->post('pagu', TRUE);
 		$hps = $this->input->post('hps', TRUE);
 		$tahun_anggaran = $this->input->post('tahun_anggaran', TRUE);
 
@@ -134,6 +138,9 @@ class Rup extends CI_Controller
 			'tahun_mulai_jamak' => $tahun_mulai_jamak,
 			'id_tahun_anggaran' => $id_tahun_anggaran,
 			'tahun_selesai_jamak' => $tahun_selesai_jamak,
+			'pencatatan' => $pencatatan,
+			'persen_pencatatan' => $persen_pencatatan,
+			'jangka_waktu' => $jangka_waktu,
 			'id_pegawai' => $this->session->userdata('id_pegawai'),
 			'pembuat_paket' => $this->session->userdata('username'),
 		);
@@ -160,6 +167,7 @@ class Rup extends CI_Controller
 			$result[] = array(
 				'id_paket'   => $package_id,
 				'asal_dana'   => $asal_dana[$key],
+				'pagu'   => $pagu[$key],
 				'hps'   => $hps[$key],
 				'tahun_anggaran' => $tahun_anggaran[$key]
 			);
@@ -214,6 +222,9 @@ class Rup extends CI_Controller
 				'uraian_pekerjaan_paket' => htmlspecialchars($this->input->post('uraian_pekerjaan_paket')),
 				'kualifikasi_usaha' => htmlspecialchars($this->input->post('kualifikasi_usaha')),
 				'sepesifikasi_paket' => htmlspecialchars($this->input->post('sepesifikasi_paket')),
+				'pencatatan' => htmlspecialchars($this->input->post('pencatatan')),
+				'persen_pencatatan' => htmlspecialchars($this->input->post('persen_pencatatan')),
+				'jangka_waktu' => htmlspecialchars($this->input->post('jangka_waktu')),
 				'pembuat_paket' => $this->session->userdata('username')
 			];
 			$this->Rup_model->update(array('id_paket' => $this->input->post('id_paket')), $data);
@@ -484,11 +495,17 @@ class Rup extends CI_Controller
 			$row = array();
 			$row[] = ++$no;
 			$row[] = $angga->asal_dana;
+			if (!$angga->pagu) {
+				$row[] = '';
+			} else {
+				$row[] = "Rp " . number_format($angga->pagu, 2, ',', '.');
+			}
 			if (!$angga->hps) {
 				$row[] = '';
 			} else {
 				$row[] = "Rp " . number_format($angga->hps, 2, ',', '.');
 			}
+
 			$row[] = $angga->tahun_anggaran;
 			$row[] = '<a href="javascript:;" class="btn btn-success btn-sm" onClick="byidSumberdana(' . "'" . $angga->id_sumber_dana . "','editsumberdana'" . ')"><i class="fas fa-edit"></i> Edit</a> <a href="javascript:;" class="btn btn-danger btn-sm" onClick="byidSumberdana(' . "'" . $angga->id_sumber_dana . "','hapussumberdana'" . ')">  <i class="fas fa-trash"></i> Hapus</a>';
 			if (!$angga->hps) {
@@ -513,6 +530,7 @@ class Rup extends CI_Controller
 		$data = [
 			'id_paket' => htmlspecialchars($this->input->post('id_paket')),
 			'asal_dana' => htmlspecialchars($this->input->post('asal_dana')),
+			'pagu' => htmlspecialchars($this->input->post('pagu')),
 			'hps' => htmlspecialchars($this->input->post('hps')),
 			'tahun_anggaran' => htmlspecialchars($this->input->post('tahun_anggaran'))
 		];
@@ -524,6 +542,7 @@ class Rup extends CI_Controller
 	{
 		$data = [
 			'asal_dana' => htmlspecialchars($this->input->post('asal_dana')),
+			'pagu' => htmlspecialchars($this->input->post('pagu')),
 			'hps' => htmlspecialchars($this->input->post('hps')),
 			'tahun_anggaran' => htmlspecialchars($this->input->post('tahun_anggaran'))
 		];
@@ -740,7 +759,7 @@ class Rup extends CI_Controller
 		}
 	}
 
-	
+
 	public function dataKualifikasi($id_kualifikasi)
 	{
 		$data = $this->Kualifikasi_model->getKualifikasi($id_kualifikasi);
@@ -748,8 +767,8 @@ class Rup extends CI_Controller
 		foreach ($data as $key => $value) {
 			echo '<option value="' . $value['id_kualifikasi'] . '">' . $value['nama_kualifikasi'] . '</option>';
 		}
-	}	
-// ========
+	}
+	// ========
 	// =============================DOWNLOAD TEMPLATE EXCEL RUP===========================
 	// ========
 	public function downloadtemplate()

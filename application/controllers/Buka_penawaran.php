@@ -586,6 +586,8 @@ class Buka_penawaran extends CI_Controller
 			$row = array();
 			$row[] = ++$no;
 			$row[] = $angga->username_vendor;
+			$row[] = $angga->pencatatan;
+			$row[] = $angga->persen_pencatatan;
 			$row[] = '<a class="btn btn-success btn-sm" href="javascript:;" onClick="byid_peserta_vendor_tender(' . "'" . $angga->id_mengikuti_vendor . "','lihat_dokumen_lelang'" . ')">Lihat</a>';
 			$data[] = $row;
 		}

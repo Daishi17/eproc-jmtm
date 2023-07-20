@@ -16,11 +16,11 @@
 						<label for="tahun_anggaran" class="col-sm-2 col-form-label" style="font-weight: bold;font-size:14px">Tahun Anggaran</label>
 						<div class="col-sm-4 mb-5">
 							<!--<input type="text" class="form-control form-control-sm" id="tahun_anggaran" placeholder="Tahun Anggaran" readonly value="<?= date('Y') ?>">-->
-								<select name="id_tahun_anggaran" id="id_tahun_anggaran" class="form-control form-control-sm select2">
-									<?php foreach ($tahun_anggaran as $key => $value) { ?>
-										<option value="<?= $value['id_tahun_anggaran'] ?>"><?= $value['nama_tahun_anggaran'] ?></option>
-									<?php  } ?>
-								</select>
+							<select name="id_tahun_anggaran" id="id_tahun_anggaran" class="form-control form-control-sm select2">
+								<?php foreach ($tahun_anggaran as $key => $value) { ?>
+									<option value="<?= $value['id_tahun_anggaran'] ?>"><?= $value['nama_tahun_anggaran'] ?></option>
+								<?php  } ?>
+							</select>
 						</div>
 						<label for="unit_kerja" class="col-sm-2 col-form-label" style="font-weight: bold;font-size:14px">Unit</label>
 						<div class="col-sm-4 mb-5">
@@ -151,6 +151,18 @@
 								<?php  } ?>
 							</select>
 						</div>
+						<label for="" class="col-sm-2 col-form-label" style="font-weight: bold;font-size:14px">Status Pencatatan (PDN/TKDN/IMPOR)</label>
+						<div class="col-sm-10 mb-5">
+							<div class="form-inline">
+								<select name="pencatatan" id="" class="form-control form-control-sm">
+									<option value="TKDN">TKDN</option>
+									<option value="PDN">PDN</option>
+									<option value="IMPOR">IMPOR</option>
+								</select>
+								<input type="number" min="0" name="persen_pencatatan" class="form-control">
+
+							</div>
+						</div>
 						<label for="uraian_pekerjaan_paket" class="col-sm-2 col-form-label" style="font-weight: bold;font-size:14px">Uraian Pekerjaan</label>
 						<div class="col-sm-10 mb-5">
 							<textarea name="uraian_pekerjaan_paket" class="form-control form-control-sm"></textarea>
@@ -160,6 +172,12 @@
 							<div class="form-inline">
 								<input type="text" name="tahun_mulai_jamak" class="form-control datepicker2 tahun_jamak_mulai"> <label for="" class="pl-2 pr-2">S/D</label>
 								<input type="text" name="tahun_selesai_jamak" class="form-control datepicker2 tahun_jamak_selesai">
+							</div>
+						</div>
+						<label for="" class="col-sm-2 col-form-label" style="font-weight: bold;font-size:14px">Jangka Waktu Pelaksanaan</label>
+						<div class="col-sm-10 mb-5">
+							<div class="form-inline">
+								<input type="number" min="0" name="jangka_waktu" class="form-control"> <label for="" class="pl-2 pr-2"><b>Hari</b></label>
 							</div>
 						</div>
 						<label for="uni_kerja" class="col-sm-2 col-form-label" style="font-weight: bold;font-size:14px">Sumber Dana</label>
@@ -179,6 +197,7 @@
 										<thead class="text-center">
 											<tr>
 												<th>Asal Dana</th>
+												<th>Nilai Pagu</th>
 												<th>Hps</th>
 												<th>Tahun Anggaran</th>
 											</tr>
@@ -186,7 +205,11 @@
 										<tbody class="text-center">
 											<tr>
 												<td><input type="text" name="asal_dana[]" value="BUMN" class="form-control form-control-sm" readonly></td>
+
+												<td><input type="text" name="pagu[]" id="harga_pagu" class="form-control form-control-sm"> <input type="text" disabled class="float-right form-control form-control-sm mt-1" style="width: 200px;" id="tanpa-rupiah-pagu"></td>
+
 												<td><input type="text" name="hps[]" id="harga_biasa" class="form-control form-control-sm"> <input type="text" disabled class="float-right form-control form-control-sm mt-1" style="width: 200px;" id="tanpa-rupiah"></td>
+
 												<td><input type="text" name="tahun_anggaran[]" id="tahun_anggaran" class="form-control form-control-sm"></td>
 												<td><button type="button" name="add2" id="add2" class="btn btn-sm btn-success"><i class="fas fa-plus-square"></i></button></td>
 											</tr>

@@ -1147,4 +1147,70 @@ class Laporan extends CI_Controller
 		);
 		$this->output->set_content_type('application/json')->set_output(json_encode($output));
 	}
+
+	// LAPORAN TKDN
+
+	function laporan_tkdn()
+	{
+		$data['laporan'] = $this->Laporan_model->get_all();
+		$data['get_jenis_pengadaan'] = $this->Paket_model->get_jenis_pengadaan();
+		$data['getdivisi'] = $this->Paket_model->get_devisi();
+		$data['total_nilai_hps_paket'] = $this->Paket_model->total_nilai_hps_paket2();
+		$data['total_nilai_negosiasi_paket'] = $this->Paket_model->total_nilai_negosiasi_paket2();
+		$this->load->view('template/header');
+		$this->load->view('template/navlogin');
+		$this->load->view('laporan/laporan_tkdn', $data);
+		$this->load->view('template/footer');
+		$this->load->view('laporan/ajax');
+	}
+
+	public function getdata_tkdn()
+	{
+		$resultss = $this->Laporan_model->getdatatable_tkdn();
+		$data = [];
+		$no = $_POST['start'];
+		foreach ($resultss as $isi) {
+			$get_pemenang = $this->Laporan_model->get_pemenang_tkdn($isi->id_paket);
+			$get_sumber_dana = $this->Laporan_model->get_sumber_dana($isi->id_paket);
+			$row = array();
+			$row[] = ++$no;
+			$row[] = $isi->nama_paket;
+			$row[] = $isi->nama_jenis_pengadaan;
+			$row[] = $isi->nama_jenis_anggaran;
+			$row[] = number_format($get_sumber_dana->total_hps, 2, ',', '.');
+			$row[] = number_format($get_pemenang->negosiasi, 2, ',', '.');
+			$row[] = number_format($get_pemenang->negosiasi, 2, ',', '.');
+
+			if ($get_pemenang) {
+				$row[] = $get_pemenang->nama_usaha;
+			} else {
+				$row[] = '';
+			}
+			$row[] = $get_pemenang->kualifikasi_usaha;
+			$row[] = $isi->pencatatan;
+
+			if ($isi->pencatatan == 'PDN') {
+				$row[] = $isi->persen_pencatatan . ' %';
+				$row[] = '0.00%';
+				$row[] = '0.00%';
+			} else if ($isi->pencatatan == 'PDN') {
+				$row[] = '0.00%';
+				$row[] = $isi->persen_pencatatan . ' %';
+				$row[] = '0.00%';
+			} else if ($isi->pencatatan == 'IMPORT') {
+				$row[] = '0.00%';
+				$row[] = '0.00%';
+				$row[] = $isi->persen_pencatatan . ' %';
+			}
+			$row[] = $isi->persen_pencatatan . ' %';
+			$data[] = $row;
+		}
+		$output = array(
+			"draw" => $_POST['draw'],
+			"recordsTotal" => $this->Laporan_model->count_all_data_tkdn(),
+			"recordsFiltered" => $this->Laporan_model->count_filtered_data_tkdn(),
+			"data" => $data
+		);
+		$this->output->set_content_type('application/json')->set_output(json_encode($output));
+	}
 }

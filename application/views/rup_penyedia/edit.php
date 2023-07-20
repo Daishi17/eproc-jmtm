@@ -18,13 +18,13 @@
 						<label for="tahun_anggaran" class="col-sm-2 col-form-label" style="font-weight: bold;font-size:14px">Tahun Anggaran</label>
 						<div class="col-sm-4  mb-5">
 							<!--<input type="text" class="form-control form-control-sm " id="tahun_anggaran" placeholder="Tahun Anggaran" readonly value="<?= date('Y') ?>">-->
-							
-								<select name="id_tahun_anggaran" id="id_tahun_anggaran" class="form-control form-control-sm select2">
-								    <option value="<?= $angga['id_tahun_anggaran'] ?>"><?= $angga['nama_tahun_anggaran'] ?></option>
-									<?php foreach ($tahun_anggaran as $key => $value) { ?>
-										<option value="<?= $value['id_tahun_anggaran'] ?>"><?= $value['nama_tahun_anggaran'] ?></option>
-									<?php  } ?>
-								</select>
+
+							<select name="id_tahun_anggaran" id="id_tahun_anggaran" class="form-control form-control-sm select2">
+								<option value="<?= $angga['id_tahun_anggaran'] ?>"><?= $angga['nama_tahun_anggaran'] ?></option>
+								<?php foreach ($tahun_anggaran as $key => $value) { ?>
+									<option value="<?= $value['id_tahun_anggaran'] ?>"><?= $value['nama_tahun_anggaran'] ?></option>
+								<?php  } ?>
+							</select>
 						</div>
 						<label for="id_unit_kerja" class="col-sm-2 col-form-label" style="font-weight: bold;font-size:14px">Unit</label>
 						<div class="col-sm-4 mb-5">
@@ -151,6 +151,18 @@
 							</select>
 							<p class="id_produk_dl_negri-error text-danger"></p>
 						</div>
+						<label for="" class="col-sm-2 col-form-label" style="font-weight: bold;font-size:14px">Status Pencatatan (PDN/TKDN/IMPOR)</label>
+						<div class="col-sm-10 mb-5">
+							<div class="form-inline">
+								<select name="pencatatan" value="<?= $angga['pencatatan']  ?>" id="" class="form-control form-control-sm">
+									<option value="TKDN">TKDN</option>
+									<option value="PDN">PDN</option>
+									<option value="IMPOR">IMPOR</option>
+								</select>
+								<input type="number" value="<?= $angga['persen_pencatatan']  ?>" min="0" name="persen_pencatatan" class="form-control">
+
+							</div>
+						</div>
 						<label for="uraian_pekerjaan_paket" class="col-sm-2 col-form-label" style="font-weight: bold;font-size:14px">Uraian Pekerjaan</label>
 						<div class="col-sm-10 mb-5">
 							<textarea name="uraian_pekerjaan_paket" class="form-control form-control-sm"><?= $angga['uraian_pekerjaan_paket'] ?></textarea>
@@ -161,6 +173,12 @@
 							<div class="form-inline">
 								<input type="text" name="tahun_mulai_jamak" class="form-control datepicker2 tahun_jamak_mulai" value="<?= $angga['tahun_mulai_jamak'] ?>"> <label for="" class="pl-2 pr-2">S/D</label>
 								<input type="text" name="tahun_selesai_jamak" class="form-control datepicker2 tahun_jamak_selesai" value="<?= $angga['tahun_selesai_jamak'] ?>">
+							</div>
+						</div>
+						<label for="" class="col-sm-2 col-form-label" style="font-weight: bold;font-size:14px">Jangka Waktu Pelaksanaan</label>
+						<div class="col-sm-10 mb-5">
+							<div class="form-inline">
+								<input type="number" min="0" value="<?= $angga['jangka_waktu'] ?>" name="jangka_waktu" class="form-control"> <label for="" class="pl-2 pr-2"><b>Hari</b></label>
 							</div>
 						</div>
 						<label for="id_sumber_dana" class="col-sm-2 col-form-label" style="font-weight: bold;font-size:14px">Sumber Dana</label>
@@ -181,6 +199,7 @@
 											<tr>
 												<th>#</th>
 												<th>Asal Dana</th>
+												<th>Pagu</th>
 												<th>Hps</th>
 												<th>Tahun Anggaran</th>
 												<th>Aksi</th>
@@ -312,6 +331,11 @@
 						<div class="form-group">
 							<label for="">Asal Dana</label>
 							<input type="text" name="asal_dana" value="BUMN" readonly class="form-control">
+						</div>
+						<div class="form-group">
+							<label for="">Pagu</label>
+							<input type="text" name="pagu" id="harga_pagu" class="form-control">
+							<input type="text" disabled class="float-right form-control form-control-sm mt-1" style="width: 200px;" id="tanpa-rupiah-pagu">
 						</div>
 						<div class="form-group">
 							<label for="">Hps</label>

@@ -376,9 +376,9 @@
 		datetimepicker: true,
 		format: 'd-m-Y H:i',
 		onShow: function(ct) {
-			this.setOptions({
-				minDate: $('.tanggal_selesai_pascakualifikasi').val() ? $('.tanggal_selesai_pascakualifikasi').val() : false
-			})
+			// this.setOptions({
+			// 	minDate: $('.tanggal_selesai_pascakualifikasi').val() ? $('.tanggal_selesai_pascakualifikasi').val() : false
+			// })
 		}
 	})
 
@@ -387,9 +387,9 @@
 		datetimepicker: true,
 		format: 'd-m-Y H:i',
 		onShow: function(ct) {
-			this.setOptions({
-				minDate: $('.tanggal_mulai_pascakualifikasi').val() ? $('.tanggal_mulai_pascakualifikasi').val() : false
-			})
+			// this.setOptions({
+			// 	minDate: $('.tanggal_mulai_pascakualifikasi').val() ? $('.tanggal_mulai_pascakualifikasi').val() : false
+			// })
 		}
 	})
 	// $('.tanggal_mulai').keyup(function() {

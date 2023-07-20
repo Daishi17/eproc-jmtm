@@ -783,6 +783,8 @@
 									<tr>
 										<th>No</th>
 										<th>Nama Peserta</th>
+										<th>TKDN/PDN/IMPOR</th>
+										<th>Persentase TKDN/PDN/IMPOR</th>
 										<th>Lihat & Download Dokumen Lelang</th>
 									</tr>
 								</thead>

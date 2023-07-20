@@ -237,13 +237,35 @@
 			i++;
 			$('#dynamic_field2').append('<tr id="row' + i + '">' +
 				'<td><input value="BUMN" name="asal_dana[]"  class="form-control form-control-sm" readonly></input></td>' +
-				'<td><input type="text" name="hps[]" id="harga_biasa' + i + '" class="form-control form-control-sm"><input type="text" disabled class="float-right form-control form-control-sm mt-1" style="width: 200px;" id="tanpa-rupiah' + i + '"></td>' + '<td><input name="tahun_anggaran[]"  class="form-control form-control-sm"></input></td>' +
+				'<td><input type="text" name="pagu[]" id="harga_pagu' + i + '" class="form-control form-control-sm"><input type="text" disabled class="float-right form-control form-control-sm mt-1" style="width: 200px;" id="tanpa-rupiah-pagu' + i + '"></td>' + '<td><input type="text" name="hps[]" id="harga_biasa' + i + '" class="form-control form-control-sm"><input type="text" disabled class="float-right form-control form-control-sm mt-1" style="width: 200px;" id="tanpa-rupiah' + i + '"></td>' + '<td><input name="tahun_anggaran[]"  class="form-control form-control-sm"></input></td>' +
 				'<td><button type="button" name="remove2" id="' + i + '" class="btn btn-danger btn-sm btn_remove2"><i class="fas fa-trash-alt"></i></button></td>' +
 				'</tr>');
 
 			$("#harga_biasa" + i + "").keyup(function() {
 				var harga = $('#harga_biasa' + i + "").val();
 				var tanpa_rupiah = document.getElementById('tanpa-rupiah' + i + '');
+				tanpa_rupiah.value = formatRupiah(this.value, 'Rp. ');
+				/* Fungsi */
+				function formatRupiah(angka, prefix) {
+					var number_string = angka.replace(/[^,\d]/g, '').toString(),
+						split = number_string.split(','),
+						sisa = split[0].length % 3,
+						rupiah = split[0].substr(0, sisa),
+						ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+					if (ribuan) {
+						separator = sisa ? '.' : '';
+						rupiah += separator + ribuan.join('.');
+					}
+
+					rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+					return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+				}
+			});
+
+			$("#harga_pagu" + i + "").keyup(function() {
+				var harga = $('#harga_biasa' + i + "").val();
+				var tanpa_rupiah = document.getElementById('tanpa-rupiah-pagu' + i + '');
 				tanpa_rupiah.value = formatRupiah(this.value, 'Rp. ');
 				/* Fungsi */
 				function formatRupiah(angka, prefix) {
@@ -273,6 +295,29 @@
 		var harga = $("#harga_biasa").val();
 		var total = $('#total_hpsnya').val(harga);
 		var tanpa_rupiah = document.getElementById('tanpa-rupiah');
+		tanpa_rupiah.value = formatRupiah(this.value, 'Rp. ');
+		/* Fungsi */
+		function formatRupiah(angka, prefix) {
+			var number_string = angka.replace(/[^,\d]/g, '').toString(),
+				split = number_string.split(','),
+				sisa = split[0].length % 3,
+				rupiah = split[0].substr(0, sisa),
+				ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+			if (ribuan) {
+				separator = sisa ? '.' : '';
+				rupiah += separator + ribuan.join('.');
+			}
+
+			rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+			return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+		}
+	});
+
+	$("#harga_pagu").keyup(function() {
+		var harga = $("#harga_pagu").val();
+		var total = $('#total_hpsnya').val(harga);
+		var tanpa_rupiah = document.getElementById('tanpa-rupiah-pagu');
 		tanpa_rupiah.value = formatRupiah(this.value, 'Rp. ');
 		/* Fungsi */
 		function formatRupiah(angka, prefix) {
@@ -730,8 +775,10 @@
 					var i;
 					for (i = 0; i < response['get_sumberdana'].length; i++) {
 						$hps = response['get_sumberdana'][i].hps;
+						$pagu = response['get_sumberdana'][i].pagu;
 						html += '<tr>' +
 							'<td>' + response['get_sumberdana'][i].asal_dana + '</td>' +
+							'<td>' + 'Rp. ' + $pagu.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ',00' + '</td>' +
 							'<td>' + 'Rp. ' + $hps.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ',00' + '</td>' +
 							'</tr>'
 					}
@@ -1057,6 +1104,7 @@
 					$('[name="id_sumber_dana"]').val(response.id_sumber_dana);
 					$('[name="asal_dana"]').val(response.asal_dana);
 					$('[name="hps"]').val(response.hps);
+					$('[name="pagu"]').val(response.pagu);
 					$('[name="tahun_anggaran"]').val(response.tahun_anggaran);
 					modal_sumber_dana.modal('show');
 				}

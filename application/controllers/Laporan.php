@@ -1203,6 +1203,9 @@ class Laporan extends CI_Controller
 				$row[] = $isi->persen_pencatatan . ' %';
 			}
 			$row[] = $isi->persen_pencatatan . ' %';
+			$row[] = '';
+			$row[] = '';
+			$row[] = '';
 			$data[] = $row;
 		}
 		$output = array(

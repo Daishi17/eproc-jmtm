@@ -343,7 +343,7 @@ class Daftarpaket extends CI_Controller
         $data['sbu'] = $this->Paket_model->get_sbu();
         $paket['cek_pakta_integritas'] = $this->Rolepanitia_model->status_pakta_integritas($id_paket);
 
-   	// desember 2022
+        // desember 2022
         $paket['sum_rincian_hps'] = $this->Paket_model->sum_rincian_hps($id_paket);
         $this->load->view('template_panitia/header');
         $this->load->view('template/navlogin', $data);
@@ -2263,6 +2263,7 @@ class Daftarpaket extends CI_Controller
             ];
             $data99 = [
                 'selesai_semua_tender' => $tanggal_selesai_jadwal[6],
+                'start_time_binding' => $jadwal7
             ];
             $this->Rolepanitia_model->update_batas_pendaftaran($data99, $id_paket);
             $this->Rolepanitia_model->update_jadwal($data6, $where6);
@@ -2948,6 +2949,7 @@ class Daftarpaket extends CI_Controller
                 'penetapan_pemenang' => 1,
                 'yang_mengumumkan_paket' => $this->session->userdata('nama_pegawai'),
                 'status_tahap_tender' => 2,
+                'tahap_binding' => 1,
                 'token' => random_string('alnum', 128),
                 'token_vendor' => random_string('alnum', 128)
             ];

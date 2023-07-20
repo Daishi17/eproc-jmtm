@@ -718,65 +718,75 @@
         });
     }
 
-    function lihat_sumary_binding(id) {
-        $.ajax({
-            type: "GET",
-            url: "<?= base_url('panitiajmtm/beranda/by_id_lihat_vendor/'); ?>" + id,
-            dataType: "JSON",
-            success: function(response) {
-                $('#modal_lihat_vendor_mengikuti').modal('show');
-                var html = '';
-                var html2 = '';
-                var html3 = '';
-                var harga_terkecil = null;
-                var i;
-                for (i = 0; i < response['vendor'].length; i++) {
-                    var harga_terkecil = Math.min(response['vendor'][i].harga_penawaran_binding_1);
-                    if (response['vendor'][i].harga_penawaran_binding_1 == response['min_binding_1']) {
-                        var menang = '<i class="fa fa-star text-warning" style="font-size:20px; aria-hidden="true"></i>';
-                    } else {
-                        var menang = '';
-                    }
-                    html += '<tr>' +
-                        '<td>' + response['vendor'][i].username_vendor + '</td>' +
-                        '<td>' + formatRupiah(response['vendor'][i].harga_penawaran_binding_1, 'Rp. ') + menang + '</td>' +
-                        '</tr>'
-                }
+	function lihat_sumary_binding(id) {
+		$.ajax({
+			type: "GET",
+			url: "<?= base_url('panitiajmtm/beranda/by_id_lihat_vendor/'); ?>" + id,
+			dataType: "JSON",
+			success: function(response) {
+				$('#modal_lihat_vendor_mengikuti').modal('show');
+				var html = '';
+				var html2 = '';
+				var html3 = '';
+				var harga_terkecil = null;
+				var no1 = 1;
+				var no2 = 1;
+				var no3 = 1;
+				var i;
+				for (i = 0; i < response['vendor1'].length; i++) {
+					var harga_terkecil = Math.min(response['vendor1'][i].harga_penawaran_binding_1);
+					if (response['vendor1'][i].harga_penawaran_binding_1 == response['min_binding_1']) {
+						var menang = '' + formatRupiah(response['vendor1'][i].harga_penawaran_binding_1, 'Rp. ') + ' <i style="font-size:20px" class="fa fa-flag-checkered" aria-hidden="true"></i>';
+					} else {
+						// var menang = '' + formatRupiah(response['vendor1'][i].harga_penawaran_binding_1, 'Rp. ');
+						var menang = '-';
+					}
+					html += '<tr>' +
+						'<td>' + response['vendor1'][i].username_vendor + '</td>' +
+						'<td>' + menang + '</td>' +
+						'<td>' + no1++ + '</td>' +
+						'</tr>'
+				}
 
-                for (i = 0; i < response['vendor'].length; i++) {
-                    var harga_terkecil = Math.min(response['vendor'][i].harga_penawaran_binding_2);
-                    if (response['vendor'][i].harga_penawaran_binding_2 == response['min_binding_2']) {
-                        var menang = '<i class="fa fa-star text-warning" style="font-size:20px; aria-hidden="true"></i>';
-                    } else {
-                        var menang = '';
-                    }
-                    html2 += '<tr>' +
-                        '<td>' + response['vendor'][i].username_vendor + '</td>' +
-                        '<td>' + formatRupiah(response['vendor'][i].harga_penawaran_binding_2, 'Rp. ') + menang + '</td>' +
-                        '</tr>'
-                }
+				for (i = 0; i < response['vendor2'].length; i++) {
+					var harga_terkecil = Math.min(response['vendor2'][i].harga_penawaran_binding_2);
+					if (response['vendor2'][i].harga_penawaran_binding_2 == response['min_binding_2']) {
+						var menang = '' + formatRupiah(response['vendor2'][i].harga_penawaran_binding_2, 'Rp. ') + ' <i style="font-size:20px" class="fa fa-flag-checkered" aria-hidden="true"></i>';
+					} else {
+						// var menang = '' + formatRupiah(response['vendor1'][i].harga_penawaran_binding_1, 'Rp. ');
+						var menang = '-';
+					}
+					html2 += '<tr>' +
+						'<td>' + response['vendor2'][i].username_vendor + '</td>' +
+						'<td>' + menang + '</td>' +
+						'<td>' + no2++ + '</td>' +
+						'</tr>'
+				}
 
-                for (i = 0; i < response['vendor'].length; i++) {
-                    var harga_terkecil = Math.min(response['vendor'][i].harga_penawaran_binding_3);
-                    if (response['vendor'][i].harga_penawaran_binding_3 == response['min_binding_3']) {
-                        var menang = '<i class="fa fa-star text-warning" style="font-size:20px; aria-hidden="true"></i>';
-                    } else {
-                        var menang = '';
-                    }
-                    html3 += '<tr>' +
-                        '<td>' + response['vendor'][i].username_vendor + '</td>' +
-                        '<td>' + formatRupiah(response['vendor'][i].harga_penawaran_binding_3, 'Rp. ') + menang + '</td>' +
-                        '</tr>'
-                }
-                $('#binding_sumaary_1').html(html);
-                $('#binding_sumaary_2').html(html2);
-                $('#binding_sumaary_3').html(html3);
+				for (i = 0; i < response['vendor3'].length; i++) {
+					var harga_terkecil = Math.min(response['vendor3'][i].harga_penawaran_binding_3);
+					if (response['vendor3'][i].harga_penawaran_binding_3 == response['min_binding_3']) {
+						var menang = '' + formatRupiah(response['vendor3'][i].harga_penawaran_binding_3, 'Rp. ') + ' <i style="font-size:20px" class="fa fa-flag-checkered" aria-hidden="true"></i>';
+					} else {
+						// var menang = '' + formatRupiah(response['vendor1'][i].harga_penawaran_binding_1, 'Rp. ');
+						var menang = '-';
+					}
+					html3 += '<tr>' +
+						'<td>' + response['vendor3'][i].username_vendor + '</td>' +
+						'<td>' + menang + '</td>' +
+						'<td>' + no3++ + '</td>' +
+						'</tr>'
+				}
+				$('#binding_sumaary_1').html(html);
+				$('#binding_sumaary_2').html(html2);
+				$('#binding_sumaary_3').html(html3);
 
-                $('#modal_lihat_vendor_mengikuti').on('hidden.bs.modal', function() {})
+				$('#modal_lihat_vendor_mengikuti').on('hidden.bs.modal', function() {})
 
-            }
-        })
-    }
+			}
+		})
+	}
+
 
     function formatRupiah(angka, prefix) {
 		var number_string = angka.replace(/[^,\d]/g, '').toString(),

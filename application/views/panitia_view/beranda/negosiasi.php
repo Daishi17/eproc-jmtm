@@ -598,65 +598,81 @@
 	<div id="main" class="container">
 		<input type="hidden" name="id_paket" id="id_paket" value="<?= $ambil_paket['id_paket'] ?>">
 		<div class="float-right p-3">
-			<a href="javascript:;" class="btn btn-sm btn-info" id="sudahdibaca"><img src="<?= base_url('assets/img/pesan.png') ?>" width="25px" alt=""> <span id="notifikasi" class="badge badge-danger navbar-badge"></span> Pesan Penjelasan </a>
-
-			<?php if ($ambil_paket['id_kualifikasi'] == 16  || $ambil_paket['id_kualifikasi'] == 12 || $ambil_paket['id_kualifikasi'] == 14 || $ambil_paket['id_kualifikasi'] == 18) { ?>
+			<?php if ($ambil_paket['id_kualifikasi'] == 22) { ?>
+				<li class="nav-item">
+					<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/negosiasi/' . $ambil_paket['id_paket']) ?>">Negosiasi</a>
+				</li>
 			<?php } else { ?>
-				<a href="javascipt:;" class="btn btn-sm btn-info" id="sudahdibaca_sanggahan_prakualifikasi"><img src="<?= base_url('assets/img/pesan.png') ?>" width="25px" alt=""> <span id="notifikasi_sangahan_prakualifikasi" class="badge badge-danger navbar-badge"></span> Sanggahan Prakualifikasi</a>
+				<a href="javascript:;" class="btn btn-sm btn-info" id="sudahdibaca"><img src="<?= base_url('assets/img/pesan.png') ?>" width="25px" alt=""> <span id="notifikasi" class="badge badge-danger navbar-badge"></span> Pesan Penjelasan </a>
+				<?php if ($ambil_paket['id_kualifikasi'] == 16  || $ambil_paket['id_kualifikasi'] == 12 || $ambil_paket['id_kualifikasi'] == 14 || $ambil_paket['id_kualifikasi'] == 18) { ?>
+				<?php } else { ?>
+					<a href="javascipt:;" class="btn btn-sm btn-info" id="sudahdibaca_sanggahan_prakualifikasi"><img src="<?= base_url('assets/img/pesan.png') ?>" width="25px" alt=""> <span id="notifikasi_sangahan_prakualifikasi" class="badge badge-danger navbar-badge"></span> Sanggahan Prakualifikasi</a>
 
+				<?php } ?>
+				<a href="javascipt:;" class="btn btn-sm btn-info" id="sudahdibaca_sanggahan_akhir"><img src="<?= base_url('assets/img/pesan.png') ?>" width="25px" alt=""> <span id="notifikasi_sangahan_akhir" class="badge badge-danger navbar-badge"></span> Sanggahan Akhir</a>
 			<?php } ?>
-
-			<a href="javascipt:;" class="btn btn-sm btn-info" id="sudahdibaca_sanggahan_akhir"><img src="<?= base_url('assets/img/pesan.png') ?>" width="25px" alt=""> <span id="notifikasi_sangahan_akhir" class="badge badge-danger navbar-badge"></span> Sanggahan Akhir</a>
 		</div>
 		<div class="breadcrumb bg-primary text-white" style="margin-top: 60px; color: white;"><a href="<?= base_url('beranda') ?>" style="color: white;">Beranda</a>&ensp;&raquo;&ensp;Informasi Tender</div>
 		<ul class="nav nav-tabs">
-			<li class="nav-item">
-				<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/informasitender/' . $ambil_paket['id_paket']) ?>">Informasi Tender</a>
-			</li>
-
-			<li class="nav-item">
-				<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/pertanyaantender/' . $ambil_paket['id_paket']) ?>">Pertanyaan <span id="notifikasi" class="badge badge-danger navbar-badge"></span></a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link  bg-info text-white" href="<?= base_url('panitiajmtm/beranda/evaluasitender/' . $ambil_paket['id_paket']) ?>">Evaluasi</a>
-			</li>
-			<?php if ($ambil_paket['id_kualifikasi'] == 16 || $ambil_paket['id_kualifikasi'] == 14 || $ambil_paket['id_kualifikasi'] == 15 || $ambil_paket['id_kualifikasi'] == 12 || $ambil_paket['id_kualifikasi'] == 18) { ?>
-
+			<?php if ($ambil_paket['id_kualifikasi'] == 22) { ?>
+				<li class="nav-item">
+					<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/informasitender/' . $ambil_paket['id_paket']) ?>">Informasi Tender</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/reverseauctiontender/' . $ambil_paket['id_paket']) ?>">Reverse Auction / Binding Harga</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/negosiasi/' . $ambil_paket['id_paket']) ?>">Negosiasi</a>
+				</li>
+				</li>
 			<?php } else { ?>
-				<?php if (date('Y-m-d H:i', strtotime($get_tahap_dokumen_sangahan_prakualifikasi['tanggal_mulai_jadwal']))  >= date('Y-m-d H:i')) { ?>
-				<?php	} else if (date('Y-m-d H:i', strtotime($get_tahap_dokumen_sangahan_prakualifikasi['tanggal_selesai_jadwal'])) >= date('Y-m-d H:i') || date('Y-m-d H:i', strtotime($get_tahap_dokumen_sangahan_prakualifikasi['tanggal_mulai_jadwal']))  == date('Y-m-d H:i')) { ?>
+				<li class="nav-item">
+					<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/informasitender/' . $ambil_paket['id_paket']) ?>">Informasi Tender</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/pertanyaantender/' . $ambil_paket['id_paket']) ?>">Pertanyaan <span id="notifikasi" class="badge badge-danger navbar-badge"></span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link  bg-info text-white" href="<?= base_url('panitiajmtm/beranda/evaluasitender/' . $ambil_paket['id_paket']) ?>">Evaluasi</a>
+				</li>
+				<?php if ($ambil_paket['id_kualifikasi'] == 16 || $ambil_paket['id_kualifikasi'] == 14 || $ambil_paket['id_kualifikasi'] == 15 || $ambil_paket['id_kualifikasi'] == 12 || $ambil_paket['id_kualifikasi'] == 18) { ?>
+
+				<?php } else { ?>
+					<?php if (date('Y-m-d H:i', strtotime($get_tahap_dokumen_sangahan_prakualifikasi['tanggal_mulai_jadwal']))  >= date('Y-m-d H:i')) { ?>
+					<?php	} else if (date('Y-m-d H:i', strtotime($get_tahap_dokumen_sangahan_prakualifikasi['tanggal_selesai_jadwal'])) >= date('Y-m-d H:i') || date('Y-m-d H:i', strtotime($get_tahap_dokumen_sangahan_prakualifikasi['tanggal_mulai_jadwal']))  == date('Y-m-d H:i')) { ?>
+						<li class="nav-item">
+							<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/sanggah_prakualifikasi/' . $ambil_paket['id_paket']) ?>">Sanggahan Prakualifikasi</a>
+						</li>
+					<?php	} else { ?>
+						<li class="nav-item">
+							<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/sanggah_prakualifikasi/' . $ambil_paket['id_paket']) ?>">Sanggahan Prakualifikasi</a>
+						</li>
+					<?php	} ?>
+				<?php } ?>
+				<?php if (date('Y-m-d H:i', strtotime($get_tahap_prakualfiikasi_satu_file_penetapan['tanggal_mulai_jadwal'])) >= date('Y-m-d H:i')) { ?>
+				<?php	} else if (date('Y-m-d H:i', strtotime($get_tahap_prakualfiikasi_satu_file_penetapan['tanggal_selesai_jadwal']))  >= date('Y-m-d H:i') || date('Y-m-d H:i', strtotime($get_tahap_prakualfiikasi_satu_file_penetapan['tanggal_mulai_jadwal']))  == date('Y-m-d H:i')) { ?>
 					<li class="nav-item">
-						<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/sanggah_prakualifikasi/' . $ambil_paket['id_paket']) ?>">Sanggahan Prakualifikasi</a>
+						<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/negosiasi/' . $ambil_paket['id_paket']) ?>">Negosiasi</a>
 					</li>
 				<?php	} else { ?>
 					<li class="nav-item">
-						<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/sanggah_prakualifikasi/' . $ambil_paket['id_paket']) ?>">Sanggahan Prakualifikasi</a>
+						<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/negosiasi/' . $ambil_paket['id_paket']) ?>">Negosiasi</a>
 					</li>
 				<?php	} ?>
+				<?php if (date('Y-m-d H:i', strtotime($get_tahap_dokumen_sangahan_akhir['tanggal_mulai_jadwal'])) >= date('Y-m-d H:i')) { ?>
+				<?php	} else if (date('Y-m-d H:i', strtotime($get_tahap_dokumen_sangahan_akhir['tanggal_selesai_jadwal']))  >= date('Y-m-d H:i') || date('Y-m-d H:i', strtotime($get_tahap_dokumen_sangahan_akhir['tanggal_mulai_jadwal']))  == date('Y-m-d H:i')) { ?>
+					<li class="nav-item">
+						<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/sanggahantender/' . $ambil_paket['id_paket']) ?>">Sangahan</a>
+					</li>
+				<?php	} else { ?>
+					<li class="nav-item">
+						<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/sanggahantender/' . $ambil_paket['id_paket']) ?>">Sangahan</a>
+					</li>
+				<?php	} ?>
+				<li class="nav-item">
+					<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/berita_acara/' . $ambil_paket['id_paket']) ?>">Berita Acara</a>
+				</li>
 			<?php } ?>
-			<?php if (date('Y-m-d H:i', strtotime($get_tahap_prakualfiikasi_satu_file_penetapan['tanggal_mulai_jadwal'])) >= date('Y-m-d H:i')) { ?>
-			<?php	} else if (date('Y-m-d H:i', strtotime($get_tahap_prakualfiikasi_satu_file_penetapan['tanggal_selesai_jadwal']))  >= date('Y-m-d H:i') || date('Y-m-d H:i', strtotime($get_tahap_prakualfiikasi_satu_file_penetapan['tanggal_mulai_jadwal']))  == date('Y-m-d H:i')) { ?>
-				<li class="nav-item">
-					<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/negosiasi/' . $ambil_paket['id_paket']) ?>">Negosiasi</a>
-				</li>
-			<?php	} else { ?>
-				<li class="nav-item">
-					<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/negosiasi/' . $ambil_paket['id_paket']) ?>">Negosiasi</a>
-				</li>
-			<?php	} ?>
-			<?php if (date('Y-m-d H:i', strtotime($get_tahap_dokumen_sangahan_akhir['tanggal_mulai_jadwal'])) >= date('Y-m-d H:i')) { ?>
-			<?php	} else if (date('Y-m-d H:i', strtotime($get_tahap_dokumen_sangahan_akhir['tanggal_selesai_jadwal']))  >= date('Y-m-d H:i') || date('Y-m-d H:i', strtotime($get_tahap_dokumen_sangahan_akhir['tanggal_mulai_jadwal']))  == date('Y-m-d H:i')) { ?>
-				<li class="nav-item">
-					<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/sanggahantender/' . $ambil_paket['id_paket']) ?>">Sangahan</a>
-				</li>
-			<?php	} else { ?>
-				<li class="nav-item">
-					<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/sanggahantender/' . $ambil_paket['id_paket']) ?>">Sangahan</a>
-				</li>
-			<?php	} ?>
-			<li class="nav-item">
-				<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/berita_acara/' . $ambil_paket['id_paket']) ?>">Berita Acara</a>
-			</li>
 		</ul>
 		<div class="tab-content">
 			<div class="card-body bg-white">

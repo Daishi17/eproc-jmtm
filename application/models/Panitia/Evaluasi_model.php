@@ -66,6 +66,65 @@ class Evaluasi_model extends CI_Model
 	}
 
 
+	private function _get_data_query_evaluasi_tender_auction($id_paket)
+	{
+		$this->db->select('*');
+		$this->db->from('tbl_vendor_mengikuti_paket');
+		$this->db->join('tbl_vendor', 'tbl_vendor.id_vendor = tbl_vendor_mengikuti_paket.id_mengikuti_vendor', 'left');
+		$this->db->join('tbl_rincian_hps_vendor', 'tbl_vendor_mengikuti_paket.id_mengikuti_paket_vendor = tbl_rincian_hps_vendor.id_vendor', 'left');
+		$this->db->join('tbl_paket', 'tbl_vendor_mengikuti_paket.id_mengikuti_paket_vendor = tbl_paket.id_paket', 'left');
+		$this->db->where('tbl_vendor_mengikuti_paket.id_mengikuti_paket_vendor', $id_paket);
+		$i = 0;
+		foreach ($this->column_search as $item) // looping awal
+		{
+			if ($_POST['search']['value']) // jika datatable mengirimkan pencarian dengan metode POST
+			{
+
+				if ($i === 0) // looping awal
+				{
+					$this->db->group_start();
+					$this->db->like($item, $_POST['search']['value']);
+				} else {
+					$this->db->or_like(
+						$item,
+						$_POST['search']['value']
+					);
+				}
+
+				if (count($this->column_search) - 1 == $i)
+					$this->db->group_end();
+			}
+			$i++;
+		}
+		if (isset($_POST['order'])) {
+			$this->db->order_by($this->column_search[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
+		} else {
+			$this->db->order_by('harga_penawaran_binding_3', 'ASC');
+		}
+	}
+
+	public function getdatatable_evaluasi_tender_auction($id_paket) //nam[ilin data pake ini
+	{
+		$this->_get_data_query_evaluasi_tender_auction($id_paket); //ambil data dari get yg di atas
+		if ($_POST['length'] != -1) {
+			$this->db->limit($_POST['length'], $_POST['start']);
+		}
+		$query = $this->db->get();
+		return $query->result();
+	}
+	public function count_filtered_data_evaluasi_tender_auction($id_paket)
+	{
+		$this->_get_data_query_evaluasi_tender_auction($id_paket); //ambil data dari get yg di atas
+		$query = $this->db->get();
+		return $query->num_rows();
+	}
+
+	public function count_all_data_evaluasi_tender_auction()
+	{
+		$this->db->from('tbl_vendor_mengikuti_paket');
+		return $this->db->count_all_results();
+	}
+
 	// evaluasi teknis harga
 	public function totalRincianHps_vendor($id_vendor, $id_paket)
 	{

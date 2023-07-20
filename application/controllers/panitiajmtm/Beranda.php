@@ -2789,13 +2789,20 @@ class Beranda extends CI_Controller
     public function by_id_lihat_vendor($id_paket)
     {
         $get_vendor = $this->Rolepanitia_model->ambil_vendor($id_paket);
+        $get_vendor1 = $this->Chat_model->ambil_vendor1($id_paket);
+        $get_vendor2 = $this->Chat_model->ambil_vendor2($id_paket);
+        $get_vendor3 = $this->Chat_model->ambil_vendor3($id_paket);
         $priceprod = array();
         $priceprod2 = array();
         $priceprod3 = array();
-        foreach ($get_vendor as $g => $value) {
+        foreach ($get_vendor1 as $g => $value) {
             // use the key $g in the $priceprod array
             $priceprod[$g] = $value->harga_penawaran_binding_1;
+        }
+        foreach ($get_vendor2 as $g => $value) {
             $priceprod2[$g] = $value->harga_penawaran_binding_2;
+        }
+        foreach ($get_vendor3 as $g => $value) {
             $priceprod3[$g] = $value->harga_penawaran_binding_3;
         }
         // get the highest price
@@ -2804,6 +2811,9 @@ class Beranda extends CI_Controller
         $min_binding_3 = min($priceprod3);
         $output = [
             "vendor" => $get_vendor,
+            "vendor1" => $get_vendor1,
+            "vendor2" => $get_vendor2,
+            "vendor3" => $get_vendor3,
             "min_binding_1" => $min_binding_1,
             "min_binding_2" => $min_binding_2,
             "min_binding_3" => $min_binding_3,
@@ -4623,6 +4633,136 @@ class Beranda extends CI_Controller
             'success' => 'berhasil'
         ];
         $this->output->set_content_type('application/json')->set_output(json_encode($response));
+    }
+
+
+
+    // INI BAGIAN EVALUASI TENDER
+    public function penetapan_pemenang_auction($id_paket)
+    {
+        $data['paket'] = $this->Rolepanitia_model->getById($id_paket);
+        $data['vendor'] = $this->Rolepanitia_model->get_vendor($id_paket);
+        $id_pegawai = $this->session->userdata('id_pegawai');
+        $data['status_penetapan_langsung'] = $this->Rolepanitia_model->cek_role_penetapan($id_pegawai);
+        $paket2 = $this->Rolepanitia_model->getById($id_paket);
+        $id_kualifikasi = $paket2['id_kualifikasi'];
+        $data['get_tahap_dokumen_sangahan_prakualifikasi'] = $this->Rolepanitia_model->get_tahap_dokumen_sangahan_prakualifikasi($id_paket, $id_kualifikasi);
+        $data['get_tahap_dokumen_negosiasi'] = $this->Rolepanitia_model->get_tahap_dokumen_negosiasi($id_paket, $id_kualifikasi);
+        $data['get_tahap_dokumen_sangahan_akhir'] = $this->Rolepanitia_model->get_tahap_dokumen_sangahan_akhir($id_paket, $id_kualifikasi);
+        $data['evaluasi_penawaran_satu_file_prakualfikasi'] = $this->Rolepanitia_model->evaluasi_penawaran_satu_file_prakualfikasi($id_paket, $id_kualifikasi);
+        $this->load->view('template_panitia/header');
+        $this->load->view('template/navlogin', $data);
+        $this->load->view('panitia_view/beranda/penetapan_pemenang_auction', $data);
+        $this->load->view('template_panitia/footer');
+        $this->load->view('panitia_view/beranda/ajax_penetapan_pemenang_auction');
+    }
+
+
+    public function tbl_penetapan_pemenang_auction($id_paket)
+    {
+        $ambil_id_vendor_dan_paket = $this->Rolepanitia_model->get_vendor_by_id_dapet_id($id_paket);
+        $id_mengikuti_paket_vendor = $ambil_id_vendor_dan_paket['id_mengikuti_paket_vendor'];
+        $resultss = $this->Evaluasi_model->getdatatable_evaluasi_tender_auction($id_mengikuti_paket_vendor);
+        $get_vendor3 = $this->Chat_model->ambil_vendor3($id_paket);
+        $priceprod3 = array();
+        foreach ($get_vendor3 as $g => $value) {
+            $priceprod3[$g] = $value->harga_penawaran_binding_3;
+        }
+        $min_binding_3 = min($priceprod3);
+        $data = [];
+        $no = $_POST['start'];
+        foreach ($resultss as $angga) {
+            $row = array();
+            $row[] = ++$no;
+            $row[] = '<b>' . $angga->username_vendor . '</b>';
+            if ($angga->harga_penawaran_binding_3 == $min_binding_3) {
+                $row[] = "Rp " . number_format($angga->harga_penawaran_binding_3, 2, ',', '.') . ' <i style="font-size:20px" class="fa fa-flag-checkered" aria-hidden="true"></i>';
+            } else {
+                $row[] = "Rp " . number_format($angga->harga_penawaran_binding_3, 2, ',', '.');
+            }
+
+            if ($angga->harga_penawaran_binding_3 == $min_binding_3) {
+                $row[] = '<a href="javascript:;" class="badge badge-success">Pemenang</a>';
+            } else {
+                $row[] = '<a href="javascript:;" class="badge badge-danger">Gugur</a>';
+            }
+            if ($angga->pemenang_tender == 1 && $angga->id_mengikuti_paket_vendor == $id_paket) {
+                $row[] = '<a class="btn btn-sm btn-success" href="javascript:;" onClick="byid_batal_1evaluasi_tender_ku(' . "'" . $angga->id_mengikuti_paket . "','batal_menangakan'" . ')"> Batalkan Pemenang  <span class="text-warning"><i class="fa fa-star"></i></span></a>';
+            } else {
+                $row[] = '<button class="btn btn-sm btn-danger" href="javascript:;" onClick="byid_evaluasi_tender_ku(' . "'" . $angga->id_mengikuti_paket . "','menangakan'" . ')"> Pilih Sebagai Pemenang <span class="text-warning"><i class="fa fa-star"></i></span></button>';
+            }
+            $data[] = $row;
+        }
+
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $this->Evaluasi_model->count_all_data_evaluasi_tender_auction($id_paket),
+            "recordsFiltered" => $this->Evaluasi_model->count_filtered_data_evaluasi_tender_auction($id_paket),
+            "data" => $data
+        );
+        $this->output->set_content_type('application/json')->set_output(json_encode($output));
+    }
+
+
+    // 8 september
+    public function upload_ba_negosiasi_auction()
+    {
+        $id_paket = $this->input->post('id_paket');
+        $config['upload_path'] = './file_undangan_penawaran/';
+        $config['allowed_types'] = 'pdf';
+        $config['max_size'] = 0;
+
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload('ba_negosiasi_auction')) {
+
+            $fileData = $this->upload->data();
+
+            $upload = [
+                'id_paket' => $id_paket,
+                'ba_negosiasi_auction' => $fileData['file_name'],
+            ];
+            $this->Rolepanitia_model->upload_undangan_penawaran($upload, $id_paket);
+            $this->session->set_flashdata('berita_acara_negosiasi', '<div class="alert alert-success alert-dismissible">Berita Acara Negosiasi Berhasil Diupload
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>');
+            redirect('panitiajmtm/beranda/informasitender/' . $id_paket);
+        } else {
+            $this->session->set_flashdata('error', $this->upload->display_errors());
+            redirect(base_url('upload'));
+        }
+    }
+
+    public function ngeload_chatnya_auction_binding_1($id_paket)
+    {
+        $id_pegawai = $this->input->post('id_pengirim');
+        $id_vendor = $this->input->post('id_penerima');
+        $tahap_binding = 1;
+        $data = $this->Chat_model->getPesanAuction($id_pegawai, $id_vendor, $id_paket, $tahap_binding);
+        echo json_encode(array(
+            'data' => $data
+        ));
+    }
+
+    public function ngeload_chatnya_auction_binding_2($id_paket)
+    {
+        $id_pegawai = $this->input->post('id_pengirim');
+        $id_vendor = $this->input->post('id_penerima');
+        $tahap_binding = 2;
+        $data = $this->Chat_model->getPesanAuction($id_pegawai, $id_vendor, $id_paket, $tahap_binding);
+        echo json_encode(array(
+            'data' => $data
+        ));
+    }
+
+    public function ngeload_chatnya_auction_binding_3($id_paket)
+    {
+        $id_pegawai = $this->input->post('id_pengirim');
+        $id_vendor = $this->input->post('id_penerima');
+        $tahap_binding = 3;
+        $data = $this->Chat_model->getPesanAuction($id_pegawai, $id_vendor, $id_paket, $tahap_binding);
+        echo json_encode(array(
+            'data' => $data
+        ));
     }
 
     // public function GetAllVendor_pesan_baru($id_paket)

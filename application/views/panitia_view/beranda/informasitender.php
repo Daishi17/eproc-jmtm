@@ -2545,7 +2545,7 @@
 			</div>
 		</div>
 	</div>
-<?php } else if ($paket['id_kualifikasi'] == 17 || $paket['id_kualifikasi'] == 11 || $paket['id_kualifikasi'] == 7 ) { ?>
+<?php } else if ($paket['id_kualifikasi'] == 17 || $paket['id_kualifikasi'] == 11 || $paket['id_kualifikasi'] == 7) { ?>
 	<div id="main" class="container">
 		<form action="javascript:;" id="form_tidak_lulus_dokumen_tambahan">
 			<input type="hidden" name="id_persyaratan_tambahan_lulus">
@@ -3286,10 +3286,7 @@
 
 		<?php    } else { ?>
 			<div class="float-right p-3">
-				<a href="javascript:;" class="btn btn-sm btn-info" id="sudahdibaca"><img src="<?= base_url('assets/img/pesan.png') ?>" width="25px" alt=""> <span id="notifikasi" class="badge badge-danger navbar-badge"></span> Pesan Penjelasan </a>
 				<a href="javascript:;" class="btn btn-sm btn-info" id="sudahdibaca_negosiasi"><img src="<?= base_url('assets/img/pesan.png') ?>" width="25px" alt=""> <span id="notifikasi_negosiasi" class="badge badge-danger navbar-badge"></span> Pesan Negosiasi </a>
-				<a href="javascipt:;" class="btn btn-sm btn-info" id="sudahdibaca_sanggahan_prakualifikasi"><img src="<?= base_url('assets/img/pesan.png') ?>" width="25px" alt=""> <span id="notifikasi_sangahan_prakualifikasi" class="badge badge-danger navbar-badge"></span> Sanggahan Prakualifikasi</a>
-				<a href="javascipt:;" class="btn btn-sm btn-info" id="sudahdibaca_sanggahan_akhir"><img src="<?= base_url('assets/img/pesan.png') ?>" width="25px" alt=""> <span id="notifikasi_sangahan_akhir" class="badge badge-danger navbar-badge"></span> Sanggahan Akhir</a>
 			</div>
 		<?php    } ?>
 		<nav aria-label="breadcrumb" class="mt-3">
@@ -3303,25 +3300,9 @@
 				<li class="nav-item">
 					<a class="nav-link bg-primary text-white" href="<?= base_url('panitiajmtm/beranda/informasitender/' . $paket['id_paket']) ?>">Informasi Tender</a>
 				</li>
-				<?php if ($paket['id_kualifikasi'] == 22) { ?>
-					<li class="nav-item">
-						<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/reverseauctiontender/' . $paket['id_paket']) ?>">Reverse Auction / Binding Harga</a>
-					</li>
-				<?php } else { ?>
-
-				<?php } ?>
-				<li class=" nav-item">
-					<a class="nav-link bg-info text-white active" href="<?= base_url('panitiajmtm/beranda/pertanyaantender/' . $paket['id_paket']) ?>">Pertanyaan</a>
-				</li>
 				<li class="nav-item">
-					<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/evaluasitender/' . $paket['id_paket']) ?>">Evaluasi</a>
+					<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/reverseauctiontender/' . $paket['id_paket']) ?>">Reverse Auction / Binding Harga</a>
 				</li>
-				<?php if ($paket['id_kualifikasi'] == 16 || $paket['id_kualifikasi'] == 15 || $paket['id_kualifikasi'] == 12 || $paket['id_kualifikasi'] == 14 || $paket['id_kualifikasi'] == 18 || $paket['id_kualifikasi'] == 20 || $paket['id_kualifikasi'] == 21) { ?>
-				<?php } else { ?>
-					<li class="nav-item">
-						<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/sanggah_prakualifikasi/' . $paket['id_paket']) ?>">Sangahan Prakualifikasi</a>
-					</li>
-				<?php } ?>
 				<?php if (date('Y-m-d H:i', strtotime($get_tahap_dokumen_negosiasi['tanggal_mulai_jadwal']))  >= date('Y-m-d H:i')) { ?>
 				<?php    } else if (date('Y-m-d H:i', strtotime($get_tahap_dokumen_negosiasi['tanggal_selesai_jadwal'])) >= date('Y-m-d H:i') || date('Y-m-d H:i', strtotime($get_tahap_dokumen_negosiasi['tanggal_mulai_jadwal']))  == date('Y-m-d H:i')) { ?>
 					<li class="nav-item">
@@ -3332,19 +3313,6 @@
 						<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/negosiasi/' . $paket['id_paket']) ?>">Negosiasi</a>
 					</li>
 				<?php    } ?>
-				<?php if (date('Y-m-d H:i', strtotime($get_tahap_dokumen_sangahan_akhir['tanggal_mulai_jadwal']))  >= date('Y-m-d H:i')) { ?>
-				<?php    } else if (date('Y-m-d H:i', strtotime($get_tahap_dokumen_sangahan_akhir['tanggal_selesai_jadwal'])) >= date('Y-m-d H:i') || date('Y-m-d H:i', strtotime($get_tahap_dokumen_sangahan_akhir['tanggal_mulai_jadwal']))  == date('Y-m-d H:i')) { ?>
-					<li class="nav-item">
-						<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/sanggahantender/' . $paket['id_paket']) ?>">Sangahan</a>
-					</li>
-				<?php    } else { ?>
-					<li class="nav-item">
-						<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/sanggahantender/' . $paket['id_paket']) ?>">Sangahan</a>
-					</li>
-				<?php    } ?>
-				<li class="nav-item">
-					<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/berita_acara/' . $paket['id_paket']) ?>">Berita Acara</a>
-				</li>
 			</ul>
 		<?php    } ?>
 		<div class="tab-content p-2 card">
@@ -3354,6 +3322,7 @@
 					<?= $this->session->flashdata('berita_acara_penawaran'); ?>
 					<?= $this->session->flashdata('berita_acara_tender'); ?>
 					<?= $this->session->flashdata('berita_acara_peringkat'); ?>
+					<?= $this->session->flashdata('berita_acara_negosiasi'); ?>
 					<div class="container-fluid">
 						<div style="overflow-x:auto">
 							<?= $this->session->flashdata('status_tahap_tender'); ?>
@@ -3386,6 +3355,10 @@
 									<tr>
 										<th>Jumlah Peserta</th>
 										<td> <a href="javascript:;" onclick="lihat_vendor_mengikuti(<?= $paket['id_paket'] ?>)" class="btn btn-sm btn-primary"> <b><?= $jumlah_peserta ?> Peserta</b></a></td>
+									</tr>
+									<tr>
+										<th>Summary Binding</th>
+										<td> <a href="javascript:;" class="btn btn-sm btn-primary" onclick="lihat_sumary_binding(<?= $paket['id_paket'] ?>)"> <i class="fa fa-file" aria-hidden="true"></i> Lihat Summary Binding</a></td>
 									</tr>
 									<tr>
 										<th>Dokumen Lelang</th>
@@ -3659,94 +3632,6 @@
 
 											<?php    } ?>
 									<tr>
-										<?php if (date('Y-m-d H:i', strtotime($get_tahap_pembuktian_kualifikasi['tanggal_mulai_jadwal']))  >= date('Y-m-d H:i')) { ?>
-
-										<?php    } else if (date('Y-m-d H:i', strtotime($get_tahap_pembuktian_kualifikasi['tanggal_selesai_jadwal']))  >= date('Y-m-d H:i') || date('Y-m-d H:i', strtotime($get_tahap_pembuktian_kualifikasi['tanggal_mulai_jadwal'])) == date('Y-m-d H:i')) { ?>
-											<th>Undangan Pembuktian</th>
-											<td>
-												<a href="javascript:;" style="text-decoration: none; color:white;" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#uploadUndangan"><i style="color: white;" class="fas fa-upload"></i> UPLOAD UNDANGAN PEMBUKTIAN KUALIFIKASI</a>
-												<?php if ($paket['dokumen_undangan_pembuktian'] == NULL) { ?>
-
-												<?php } else { ?>
-													<a class="btn btn-sm btn-info" href="<?= base_url('file_undangan_pembuktian/' . $paket['dokumen_undangan_pembuktian']) ?>"><i class="fa fa-eye"></i> Lihat Dokumen</a>
-												<?php } ?>
-
-
-											</td>
-										<?php    } else { ?>
-											<th>Undangan Pembuktian</th>
-											<td>
-												<a href="javascript:;" style="text-decoration: none; color:white;" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#uploadUndangan"><i style="color: white;" class="fas fa-upload"></i> UPLOAD UNDANGAN PEMBUKTIAN KUALIFIKASI</a>
-												<?php if ($paket['dokumen_undangan_pembuktian'] == NULL) { ?>
-
-												<?php } else { ?>
-													<a class="btn btn-sm btn-info" href="<?= base_url('file_undangan_pembuktian/' . $paket['dokumen_undangan_pembuktian']) ?>"><i class="fa fa-eye"></i> Lihat Dokumen</a>
-												<?php } ?>
-
-											</td>
-										<?php } ?>
-
-									</tr>
-
-
-
-									<tr>
-										<?php if (date('Y-m-d H:i', strtotime($pengumuman_hasil_prakualifikasi['tanggal_mulai_jadwal'])) >= date('Y-m-d H:i')) { ?>
-
-										<?php    } else if (date('Y-m-d H:i', strtotime($pengumuman_hasil_prakualifikasi['tanggal_selesai_jadwal']))  >= date('Y-m-d H:i') || date('Y-m-d H:i', strtotime($pengumuman_hasil_prakualifikasi['tanggal_mulai_jadwal'])) == date('Y-m-d H:i')) { ?>
-											<th>Pengumuman Hasil Prakualifikasi</th>
-											<td>
-												<a href="javascript:;" style="text-decoration: none; color:white;" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#pengumuman_prakualifikasi"><i style="color: white;" class="fas fa-upload"></i> UPLOAD HASIL EVALUASI PRAKUALIFIKASI</a>
-												<?php if ($paket['dokumen_pengumuman_hasil_prakualifikasi'] == NULL) { ?>
-
-												<?php } else { ?>
-													<a class="btn btn-sm btn-info" href="<?= base_url('file_pengumuman_prakualifikasi/' . $paket['dokumen_pengumuman_hasil_prakualifikasi']) ?>"><i class="fa fa-eye"></i> Lihat Dokumen</a>
-												<?php } ?>
-											</td>
-										<?php    } else { ?>
-											<th>Pengumuman Hasil Prakualifikasi</th>
-											<td>
-												<a href="javascript:;" style="text-decoration: none; color:white;" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#pengumuman_prakualifikasi"><i style="color: white;" class="fas fa-upload"></i> UPLOAD HASIL EVALUASI PRAKUALIFIKASI</a>
-												<?php if ($paket['dokumen_pengumuman_hasil_prakualifikasi'] == NULL) { ?>
-
-												<?php } else { ?>
-													<a class="btn btn-sm btn-info" href="<?= base_url('file_pengumuman_prakualifikasi/' . $paket['dokumen_pengumuman_hasil_prakualifikasi']) ?>"><i class="fa fa-eye"></i> Lihat Dokumen</a>
-												<?php } ?>
-											</td>
-										<?php } ?>
-
-									</tr>
-
-									<!-- 8 september -->
-									<tr>
-										<?php if (date('Y-m-d H:i', strtotime($cek_waktu2['tanggal_mulai_jadwal'])) >= date('Y-m-d H:i')) { ?>
-
-										<?php    } else if (date('Y-m-d H:i', strtotime($cek_waktu2['tanggal_selesai_jadwal']))  >= date('Y-m-d H:i') || date('Y-m-d H:i', strtotime($cek_waktu2['tanggal_mulai_jadwal'])) == date('Y-m-d H:i')) { ?>
-											<th>Undangan Penawaran</th>
-											<td>
-												<a href="javascript:;" style="text-decoration: none; color:white;" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#undangan_penawaran"><i style="color: white;" class="fas fa-upload"></i> UPLOAD UNDANGAN PENAWARAN</a>
-												<?php if ($paket['undangan_penawaran'] == NULL) { ?>
-
-												<?php } else { ?>
-													<a class="btn btn-sm btn-info" href="<?= base_url('file_undangan_penawaran/' . $paket['undangan_penawaran']) ?>"><i class="fa fa-eye"></i> Lihat Dokumen</a>
-												<?php } ?>
-											</td>
-										<?php    } else { ?>
-											<th>Undangan Penawaran</th>
-											<td>
-												<a href="javascript:;" style="text-decoration: none; color:white;" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#undangan_penawaran"><i style="color: white;" class="fas fa-upload"></i> UPLOAD UNDANGAN PENAWARAN</a>
-												<?php if ($paket['undangan_penawaran'] == NULL) { ?>
-
-												<?php } else { ?>
-													<a class="btn btn-sm btn-info" href="<?= base_url('file_undangan_penawaran/' . $paket['undangan_penawaran']) ?>"><i class="fa fa-eye"></i> Lihat Dokumen</a>
-												<?php } ?>
-											</td>
-										<?php } ?>
-
-									</tr>
-									<!-- end 8 september -->
-
-									<tr>
 										<th class="bgwarning" width="20%">Bobot Teknis<span class="warning">*</span></th>
 										<td>
 											<div class="row">
@@ -3769,229 +3654,78 @@
 											</div>
 										</td>
 									</tr>
-									<?php ?>
-
-									<?php if (date('Y-m-d H:i', strtotime($get_tahap_id_11_7_17['tanggal_mulai_jadwal']))  >= date('Y-m-d H:i')) { ?>
-
-									<?php    } else if (date('Y-m-d H:i', strtotime($get_tahap_id_11_7_17['tanggal_selesai_jadwal'])) >= date('Y-m-d H:i') || date('Y-m-d H:i', strtotime($get_tahap_id_11_7_17['tanggal_mulai_jadwal'])) == date('Y-m-d H:i')) { ?>
-										<tr>
-											<div class="row">
-												<th>Pembukaan Penawaran</th>
-												<td>
-													<div class="card">
-														<div class="card-header bg-primary text-white">
-															<label for="">Pembukaan Dokumen Penawaran</label>
-														</div>
-														<div class="card-body">
-															<?php if (!$cek_vendor_mengikuti_tender) { ?>
-																<label for="" class="text-danger">BELUM ADA YANG MENGIKUTI TENDER!</label>
-															<?php } else { ?>
-																<img src="<?= base_url('assets/img/6100RjKShtL.png') ?>" width="50px" alt=""> <a target="blank_" href="<?= base_url('buka_penawaran') ?>" class="btn btn-info btn-sm" style="color: white;"> Buka Dokumen Penawaran <i class="fa fa-upload"></i></a>
-
-															<?php } ?>
-														</div>
-													</div>
-													<br>
-													<input type="text" class="form-control" value="<?= $paket['token'] ?>" disabled>
-													<div class="bs-callout bs-callout-info">
-														Silahkan Copy Paste Token Untuk Membuka Dokumen Penawaran Peserta
-													</div>
-
-												</td>
-											</div>
-										</tr>
-									<?php    } else { ?>
-										<tr>
-											<div class="row">
-												<th>Pembukaan Penawaran</th>
-												<td>
-													<div class="card">
-														<div class="card-header bg-primary text-white">
-															<label for="">Pembukaan Dokumen Penawaran</label>
-														</div>
-														<div class="card-body">
-															<?php if (!$cek_vendor_mengikuti_tender) { ?>
-																<label for="" class="text-danger">BELUM ADA YANG MENGIKUTI TENDER!</label>
-															<?php } else { ?>
-																<img src="<?= base_url('assets/img/6100RjKShtL.png') ?>" width="50px" alt=""> <a target="blank_" href="<?= base_url('buka_penawaran') ?>" class="btn btn-info btn-sm" style="color: white;"> Buka Dokumen Penawaran <i class="fa fa-upload"></i></a>
-
-															<?php } ?>
-														</div>
-													</div>
-													<br>
-													<input type="text" class="form-control" value="<?= $paket['token'] ?>" disabled>
-													<div class="bs-callout bs-callout-info">
-														Silahkan Copy Paste Token Untuk Membuka Dokumen Penawaran Peserta
-													</div>
-
-												</td>
-											</div>
-										</tr>
-									<?php    } ?>
-
-									<?php ?>
 									<tr>
-										<th>Berita Acara</th>
+										<th>Upload Ba Negosiasi</th>
 										<td>
-											<div class="card border-primary mb-3">
-												<div class="card-header bg-primary" style="color: white;display: flex; justify-content:space-between;">
-													<div class="row">
-														<div class="col-md-10">
-															Peringkat Teknis
-														</div>
-														<div class="col-md-2" style="margin-left:700px;margin-top:-20px;">
-															<a href="" style="text-decoration: none; color:white;" class="badge badge-pill badge-danger" data-toggle="modal" data-target="#beritaAcaraPeringkat"><i style="color: white;" class="fas fa-upload"></i> UPLOAD</a>
-														</div>
-														<div class="col-md-10">
-															Peringkat Penawaran Harga
-														</div>
-														<div class="col-md-2" style="margin-left:700px;margin-top:-20px;">
-															<a href="" style="text-decoration: none; color:white;" class="badge badge-pill badge-danger" data-toggle="modal" data-target="#beritaAcaraPeringkat"><i style="color: white;" class="fas fa-upload"></i> UPLOAD</a>
-														</div>
-														<div class="col-md-10">
-															Pengumuman Pemenang
-														</div>
-														<div class="col-md-2" style="margin-left:700px;margin-top:-20px;">
-															<a href="" style="text-decoration: none; color:white;" class="badge badge-pill badge-danger" data-toggle="modal" data-target="#beritaAcaraPeringkat"><i style="color: white;" class="fas fa-upload"></i> UPLOAD</a>
-														</div>
-														<div class="col-md-10">
-															Undangan Presentasi
-														</div>
-														<div class="col-md-2" style="margin-left:700px;margin-top:-20px;">
-															<a href="" style="text-decoration: none; color:white;" class="badge badge-pill badge-danger" data-toggle="modal" data-target="#beritaAcaraPeringkat"><i style="color: white;" class="fas fa-upload"></i> UPLOAD</a>
-														</div>
-														<div class="col-md-10">
-															Addendum Dokumen Pengadaan
-														</div>
-														<div class="col-md-2" style="margin-left:700px;margin-top:-20px;">
-															<a href="" style="text-decoration: none; color:white;" class="badge badge-pill badge-danger" data-toggle="modal" data-target="#beritaAcaraPeringkat"><i style="color: white;" class="fas fa-upload"></i> UPLOAD</a>
-														</div>
+											<a href="javascript:;" style="text-decoration: none; color:white;" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#ba_negosiasi_auction"><i style="color: white;" class="fas fa-upload"></i> UPLOAD BA NEGOSIASI</a>
+											<?php if ($paket['ba_negosiasi_auction'] == NULL) { ?>
 
-													</div>
-												</div>
-												<div class="card-body">
-													<?php foreach ($get_berita_acara_peringkat as $key => $value) { ?>
-														<a style="text-decoration: none;" href="<?= base_url('berita_acara_tender/' . $value['file_berita_acara_peringkat']) ?>" target="_blank">
-															<img src="<?= base_url('assets/img/pdfku.png') ?>" style="width: 20px;" alt="" class="ml-4">
-															<?= $value['nama_file'] ?>
-														</a>
-														<a class="text-danger ml-3" href="<?= base_url('panitiajmtm/beranda/delete_berita_acara_hasil_peringkat/' . $value['id_berita_acara_peringkat']) ?>"><i class="fas fa-trash-alt"></i></a> | Tanggal Upload : <?= $value['create_at'] ?>
-														<br>
-													<?php } ?>
-												</div>
-											</div>
-											<div class="card border-primary mb-3">
-												<div class="card-header bg-primary" style="color: white;display: flex; justify-content:space-between;">Berita Acara Evaluasi Hasil Penawaran
-													<a href="javascript:;" style="text-decoration: none; color:white;" class="badge badge-pill badge-danger" data-toggle="modal" data-target="#beritaAcaraPenawaran"><i style="color: white;" class="fas fa-upload"></i> UPLOAD</a>
-												</div>
-												<div class="card-body">
-													<?php foreach ($get_berita_acara_penawaran as $key => $value) { ?>
-														<a style="text-decoration: none;" href="<?= base_url('berita_acara_penawaran/' . $value['file_berita_acara_penawaran']) ?>" target="_blank">
-															<img src="<?= base_url('assets/img/pdfku.png') ?>" style="width: 20px;" alt="" class="ml-4">
-															<?= $value['nama_file'] ?>
-														</a>
-														<a class="text-danger ml-3" href="<?= base_url('panitiajmtm/beranda/delete_berita_acara_hasil_penawaran/' . $value['id_berita_acara_penawaran']) ?>"><i class="fas fa-trash-alt"></i></a> | Tanggal Upload : <?= $value['create_at'] ?>
-														<br>
-													<?php } ?>
-
-												</div>
-											</div>
-
-											<div class="card border-primary mb-3">
-												<div class="card-header bg-primary" style="color: white;display: flex; justify-content:space-between;">Berita Acara Evaluasi Hasil Tender
-													<a href="" style="text-decoration: none; color:white;" class="badge badge-pill badge-danger " data-toggle="modal" data-target="#beritaAcaraTender"><i style="color: white;" class="fas fa-upload"></i> UPLOAD</a>
-												</div>
-												<div class="card-body">
-													<?php foreach ($get_berita_acara_tender as $key => $value) { ?>
-														<a style="text-decoration: none;" href="<?= base_url('berita_acara_tender/' . $value['file_berita_acara_tender']) ?>" target="_blank">
-															<img src="<?= base_url('assets/img/pdfku.png') ?>" style="width: 20px;" alt="" class="ml-4">
-															<?= $value['nama_file'] ?>
-														</a>
-														<a class="text-danger ml-3" href="<?= base_url('panitiajmtm/beranda/delete_berita_acara_hasil_tender/' . $value['id_berita_acara_tender']) ?>"><i class="fas fa-trash-alt"></i></a> | Tanggal Upload : <?= $value['create_at'] ?>
-														<br>
-													<?php } ?>
-
-												</div>
-											</div>
-											<div class="card border-primary mb-3">
-												<div class="card-header bg-primary" style="color: white;display: flex; justify-content:space-between;">Informasi Lainnya
-													<a href="" style="text-decoration: none; color:white;" class="badge badge-pill badge-danger" data-toggle="modal" data-target="#beritaAcaraLainnya"><i style="color: white;" class="fas fa-upload"></i> UPLOAD</a>
-												</div>
-												<div class="card-body">
-													<?php foreach ($get_berita_acara_lainnya as $key => $value) { ?>
-														<a style="text-decoration: none;" href="<?= base_url('berita_acara_lainnya/' . $value['file_berita_acara_lainnya']) ?>" target="_blank">
-															<img src="<?= base_url('assets/img/pdfku.png') ?>" style="width: 20px;" alt="" class="ml-4">
-															<?= $value['nama_file'] ?>
-														</a>
-														<a class="text-danger ml-3" href="<?= base_url('panitiajmtm/beranda/delete_berita_acara_hasil_lainnya/' . $value['id_berita_acara_lainnya']) ?>"><i class="fas fa-trash-alt"></i></a> | Tanggal Upload : <?= $value['create_at'] ?>
-														<br>
-													<?php } ?>
-												</div>
-											</div>
-											<div class="bs-callout bs-callout-info">
-												Informasi Lainya Dapat Berupa Berita Acara Lain yang di tujukan kepada semua peserta jika terdapat kendala di luar kendali Panitia Pemilihan
-											</div>
+											<?php } else { ?>
+												<a class="btn btn-sm btn-info" href="<?= base_url('file_undangan_penawaran/' . $paket['ba_negosiasi_auction']) ?>"><i class="fa fa-eye"></i> Lihat Dokumen</a>
+											<?php } ?>
 										</td>
 									</tr>
+									<tr>
+										<th>Download Ba Negosiasi Vendor</th>
+										<td>
+											<?php if ($paket['ba_negosiasi_auction_vendor'] == NULL) { ?>
 
+											<?php } else { ?>
+												<a class="btn btn-sm btn-info" href="https://jmtm-vms.kinteindo.net/"><i class="fa fa-eye"></i> Lihat Dokumen</a>
+											<?php } ?>
+										</td>
+									</tr>
+									<tr>
+										<th>Penetapan Pemenang</th>
+										<td> <a href="<?= base_url('panitiajmtm/beranda/penetapan_pemenang_auction/' . $paket['id_paket']) ?>" class="btn btn-sm btn-primary"> <i class="fa fa-users" aria-hidden="true"></i> Penetapan Pemenang</a></td>
+									</tr>
 									<tr>
 										<th>Pengumuman</th>
 										<td><a href="<?= base_url('panitiajmtm/beranda/pengumumanpemenangtender/' . $paket['id_paket']) ?>" style="color: white;height:20px;" class="badge badge-warning">Pengumuman Pemenang</a></td>
 									</tr>
 									<tr>
+										<?php if ($this->session->userdata('id_role') == 1) { ?>
 									<tr>
-										<th>Surat Penunjukan</th>
+										<th>Pakta Integritas</th>
 										<td>
-											<a href="javascript:;" style="text-decoration: none; color:white;" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#uploadSuratPenunjukan"><i class="far fa-paper-plane"></i> KIRIM SURAT PENUNJUKAN</a>
-											<?php if ($paket['surat_penunjukan'] == NULL) { ?>
-
-											<?php } else { ?>
-												<a class="btn btn-sm btn-info" href="<?= base_url('file_surat_penunjukan/' . $paket['surat_penunjukan']) ?>"><i class="fa fa-eye"></i> Lihat Dokumen</a>
-											<?php } ?>
+											<div class="row">
+												<div class="col-md-6">
+													<table>
+														<thead>
+															<tr>
+																<th>Panitia</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr>
+																<th><a target="_blank" href="<?= base_url('panitiajmtm/beranda/paktaintegritas_panitia/' . $paket['id_paket']) ?>" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i> Panitia</a></th>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+												<div class="col-md-6">
+													<table>
+														<thead>
+															<tr>
+																<th>Penyedia</th>
+															</tr>
+														</thead>
+														<tbody>
+															<?php foreach ($vendor_mengikuti as $key => $value) { ?>
+																<tr>
+																	<th>
+																		<a target="_blank" href="<?= base_url('panitiajmtm/beranda/paktaintegritas_vendor/' . $value['id_mengikuti_paket_vendor'] . '/' . $value['id_mengikuti_vendor']) ?>" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i> <?= $value['username_vendor'] ?></a>
+																	</th>
+																</tr>
+															<?php } ?>
+														</tbody>
+													</table>
+												</div>
+											</div>
 										</td>
 									</tr>
-									<?php if ($this->session->userdata('id_role') == 1) { ?>
-										<tr>
-											<th>Pakta Integritas</th>
-											<td>
-												<div class="row">
-													<div class="col-md-6">
-														<table>
-															<thead>
-																<tr>
-																	<th>Panitia</th>
-																</tr>
-															</thead>
-															<tbody>
-																<tr>
-																	<th><a target="_blank" href="<?= base_url('panitiajmtm/beranda/paktaintegritas_panitia/' . $paket['id_paket']) ?>" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i> Panitia</a></th>
-																</tr>
-															</tbody>
-														</table>
-													</div>
-													<div class="col-md-6">
-														<table>
-															<thead>
-																<tr>
-																	<th>Penyedia</th>
-																</tr>
-															</thead>
-															<tbody>
-																<?php foreach ($vendor_mengikuti as $key => $value) { ?>
-																	<tr>
-																		<th>
-																			<a target="_blank" href="<?= base_url('panitiajmtm/beranda/paktaintegritas_vendor/' . $value['id_mengikuti_paket_vendor'] . '/' . $value['id_mengikuti_vendor']) ?>" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i> <?= $value['username_vendor'] ?></a>
-																		</th>
-																	</tr>
-																<?php } ?>
-															</tbody>
-														</table>
-													</div>
-												</div>
-											</td>
-										</tr>
-									<?php } else { ?>
-									<?php } ?>
+								<?php } else { ?>
+								<?php } ?>
 								</tbody>
 							</table>
 							<div>
@@ -3999,13 +3733,6 @@
 
 								<!-- 20 september 2022 -->
 								<a href="javascript:;" data-toggle="modal" data-target="#upload_dokumen_pembatalan" class="btn btn-warning mb-3 text-white">Upload Dokumen Pembatalan</a>
-
-
-								<?php if ($this->session->userdata('id_role') == 1 || $this->session->userdata('id_role') == 2) { ?>
-								<?php } else { ?>
-									<a href="<?= base_url('panitiajmtm/beranda/evaluasitender/' . $paket['id_paket']) ?>" class="btn btn-success ml-2 mb-3">Evaluasi Tender</a>
-
-								<?php } ?>
 								<!-- <a href="" class="btn btn-success mb-3">Pemasukan Penawaran Ulang</a> -->
 								<!-- <a href="" class="btn btn-primary ml-2 mb-3">Forensik Penawaran Peserta</a> -->
 							</div>
@@ -4015,7 +3742,7 @@
 			</div>
 		</div>
 	</div>
-	<?php } else { ?>
+<?php } else { ?>
 <?php } ?>
 
 
@@ -4896,6 +4623,87 @@ background: linear-gradient(63deg, rgba(249,249,249,0.9500175070028011) 15%, rgb
 							<?= $value['nama_file'] ?>
 						</a>
 					<?php } ?>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+					<button class="btn btn-sm btn-danger" name="upload" type="submit" id="inputGroupFileAddon04"><img src="<?= base_url('assets/img/pdfku.png') ?>" style="width: 20px;" alt=""> UPLOAD</button>
+
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="modal_lihat_vendor_mengikuti_binding" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header bg-danger text-white">
+				<h5 class="modal-title" id="exampleModalLabel">Summary Binding</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+
+				<h3>Tahap Binding 1</h3>
+
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Nama Vendor</th>
+							<th>Harga Penawaran</th>
+							<th>Peringkat</th>
+						</tr>
+					</thead>
+					<tbody id="binding_sumaary_1"></tbody>
+				</table>
+
+				<h3>Tahap Binding 2</h3>
+
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Nama Vendor</th>
+							<th>Harga Penawaran</th>
+							<th>Peringkat</th>
+						</tr>
+					</thead>
+					<tbody id="binding_sumaary_2"></tbody>
+				</table>
+
+				<h3>Tahap Binding 3</h3>
+
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Nama Vendor</th>
+							<th>Harga Penawaran</th>
+							<th>Peringkat</th>
+						</tr>
+					</thead>
+					<tbody id="binding_sumaary_3"></tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- undangan penawaran 8 september -->
+<div class="modal fade" id="ba_negosiasi_auction" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Upload BA Negosiasi</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<form action="<?= base_url('panitiajmtm/beranda/upload_ba_negosiasi_auction') ?>" enctype="multipart/form-data" method="post">
+				<div class="modal-body">
+					<div class="input-group">
+						<input type="hidden" name="id_paket" value="<?= $paket['id_paket'] ?>">
+						<input type="file" class="form-control form-control-sm" aria-describedby="inputGroupFileAddon04" accept=".pdf" name="ba_negosiasi_auction" aria-label="Upload">
+					</div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>

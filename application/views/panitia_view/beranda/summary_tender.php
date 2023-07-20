@@ -651,195 +651,280 @@
 							</tr>
 						<?php  } ?>
 					</table>
+					<?php if ($paket['id_kualifikasi']  == 22) { ?>
 
-					<h4 class="text-center">HASIL EVALUASI</h4>
-					<table class="table table-bordered">
-						<tr style="font-size: 11px;">
-							<th>Nama Peserta</th>
-							<th>
-								<span>Dokumen Kelengkapan</span>
-							</th>
-							<th>Syarat Dokumen Tambahan</th>
-							<?php if ($paket['id_kualifikasi'] == 12 || $paket['id_kualifikasi'] == 9 || $paket['id_kualifikasi'] == 14 || $paket['id_kualifikasi'] == 18 || $paket['id_kualifikasi'] == 20  || $paket['id_kualifikasi'] == 21) { ?>
-							<?php } else { ?>
+					<?php } else { ?>
+						<h4 class="text-center">HASIL EVALUASI</h4>
+						<table class="table table-bordered">
+							<tr style="font-size: 11px;">
+								<th>Nama Peserta</th>
 								<th>
-									<span>Hasil Prakualifikasi</span>
+									<span>Dokumen Kelengkapan</span>
 								</th>
-							<?php } ?>
-
-							<th>
-								<span>Hasil Teknis</span>
-							</th>
-							<th><span>Peringkat</span></th>
-
-							<!-- <th>Verifikasi</span></th> -->
-						</tr>
-						<?php $i = 1;
-						foreach ($evaluasi as $key => $value) { ?>
-							<tr>
-								<td><?= $value['username_vendor'] ?></td>
-								<td>
-									<div class="text-success"><i class="fa fa-check"></i> Dokumen Lengkap</div>
-								</td>
-								<td>
-									<?php if ($value['status_evaluasi_syarat_tambahan'] == 0) { ?>
-										<div class="text-danger"><i class="fa fa-ban"></i> Gugur</div>
-									<?php } else { ?>
-										<div class="text-success"><i class="fa fa-check"></i> Dokumen Lengkap</div>
-									<?php } ?>
-								</td>
+								<th>Syarat Dokumen Tambahan</th>
 								<?php if ($paket['id_kualifikasi'] == 12 || $paket['id_kualifikasi'] == 9 || $paket['id_kualifikasi'] == 14 || $paket['id_kualifikasi'] == 18 || $paket['id_kualifikasi'] == 20  || $paket['id_kualifikasi'] == 21) { ?>
 								<?php } else { ?>
-									<td>
-										<?php if ($value['nilai_prakualifikasi'] == null) { ?>
-											<div class="text-danger"><i class="fa fa-ban"></i> Gugur</div>
-										<?php } else if ($value['nilai_prakualifikasi'] == 0) { ?>
-											<div class="text-danger"><i class="fa fa-ban"></i> Gugur</div>
-										<?php } else { ?>
-											<?= $value['nilai_prakualifikasi'] ?>
-										<?php } ?>
-									</td>
+									<th>
+										<span>Hasil Prakualifikasi</span>
+									</th>
 								<?php } ?>
 
+								<th>
+									<span>Hasil Teknis</span>
+								</th>
+								<th><span>Peringkat</span></th>
+
+								<!-- <th>Verifikasi</span></th> -->
+							</tr>
+							<?php $i = 1;
+							foreach ($evaluasi as $key => $value) { ?>
+								<tr>
+									<td><?= $value['username_vendor'] ?></td>
+									<td>
+										<div class="text-success"><i class="fa fa-check"></i> Dokumen Lengkap</div>
+									</td>
+									<td>
+										<?php if ($value['status_evaluasi_syarat_tambahan'] == 0) { ?>
+											<div class="text-danger"><i class="fa fa-ban"></i> Gugur</div>
+										<?php } else { ?>
+											<div class="text-success"><i class="fa fa-check"></i> Dokumen Lengkap</div>
+										<?php } ?>
+									</td>
+									<?php if ($paket['id_kualifikasi'] == 12 || $paket['id_kualifikasi'] == 9 || $paket['id_kualifikasi'] == 14 || $paket['id_kualifikasi'] == 18 || $paket['id_kualifikasi'] == 20  || $paket['id_kualifikasi'] == 21) { ?>
+									<?php } else { ?>
+										<td>
+											<?php if ($value['nilai_prakualifikasi'] == null) { ?>
+												<div class="text-danger"><i class="fa fa-ban"></i> Gugur</div>
+											<?php } else if ($value['nilai_prakualifikasi'] == 0) { ?>
+												<div class="text-danger"><i class="fa fa-ban"></i> Gugur</div>
+											<?php } else { ?>
+												<?= $value['nilai_prakualifikasi'] ?>
+											<?php } ?>
+										</td>
+									<?php } ?>
+
+									<td>
+										<?php if ($value['nilai_teknis'] == null) { ?>
+											<?php if ($value['status_evaluasi_syarat_tambahan'] == null) { ?>
+												<div class="text-danger"><i class="fa fa-ban"></i> Gugur</div>
+											<?php } else if ($value['status_evaluasi_syarat_tambahan'] == 0) { ?>
+												<div class="text-danger"><i class="fa fa-ban"></i> Gugur</div>
+											<?php } ?>
+										<?php } else if ($value['nilai_teknis'] == 0) { ?>
+											<div class="text-danger"><i class="fa fa-ban"></i> Gugur</div>
+										<?php } else { ?>
+											<?= $value['nilai_teknis'] ?>
+										<?php } ?>
+									</td>
+									<td>
+										<?php if ($value['nilai_pringkat_teknis'] == null) { ?>
+											<div class="text-danger"><i class="fa fa-ban"></i> Gugur</div>
+										<?php } else if ($value['nilai_pringkat_teknis'] == 0) { ?>
+											<div class="text-danger"><i class="fa fa-ban"></i> Gugur</div>
+										<?php } else { ?>
+											<?= $value['nilai_pringkat_teknis'] ?>
+										<?php } ?>
+									</td>
+
+
+								</tr>
+							<?php  } ?>
+						</table>
+						<table class="table table-bordered">
+							<tr style="font-size: 11px;">
+								<th>Nama Peserta</th>
+								<th>Penawaran</th>
+								<th>Penawaran Terkoreksi</th>
+								<th>Negosiasi Harga</th>
+								<th>Nilai Akhir</th>
+								<th><span>Pemenang</span></th>
+								<!-- <th>Verifikasi</span></th> -->
+							</tr>
+
+							<?php $i = 1;
+							foreach ($evaluasi as $key => $value) { ?>
+								<tr>
+									<td><?= $value['username_vendor'] ?></td>
+
+									<td>
+										<?php if ($value['nilai_penawaran'] == NULL) { ?>
+											<div class="text-danger"><i class="fa fa-ban"></i> Gugur</div>
+										<?php } else if ($value['nilai_penawaran'] == 0) { ?>
+											<div class="text-danger"><i class="fa fa-ban"></i> Gugur</div>
+										<?php } else { ?>
+											Rp. <?= number_format($value['nilai_penawaran'], 2, ',', '.') ?>
+									</td>
+								<?php }	?>
 								<td>
-									<?php if ($value['nilai_teknis'] == null) { ?>
+									<?php if ($value['nilai_terkoreksi'] == NULL) { ?>
+										<div class="text-danger"><i class="fa fa-ban"></i> Gugur</div>
+									<?php } else if ($value['nilai_terkoreksi'] == 0) { ?>
+										<div class="text-danger"><i class="fa fa-ban"></i> Gugur</div>
+									<?php } else { ?>
+										Rp. <?= number_format($value['nilai_terkoreksi'], 2, ',', '.') ?>
+									<?php } ?>
+								</td>
+								<td>
+									<?php if ($value['negosiasi'] == NULL) { ?>
+										<div class="text-danger"><i class="fa fa-ban"></i> Belum di Negosiasi</div>
+									<?php } else if ($value['negosiasi'] == 0) { ?>
+										<div class="text-danger"><i class="fa fa-ban"></i> Belum di Negosiasi</div>
+									<?php } else { ?>
+										Rp. <?= number_format($value['negosiasi'], 2, ',', '.') ?>
+									<?php } ?>
+								</td>
+
+								<td>
+									<?php if ($value['nilai_akhir'] == null) { ?>
 										<?php if ($value['status_evaluasi_syarat_tambahan'] == null) { ?>
 											<div class="text-danger"><i class="fa fa-ban"></i> Gugur</div>
 										<?php } else if ($value['status_evaluasi_syarat_tambahan'] == 0) { ?>
 											<div class="text-danger"><i class="fa fa-ban"></i> Gugur</div>
-										<?php } ?>
-									<?php } else if ($value['nilai_teknis'] == 0) { ?>
-										<div class="text-danger"><i class="fa fa-ban"></i> Gugur</div>
-									<?php } else { ?>
-										<?= $value['nilai_teknis'] ?>
-									<?php } ?>
-								</td>
-								<td>
-									<?php if ($value['nilai_pringkat_teknis'] == null) { ?>
-										<div class="text-danger"><i class="fa fa-ban"></i> Gugur</div>
-									<?php } else if ($value['nilai_pringkat_teknis'] == 0) { ?>
-										<div class="text-danger"><i class="fa fa-ban"></i> Gugur</div>
-									<?php } else { ?>
-										<?= $value['nilai_pringkat_teknis'] ?>
-									<?php } ?>
-								</td>
-
-
-							</tr>
-						<?php  } ?>
-					</table>
-					<table class="table table-bordered">
-						<tr style="font-size: 11px;">
-							<th>Nama Peserta</th>
-							<th>Penawaran</th>
-							<th>Penawaran Terkoreksi</th>
-							<th>Negosiasi Harga</th>
-							<th>Nilai Akhir</th>
-							<th><span>Pemenang</span></th>
-							<!-- <th>Verifikasi</span></th> -->
-						</tr>
-
-						<?php $i = 1;
-						foreach ($evaluasi as $key => $value) { ?>
-							<tr>
-								<td><?= $value['username_vendor'] ?></td>
-
-								<td>
-									<?php if ($value['nilai_penawaran'] == NULL) { ?>
-										<div class="text-danger"><i class="fa fa-ban"></i> Gugur</div>
-									<?php } else if ($value['nilai_penawaran'] == 0) { ?>
-										<div class="text-danger"><i class="fa fa-ban"></i> Gugur</div>
-									<?php } else { ?>
-										Rp. <?= number_format($value['nilai_penawaran'], 2, ',', '.') ?>
-								</td>
-							<?php }	?>
-							<td>
-								<?php if ($value['nilai_terkoreksi'] == NULL) { ?>
-									<div class="text-danger"><i class="fa fa-ban"></i> Gugur</div>
-								<?php } else if ($value['nilai_terkoreksi'] == 0) { ?>
-									<div class="text-danger"><i class="fa fa-ban"></i> Gugur</div>
-								<?php } else { ?>
-									Rp. <?= number_format($value['nilai_terkoreksi'], 2, ',', '.') ?>
-								<?php } ?>
-							</td>
-							<td>
-								<?php if ($value['negosiasi'] == NULL) { ?>
-									<div class="text-danger"><i class="fa fa-ban"></i> Belum di Negosiasi</div>
-								<?php } else if ($value['negosiasi'] == 0) { ?>
-									<div class="text-danger"><i class="fa fa-ban"></i> Belum di Negosiasi</div>
-								<?php } else { ?>
-									Rp. <?= number_format($value['negosiasi'], 2, ',', '.') ?>
-								<?php } ?>
-							</td>
-
-							<td>
-								<?php if ($value['nilai_akhir'] == null) { ?>
-									<?php if ($value['status_evaluasi_syarat_tambahan'] == null) { ?>
-										<div class="text-danger"><i class="fa fa-ban"></i> Gugur</div>
-									<?php } else if ($value['status_evaluasi_syarat_tambahan'] == 0) { ?>
-										<div class="text-danger"><i class="fa fa-ban"></i> Gugur</div>
-									<?php } else { ?>
-										<?php if ($value['nilai_teknis'] == null) { ?>
-											<div class="text-danger"> Belum Dievaluasi</div>
 										<?php } else { ?>
-											<div class="text-danger"><i class="fa fa-ban"></i> Gugur</div>
+											<?php if ($value['nilai_teknis'] == null) { ?>
+												<div class="text-danger"> Belum Dievaluasi</div>
+											<?php } else { ?>
+												<div class="text-danger"><i class="fa fa-ban"></i> Gugur</div>
+											<?php } ?>
+
 										<?php } ?>
+									<?php } else { ?>
+										<?= $value['nilai_akhir']  ?>
+									<?php } ?>
+
+								</td>
+								<td>
+									<?php if ($value['pemenang_tender'] == 1) { ?>
+										<div class="text-warning"><i class="fa fa-star"></i> </div>
+									<?php } else { ?>
 
 									<?php } ?>
-								<?php } else { ?>
-									<?= $value['nilai_akhir']  ?>
-								<?php } ?>
+								</td>
 
-							</td>
-							<td>
-								<?php if ($value['pemenang_tender'] == 1) { ?>
-									<div class="text-warning"><i class="fa fa-star"></i> </div>
-								<?php } else { ?>
+								</tr>
+							<?php  } ?>
+						</table>
 
-								<?php } ?>
-							</td>
-
-							</tr>
-						<?php  } ?>
-					</table>
-
-					<h4 class="text-center">SANGGAHAN</h4>
-					<table class="table table-bordered">
-						<tr>
-							<th>SANGGAHAN</th>
-							<th>PENGIRIM</th>
-						</tr>
-						<?php foreach ($sanggahan as $key => $value) { ?>
+						<h4 class="text-center">SANGGAHAN</h4>
+						<table class="table table-bordered">
 							<tr>
-								<td><?= $value['nama_dokumen_sanggahan'] ?></td>
-								<td><?= $value['username_vendor'] ?></td>
+								<th>SANGGAHAN</th>
+								<th>PENGIRIM</th>
 							</tr>
-						<?php } ?>
-					</table>
+							<?php foreach ($sanggahan as $key => $value) { ?>
+								<tr>
+									<td><?= $value['nama_dokumen_sanggahan'] ?></td>
+									<td><?= $value['username_vendor'] ?></td>
+								</tr>
+							<?php } ?>
+						</table>
+					<?php } ?>
 					<!-- INI UNTUK PENJELASAN LELANG -->
 					<br>
-					<div class="row">
-						<div class="col-md-6">
-							<div class="card">
-								<div class="card-header bg-primary text-white">
-									PENJELASAN LELANG
-								</div>
-								<div class="card-body" id="letakpesan">
+					<h4 class="text-center">SUMAARY TAHAP BINDING</h4>
+					<h3>Tahap Binding 1</h3>
 
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Nama Vendor</th>
+								<th>Harga Penawaran</th>
+								<th>Peringkat</th>
+							</tr>
+						</thead>
+						<tbody id="binding_sumaary_1"></tbody>
+					</table>
+
+					<h3>Tahap Binding 2</h3>
+
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Nama Vendor</th>
+								<th>Harga Penawaran</th>
+								<th>Peringkat</th>
+							</tr>
+						</thead>
+						<tbody id="binding_sumaary_2"></tbody>
+					</table>
+
+					<h3>Tahap Binding 3</h3>
+
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Nama Vendor</th>
+								<th>Harga Penawaran</th>
+								<th>Peringkat</th>
+							</tr>
+						</thead>
+						<tbody id="binding_sumaary_3"></tbody>
+					</table>
+					<br>
+					<?php if ($paket['id_kualifikasi']  == 22) { ?>
+						<h4 class="text-center">BUKTI CHAT BINDING</h4>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="card">
+									<div class="card-header bg-primary text-white">
+										BINDING 2
+									</div>
+									<div class="card-body" id="letakpesan_binding_2">
+
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="card">
+									<div class="card-header bg-primary text-white">
+										BINDING 3
+									</div>
+									<div class="card-body" id="letakpesan_binding_3">
+
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3">
+
+							</div>
+							<div class="col-md-6">
+								<div class="card">
+									<div class="card-header bg-primary text-white">
+										NEGOSIASI
+									</div>
+									<div class="card-body" id="letakpesan2">
+
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3">
+
+							</div>
+						</div>
+					<?php } else { ?>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="card">
+									<div class="card-header bg-primary text-white">
+										PENJELASAN LELANG
+									</div>
+									<div class="card-body" id="letakpesan">
+
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="card">
+									<div class="card-header bg-primary text-white">
+										NEGOSIASI
+									</div>
+									<div class="card-body" id="letakpesan2">
+
+									</div>
 								</div>
 							</div>
 						</div>
-						<div class="col-md-6">
-							<div class="card">
-								<div class="card-header bg-primary text-white">
-									NEGOSIASI
-								</div>
-								<div class="card-body" id="letakpesan2">
-
-								</div>
-							</div>
-						</div>
-					</div>
+					<?php } ?>
 				</div>
 		</form>
 	</div>
@@ -1053,6 +1138,7 @@
 
 		});
 	</script>
+
 	<script>
 		$(document).ready(function() {
 			pesan2()
@@ -1235,6 +1321,794 @@
 
 
 		});
+	</script>
+
+	<script>
+		$(document).ready(function() {
+			pesan_binding_1()
+
+			function pesan_binding_1() {
+				var id_penerima = '<?= $data2['id_mengikuti_vendor'] ?>';
+				var id_paket3 = $('#id_paket').val();
+				var id_pengirim = '<?= $this->session->userdata('id_pegawai') ?>';
+				$.ajax({
+					type: "post",
+					url: "<?= base_url() ?>panitiajmtm/beranda/ngeload_chatnya_auction_binding_1/" + id_pake3,
+					data: {
+						id_pengirim: id_pengirim,
+						id_penerima: id_penerima,
+					},
+					dataType: "json",
+					success: function(r) {
+						var html = "";
+						var d = r.data;
+						id_pengirim = '<?= $this->session->userdata('id_pegawai') ?>';
+						d.forEach(d => {
+
+							var today = new Date();
+							var dd = String(today.getDate()).padStart(2, '0');
+							var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+							var yyyy = today.getFullYear();
+
+							today = dd + '-' + mm + '-' + yyyy;
+							// console.log(today);
+
+							var times = new Date(d.waktu)
+							var time = times.toLocaleTimeString()
+							var tanggal = String(times.getDate()).padStart(2, '0');
+							var bulan = String(times.getMonth() + 1).padStart(2, '0');
+							var tahun = times.getFullYear()
+							var lengkapDB = tanggal + '-' + bulan + '-' + tahun
+							// console.log(lengkapDB == today)
+							var kapan = "Today"
+							var tanggal_bulan = tanggal + "-" + bulan
+							if (lengkapDB != today) {
+								kapan = tanggal_bulan
+							}
+							// console.log(kapan)
+							if (parseInt(d.id_pengirim) == id_pengirim) {
+								if (d.dokumen_chat == null) {
+									html += '<div class="d-flex justify-content-end mb-4">' +
+										'<div class="msg_cotainer_send">' +
+										'' + d.isi + '' +
+										'<span class="msg_time">' + kapan + ',' + time + '</span>' +
+										'</div>' +
+										'</div>';
+								} else if (d.dokumen_chat) {
+									html += '<div class="d-flex justify-content-end mb-4">' +
+										'<div class="msg_cotainer_send">' +
+										// '<img width="100px" src="<?= base_url('file_chat/') ?>' + d.img_chat + '">' +
+										'<a  class="text-primary" href="<?= base_url('/file_chat/') ?>' + d.dokumen_chat + '">' + d.dokumen_chat + '</a>' +
+										'<br>' + d.isi + '' +
+										'<span class="msg_time">' + kapan + ',' + time + '</span>' +
+										'</div>' +
+										'</div>';
+
+								} else if (d.img_chat) {
+									html += '<div class="d-flex justify-content-end mb-4">' +
+										'<div class="msg_cotainer_send">' +
+										'<img width="100px" src="<?= base_url('file_chat/') ?>' + d.img_chat + '">' +
+										// '<a  class="text-primary" href="<?= base_url('/file_chat/') ?>' + d.dokumen_chat + '">' + d.dokumen_chat + '</a>' +
+										'<br>' + d.isi + '' +
+										'<span class="msg_time">' + kapan + ',' + time + '</span>' +
+										'</div>' +
+										'</div>';
+
+								} else if (d.replay_tujuan) {
+									if (d.dokumen_chat == null) {
+										html += '<div class="d-flex justify-content-end mb-4">' +
+											'<div class="msg_cotainer_send">' +
+											'<div class="bs-callout bs-callout-info">' +
+											'' + d.replay_tujuan + '<br>' +
+											'' + d.replay_isi + '' +
+											'</div>' +
+											'' + d.isi + '' +
+											'<span class="msg_time">' + kapan + ',' + time + '</span>' +
+											'</div>' +
+											'</div>';
+									} else if (d.dokumen_chat) {
+										html += '<div class="d-flex justify-content-end mb-4">' +
+											'<div class="msg_cotainer_send">' +
+											'<div class="bs-callout bs-callout-info">' +
+											'' + d.replay_tujuan + '<br>' +
+											'' + d.replay_isi + '' +
+											'</div>' +
+											// '<img width="100px" src="<?= base_url('file_chat/') ?>' + d.img_chat + '">' +
+											'<a  class="text-primary" href="<?= base_url('/file_chat/') ?>' + d.dokumen_chat + '">' + d.dokumen_chat + '</a>' +
+											'<br>' + d.isi + '' +
+											'<span class="msg_time">' + kapan + ',' + time + '</span>' +
+											'</div>' +
+											'</div>';
+									} else if (d.img_chat) {
+										html += '<div class="d-flex justify-content-end mb-4">' +
+											'<div class="msg_cotainer_send">' +
+											'<div class="bs-callout bs-callout-info">' +
+											'' + d.replay_tujuan + '<br>' +
+											'' + d.replay_isi + '' +
+											'</div>' +
+											'<img width="100px" src="<?= base_url('file_chat/') ?>' + d.img_chat + '">' +
+											// '<a  class="text-primary" href="<?= base_url('/file_chat/') ?>' + d.dokumen_chat + '">' + d.dokumen_chat + '</a>' +
+											'<br>' + d.isi + '' +
+											'<span class="msg_time">' + kapan + ',' + time + '</span>' +
+											'</div>' +
+											'</div>';
+									} else {
+										html += '<div class="d-flex justify-content-end mb-4">' +
+											'<div class="msg_cotainer_send">' +
+											'<div class="bs-callout bs-callout-info">' +
+											'' + d.replay_tujuan + '<br>' +
+											'' + d.replay_isi + '' +
+											'</div>' +
+											'' + d.isi + '' +
+											'<span class="msg_time">' + kapan + ',' + time + '</span>' +
+											'</div>' +
+											'</div>';
+									}
+
+								} else {
+									html += '<div class="d-flex justify-content-end mb-4">' +
+										'<div class="msg_cotainer_send">' +
+										'' + d.isi + '' +
+										'<span class="msg_time">' + kapan + ',' + time + '</span>' +
+										'</div>' +
+										'</div>';
+								}
+							} else if (parseInt(d.id_penerima) == id_penerima) {
+								if (d.dokumen_chat == null) {
+									html += `<label class="badge badge-primary ml-5" >Panitia</label><div class="d-flex justify-content-start mb-4">
+				<div class="img_cont_msg">
+				<img src="<?= base_url('assets/img/test1.png') ?>" alt="" class="rounded-circle user_img_msg">
+				</div>
+				<div class="msg_cotainer">
+				   ${d.isi}								
+				   <span class="msg_time">${kapan}, ${time}  	</span>
+				</div> </div>`;
+								} else if (d.dokumen_chat) {
+									html += `<label class="badge badge-primary ml-5" >Panitia</label><div class="d-flex justify-content-start mb-4">
+				<div class="img_cont_msg">
+				<img src="<?= base_url('assets/img/test1.png') ?>" alt="" class="rounded-circle user_img_msg">
+				</div>
+				<div class="msg_cotainer">
+				<a href="<?= base_url('/file_chat/') ?>${d.dokumen_chat}"> ${d.dokumen_chat}</a> <br>
+				   ${d.isi}								
+				   <span class="msg_time">${kapan}, ${time}  	</span>
+				</div>
+			 </div>`;
+								} else if (d.img_chat) {
+									html += `<label class="badge badge-primary ml-5" >Panitia</label><div class="d-flex justify-content-start mb-4">
+				<div class="img_cont_msg">
+				<img src="<?= base_url('assets/img/test1.png') ?>" alt="" class="rounded-circle user_img_msg">
+				</div>
+				<div class="msg_cotainer">
+						<img width="100px" src="<?= base_url('file_chat/') ?>${d.img_chat}"> <br>
+				   ${d.isi}								
+				   <span class="msg_time">${kapan}, ${time}  	</span>
+				</div>
+			  
+			 </div>`;
+								} else {
+									html += `<label class="badge badge-primary ml-5" >Panitia</label><div class="d-flex justify-content-start mb-4">
+				<div class="img_cont_msg">
+				<img src="<?= base_url('assets/img/test1.png') ?>" alt="" class="rounded-circle user_img_msg">
+				</div>
+				<div class="msg_cotainer">
+				   ${d.isi}								
+				   <span class="msg_time">${kapan}, ${time}	</span>
+				</div>
+			  
+			 </div>`;
+								}
+							} else {
+								if (d.dokumen_chat == null) {
+									html += `<label class="badge badge-danger ml-5" >${d.username_vendor}</label><div class="d-flex justify-content-start mb-4">
+				<div class="img_cont_msg">
+				<img src="<?= base_url('assets/img/test1.png') ?>" alt="" class="rounded-circle user_img_msg">
+				</div>
+				<div class="msg_cotainer">
+				   ${d.isi}								
+				   <span class="msg_time">${kapan}, ${time}  	</span>
+				</div> </div>`;
+								} else if (d.dokumen_chat) {
+									html += `<label class="badge badge-danger ml-5" >${d.username_vendor}</label><div class="d-flex justify-content-start mb-4">
+				<div class="img_cont_msg">
+				<img src="<?= base_url('assets/img/test1.png') ?>" alt="" class="rounded-circle user_img_msg">
+				</div>
+				<div class="msg_cotainer">
+				<a href="https://vms.jmtm.co.id/file_chat/${d.dokumen_chat}"> ${d.dokumen_chat}</a> <br>
+				   ${d.isi}								
+				   <span class="msg_time">${kapan}, ${time}  	</span>
+				</div>
+			 </div>`;
+								} else if (d.img_chat) {
+									html += `<label class="badge badge-danger ml-5" >${d.username_vendor}</label><div class="d-flex justify-content-start mb-4">
+				<div class="img_cont_msg">
+				<img src="<?= base_url('assets/img/test1.png') ?>" alt="" class="rounded-circle user_img_msg">
+				</div>
+				<div class="msg_cotainer">
+						<img width="100px" src="https://vms.jmtm.co.id/file_chat/${d.img_chat}"> <br>
+				   ${d.isi}								
+				   <span class="msg_time">${kapan}, ${time}  	</span>
+				</div>
+			  
+			 </div>`;
+								} else {
+									html += '<label class="badge badge-danger ml-5" >' + d.username_vendor + '</label><div class="d-flex justify-content-start mb-4">' +
+										'<div class="img_cont_msg">' +
+										'<img src="<?= base_url('assets/img/test1.png') ?>" alt="" class="rounded-circle user_img_msg">' +
+										'</div>' +
+										'<div class="msg_cotainer">' +
+										'' + d.isi + '' +
+										'<span class="msg_time">' +
+										'' + kapan + '' +
+										'' + time + '' +
+										'<a onClick="Replay(' + "'" + d.id_pengirim + "','" + d.isi + "','" + d.username_vendor + "'" + ')" href="javascript:;" class="badge badge-sm badge-warning">replay</a>	</span>' +
+										'</div>' +
+										'</div>';
+								}
+							}
+							// notifikasis
+						});
+						// console.log(html)
+						$('#letakpesan_binding_1').html(html);
+					}
+				});
+
+			}
+		});
+	</script>
+
+	<script>
+		$(document).ready(function() {
+			pesan_binding_2()
+
+			function pesan_binding_2() {
+				var id_penerima = '<?= $data2['id_mengikuti_vendor'] ?>';
+				var id_paket4 = $('#id_paket').val();
+				var id_pengirim = '<?= $this->session->userdata('id_pegawai') ?>';
+				$.ajax({
+					type: "post",
+					url: "<?= base_url() ?>panitiajmtm/beranda/ngeload_chatnya_auction_binding_2/" + id_paket4,
+					data: {
+						id_pengirim: id_pengirim,
+						id_penerima: id_penerima,
+					},
+					dataType: "json",
+					success: function(r) {
+						var html = "";
+						var d = r.data;
+						id_pengirim = '<?= $this->session->userdata('id_pegawai') ?>';
+						d.forEach(d => {
+
+							var today = new Date();
+							var dd = String(today.getDate()).padStart(2, '0');
+							var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+							var yyyy = today.getFullYear();
+
+							today = dd + '-' + mm + '-' + yyyy;
+							// console.log(today);
+
+							var times = new Date(d.waktu)
+							var time = times.toLocaleTimeString()
+							var tanggal = String(times.getDate()).padStart(2, '0');
+							var bulan = String(times.getMonth() + 1).padStart(2, '0');
+							var tahun = times.getFullYear()
+							var lengkapDB = tanggal + '-' + bulan + '-' + tahun
+							// console.log(lengkapDB == today)
+							var kapan = "Today"
+							var tanggal_bulan = tanggal + "-" + bulan
+							if (lengkapDB != today) {
+								kapan = tanggal_bulan
+							}
+							// console.log(kapan)
+							if (parseInt(d.id_pengirim) == id_pengirim) {
+								if (d.dokumen_chat == null) {
+									html += '<div class="d-flex justify-content-end mb-4">' +
+										'<div class="msg_cotainer_send">' +
+										'' + d.isi + '' +
+										'<span class="msg_time">' + kapan + ',' + time + '</span>' +
+										'</div>' +
+										'</div>';
+								} else if (d.dokumen_chat) {
+									html += '<div class="d-flex justify-content-end mb-4">' +
+										'<div class="msg_cotainer_send">' +
+										// '<img width="100px" src="<?= base_url('file_chat/') ?>' + d.img_chat + '">' +
+										'<a  class="text-primary" href="<?= base_url('/file_chat/') ?>' + d.dokumen_chat + '">' + d.dokumen_chat + '</a>' +
+										'<br>' + d.isi + '' +
+										'<span class="msg_time">' + kapan + ',' + time + '</span>' +
+										'</div>' +
+										'</div>';
+
+								} else if (d.img_chat) {
+									html += '<div class="d-flex justify-content-end mb-4">' +
+										'<div class="msg_cotainer_send">' +
+										'<img width="100px" src="<?= base_url('file_chat/') ?>' + d.img_chat + '">' +
+										// '<a  class="text-primary" href="<?= base_url('/file_chat/') ?>' + d.dokumen_chat + '">' + d.dokumen_chat + '</a>' +
+										'<br>' + d.isi + '' +
+										'<span class="msg_time">' + kapan + ',' + time + '</span>' +
+										'</div>' +
+										'</div>';
+
+								} else if (d.replay_tujuan) {
+									if (d.dokumen_chat == null) {
+										html += '<div class="d-flex justify-content-end mb-4">' +
+											'<div class="msg_cotainer_send">' +
+											'<div class="bs-callout bs-callout-info">' +
+											'' + d.replay_tujuan + '<br>' +
+											'' + d.replay_isi + '' +
+											'</div>' +
+											'' + d.isi + '' +
+											'<span class="msg_time">' + kapan + ',' + time + '</span>' +
+											'</div>' +
+											'</div>';
+									} else if (d.dokumen_chat) {
+										html += '<div class="d-flex justify-content-end mb-4">' +
+											'<div class="msg_cotainer_send">' +
+											'<div class="bs-callout bs-callout-info">' +
+											'' + d.replay_tujuan + '<br>' +
+											'' + d.replay_isi + '' +
+											'</div>' +
+											// '<img width="100px" src="<?= base_url('file_chat/') ?>' + d.img_chat + '">' +
+											'<a  class="text-primary" href="<?= base_url('/file_chat/') ?>' + d.dokumen_chat + '">' + d.dokumen_chat + '</a>' +
+											'<br>' + d.isi + '' +
+											'<span class="msg_time">' + kapan + ',' + time + '</span>' +
+											'</div>' +
+											'</div>';
+									} else if (d.img_chat) {
+										html += '<div class="d-flex justify-content-end mb-4">' +
+											'<div class="msg_cotainer_send">' +
+											'<div class="bs-callout bs-callout-info">' +
+											'' + d.replay_tujuan + '<br>' +
+											'' + d.replay_isi + '' +
+											'</div>' +
+											'<img width="100px" src="<?= base_url('file_chat/') ?>' + d.img_chat + '">' +
+											// '<a  class="text-primary" href="<?= base_url('/file_chat/') ?>' + d.dokumen_chat + '">' + d.dokumen_chat + '</a>' +
+											'<br>' + d.isi + '' +
+											'<span class="msg_time">' + kapan + ',' + time + '</span>' +
+											'</div>' +
+											'</div>';
+									} else {
+										html += '<div class="d-flex justify-content-end mb-4">' +
+											'<div class="msg_cotainer_send">' +
+											'<div class="bs-callout bs-callout-info">' +
+											'' + d.replay_tujuan + '<br>' +
+											'' + d.replay_isi + '' +
+											'</div>' +
+											'' + d.isi + '' +
+											'<span class="msg_time">' + kapan + ',' + time + '</span>' +
+											'</div>' +
+											'</div>';
+									}
+
+								} else {
+									html += '<div class="d-flex justify-content-end mb-4">' +
+										'<div class="msg_cotainer_send">' +
+										'' + d.isi + '' +
+										'<span class="msg_time">' + kapan + ',' + time + '</span>' +
+										'</div>' +
+										'</div>';
+								}
+							} else if (parseInt(d.id_penerima) == id_penerima) {
+								if (d.dokumen_chat == null) {
+									html += `<label class="badge badge-primary ml-5" >Panitia</label><div class="d-flex justify-content-start mb-4">
+				<div class="img_cont_msg">
+				<img src="<?= base_url('assets/img/test1.png') ?>" alt="" class="rounded-circle user_img_msg">
+				</div>
+				<div class="msg_cotainer">
+				   ${d.isi}								
+				   <span class="msg_time">${kapan}, ${time}  	</span>
+				</div> </div>`;
+								} else if (d.dokumen_chat) {
+									html += `<label class="badge badge-primary ml-5" >Panitia</label><div class="d-flex justify-content-start mb-4">
+				<div class="img_cont_msg">
+				<img src="<?= base_url('assets/img/test1.png') ?>" alt="" class="rounded-circle user_img_msg">
+				</div>
+				<div class="msg_cotainer">
+				<a href="<?= base_url('/file_chat/') ?>${d.dokumen_chat}"> ${d.dokumen_chat}</a> <br>
+				   ${d.isi}								
+				   <span class="msg_time">${kapan}, ${time}  	</span>
+				</div>
+			 </div>`;
+								} else if (d.img_chat) {
+									html += `<label class="badge badge-primary ml-5" >Panitia</label><div class="d-flex justify-content-start mb-4">
+				<div class="img_cont_msg">
+				<img src="<?= base_url('assets/img/test1.png') ?>" alt="" class="rounded-circle user_img_msg">
+				</div>
+				<div class="msg_cotainer">
+						<img width="100px" src="<?= base_url('file_chat/') ?>${d.img_chat}"> <br>
+				   ${d.isi}								
+				   <span class="msg_time">${kapan}, ${time}  	</span>
+				</div>
+			  
+			 </div>`;
+								} else {
+									html += `<label class="badge badge-primary ml-5" >Panitia</label><div class="d-flex justify-content-start mb-4">
+				<div class="img_cont_msg">
+				<img src="<?= base_url('assets/img/test1.png') ?>" alt="" class="rounded-circle user_img_msg">
+				</div>
+				<div class="msg_cotainer">
+				   ${d.isi}								
+				   <span class="msg_time">${kapan}, ${time}	</span>
+				</div>
+			  
+			 </div>`;
+								}
+							} else {
+								if (d.dokumen_chat == null) {
+									html += `<label class="badge badge-danger ml-5" >${d.username_vendor}</label><div class="d-flex justify-content-start mb-4">
+				<div class="img_cont_msg">
+				<img src="<?= base_url('assets/img/test1.png') ?>" alt="" class="rounded-circle user_img_msg">
+				</div>
+				<div class="msg_cotainer">
+				   ${d.isi}								
+				   <span class="msg_time">${kapan}, ${time}  	</span>
+				</div> </div>`;
+								} else if (d.dokumen_chat) {
+									html += `<label class="badge badge-danger ml-5" >${d.username_vendor}</label><div class="d-flex justify-content-start mb-4">
+				<div class="img_cont_msg">
+				<img src="<?= base_url('assets/img/test1.png') ?>" alt="" class="rounded-circle user_img_msg">
+				</div>
+				<div class="msg_cotainer">
+				<a href="https://vms.jmtm.co.id/file_chat/${d.dokumen_chat}"> ${d.dokumen_chat}</a> <br>
+				   ${d.isi}								
+				   <span class="msg_time">${kapan}, ${time}  	</span>
+				</div>
+			 </div>`;
+								} else if (d.img_chat) {
+									html += `<label class="badge badge-danger ml-5" >${d.username_vendor}</label><div class="d-flex justify-content-start mb-4">
+				<div class="img_cont_msg">
+				<img src="<?= base_url('assets/img/test1.png') ?>" alt="" class="rounded-circle user_img_msg">
+				</div>
+				<div class="msg_cotainer">
+						<img width="100px" src="https://vms.jmtm.co.id/file_chat/${d.img_chat}"> <br>
+				   ${d.isi}								
+				   <span class="msg_time">${kapan}, ${time}  	</span>
+				</div>
+			  
+			 </div>`;
+								} else {
+									html += '<label class="badge badge-danger ml-5" >' + d.username_vendor + '</label><div class="d-flex justify-content-start mb-4">' +
+										'<div class="img_cont_msg">' +
+										'<img src="<?= base_url('assets/img/test1.png') ?>" alt="" class="rounded-circle user_img_msg">' +
+										'</div>' +
+										'<div class="msg_cotainer">' +
+										'' + d.isi + '' +
+										'<span class="msg_time">' +
+										'' + kapan + '' +
+										'' + time + '' +
+										'<a onClick="Replay(' + "'" + d.id_pengirim + "','" + d.isi + "','" + d.username_vendor + "'" + ')" href="javascript:;" class="badge badge-sm badge-warning">replay</a>	</span>' +
+										'</div>' +
+										'</div>';
+								}
+							}
+							// notifikasis
+						});
+						// console.log(html)
+						$('#letakpesan_binding_2').html(html);
+					}
+				});
+
+			}
+		});
+	</script>
+
+	<script>
+		$(document).ready(function() {
+			pesan_binding_3()
+
+			function pesan_binding_3() {
+				var id_penerima = '<?= $data2['id_mengikuti_vendor'] ?>';
+				var id_paket5 = $('#id_paket').val();
+				var id_pengirim = '<?= $this->session->userdata('id_pegawai') ?>';
+				$.ajax({
+					type: "post",
+					url: "<?= base_url() ?>panitiajmtm/beranda/ngeload_chatnya_auction_binding_3/" + id_paket5,
+					data: {
+						id_pengirim: id_pengirim,
+						id_penerima: id_penerima,
+					},
+					dataType: "json",
+					success: function(r) {
+						var html = "";
+						var d = r.data;
+						id_pengirim = '<?= $this->session->userdata('id_pegawai') ?>';
+						d.forEach(d => {
+
+							var today = new Date();
+							var dd = String(today.getDate()).padStart(2, '0');
+							var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+							var yyyy = today.getFullYear();
+
+							today = dd + '-' + mm + '-' + yyyy;
+							// console.log(today);
+
+							var times = new Date(d.waktu)
+							var time = times.toLocaleTimeString()
+							var tanggal = String(times.getDate()).padStart(2, '0');
+							var bulan = String(times.getMonth() + 1).padStart(2, '0');
+							var tahun = times.getFullYear()
+							var lengkapDB = tanggal + '-' + bulan + '-' + tahun
+							// console.log(lengkapDB == today)
+							var kapan = "Today"
+							var tanggal_bulan = tanggal + "-" + bulan
+							if (lengkapDB != today) {
+								kapan = tanggal_bulan
+							}
+							// console.log(kapan)
+							if (parseInt(d.id_pengirim) == id_pengirim) {
+								if (d.dokumen_chat == null) {
+									html += '<div class="d-flex justify-content-end mb-4">' +
+										'<div class="msg_cotainer_send">' +
+										'' + d.isi + '' +
+										'<span class="msg_time">' + kapan + ',' + time + '</span>' +
+										'</div>' +
+										'</div>';
+								} else if (d.dokumen_chat) {
+									html += '<div class="d-flex justify-content-end mb-4">' +
+										'<div class="msg_cotainer_send">' +
+										// '<img width="100px" src="<?= base_url('file_chat/') ?>' + d.img_chat + '">' +
+										'<a  class="text-primary" href="<?= base_url('/file_chat/') ?>' + d.dokumen_chat + '">' + d.dokumen_chat + '</a>' +
+										'<br>' + d.isi + '' +
+										'<span class="msg_time">' + kapan + ',' + time + '</span>' +
+										'</div>' +
+										'</div>';
+
+								} else if (d.img_chat) {
+									html += '<div class="d-flex justify-content-end mb-4">' +
+										'<div class="msg_cotainer_send">' +
+										'<img width="100px" src="<?= base_url('file_chat/') ?>' + d.img_chat + '">' +
+										// '<a  class="text-primary" href="<?= base_url('/file_chat/') ?>' + d.dokumen_chat + '">' + d.dokumen_chat + '</a>' +
+										'<br>' + d.isi + '' +
+										'<span class="msg_time">' + kapan + ',' + time + '</span>' +
+										'</div>' +
+										'</div>';
+
+								} else if (d.replay_tujuan) {
+									if (d.dokumen_chat == null) {
+										html += '<div class="d-flex justify-content-end mb-4">' +
+											'<div class="msg_cotainer_send">' +
+											'<div class="bs-callout bs-callout-info">' +
+											'' + d.replay_tujuan + '<br>' +
+											'' + d.replay_isi + '' +
+											'</div>' +
+											'' + d.isi + '' +
+											'<span class="msg_time">' + kapan + ',' + time + '</span>' +
+											'</div>' +
+											'</div>';
+									} else if (d.dokumen_chat) {
+										html += '<div class="d-flex justify-content-end mb-4">' +
+											'<div class="msg_cotainer_send">' +
+											'<div class="bs-callout bs-callout-info">' +
+											'' + d.replay_tujuan + '<br>' +
+											'' + d.replay_isi + '' +
+											'</div>' +
+											// '<img width="100px" src="<?= base_url('file_chat/') ?>' + d.img_chat + '">' +
+											'<a  class="text-primary" href="<?= base_url('/file_chat/') ?>' + d.dokumen_chat + '">' + d.dokumen_chat + '</a>' +
+											'<br>' + d.isi + '' +
+											'<span class="msg_time">' + kapan + ',' + time + '</span>' +
+											'</div>' +
+											'</div>';
+									} else if (d.img_chat) {
+										html += '<div class="d-flex justify-content-end mb-4">' +
+											'<div class="msg_cotainer_send">' +
+											'<div class="bs-callout bs-callout-info">' +
+											'' + d.replay_tujuan + '<br>' +
+											'' + d.replay_isi + '' +
+											'</div>' +
+											'<img width="100px" src="<?= base_url('file_chat/') ?>' + d.img_chat + '">' +
+											// '<a  class="text-primary" href="<?= base_url('/file_chat/') ?>' + d.dokumen_chat + '">' + d.dokumen_chat + '</a>' +
+											'<br>' + d.isi + '' +
+											'<span class="msg_time">' + kapan + ',' + time + '</span>' +
+											'</div>' +
+											'</div>';
+									} else {
+										html += '<div class="d-flex justify-content-end mb-4">' +
+											'<div class="msg_cotainer_send">' +
+											'<div class="bs-callout bs-callout-info">' +
+											'' + d.replay_tujuan + '<br>' +
+											'' + d.replay_isi + '' +
+											'</div>' +
+											'' + d.isi + '' +
+											'<span class="msg_time">' + kapan + ',' + time + '</span>' +
+											'</div>' +
+											'</div>';
+									}
+
+								} else {
+									html += '<div class="d-flex justify-content-end mb-4">' +
+										'<div class="msg_cotainer_send">' +
+										'' + d.isi + '' +
+										'<span class="msg_time">' + kapan + ',' + time + '</span>' +
+										'</div>' +
+										'</div>';
+								}
+							} else if (parseInt(d.id_penerima) == id_penerima) {
+								if (d.dokumen_chat == null) {
+									html += `<label class="badge badge-primary ml-5" >Panitia</label><div class="d-flex justify-content-start mb-4">
+				<div class="img_cont_msg">
+				<img src="<?= base_url('assets/img/test1.png') ?>" alt="" class="rounded-circle user_img_msg">
+				</div>
+				<div class="msg_cotainer">
+				   ${d.isi}								
+				   <span class="msg_time">${kapan}, ${time}  	</span>
+				</div> </div>`;
+								} else if (d.dokumen_chat) {
+									html += `<label class="badge badge-primary ml-5" >Panitia</label><div class="d-flex justify-content-start mb-4">
+				<div class="img_cont_msg">
+				<img src="<?= base_url('assets/img/test1.png') ?>" alt="" class="rounded-circle user_img_msg">
+				</div>
+				<div class="msg_cotainer">
+				<a href="<?= base_url('/file_chat/') ?>${d.dokumen_chat}"> ${d.dokumen_chat}</a> <br>
+				   ${d.isi}								
+				   <span class="msg_time">${kapan}, ${time}  	</span>
+				</div>
+			 </div>`;
+								} else if (d.img_chat) {
+									html += `<label class="badge badge-primary ml-5" >Panitia</label><div class="d-flex justify-content-start mb-4">
+				<div class="img_cont_msg">
+				<img src="<?= base_url('assets/img/test1.png') ?>" alt="" class="rounded-circle user_img_msg">
+				</div>
+				<div class="msg_cotainer">
+						<img width="100px" src="<?= base_url('file_chat/') ?>${d.img_chat}"> <br>
+				   ${d.isi}								
+				   <span class="msg_time">${kapan}, ${time}  	</span>
+				</div>
+			  
+			 </div>`;
+								} else {
+									html += `<label class="badge badge-primary ml-5" >Panitia</label><div class="d-flex justify-content-start mb-4">
+				<div class="img_cont_msg">
+				<img src="<?= base_url('assets/img/test1.png') ?>" alt="" class="rounded-circle user_img_msg">
+				</div>
+				<div class="msg_cotainer">
+				   ${d.isi}								
+				   <span class="msg_time">${kapan}, ${time}	</span>
+				</div>
+			  
+			 </div>`;
+								}
+							} else {
+								if (d.dokumen_chat == null) {
+									html += `<label class="badge badge-danger ml-5" >${d.username_vendor}</label><div class="d-flex justify-content-start mb-4">
+				<div class="img_cont_msg">
+				<img src="<?= base_url('assets/img/test1.png') ?>" alt="" class="rounded-circle user_img_msg">
+				</div>
+				<div class="msg_cotainer">
+				   ${d.isi}								
+				   <span class="msg_time">${kapan}, ${time}  	</span>
+				</div> </div>`;
+								} else if (d.dokumen_chat) {
+									html += `<label class="badge badge-danger ml-5" >${d.username_vendor}</label><div class="d-flex justify-content-start mb-4">
+				<div class="img_cont_msg">
+				<img src="<?= base_url('assets/img/test1.png') ?>" alt="" class="rounded-circle user_img_msg">
+				</div>
+				<div class="msg_cotainer">
+				<a href="https://vms.jmtm.co.id/file_chat/${d.dokumen_chat}"> ${d.dokumen_chat}</a> <br>
+				   ${d.isi}								
+				   <span class="msg_time">${kapan}, ${time}  	</span>
+				</div>
+			 </div>`;
+								} else if (d.img_chat) {
+									html += `<label class="badge badge-danger ml-5" >${d.username_vendor}</label><div class="d-flex justify-content-start mb-4">
+				<div class="img_cont_msg">
+				<img src="<?= base_url('assets/img/test1.png') ?>" alt="" class="rounded-circle user_img_msg">
+				</div>
+				<div class="msg_cotainer">
+						<img width="100px" src="https://vms.jmtm.co.id/file_chat/${d.img_chat}"> <br>
+				   ${d.isi}								
+				   <span class="msg_time">${kapan}, ${time}  	</span>
+				</div>
+			  
+			 </div>`;
+								} else {
+									html += '<label class="badge badge-danger ml-5" >' + d.username_vendor + '</label><div class="d-flex justify-content-start mb-4">' +
+										'<div class="img_cont_msg">' +
+										'<img src="<?= base_url('assets/img/test1.png') ?>" alt="" class="rounded-circle user_img_msg">' +
+										'</div>' +
+										'<div class="msg_cotainer">' +
+										'' + d.isi + '' +
+										'<span class="msg_time">' +
+										'' + kapan + '' +
+										'' + time + '' +
+										'<a onClick="Replay(' + "'" + d.id_pengirim + "','" + d.isi + "','" + d.username_vendor + "'" + ')" href="javascript:;" class="badge badge-sm badge-warning">replay</a>	</span>' +
+										'</div>' +
+										'</div>';
+								}
+							}
+							// notifikasis
+						});
+						// console.log(html)
+						$('#letakpesan_binding_3').html(html);
+					}
+				});
+
+			}
+		});
+	</script>
+
+	<script>
+		function formatRupiah(angka, prefix) {
+			var number_string = angka.replace(/[^,\d]/g, '').toString(),
+				split = number_string.split(','),
+				sisa = split[0].length % 3,
+				rupiah = split[0].substr(0, sisa),
+				ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+			// tambahkan titik jika yang di input sudah menjadi angka ribuan
+			if (ribuan) {
+				separator = sisa ? '.' : '';
+				rupiah += separator + ribuan.join('.');
+			}
+
+			rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+			return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+		}
+		lihat_sumary_binding()
+
+		function lihat_sumary_binding() {
+			var id_paket6 = $('#id_paket').val();
+			$.ajax({
+				type: "GET",
+				url: "<?= base_url('panitiajmtm/beranda/by_id_lihat_vendor/'); ?>" + id_paket6,
+				dataType: "JSON",
+				success: function(response) {
+					var html = '';
+					var html2 = '';
+					var html3 = '';
+					var harga_terkecil = null;
+					var no1 = 1;
+					var no2 = 1;
+					var no3 = 1;
+					var i;
+					for (i = 0; i < response['vendor1'].length; i++) {
+						var harga_terkecil = Math.min(response['vendor1'][i].harga_penawaran_binding_1);
+						if (response['vendor1'][i].harga_penawaran_binding_1 == response['min_binding_1']) {
+							var menang = '' + formatRupiah(response['vendor1'][i].harga_penawaran_binding_1, 'Rp. ') + ' <i style="font-size:20px" class="fa fa-flag-checkered" aria-hidden="true"></i>';
+						} else {
+							// var menang = '' + formatRupiah(response['vendor1'][i].harga_penawaran_binding_1, 'Rp. ');
+							var menang = '-';
+						}
+						html += '<tr>' +
+							'<td>' + response['vendor1'][i].username_vendor + '</td>' +
+							'<td>' + menang + '</td>' +
+							'<td>' + no1++ + '</td>' +
+							'</tr>'
+					}
+
+					for (i = 0; i < response['vendor2'].length; i++) {
+						var harga_terkecil = Math.min(response['vendor2'][i].harga_penawaran_binding_2);
+						if (response['vendor2'][i].harga_penawaran_binding_2 == response['min_binding_2']) {
+							var menang = '' + formatRupiah(response['vendor2'][i].harga_penawaran_binding_2, 'Rp. ') + ' <i style="font-size:20px" class="fa fa-flag-checkered" aria-hidden="true"></i>';
+						} else {
+							// var menang = '' + formatRupiah(response['vendor1'][i].harga_penawaran_binding_1, 'Rp. ');
+							var menang = '-';
+						}
+						html2 += '<tr>' +
+							'<td>' + response['vendor2'][i].username_vendor + '</td>' +
+							'<td>' + menang + '</td>' +
+							'<td>' + no2++ + '</td>' +
+							'</tr>'
+					}
+
+					for (i = 0; i < response['vendor3'].length; i++) {
+						var harga_terkecil = Math.min(response['vendor3'][i].harga_penawaran_binding_3);
+						if (response['vendor3'][i].harga_penawaran_binding_3 == response['min_binding_3']) {
+							var menang = '' + formatRupiah(response['vendor3'][i].harga_penawaran_binding_3, 'Rp. ') + ' <i style="font-size:20px" class="fa fa-flag-checkered" aria-hidden="true"></i>';
+						} else {
+							// var menang = '' + formatRupiah(response['vendor1'][i].harga_penawaran_binding_1, 'Rp. ');
+							var menang = '-';
+						}
+						html3 += '<tr>' +
+							'<td>' + response['vendor3'][i].username_vendor + '</td>' +
+							'<td>' + menang + '</td>' +
+							'<td>' + no3++ + '</td>' +
+							'</tr>'
+					}
+					$('#binding_sumaary_1').html(html);
+					$('#binding_sumaary_2').html(html2);
+					$('#binding_sumaary_3').html(html3);
+				}
+			})
+		}
 	</script>
 </body>
 

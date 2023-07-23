@@ -893,6 +893,17 @@
 			});
 		})
 	})
+	$(document).ready(function() {
+		$('#id_kualifikasi').change(function() {
+			var id_kualifikasi = $('#id_kualifikasi').val();
+			if (id_kualifikasi == 22) {
+				$('[name="id_metode_dokumen"]').val(4);
+				$('#cek_kualifikasi').attr("disabled", true); 
+			} else {
+				$('#cek_kualifikasi').attr("disabled", false); 
+			}
+		})
+	})
 </script>
 
 <script>
@@ -928,7 +939,6 @@
 				icon: icon,
 			});
 		}
-
 
 		document.getElementById("id_kualifikasi_usaha").onchange = function() {
 			var kategori = $('[name="kualifikasi_usaha"]').val();

@@ -3390,29 +3390,6 @@
 														</div>
 													</div>
 												</div>
-												<div class="col-md-6">
-													<div class="card border-primary mb-3">
-														<div class="card-header bg-primary" style="color: white;display: flex; justify-content:space-between;">Dokumen Prakualifikasi
-														</div>
-														<div class="card-body">
-															<table class="table table table-striped">
-																<?php foreach ($get_pdf_dokumen_kualifikasi as $key => $value) { ?>
-																	<tr>
-																		<td>
-																			<a target="_blank" href="<?= base_url('dokumen_file_dokumen_kualifikasi_pdf/' . $value['file_dokumen_kualifikasi_pdf']) ?>">
-																				<?= $value['nama_dokumen_kualifikasi_pdf'] ?>
-																				<img src="<?= base_url('assets/img/pdfku.png') ?>" style="width: 20px;" alt="" class="ml-4">
-																			</a>
-																		</td>
-																		<td>
-																			<!-- <a class="text-danger" href="<?= base_url('panitiajmtm/daftarpaket/delete_dokumen_kualifikasi/' . $value['id_dokumen_kualifikasi_pdf']) ?>"><i class="fas fa-trash-alt"></i></a> -->
-																		</td>
-																	</tr>
-																<?php    } ?>
-															</table>
-														</div>
-													</div>
-												</div>
 											</div>
 											<?php if (date('Y-m-d H:i', strtotime($evaluasi_dokumen_prakualifiaksi_2_file['tanggal_mulai_jadwal'])) >= date('Y-m-d H:i')) { ?>
 

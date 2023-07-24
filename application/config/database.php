@@ -75,10 +75,15 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
+
 	'hostname' => 'kintekindo.net',
 	'username' => 'u1064384_eproc_jmtm_new',
 	'password' => 'low***bet123#',
 	'database' => 'u1064384_eproc_jmtm_new',
+	// 'hostname' => '192.168.10.30',
+	// 'username' => 'root',
+	// 'password' => 'low***bet',
+	// 'database' => 'jmtm-eproc',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

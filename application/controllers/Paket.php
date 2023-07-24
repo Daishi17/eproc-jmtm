@@ -157,7 +157,7 @@ class Paket extends CI_Controller
 		$data['kabupaten'] = $this->Wilayah_model->getAllKabupaten();
 		$data['provinsi'] = $this->Wilayah_model->getProvinsi();
 		$data['cek_panitia'] = $this->db->query("SELECT id_panita_mengikuti_paket FROM tbl_panitia_mengikuti_paket WHERE status_panitia_id_paket = $id_paket")->row_array();
-		
+
 		// update baru desember 2022
 		$data['total_hps_edit'] = $this->Paket_model->sum_rincian_hps($id_paket);
 
@@ -3721,7 +3721,11 @@ class Paket extends CI_Controller
 						$row[] = '<label class="badge badge-success">Tender Sudah Selesai </label>';
 					}
 				} else if ($angga->status_paket_tender == 0) {
-					$row[] = '<label class="badge badge-danger">Belum Buat Tender!! </label>';
+					if ($angga->status_pembatalan_atau_pengulangan == 2) {
+						$row[] = '<a class="badge badge-warning" href="javascript:;" onClick="byid_paket_tender_biasa_berlangsung(' . "'" . $angga->id_paket . "','lihat_alasan_batal'" . ')"><i class="fas fa fa-eye"></i> Tender Batal / Mengulang</a>';
+					} else {
+						$row[] = '<label class="badge badge-danger">Belum Buat Tender!! </label>';
+					}
 				}
 
 				if ($angga->status_paket_tender == 0) {

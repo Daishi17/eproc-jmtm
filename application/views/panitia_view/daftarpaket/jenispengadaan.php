@@ -88,14 +88,14 @@
   									<?php } ?>
   								</div>
   							</div>
-  							<div class="row  mb-2">
+  							<div class="row mb-2">
   								<div class="col-xs-10 col-sm-6 col-md-2"> <label for=""> Metode Evaluasi </label></div>
   								<div class="col-xs-12 col-md-6">
   									<?php if ($paket2['status_paket_tender'] == 1) { ?>
   										<select id="mySelecttender4" style="width: 100%;" name="id_metode_dokumen" class="form-control select2">
   											<option value="<?= $paket2['id_metode_dokumen'] ?>"><?= $paket2['nama_metode_dokumen'] ?></option>
   											<?php foreach ($metode_dokumen as $key => $value) { ?>
-  												<option value="<?= $value['id_metode_dokumen'] ?>"><?= $value['nama_metode_dokumen'] ?></option>
+  												<option id="cek_kualifikasi" value="<?= $value['id_metode_dokumen'] ?>"><?= $value['nama_metode_dokumen'] ?></option>
   											<?php	} ?>
   										</select>
   									<?php } else if ($paket2['status_paket_tender'] == 2) { ?>
@@ -108,27 +108,6 @@
   									<?php } ?>
   								</div>
   							</div>
-  							<!-- <div class="row mb-2">
-								<div class="col-xs-10 col-sm-6 col-md-2"> <label for=""> Metode Evaluasi </label></div>
-								<div class="col-xs-12 col-md-6">
-									<?php if ($paket2['status_paket_tender'] == 1) { ?>
-										<select id="mySelecttender5" style="width: 100%;" name="id_metode_evaluasi" class="form-control select2">
-											<option value="<?= $paket2['id_metode_evaluasi'] ?>"><?= $paket2['nama_metode_evaluasi'] ?></option>
-											<?php foreach ($metode_evaluasi as $key => $value) { ?>
-												<option value="<?= $value['id_metode_evaluasi'] ?>"><?= $value['nama_metode_evaluasi'] ?></option>
-											<?php	} ?>
-										</select>
-									<?php } else if ($paket2['status_paket_tender'] == 2) { ?>
-
-										<select disabled id="mySelecttender5" style="width: 100%;" name="id_metode_evaluasi" class="form-control select2">
-											<option value="<?= $paket2['id_metode_evaluasi'] ?>"><?= $paket2['nama_metode_evaluasi'] ?></option>
-											<?php foreach ($metode_evaluasi as $key => $value) { ?>
-												<option value="<?= $value['id_metode_evaluasi'] ?>"><?= $value['nama_metode_evaluasi'] ?></option>
-											<?php	} ?>
-										</select>
-									<?php } ?>
-								</div>
-							</div> -->
   							<div class="row mt-4 mb-2">
   								<div class="col-xs-10 col-sm-6 col-md-2"> <label for=""> </label></div>
   								<div class="col-xs-12 col-md-6">

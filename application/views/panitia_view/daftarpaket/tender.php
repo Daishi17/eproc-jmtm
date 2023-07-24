@@ -1151,7 +1151,7 @@
 										<div class="card-header btn-grad100" style="color: white;">Dokumen Lelang</div>
 										<div class="card-body text-primary">
 											<div class="row">
-												<?php if ($paket['id_kualifikasi'] == 20 || $paket['id_kualifikasi'] == 21) { ?>
+												<?php if ($paket['id_kualifikasi'] == 20 ||  $paket['id_kualifikasi'] == 22 || $paket['id_kualifikasi'] == 21) { ?>
 
 												<?php } else { ?>
 													<div class="col-md-6">
@@ -1218,10 +1218,17 @@
 								</td>
 							</tr>
 							<tr>
-								<th>Dokumen Persyaratan Tender Terbatas / Seleksi Terbatas (Pemilihan Langsung)<span class="warning">*</span></th>
-								<td>
-									<a class="btn btn-sm btn-grad100" href="<?= base_url('panitiajmtm/daftarpaket/persyaratankualifikasi/' . $paket['id_paket']) ?>">isi Persyaratan Tender Terbatas / Seleksi Terbatas (Pemilihan Langsung)<span class="warning">*</span></a>
-								</td>
+								<?php if ($paket['id_kualifikasi'] == 22) { ?>
+									<th>Dokumen Persyaratan Tender E-auction<span class="warning">*</span></th>
+									<td>
+										<a class="btn btn-sm btn-grad100" href="<?= base_url('panitiajmtm/daftarpaket/persyaratankualifikasi/' . $paket['id_paket']) ?>">isi Persyaratan Tender E-auction<span class="warning">*</span></a>
+									</td>
+								<?php } else { ?>
+									<th>Dokumen Persyaratan Tender Terbatas / Seleksi Terbatas (Pemilihan Langsung)<span class="warning">*</span></th>
+									<td>
+										<a class="btn btn-sm btn-grad100" href="<?= base_url('panitiajmtm/daftarpaket/persyaratankualifikasi/' . $paket['id_paket']) ?>">isi Persyaratan Tender Terbatas / Seleksi Terbatas (Pemilihan Langsung)<span class="warning">*</span></a>
+									</td>
+								<?php } ?>
 							</tr>
 							<tr>
 								<th>Jenis Kontrak<span class="warning">*</span></th>

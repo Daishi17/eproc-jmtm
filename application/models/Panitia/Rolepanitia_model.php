@@ -1903,6 +1903,17 @@ class Rolepanitia_model extends CI_Model
 		return $query->result_array();
 	}
 
+	public function get_data_persyaratan_vms_auction()
+	{
+		$this->db->select('*');
+		$this->db->from('tbl_persyaratan_vms');
+		$this->db->where_not_in('nama_persyaratan_vms', 'nib');
+		$this->db->limit(10);
+		$query = $this->db->get();
+		return $query->result_array();
+	}
+	
+
 	//cek perysaratan vms di paket
 	public function get_persyaratanvms_byPaket($id_paket)
 	{

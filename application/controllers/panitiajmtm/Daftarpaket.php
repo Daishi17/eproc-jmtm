@@ -2153,6 +2153,10 @@ class Daftarpaket extends CI_Controller
         $jadwal10 = $tanggal_selesai_jadwal[5];
         $jadwal11 = $tanggal_mulai_jadwal[6];
         $jadwal12 = $tanggal_selesai_jadwal[6];
+        $jadwal13 = $tanggal_mulai_jadwal[7];
+        $jadwal14 = $tanggal_selesai_jadwal[7];
+        $jadwal15 = $tanggal_mulai_jadwal[8];
+        $jadwal16 = $tanggal_selesai_jadwal[8];
 
 
         //row pertama
@@ -2261,13 +2265,49 @@ class Daftarpaket extends CI_Controller
                 'tanggal_selesai_jadwal' => $tanggal_selesai_jadwal[6],
                 // 'jam_selesai' => $time_selesai[6],
             ];
-            $data99 = [
-                'selesai_semua_tender' => $tanggal_selesai_jadwal[6],
-                'start_time_binding' => $jadwal7
-            ];
-            $this->Rolepanitia_model->update_batas_pendaftaran($data99, $id_paket);
             $this->Rolepanitia_model->update_jadwal($data6, $where6);
         }
+
+          //row ketujuh
+          if (date('Y-m-d H:i', strtotime($jadwal13)) < date('Y-m-d H:i', strtotime($jadwal12)) || date('Y-m-d H:i', strtotime($jadwal13)) > date('Y-m-d H:i', strtotime($jadwal14))) {
+            $this->session->set_flashdata('jadwal_salah7', '<label  id="validasi_c7" class="text-danger"></label>');
+        } else {
+            $where7 = [
+                'id_paket' => $id_paket,
+                'id_jadwal_tender' => $id_jadwal_tender[7]
+            ];
+            $data7 = [
+                'tanggal_mulai_jadwal' => $tanggal_mulai_jadwal[7],
+                // 'jam_mulai' => $time_mulai[7],
+                'tanggal_selesai_jadwal' => $tanggal_selesai_jadwal[7],
+                // 'jam_selesai' => $time_selesai[7],
+            ];
+
+            $this->Rolepanitia_model->update_jadwal($data7, $where7);
+        }
+
+        //row kelapan
+        if (date('Y-m-d H:i', strtotime($jadwal15)) < date('Y-m-d H:i', strtotime($jadwal14)) || date('Y-m-d H:i', strtotime($jadwal15)) > date('Y-m-d H:i', strtotime($jadwal16))) {
+            $this->session->set_flashdata('jadwal_salah8', '<label  id="validasi_c8" class="text-danger"></label>');
+        } else {
+            $where8 = [
+                'id_paket' => $id_paket,
+                'id_jadwal_tender' => $id_jadwal_tender[8]
+            ];
+            $data8 = [
+                'tanggal_mulai_jadwal' => $tanggal_mulai_jadwal[8],
+                // 'jam_mulai' => $time_mulai[8],
+                'tanggal_selesai_jadwal' => $tanggal_selesai_jadwal[8],
+                // 'jam_selesai' => $time_selesai[8],
+            ];
+            $this->Rolepanitia_model->update_jadwal($data8, $where8);
+        }
+
+        $data99 = [
+            'selesai_semua_tender' => $tanggal_selesai_jadwal[8],
+            'start_time_binding' => $jadwal11
+        ];
+        $this->Rolepanitia_model->update_batas_pendaftaran($data99, $id_paket);
         $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible">Data Berhasil Diupdate!
 			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>');
         redirect('panitiajmtm/daftarpaket/jadwaltender/' . $id_paket);
@@ -2398,8 +2438,12 @@ class Daftarpaket extends CI_Controller
     {
         // NIB 
 
-        $data['perysaratan_vms'] = $this->Rolepanitia_model->get_data_persyaratan_vms();
         $data['paket'] = $this->Rolepanitia_model->getById($id_paket);
+        if ($data['paket']['id_kualifikasi'] == 22) {
+            $data['perysaratan_vms'] = $this->Rolepanitia_model->get_data_persyaratan_vms_auction();
+        } else {
+            $data['perysaratan_vms'] = $this->Rolepanitia_model->get_data_persyaratan_vms();
+        }
         $data['persyaratan_izin_usaha'] = $this->Rolepanitia_model->by_id_result_persyaratan_izin_usaha($id_paket);
         $data['datapersayaratan'] = $this->Rolepanitia_model->by_id_persyaratan($id_paket);
         $data['nib'] = $this->Rolepanitia_model->get_nib();
@@ -2936,7 +2980,6 @@ class Daftarpaket extends CI_Controller
             $this->output->set_content_type('application/json')->set_output(json_encode($data));
         } else {
             // NIB 
-            $perysaratan = $this->Rolepanitia_model->get_perysaratan_untuk_vendor($id_paket);
             $kualifikasi_usaha = $this->input->post('kualifikasi_usaha');
             $bobot_teknis = $this->input->post('bobot_teknis');
             $bobot_biaya = $this->input->post('bobot_biaya');
@@ -2953,6 +2996,14 @@ class Daftarpaket extends CI_Controller
                 'token' => random_string('alnum', 128),
                 'token_vendor' => random_string('alnum', 128)
             ];
+            $cek_paket = $this->Rolepanitia_model->getById($id_paket);
+            if ($cek_paket['id_kualifikasi'] == 22) {
+                $data2 = [
+                    'status_mengikuti_paket' => 1
+                ];
+                $this->Non_tender_model->tunjuk_penyedia(array('id_mengikuti_paket_vendor' => $id_paket), $data2);
+            } else {
+            }
             $this->Rolepanitia_model->update_save_tender(array('id_paket' => $id_paket), $data);
             $this->output->set_content_type('application/json')->set_output(json_encode('success'));
             $this->session->set_flashdata('message', '<br> <div class="alert alert-primary alert-dismissible">' . '<div class="form-inline"><img width="100px" src=' . base_url('assets/img/logo_pengumuman.png') . ' > <h3>  PAKET TENDER BERHASIL DI UMUMKAN! </h3></div>' . '</div>');
@@ -3638,7 +3689,6 @@ class Daftarpaket extends CI_Controller
             'status_persetujuan_manager' => 4,
             'token' => random_string('alnum', 128),
             'token_vendor' => random_string('alnum', 128),
-            'tahap_binding' => 1,
         ];
         $data2 = [
             'status_penunjukan_langsung' => 1

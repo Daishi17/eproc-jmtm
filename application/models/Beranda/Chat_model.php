@@ -310,6 +310,7 @@ class Chat_model extends CI_Model
 		$this->db->join('tbl_provinsi', 'tbl_vendor_identitas_prusahaan.id_provinsi = tbl_provinsi.id_provinsi', 'left');
 		$this->db->join('tbl_kabupaten', 'tbl_vendor_identitas_prusahaan.id_kabupaten = tbl_kabupaten.id_kabupaten', 'left');
 		$this->db->where('tbl_vendor_mengikuti_paket.id_mengikuti_paket_vendor', $id_paket);
+      $this->db->where('tbl_vendor_mengikuti_paket.harga_penawaran_binding_1 !=', 0);
 		$this->db->group_by('tbl_vendor_mengikuti_paket.id_mengikuti_vendor');
       $this->db->order_by('harga_penawaran_binding_1','ASC');
 		$query = $this->db->get();
@@ -325,6 +326,7 @@ class Chat_model extends CI_Model
 		$this->db->join('tbl_provinsi', 'tbl_vendor_identitas_prusahaan.id_provinsi = tbl_provinsi.id_provinsi', 'left');
 		$this->db->join('tbl_kabupaten', 'tbl_vendor_identitas_prusahaan.id_kabupaten = tbl_kabupaten.id_kabupaten', 'left');
 		$this->db->where('tbl_vendor_mengikuti_paket.id_mengikuti_paket_vendor', $id_paket);
+      $this->db->where('tbl_vendor_mengikuti_paket.harga_penawaran_binding_2 !=', 0);
 		$this->db->group_by('tbl_vendor_mengikuti_paket.id_mengikuti_vendor');
       $this->db->order_by('harga_penawaran_binding_2','ASC');
 		$query = $this->db->get();
@@ -340,6 +342,7 @@ class Chat_model extends CI_Model
 		$this->db->join('tbl_provinsi', 'tbl_vendor_identitas_prusahaan.id_provinsi = tbl_provinsi.id_provinsi', 'left');
 		$this->db->join('tbl_kabupaten', 'tbl_vendor_identitas_prusahaan.id_kabupaten = tbl_kabupaten.id_kabupaten', 'left');
 		$this->db->where('tbl_vendor_mengikuti_paket.id_mengikuti_paket_vendor', $id_paket);
+      $this->db->where('tbl_vendor_mengikuti_paket.harga_penawaran_binding_3 !=', 0);
 		$this->db->group_by('tbl_vendor_mengikuti_paket.id_mengikuti_vendor');
       $this->db->order_by('harga_penawaran_binding_3','ASC');
 		$query = $this->db->get();

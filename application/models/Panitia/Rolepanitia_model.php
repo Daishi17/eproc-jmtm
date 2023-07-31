@@ -3070,4 +3070,47 @@ class Rolepanitia_model extends CI_Model
 		return $this->db->affected_rows();
 	}
 	// end 2023 update ba upload prakualifikasi dan pascakualifikasi 1-5
+
+
+	// INI UNTUK TAHAPAN JADWAL EAUCTION 
+	public function get_tahap_download_dokumen_pengadaan_eauction($id_paket, $id_kualifikasi)
+	{
+		$query = $this->db->query("SELECT * FROM tbl_jadwal_tender_detail WHERE id_paket = $id_paket AND id_kualifikasi = $id_kualifikasi AND nama_jadwal_tender = 'Download Dokumen Pengadaan'");
+		return $query->row_array();
+	}
+
+	public function penjelasan_tender_eauction($id_paket, $id_kualifikasi)
+	{
+		$query = $this->db->query("SELECT * FROM tbl_jadwal_tender_detail WHERE id_paket = $id_paket AND id_kualifikasi = $id_kualifikasi AND nama_jadwal_tender = 'Penjelasan Tender'");
+		return $query->row_array();
+	}
+
+	public function upload_dokumen_eauction($id_paket, $id_kualifikasi)
+	{
+		$query = $this->db->query("SELECT * FROM tbl_jadwal_tender_detail WHERE id_paket = $id_paket AND id_kualifikasi = $id_kualifikasi AND nama_jadwal_tender = 'Upload Dokumen'");
+		return $query->row_array();
+	}
+	public function tahap_evaluasi_eauction($id_paket, $id_kualifikasi)
+	{
+		$query = $this->db->query("SELECT * FROM tbl_jadwal_tender_detail WHERE id_paket = $id_paket AND id_kualifikasi = $id_kualifikasi AND nama_jadwal_tender = 'Evaluasi Persyaratan Tambahan'");
+		return $query->row_array();
+	}
+
+	public function tahap_jadwal_binding($id_paket, $id_kualifikasi)
+	{
+		$query = $this->db->query("SELECT * FROM tbl_jadwal_tender_detail WHERE id_paket = $id_paket AND id_kualifikasi = $id_kualifikasi AND nama_jadwal_tender = 'Jadwal Binding'");
+		return $query->row_array();
+	}
+
+	public function tahap_penetapan_pemenang_eauction($id_paket, $id_kualifikasi)
+	{
+		$query = $this->db->query("SELECT * FROM tbl_jadwal_tender_detail WHERE id_paket = $id_paket AND id_kualifikasi = $id_kualifikasi AND nama_jadwal_tender = 'Penetapan Pemenang'");
+		return $query->row_array();
+	}
+
+	public function tahap_pengumuman_pemenang_eauction($id_paket, $id_kualifikasi)
+	{
+		$query = $this->db->query("SELECT * FROM tbl_jadwal_tender_detail WHERE id_paket = $id_paket AND id_kualifikasi = $id_kualifikasi AND nama_jadwal_tender = 'Pengumuman Pemenang'");
+		return $query->row_array();
+	}
 }

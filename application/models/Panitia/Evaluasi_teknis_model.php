@@ -135,6 +135,12 @@ class Evaluasi_teknis_model extends CI_Model
       return $this->db->affected_rows();
    }
 
+   public function penetapan_pemenang_by_paket($where, $data)
+   {
+      $this->db->update('tbl_paket', $data, $where);
+      return $this->db->affected_rows();
+   }
+
    public function hitung_seluruh_persyaratan_administrasi($id_paket)
    {
       $this->db->select('*');

@@ -352,6 +352,14 @@ class Beranda extends CI_Controller
         // 6 juli 2022
         $paket['get_vendor'] = $this->Rolepanitia_model->get_username($id_paket);
 
+        // INI UNTUK TAHAPAN EAUCTIUON
+        $data['get_tahap_download_dokumen_pengadaan_eauction'] = $this->Rolepanitia_model->get_tahap_download_dokumen_pengadaan_eauction($id_paket, $id_kualifikasi);
+        $data['upload_dokumen_eauction'] = $this->Rolepanitia_model->upload_dokumen_eauction($id_paket, $id_kualifikasi);
+        $data['tahap_jadwal_binding'] = $this->Rolepanitia_model->tahap_jadwal_binding($id_paket, $id_kualifikasi);
+        $data['tahap_evaluasi_eauction'] = $this->Rolepanitia_model->tahap_evaluasi_eauction($id_paket, $id_kualifikasi);
+        $data['penjelasan_tender_eauction'] = $this->Rolepanitia_model->penjelasan_tender_eauction($id_paket, $id_kualifikasi);
+        $data['tahap_penetapan_pemenang_eauction'] = $this->Rolepanitia_model->tahap_penetapan_pemenang_eauction($id_paket, $id_kualifikasi);
+        $data['tahap_pengumuman_pemenang_eauction'] = $this->Rolepanitia_model->tahap_pengumuman_pemenang_eauction($id_paket, $id_kualifikasi);
         $this->load->view('template_panitia/header');
         $this->load->view('template/navlogin', $data);
         $this->load->view('panitia_view/beranda/informasitender', $paket);
@@ -1574,7 +1582,14 @@ class Beranda extends CI_Controller
         $data = [
             'pemenang_tender' => 1,
         ];
+        $data_update_ke_paket = [
+            'penetapan_pemenang' => 1
+        ];
+        $where = [
+            'id_paket' => $get_vendor['id_mengikuti_paket_vendor']
+        ];
         $this->Evaluasi_teknis_model->penetapan_pemenang(array('id_mengikuti_paket' => $id_mengikuti_paket), $data);
+        $this->Evaluasi_teknis_model->penetapan_pemenang_by_paket($where, $data_update_ke_paket);
         $this->output->set_content_type('application/json')->set_output(json_encode('success'));
     }
 
@@ -1592,11 +1607,19 @@ class Beranda extends CI_Controller
     {
         $id_mengikuti_paket = $this->input->post('saya_ambil_id_mengikuti_paket');
         $alasanbatalkan = $this->input->post('alasan_saya_batalkan_tender');
+        $get_vendor = $this->Evaluasi_model->get_vendor_mengikuti_paket($id_mengikuti_paket);
         $data = [
             'pemenang_tender' => 0,
             'alasan_pembatalan_pemanang' => $alasanbatalkan
         ];
+        $data_update_ke_paket = [
+            'penetapan_pemenang' => 0
+        ];
+        $where = [
+            'id_paket' => $get_vendor['id_mengikuti_paket_vendor']
+        ];
         $this->Evaluasi_teknis_model->penetapan_pemenang(array('id_mengikuti_paket' => $id_mengikuti_paket), $data);
+        $this->Evaluasi_teknis_model->penetapan_pemenang_by_paket($where, $data_update_ke_paket);
         $this->output->set_content_type('application/json')->set_output(json_encode('success'));
     }
 
@@ -2099,6 +2122,16 @@ class Beranda extends CI_Controller
 
         // NEW TAHAP UNTUK PRAKUALIFKASI 1 FILE
         $data['get_tahap_prakualfiikasi_satu_file_penetapan'] = $this->Rolepanitia_model->get_tahap_prakualfiikasi_satu_file_penetapan($id_paket, $id_kualifikasi);
+
+        // INI UNTUK TAHAPAN EAUCTIUON
+        $data['get_tahap_download_dokumen_pengadaan_eauction'] = $this->Rolepanitia_model->get_tahap_download_dokumen_pengadaan_eauction($id_paket, $id_kualifikasi);
+        $data['upload_dokumen_prakualifikasi_2_file'] = $this->Rolepanitia_model->upload_dokumen_prakualifikasi_2_file($id_paket, $id_kualifikasi);
+        $data['upload_dokumen_eauction'] = $this->Rolepanitia_model->upload_dokumen_eauction($id_paket, $id_kualifikasi);
+        $data['tahap_jadwal_binding'] = $this->Rolepanitia_model->tahap_jadwal_binding($id_paket, $id_kualifikasi);
+        $data['tahap_evaluasi_eauction'] = $this->Rolepanitia_model->tahap_evaluasi_eauction($id_paket, $id_kualifikasi);
+        $data['penjelasan_tender_eauction'] = $this->Rolepanitia_model->penjelasan_tender_eauction($id_paket, $id_kualifikasi);
+        $data['tahap_penetapan_pemenang_eauction'] = $this->Rolepanitia_model->tahap_penetapan_pemenang_eauction($id_paket, $id_kualifikasi);
+        $data['tahap_pengumuman_pemenang_eauction'] = $this->Rolepanitia_model->tahap_pengumuman_pemenang_eauction($id_paket, $id_kualifikasi);
 
         $this->load->view('template_panitia/header');
         $this->load->view('template/navlogin', $data);
@@ -4434,7 +4467,32 @@ class Beranda extends CI_Controller
     }
 
     // end upload dokumen prakualifikasi dan pascakualifikasi
+    public function reverseauctiontender_binding($id_paket)
+    {
+        $id_pegawai = $this->session->userdata('id_pegawai');
+        $ambil_kualifikasi = $this->Rolepanitia_model->getById($id_paket);
+        $id_kualifikasi = $ambil_kualifikasi['id_kualifikasi'];
+        $data['get_tahap'] = $this->Rolepanitia_model->get_tahap_penjelasan($id_paket, $id_kualifikasi);
+        $data['tahap_dokumen_prakualifikasi'] = $this->Rolepanitia_model->get_tahap_penjelasan_prakualifikasi($id_paket, $id_kualifikasi);
+        $data['data2'] = $this->Chat_model->getDataById($id_paket);
+        $id_pegawai = $this->session->userdata('id_pegawai');
+        $data['ambil_paket']  = $this->Chat_model->get_byid_panitia($id_paket, $id_pegawai);
+        $data['status_penetapan_langsung'] = $this->Rolepanitia_model->cek_role_penetapan($id_pegawai);
+        $data['get_tahap_dokumen_sangahan_prakualifikasi'] = $this->Rolepanitia_model->get_tahap_dokumen_sangahan_prakualifikasi($id_paket, $id_kualifikasi);
+        $data['get_tahap_dokumen_negosiasi'] = $this->Rolepanitia_model->get_tahap_dokumen_negosiasi($id_paket, $id_kualifikasi);
+        $data['get_tahap_dokumen_sangahan_akhir'] = $this->Rolepanitia_model->get_tahap_dokumen_sangahan_akhir($id_paket, $id_kualifikasi);
+        // seleksi umum tahap
+        $data['get_tahap_penjelasan_prakualifikasi'] = $this->Rolepanitia_model->get_tahap_penjelasan_prakualifikasi($id_paket, $id_kualifikasi);
 
+        // NEW TAHAP UNTUK PRAKUALIFKASI 1 FILE
+        $data['get_tahap_prakualfiikasi_satu_file_penetapan'] = $this->Rolepanitia_model->get_tahap_prakualfiikasi_satu_file_penetapan($id_paket, $id_kualifikasi);
+
+        $this->load->view('template_panitia/header');
+        $this->load->view('template/navlogin', $data);
+        $this->load->view('panitia_view/beranda/reverse_auction_binding', $data);
+        $this->load->view('template_panitia/footer');
+        $this->load->view('panitia_view/beranda/ajax_reverse_auction', $data);
+    }
 
     public function reverseauctiontender($id_paket)
     {
@@ -4458,7 +4516,7 @@ class Beranda extends CI_Controller
 
         $this->load->view('template_panitia/header');
         $this->load->view('template/navlogin', $data);
-        $this->load->view('panitia_view/beranda/chat_auction', $data);
+        $this->load->view('panitia_view/beranda/reverse', $data);
         $this->load->view('template_panitia/footer');
         $this->load->view('panitia_view/beranda/chat_ajax_auction');
     }

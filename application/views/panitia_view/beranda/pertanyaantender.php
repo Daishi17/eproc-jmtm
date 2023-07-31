@@ -394,66 +394,94 @@
 	</div>
 </div>
 
-<?php if ($ambil_paket['id_kualifikasi'] == 11 || $ambil_paket['id_kualifikasi'] == 7 || $ambil_paket['id_kualifikasi'] == 17) { ?>
+<?php if ($ambil_paket['id_kualifikasi'] == 11 || $ambil_paket['id_kualifikasi'] == 7 || $ambil_paket['id_kualifikasi'] == 17 || $ambil_paket['id_kualifikasi'] == 22) { ?>
 	<div id="main" class="container">
 		<input type="hidden" name="id_paket" id="id_paket" value="<?= $ambil_paket['id_paket'] ?>">
 		<div class="float-right p-3">
 			<a href="javascript:;" class="btn btn-sm btn-info" id="sudahdibaca_negosiasi"><img src="<?= base_url('assets/img/pesan.png') ?>" width="25px" alt=""> <span id="notifikasi_negosiasi" class="badge badge-danger navbar-badge"></span> Pesan Negosiasi </a>
-			<a href="javascipt:;" class="btn btn-sm btn-info" id="sudahdibaca_sanggahan_prakualifikasi"><img src="<?= base_url('assets/img/pesan.png') ?>" width="25px" alt=""> <span id="notifikasi_sangahan_prakualifikasi" class="badge badge-danger navbar-badge"></span> Sanggahan Prakualifikasi</a>
-			<a href="javascipt:;" class="btn btn-sm btn-info" id="sudahdibaca_sanggahan_akhir"><img src="<?= base_url('assets/img/pesan.png') ?>" width="25px" alt=""> <span id="notifikasi_sangahan_akhir" class="badge badge-danger navbar-badge"></span> Sanggahan Akhir</a>
+			<?php if ($ambil_paket['id_kualifikasi'] == 22) { ?>
+
+			<?php } else { ?>
+				<a href="javascipt:;" class="btn btn-sm btn-info" id="sudahdibaca_sanggahan_prakualifikasi"><img src="<?= base_url('assets/img/pesan.png') ?>" width="25px" alt=""> <span id="notifikasi_sangahan_prakualifikasi" class="badge badge-danger navbar-badge"></span> Sanggahan Prakualifikasi</a>
+				<a href="javascipt:;" class="btn btn-sm btn-info" id="sudahdibaca_sanggahan_akhir"><img src="<?= base_url('assets/img/pesan.png') ?>" width="25px" alt=""> <span id="notifikasi_sangahan_akhir" class="badge badge-danger navbar-badge"></span> Sanggahan Akhir</a>
+			<?php } ?>
 		</div>
 		<div class="breadcrumb bg-primary text-white" style="margin-top: 60px; color: white;"><a href="<?= base_url('beranda') ?>" style="color: white;">Beranda</a>&ensp;&raquo;&ensp;Informasi Tender</div>
 		<ul class="nav nav-tabs">
 			<li class="nav-item">
 				<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/informasitender/' . $ambil_paket['id_paket']) ?>">Informasi Tender</a>
 			</li>
+
 			<li class=" nav-item">
 				<a class="nav-link bg-primary text-white active" href="<?= base_url('panitiajmtm/beranda/pertanyaantender/' . $ambil_paket['id_paket']) ?>">Pertanyaan</a>
 			</li>
-
-			<li class="nav-item">
-				<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/evaluasitender/' . $ambil_paket['id_paket']) ?>">Evaluasi</a>
-			</li>
-			<!-- <li class="nav-item">
-			<a class="nav-link active " href="<?= base_url('panitiajmtm/beranda/reverseauctiontender/' . $ambil_paket['id_paket']) ?>">Reverse Auction</a>
-		</li> -->
-			<?php if ($ambil_paket['id_kualifikasi'] == 16 || $ambil_paket['id_kualifikasi'] == 15 || $ambil_paket['id_kualifikasi'] == 12) { ?>
+			<?php if ($ambil_paket['id_kualifikasi'] == 22) { ?>
 
 			<?php } else { ?>
-				<?php if (date('Y-m-d H:i', strtotime($get_tahap_dokumen_sangahan_prakualifikasi['tanggal_mulai_jadwal'])) >= date('Y-m-d H:i')) { ?>
-				<?php	} else if (date('Y-m-d H:i', strtotime($get_tahap_dokumen_sangahan_prakualifikasi['tanggal_selesai_jadwal'])) >= date('Y-m-d H:i') || date('Y-m-d H:i', strtotime($get_tahap_dokumen_sangahan_prakualifikasi['tanggal_mulai_jadwal'])) == date('Y-m-d H:i')) { ?>
+				<li class="nav-item">
+					<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/evaluasitender/' . $ambil_paket['id_paket']) ?>">Evaluasi</a>
+				</li>
+			<?php } ?>
+
+			<?php if ($ambil_paket['id_kualifikasi'] == 22) { ?>
+
+			<?php } else { ?>
+				<?php if ($ambil_paket['id_kualifikasi'] == 16 || $ambil_paket['id_kualifikasi'] == 15 || $ambil_paket['id_kualifikasi'] == 12) { ?>
+				<?php } else { ?>
+					<?php if (date('Y-m-d H:i', strtotime($get_tahap_dokumen_sangahan_prakualifikasi['tanggal_mulai_jadwal'])) >= date('Y-m-d H:i')) { ?>
+					<?php	} else if (date('Y-m-d H:i', strtotime($get_tahap_dokumen_sangahan_prakualifikasi['tanggal_selesai_jadwal'])) >= date('Y-m-d H:i') || date('Y-m-d H:i', strtotime($get_tahap_dokumen_sangahan_prakualifikasi['tanggal_mulai_jadwal'])) == date('Y-m-d H:i')) { ?>
+						<li class="nav-item">
+							<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/sanggah_prakualifikasi/' . $ambil_paket['id_paket']) ?>">Sangahan Prakualifikasi</a>
+						</li>
+					<?php	} else { ?>
+						<li class="nav-item">
+							<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/sanggah_prakualifikasi/' . $ambil_paket['id_paket']) ?>">Sangahan Prakualifikasi</a>
+						</li>
+					<?php	} ?>
+				<?php } ?>
+
+			<?php } ?>
+
+			<?php if ($ambil_paket['id_kualifikasi'] == 22) { ?>
+				<?php if (date('Y-m-d H:i', strtotime($get_tahap_negosiasi_eauction['tanggal_mulai_jadwal'])) >= date('Y-m-d H:i')) { ?>
+				<?php	} else if (date('Y-m-d H:i', strtotime($get_tahap_negosiasi_eauction['tanggal_selesai_jadwal'])) >= date('Y-m-d H:i') || date('Y-m-d H:i', strtotime($get_tahap_dokumen_negosiasi['tanggal_mulai_jadwal'])) == date('Y-m-d H:i')) { ?>
 					<li class="nav-item">
-						<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/sanggah_prakualifikasi/' . $ambil_paket['id_paket']) ?>">Sangahan Prakualifikasi</a>
+						<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/negosiasi/' . $ambil_paket['id_paket']) ?>">Negosiasi</a>
 					</li>
 				<?php	} else { ?>
 					<li class="nav-item">
-						<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/sanggah_prakualifikasi/' . $ambil_paket['id_paket']) ?>">Sangahan Prakualifikasi</a>
+						<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/negosiasi/' . $ambil_paket['id_paket']) ?>">Negosiasi</a>
+					</li>
+				<?php	} ?>
+			<?php } else { ?>
+				<?php if (date('Y-m-d H:i', strtotime($get_tahap_dokumen_negosiasi['tanggal_mulai_jadwal'])) >= date('Y-m-d H:i')) { ?>
+				<?php	} else if (date('Y-m-d H:i', strtotime($get_tahap_dokumen_negosiasi['tanggal_selesai_jadwal'])) >= date('Y-m-d H:i') || date('Y-m-d H:i', strtotime($get_tahap_dokumen_negosiasi['tanggal_mulai_jadwal'])) == date('Y-m-d H:i')) { ?>
+					<li class="nav-item">
+						<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/negosiasi/' . $ambil_paket['id_paket']) ?>">Negosiasi</a>
+					</li>
+				<?php	} else { ?>
+					<li class="nav-item">
+						<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/negosiasi/' . $ambil_paket['id_paket']) ?>">Negosiasi</a>
 					</li>
 				<?php	} ?>
 			<?php } ?>
-			<?php if (date('Y-m-d H:i', strtotime($get_tahap_dokumen_negosiasi['tanggal_mulai_jadwal'])) >= date('Y-m-d H:i')) { ?>
-			<?php	} else if (date('Y-m-d H:i', strtotime($get_tahap_dokumen_negosiasi['tanggal_selesai_jadwal'])) >= date('Y-m-d H:i') || date('Y-m-d H:i', strtotime($get_tahap_dokumen_negosiasi['tanggal_mulai_jadwal'])) == date('Y-m-d H:i')) { ?>
-				<li class="nav-item">
-					<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/negosiasi/' . $ambil_paket['id_paket']) ?>">Negosiasi</a>
-				</li>
+
+			<?php if ($ambil_paket['id_kualifikasi'] == 22) { ?>
 			<?php	} else { ?>
+				<?php if (date('Y-m-d H:i', strtotime($get_tahap_dokumen_sangahan_akhir['tanggal_mulai_jadwal'])) >= date('Y-m-d H:i')) { ?>
+				<?php	} else if (date('Y-m-d H:i', strtotime($get_tahap_dokumen_sangahan_akhir['tanggal_selesai_jadwal'])) >= date('Y-m-d H:i') || date('Y-m-d H:i', strtotime($get_tahap_dokumen_sangahan_akhir['tanggal_mulai_jadwal'])) == date('Y-m-d H:i')) { ?>
+					<li class="nav-item">
+						<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/sanggahantender/' . $ambil_paket['id_paket']) ?>">Sangahan</a>
+					</li>
+				<?php	} else { ?>
+					<li class="nav-item">
+						<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/sanggahantender/' . $ambil_paket['id_paket']) ?>">Sangahan</a>
+					</li>
+				<?php	} ?>
 				<li class="nav-item">
-					<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/negosiasi/' . $ambil_paket['id_paket']) ?>">Negosiasi</a>
+					<a class="nav-link bg-primary text-white" href="<?= base_url('panitiajmtm/beranda/berita_acara/' . $paket['id_paket']) ?>">Berita Acara</a>
 				</li>
 			<?php	} ?>
-			<?php if (date('Y-m-d H:i', strtotime($get_tahap_dokumen_sangahan_akhir['tanggal_mulai_jadwal'])) >= date('Y-m-d H:i')) { ?>
-			<?php	} else if (date('Y-m-d H:i', strtotime($get_tahap_dokumen_sangahan_akhir['tanggal_selesai_jadwal'])) >= date('Y-m-d H:i') || date('Y-m-d H:i', strtotime($get_tahap_dokumen_sangahan_akhir['tanggal_mulai_jadwal'])) == date('Y-m-d H:i')) { ?>
-				<li class="nav-item">
-					<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/sanggahantender/' . $ambil_paket['id_paket']) ?>">Sangahan</a>
-				</li>
-			<?php	} else { ?>
-				<li class="nav-item">
-					<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/sanggahantender/' . $ambil_paket['id_paket']) ?>">Sangahan</a>
-				</li>
-			<?php	} ?>
-			<li class="nav-item">
-				<a class="nav-link bg-primary text-white" href="<?= base_url('panitiajmtm/beranda/berita_acara/' . $paket['id_paket']) ?>">Berita Acara</a>
-			</li>
 		</ul>
 		<div class="tab-content">
 			<div class="card-body bg-white">
@@ -547,43 +575,83 @@
 								<input type="file" style="display:none;" id="file" name="dokumen_chat" />
 								<input type="file" style="display:none;" id="file_img" name="img_chat" />
 							</div>
-							<?php if (date('Y-m-d H:i', strtotime($get_tahap_penjelasan_prakualifikasi['tanggal_selesai_jadwal'])) >= date('Y-m-d H:i') || date('Y-m-d H:i', strtotime($get_tahap_penjelasan_prakualifikasi['tanggal_mulai_jadwal'])) == date('Y-m-d H:i')) { ?>
+							<?php if ($ambil_paket['id_kualifikasi'] == 22) { ?>
+								<?php if (date('Y-m-d H:i', strtotime($penjelasan_tender_eauction['tanggal_selesai_jadwal'])) >= date('Y-m-d H:i') || date('Y-m-d H:i', strtotime($penjelasan_tender_eauction['tanggal_mulai_jadwal'])) == date('Y-m-d H:i')) { ?>
 
-								<?php $date2 = $get_tahap_penjelasan_prakualifikasi['tanggal_selesai_jadwal'];
-								$date20 = new DateTime($date2);
-								$date_plus20 = $date20->modify("+3 hours");
-								if (date('Y-m-d H:i', strtotime($get_tahap_penjelasan_prakualifikasi['tanggal_mulai_jadwal'])) >= date('Y-m-d H:i')) { ?>
+									<?php $date2 = $penjelasan_tender_eauction['tanggal_selesai_jadwal'];
+									$date20 = new DateTime($date2);
+									$date_plus20 = $date20->modify("+3 hours");
+									if (date('Y-m-d H:i', strtotime($penjelasan_tender_eauction['tanggal_mulai_jadwal'])) >= date('Y-m-d H:i')) { ?>
 
-								<?php	} else if ($date_plus20->format("Y-m-d H:i") >= date('Y-m-d H:i') || date('Y-m-d H:i', strtotime($get_tahap_penjelasan_prakualifikasi['tanggal_mulai_jadwal']))  == date('Y-m-d H:i')) { ?>
-									<textarea name="isi" class="form-control type_msg" placeholder="Type your message..."></textarea>
-									<div class="input-group-append">
-										<button type="submit" id="upload" name="upload" class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></button>
+									<?php	} else if ($date_plus20->format("Y-m-d H:i") >= date('Y-m-d H:i') || date('Y-m-d H:i', strtotime($penjelasan_tender_eauction['tanggal_mulai_jadwal']))  == date('Y-m-d H:i')) { ?>
+										<textarea name="isi" class="form-control type_msg" placeholder="Type your message..."></textarea>
+										<div class="input-group-append">
+											<button type="submit" id="upload" name="upload" class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></button>
 
-									</div>
-								<?php	} else { ?>
-									<textarea disabled name="isi" class="form-control type_msg" placeholder="Waktu Penjelasan Dokumen Prakualifikasi Sudah Habis..."></textarea>
-									<div class="input-group-append">
-										<!-- <button type="submit" id="upload" name="upload" class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></button> -->
-									</div>
-								<?php	} ?>
+										</div>
+									<?php	} else { ?>
+										<textarea disabled name="isi" class="form-control type_msg" placeholder="Waktu Penjelasan Dokumen Prakualifikasi Sudah Habis..."></textarea>
+										<div class="input-group-append">
+											<!-- <button type="submit" id="upload" name="upload" class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></button> -->
+										</div>
+									<?php	} ?>
+								<?php } else { ?>
+									<?php $date1 = $penjelasan_tender_eauction['tanggal_selesai_jadwal'];
+									$date = new DateTime($date1);
+									$date_plus = $date->modify("+3 hours");
+									if (date('Y-m-d H:i', strtotime($penjelasan_tender_eauction['tanggal_mulai_jadwal']))  >= date('Y-m-d H:i')) { ?>
+
+									<?php	} else if ($date_plus->format("Y-m-d H:i") >= date('Y-m-d H:i') || date('Y-m-d H:i', strtotime($penjelasan_tender_eauction['tanggal_mulai_jadwal'])) == date('Y-m-d H:i')) { ?>
+										<textarea name="isi" class="form-control type_msg" placeholder="Type your message..."></textarea>
+										<div class="input-group-append">
+											<button type="submit" id="upload" name="upload" class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></button>
+
+										</div>
+									<?php	} else { ?>
+										<textarea disabled name="isi" class="form-control type_msg" placeholder="Waktu Penjelasan Dokumen Pemilihan / Penawaran Sudah Habis..."></textarea>
+										<div class="input-group-append">
+											<!-- <button type="submit" id="upload" name="upload" class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></button> -->
+										</div>
+									<?php	} ?>
+								<?php } ?>
 							<?php } else { ?>
-								<?php $date1 = $get_tahap['tanggal_selesai_jadwal'];
-								$date = new DateTime($date1);
-								$date_plus = $date->modify("+3 hours");
-								if (date('Y-m-d H:i', strtotime($get_tahap['tanggal_mulai_jadwal']))  >= date('Y-m-d H:i')) { ?>
+								<?php if (date('Y-m-d H:i', strtotime($get_tahap_penjelasan_prakualifikasi['tanggal_selesai_jadwal'])) >= date('Y-m-d H:i') || date('Y-m-d H:i', strtotime($get_tahap_penjelasan_prakualifikasi['tanggal_mulai_jadwal'])) == date('Y-m-d H:i')) { ?>
+									<?php $date2 = $get_tahap_penjelasan_prakualifikasi['tanggal_selesai_jadwal'];
+									$date20 = new DateTime($date2);
+									$date_plus20 = $date20->modify("+3 hours");
+									if (date('Y-m-d H:i', strtotime($get_tahap_penjelasan_prakualifikasi['tanggal_mulai_jadwal'])) >= date('Y-m-d H:i')) { ?>
 
-								<?php	} else if ($date_plus->format("Y-m-d H:i") >= date('Y-m-d H:i') || date('Y-m-d H:i', strtotime($get_tahap['tanggal_mulai_jadwal'])) == date('Y-m-d H:i')) { ?>
-									<textarea name="isi" class="form-control type_msg" placeholder="Type your message..."></textarea>
-									<div class="input-group-append">
-										<button type="submit" id="upload" name="upload" class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></button>
+									<?php	} else if ($date_plus20->format("Y-m-d H:i") >= date('Y-m-d H:i') || date('Y-m-d H:i', strtotime($get_tahap_penjelasan_prakualifikasi['tanggal_mulai_jadwal']))  == date('Y-m-d H:i')) { ?>
+										<textarea name="isi" class="form-control type_msg" placeholder="Type your message..."></textarea>
+										<div class="input-group-append">
+											<button type="submit" id="upload" name="upload" class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></button>
 
-									</div>
-								<?php	} else { ?>
-									<textarea disabled name="isi" class="form-control type_msg" placeholder="Waktu Penjelasan Dokumen Pemilihan / Penawaran Sudah Habis..."></textarea>
-									<div class="input-group-append">
-										<!-- <button type="submit" id="upload" name="upload" class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></button> -->
-									</div>
-								<?php	} ?>
+										</div>
+									<?php	} else { ?>
+										<textarea disabled name="isi" class="form-control type_msg" placeholder="Waktu Penjelasan Dokumen Prakualifikasi Sudah Habis..."></textarea>
+										<div class="input-group-append">
+											<!-- <button type="submit" id="upload" name="upload" class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></button> -->
+										</div>
+									<?php	} ?>
+								<?php } else { ?>
+									<?php $date1 = $get_tahap['tanggal_selesai_jadwal'];
+									$date = new DateTime($date1);
+									$date_plus = $date->modify("+3 hours");
+									if (date('Y-m-d H:i', strtotime($get_tahap['tanggal_mulai_jadwal']))  >= date('Y-m-d H:i')) { ?>
+
+									<?php	} else if ($date_plus->format("Y-m-d H:i") >= date('Y-m-d H:i') || date('Y-m-d H:i', strtotime($get_tahap['tanggal_mulai_jadwal'])) == date('Y-m-d H:i')) { ?>
+										<textarea name="isi" class="form-control type_msg" placeholder="Type your message..."></textarea>
+										<div class="input-group-append">
+											<button type="submit" id="upload" name="upload" class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></button>
+
+										</div>
+									<?php	} else { ?>
+										<textarea disabled name="isi" class="form-control type_msg" placeholder="Waktu Penjelasan Dokumen Pemilihan / Penawaran Sudah Habis..."></textarea>
+										<div class="input-group-append">
+											<!-- <button type="submit" id="upload" name="upload" class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></button> -->
+										</div>
+									<?php	} ?>
+								<?php } ?>
 							<?php } ?>
 						</div>
 					</form>

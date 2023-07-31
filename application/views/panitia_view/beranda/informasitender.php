@@ -392,7 +392,7 @@
 				</li>
 				<?php if ($paket['id_kualifikasi'] == 22) { ?>
 					<li class="nav-item">
-						<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/reverseauctiontender/' . $paket['id_paket']) ?>">Reverse Auction / Binding Harga</a>
+						<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/reverseauctiontender/' . $paket['id_paket']) ?>">Reverse Auction / Bidding Harga</a>
 					</li>
 				<?php } else { ?>
 
@@ -3287,6 +3287,12 @@
 		<?php    } else { ?>
 			<div class="float-right p-3">
 				<a href="javascript:;" class="btn btn-sm btn-info" id="sudahdibaca_negosiasi"><img src="<?= base_url('assets/img/pesan.png') ?>" width="25px" alt=""> <span id="notifikasi_negosiasi" class="badge badge-danger navbar-badge"></span> Pesan Negosiasi </a>
+				<?php if (date('Y-m-d H:i', strtotime($penjelasan_tender_eauction['tanggal_mulai_jadwal']))  >= date('Y-m-d H:i')) { ?>
+				<?php    } else if (date('Y-m-d H:i', strtotime($penjelasan_tender_eauction['tanggal_selesai_jadwal'])) >= date('Y-m-d H:i') || date('Y-m-d H:i', strtotime($penjelasan_tender_eauction['tanggal_mulai_jadwal']))  == date('Y-m-d H:i')) { ?>
+					<a href="javascript:;" class="btn btn-sm btn-info" id="sudahdibaca"><img src="<?= base_url('assets/img/pesan.png') ?>" width="25px" alt=""> <span id="notifikasi" class="badge badge-danger navbar-badge"></span> Pesan Penjelasan </a>
+				<?php    } else { ?>
+					<a href="javascript:;" class="btn btn-sm btn-info" id="sudahdibaca"><img src="<?= base_url('assets/img/pesan.png') ?>" width="25px" alt=""> <span id="notifikasi" class="badge badge-danger navbar-badge"></span> Pesan Penjelasan </a>
+				<?php    } ?>
 			</div>
 		<?php    } ?>
 		<nav aria-label="breadcrumb" class="mt-3">
@@ -3300,19 +3306,34 @@
 				<li class="nav-item">
 					<a class="nav-link bg-primary text-white" href="<?= base_url('panitiajmtm/beranda/informasitender/' . $paket['id_paket']) ?>">Informasi Tender</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/reverseauctiontender/' . $paket['id_paket']) ?>">Reverse Auction / Binding Harga</a>
-				</li>
-				<?php if (date('Y-m-d H:i', strtotime($get_tahap_dokumen_negosiasi['tanggal_mulai_jadwal']))  >= date('Y-m-d H:i')) { ?>
-				<?php    } else if (date('Y-m-d H:i', strtotime($get_tahap_dokumen_negosiasi['tanggal_selesai_jadwal'])) >= date('Y-m-d H:i') || date('Y-m-d H:i', strtotime($get_tahap_dokumen_negosiasi['tanggal_mulai_jadwal']))  == date('Y-m-d H:i')) { ?>
-					<li class="nav-item">
-						<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/negosiasi/' . $paket['id_paket']) ?>">Negosiasi</a>
+				<?php if (date('Y-m-d H:i', strtotime($penjelasan_tender_eauction['tanggal_mulai_jadwal']))  >= date('Y-m-d H:i')) { ?>
+				<?php    } else if (date('Y-m-d H:i', strtotime($penjelasan_tender_eauction['tanggal_selesai_jadwal'])) >= date('Y-m-d H:i') || date('Y-m-d H:i', strtotime($penjelasan_tender_eauction['tanggal_mulai_jadwal']))  == date('Y-m-d H:i')) { ?>
+					<li class=" nav-item">
+						<a class="nav-link bg-info text-white active" href="<?= base_url('panitiajmtm/beranda/pertanyaantender/' . $paket['id_paket']) ?>">Penjelasan Tender</a>
 					</li>
 				<?php    } else { ?>
+					<li class=" nav-item">
+						<a class="nav-link bg-info text-white active" href="<?= base_url('panitiajmtm/beranda/pertanyaantender/' . $paket['id_paket']) ?>">Penjelasan Tender</a>
+					</li>
+				<?php    } ?>
+				<?php if (date('Y-m-d H:i', strtotime($tahap_jadwal_binding['tanggal_mulai_jadwal']))  >= date('Y-m-d H:i')) { ?>
+				<?php    } else if (date('Y-m-d H:i', strtotime($tahap_jadwal_binding['tanggal_selesai_jadwal'])) >= date('Y-m-d H:i') || date('Y-m-d H:i', strtotime($tahap_jadwal_binding['tanggal_mulai_jadwal']))  == date('Y-m-d H:i')) { ?>
+					<li class="nav-item">
+						<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/reverseauctiontender_binding/' . $paket['id_paket']) ?>">Reverse Auction / Bidding Harga</a>
+					</li>
+				<?php    } else { ?>
+					<!-- <li class="nav-item">
+						<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/reverseauctiontender_binding/' . $paket['id_paket']) ?>">Reverse Auction / Bidding Harga</a>
+					</li> -->
+				<?php    } ?>
+				<?php if ($paket['penetapan_pemenang'] == 1) { ?>
 					<li class="nav-item">
 						<a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/negosiasi/' . $paket['id_paket']) ?>">Negosiasi</a>
 					</li>
-				<?php    } ?>
+				<?php	} else { ?>
+
+				<?php	}
+				?>
 			</ul>
 		<?php    } ?>
 		<div class="tab-content p-2 card">
@@ -3357,8 +3378,8 @@
 										<td> <a href="javascript:;" onclick="lihat_vendor_mengikuti(<?= $paket['id_paket'] ?>)" class="btn btn-sm btn-primary"> <b><?= $jumlah_peserta ?> Peserta</b></a></td>
 									</tr>
 									<tr>
-										<th>Summary Binding</th>
-										<td> <a href="javascript:;" class="btn btn-sm btn-primary" onclick="lihat_sumary_binding(<?= $paket['id_paket'] ?>)"> <i class="fa fa-file" aria-hidden="true"></i> Lihat Summary Binding</a></td>
+										<th>Summary Bidding</th>
+										<td> <a href="javascript:;" class="btn btn-sm btn-primary" onclick="lihat_sumary_binding(<?= $paket['id_paket'] ?>)"> <i class="fa fa-file" aria-hidden="true"></i> Lihat Summary Bidding</a></td>
 									</tr>
 									<tr>
 										<th>Dokumen Lelang</th>
@@ -3391,9 +3412,9 @@
 													</div>
 												</div>
 											</div>
-											<?php if (date('Y-m-d H:i', strtotime($evaluasi_dokumen_prakualifiaksi_2_file['tanggal_mulai_jadwal'])) >= date('Y-m-d H:i')) { ?>
+											<?php if (date('Y-m-d H:i', strtotime($tahap_evaluasi_eauction['tanggal_mulai_jadwal'])) >= date('Y-m-d H:i')) { ?>
 
-											<?php    } else if (date('Y-m-d H:i', strtotime($evaluasi_dokumen_prakualifiaksi_2_file['tanggal_selesai_jadwal']))  >= date('Y-m-d H:i') || date('Y-m-d H:i', strtotime($evaluasi_dokumen_prakualifiaksi_2_file['tanggal_mulai_jadwal']))  == date('Y-m-d H:i')) { ?>
+											<?php    } else if (date('Y-m-d H:i', strtotime($tahap_evaluasi_eauction['tanggal_selesai_jadwal']))  >= date('Y-m-d H:i') || date('Y-m-d H:i', strtotime($tahap_evaluasi_eauction['tanggal_mulai_jadwal']))  == date('Y-m-d H:i')) { ?>
 												<div class="card border-primary mb-3">
 													<div class="card-header bg-primary" style="color: white;display: flex; justify-content:space-between;">
 														Persyaratan Tambahan
@@ -3548,9 +3569,8 @@
 												<!-- 30 juni 2022 -->
 
 												<!-- tanda -->
-												<?php if (date('Y-m-d H:i', strtotime($get_tahap_id_11_7_17['tanggal_mulai_jadwal']))  >= date('Y-m-d H:i')) { ?>
-
-												<?php    } else if (date('Y-m-d H:i', strtotime($get_tahap_id_11_7_17['tanggal_selesai_jadwal'])) >= date('Y-m-d H:i') || date('Y-m-d H:i', strtotime($get_tahap_id_11_7_17['tanggal_mulai_jadwal'])) == date('Y-m-d H:i')) { ?>
+												<?php if (date('Y-m-d H:i', strtotime($tahap_evaluasi_eauction['tanggal_mulai_jadwal']))  >= date('Y-m-d H:i')) { ?>
+												<?php    } else if (date('Y-m-d H:i', strtotime($tahap_evaluasi_eauction['tanggal_selesai_jadwal'])) >= date('Y-m-d H:i') || date('Y-m-d H:i', strtotime($tahap_evaluasi_eauction['tanggal_mulai_jadwal'])) == date('Y-m-d H:i')) { ?>
 													<?php if ($paket['sts_tenaga_ahli'] == 1 || $paket['sts_peralatan'] == 1) { ?>
 														<div class="card border-primary mb-3">
 															<div class="card-header bg-primary" style="color: white;display: flex; justify-content:space-between;">
@@ -3602,35 +3622,13 @@
 															</div>
 														</div>
 													<?php } else { ?>
-
 													<?php } ?>
 												<?php    } ?>
-
-
 											<?php    } ?>
-									<tr>
-										<th class="bgwarning" width="20%">Bobot Teknis<span class="warning">*</span></th>
-										<td>
-											<div class="row">
-												<div class="col-md-2">
-													<input type="number" class="form-control" id="bobot_teknis" value="<?= $paket['bobot_teknis'] ?>" name="bobot_teknis" readonly>
-													<p class="text-danger" id="bobot_teknis_error"></p>
-												</div>
-											</div>
 
-										</td>
-									</tr>
-									<tr>
-										<th class="bgwarning" width="20%">Bobot Biaya<span class="warning">*</span></th>
-										<td>
-											<div class="row">
-												<div class="col-md-2">
-													<input type="number" class="form-control" id="bobot_biaya" name="bobot_biaya" value="<?= $paket['bobot_biaya'] ?>" readonly>
-													<p class="text-danger" id="bobot_biaya_error"></p>
-												</div>
-											</div>
-										</td>
-									</tr>
+
+											<?php if (date('Y-m-d H:i', strtotime($tahap_penetapan_pemenang_eauction['tanggal_mulai_jadwal']))  >= date('Y-m-d H:i')) { ?>
+											<?php    } else if (date('Y-m-d H:i', strtotime($tahap_penetapan_pemenang_eauction['tanggal_selesai_jadwal'])) >= date('Y-m-d H:i') || date('Y-m-d H:i', strtotime($tahap_penetapan_pemenang_eauction['tanggal_mulai_jadwal']))  == date('Y-m-d H:i')) { ?>
 									<tr>
 										<th>Upload Ba Negosiasi</th>
 										<td>
@@ -3656,53 +3654,88 @@
 										<th>Penetapan Pemenang</th>
 										<td> <a href="<?= base_url('panitiajmtm/beranda/penetapan_pemenang_auction/' . $paket['id_paket']) ?>" class="btn btn-sm btn-primary"> <i class="fa fa-users" aria-hidden="true"></i> Penetapan Pemenang</a></td>
 									</tr>
+								<?php    } else { ?>
+									<tr>
+										<th>Upload Ba Negosiasi</th>
+										<td>
+											<a href="javascript:;" style="text-decoration: none; color:white;" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#ba_negosiasi_auction"><i style="color: white;" class="fas fa-upload"></i> UPLOAD BA NEGOSIASI</a>
+											<?php if ($paket['ba_negosiasi_auction'] == NULL) { ?>
+
+											<?php } else { ?>
+												<a class="btn btn-sm btn-info" href="<?= base_url('file_undangan_penawaran/' . $paket['ba_negosiasi_auction']) ?>"><i class="fa fa-eye"></i> Lihat Dokumen</a>
+											<?php } ?>
+										</td>
+									</tr>
+									<tr>
+										<th>Download Ba Negosiasi Vendor</th>
+										<td>
+											<?php if ($paket['ba_negosiasi_auction_vendor'] == NULL) { ?>
+
+											<?php } else { ?>
+												<a class="btn btn-sm btn-info" href="https://jmtm-vms.kinteindo.net/"><i class="fa fa-eye"></i> Lihat Dokumen</a>
+											<?php } ?>
+										</td>
+									</tr>
+									<tr>
+										<th>Penetapan Pemenang</th>
+										<td> <a href="<?= base_url('panitiajmtm/beranda/penetapan_pemenang_auction/' . $paket['id_paket']) ?>" class="btn btn-sm btn-primary"> <i class="fa fa-users" aria-hidden="true"></i> Penetapan Pemenang</a></td>
+									</tr>
+								<?php    } ?>
+								<?php if (date('Y-m-d H:i', strtotime($tahap_pengumuman_pemenang_eauction['tanggal_mulai_jadwal']))  >= date('Y-m-d H:i')) { ?>
+								<?php    } else if (date('Y-m-d H:i', strtotime($tahap_pengumuman_pemenang_eauction['tanggal_selesai_jadwal'])) >= date('Y-m-d H:i') || date('Y-m-d H:i', strtotime($tahap_pengumuman_pemenang_eauction['tanggal_mulai_jadwal']))  == date('Y-m-d H:i')) { ?>
 									<tr>
 										<th>Pengumuman</th>
 										<td><a href="<?= base_url('panitiajmtm/beranda/pengumumanpemenangtender/' . $paket['id_paket']) ?>" style="color: white;height:20px;" class="badge badge-warning">Pengumuman Pemenang</a></td>
 									</tr>
+								<?php    } else { ?>
 									<tr>
-										<?php if ($this->session->userdata('id_role') == 1) { ?>
-									<tr>
-										<th>Pakta Integritas</th>
-										<td>
-											<div class="row">
-												<div class="col-md-6">
-													<table>
-														<thead>
-															<tr>
-																<th>Panitia</th>
-															</tr>
-														</thead>
-														<tbody>
-															<tr>
-																<th><a target="_blank" href="<?= base_url('panitiajmtm/beranda/paktaintegritas_panitia/' . $paket['id_paket']) ?>" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i> Panitia</a></th>
-															</tr>
-														</tbody>
-													</table>
-												</div>
-												<div class="col-md-6">
-													<table>
-														<thead>
-															<tr>
-																<th>Penyedia</th>
-															</tr>
-														</thead>
-														<tbody>
-															<?php foreach ($vendor_mengikuti as $key => $value) { ?>
-																<tr>
-																	<th>
-																		<a target="_blank" href="<?= base_url('panitiajmtm/beranda/paktaintegritas_vendor/' . $value['id_mengikuti_paket_vendor'] . '/' . $value['id_mengikuti_vendor']) ?>" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i> <?= $value['username_vendor'] ?></a>
-																	</th>
-																</tr>
-															<?php } ?>
-														</tbody>
-													</table>
-												</div>
-											</div>
-										</td>
+										<th>Pengumuman</th>
+										<td><a href="<?= base_url('panitiajmtm/beranda/pengumumanpemenangtender/' . $paket['id_paket']) ?>" style="color: white;height:20px;" class="badge badge-warning">Pengumuman Pemenang</a></td>
 									</tr>
-								<?php } else { ?>
-								<?php } ?>
+								<?php    } ?>
+								<tr>
+									<?php if ($this->session->userdata('id_role') == 1) { ?>
+								<tr>
+									<th>Pakta Integritas</th>
+									<td>
+										<div class="row">
+											<div class="col-md-6">
+												<table>
+													<thead>
+														<tr>
+															<th>Panitia</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<th><a target="_blank" href="<?= base_url('panitiajmtm/beranda/paktaintegritas_panitia/' . $paket['id_paket']) ?>" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i> Panitia</a></th>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+											<div class="col-md-6">
+												<table>
+													<thead>
+														<tr>
+															<th>Penyedia</th>
+														</tr>
+													</thead>
+													<tbody>
+														<?php foreach ($vendor_mengikuti as $key => $value) { ?>
+															<tr>
+																<th>
+																	<a target="_blank" href="<?= base_url('panitiajmtm/beranda/paktaintegritas_vendor/' . $value['id_mengikuti_paket_vendor'] . '/' . $value['id_mengikuti_vendor']) ?>" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i> <?= $value['username_vendor'] ?></a>
+																</th>
+															</tr>
+														<?php } ?>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</td>
+								</tr>
+							<?php } else { ?>
+							<?php } ?>
 								</tbody>
 							</table>
 							<div>
@@ -4615,14 +4648,14 @@ background: linear-gradient(63deg, rgba(249,249,249,0.9500175070028011) 15%, rgb
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header bg-danger text-white">
-				<h5 class="modal-title" id="exampleModalLabel">Summary Binding</h5>
+				<h5 class="modal-title" id="exampleModalLabel">Summary Bidding</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
 			<div class="modal-body">
 
-				<h3>Tahap Binding 1</h3>
+				<h3>Tahap Bidding 1</h3>
 
 				<table class="table table-striped">
 					<thead>
@@ -4635,7 +4668,7 @@ background: linear-gradient(63deg, rgba(249,249,249,0.9500175070028011) 15%, rgb
 					<tbody id="binding_sumaary_1"></tbody>
 				</table>
 
-				<h3>Tahap Binding 2</h3>
+				<h3>Tahap Bidding 2</h3>
 
 				<table class="table table-striped">
 					<thead>
@@ -4648,7 +4681,7 @@ background: linear-gradient(63deg, rgba(249,249,249,0.9500175070028011) 15%, rgb
 					<tbody id="binding_sumaary_2"></tbody>
 				</table>
 
-				<h3>Tahap Binding 3</h3>
+				<h3>Tahap Bidding 3</h3>
 
 				<table class="table table-striped">
 					<thead>

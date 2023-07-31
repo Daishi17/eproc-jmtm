@@ -1411,7 +1411,10 @@
 
 
 								<?php } ?>
-								<tr>
+
+								<?php if ($paket['id_kualifikasi'] == 22) { ?>
+								<?php } else { ?>
+									<tr>
 									<th class="bgwarning" width="20%">Bobot Teknis<span class="warning">*</span></th>
 									<td>
 										<div class="row">
@@ -1434,6 +1437,7 @@
 										</div>
 									</td>
 								</tr>
+								<?php } ?>
 							</form>
 						</table>
 					</div>

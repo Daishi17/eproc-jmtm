@@ -75,12 +75,17 @@
         <li class="nav-item">
             <a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/informasitender/' . $paket['id_paket']) ?>">Informasi Tender</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/reverseauctiontender/' . $paket['id_paket']) ?>">Reverse Auction / Binding Harga</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/negosiasi/' . $paket['id_paket']) ?>">Negosiasi</a>
-        </li>
+        </li> -->
+        <?php if ($paket['penetapan_pemenang'] == 1) { ?>
+            <li class="nav-item">
+                <a class="nav-link bg-info text-white" href="<?= base_url('panitiajmtm/beranda/negosiasi/' . $paket['id_paket']) ?>">Negosiasi</a>
+            </li>
+        <?php    } else { ?>
+
+        <?php    }
+        ?>
     </ul>
     <br>
     <div class="tab-content">

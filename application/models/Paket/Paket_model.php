@@ -715,7 +715,7 @@ class Paket_model extends CI_Model
 		'tanggal_buat_paket_tender', 'nama_unit_kerja', 'id_paket'
 	);
 	var $search_tender_rup = array(
-		'id_paket', 'kode_tender', 'nama_metode_pemilihan', 'status_paket_tender', 'tanggal_buat_rup',
+		'id_paket', 'kode_tender', 'nama_paket', 'nama_metode_pemilihan', 'status_paket_tender',
 		'tanggal_buat_paket_tender', 'nama_unit_kerja', 'id_paket'
 	);
 	private function _get_data_query_paket_tender()
@@ -3162,7 +3162,7 @@ class Paket_model extends CI_Model
 		$this->db->join('tbl_produk_dalam_luar_negri', 'tbl_produk_dalam_luar_negri.id_produk_dl_negri = tbl_paket.id_produk_dl_negri', 'left');
 		$this->db->where('tbl_paket.id_pegawai', $role_agency);
 		$this->db->or_where('tbl_unit_kerja.id_unit_kerja', $area_agency);
-		$this->db->where_in('tbl_paket.id_metode_pemilihan', [4,6]);
+		$this->db->where_in('tbl_paket.id_metode_pemilihan', [4, 6]);
 		$this->db->where('status_finalisasi_draft', 1);
 		if (isset($_POST['id_unit_kerja'], $_POST['id_jenis_pengadaan']) && $_POST['id_unit_kerja'] != '' && $_POST['id_jenis_pengadaan'] != '') {
 			$this->db->like('tbl_paket.id_unit_kerja', $_POST['id_unit_kerja']);
@@ -3245,13 +3245,13 @@ class Paket_model extends CI_Model
 		$this->db->select('*');
 		$this->db->from('tbl_dokumen_kontrak');
 		$this->db->join('tbl_unit_kerja', 'tbl_unit_kerja.id_unit_kerja = tbl_dokumen_kontrak.id_unit_kerja', 'left');
-		if ($this->session->userdata('id_role') == 1) { 
-		if (isset($_POST['id_unit_kerja']) && $_POST['id_unit_kerja'] != '') {
-		$this->db->like('tbl_dokumen_kontrak.id_unit_kerja', $_POST['id_unit_kerja']);
-		}
- 		} else if ($this->session->userdata('id_role') == 2) {
+		if ($this->session->userdata('id_role') == 1) {
+			if (isset($_POST['id_unit_kerja']) && $_POST['id_unit_kerja'] != '') {
+				$this->db->like('tbl_dokumen_kontrak.id_unit_kerja', $_POST['id_unit_kerja']);
+			}
+		} else if ($this->session->userdata('id_role') == 2) {
 			$this->db->where('tbl_dokumen_kontrak.id_unit_kerja', $this->session->userdata('id_unit_kerja2'));
-	 	}
+		}
 		$i = 0;
 		foreach ($this->pdf_dokumen_kontrak as $item) // looping awal
 		{
@@ -3300,11 +3300,10 @@ class Paket_model extends CI_Model
 	public function count_all_dataDokumen_kontrak()
 	{
 		$this->db->from('tbl_dokumen_kontrak');
-		if ($this->session->userdata('id_role') == 1) { 
-
- 		} else if ($this->session->userdata('id_role') == 2) {
+		if ($this->session->userdata('id_role') == 1) {
+		} else if ($this->session->userdata('id_role') == 2) {
 			$this->db->where('id_unit_kerja', $this->session->userdata('id_unit_kerja2'));
-	 	} 
+		}
 		return $this->db->count_all_results();
 	}
 	public function create_dokumen_kontrak($data)
@@ -3316,7 +3315,7 @@ class Paket_model extends CI_Model
 	{
 		$this->db->delete('tbl_dokumen_kontrak', ['id_dokumen_kontrak' => $id_dokumen_kontrak]);
 	}
-	
+
 
 	public function get_by_id_dokumen_kontrak($id_dokumen_kontrak)
 	{

@@ -823,7 +823,6 @@
 					<br>
 					<h4 class="text-center">SUMAARY TAHAP BINDING</h4>
 					<h3>Tahap Binding 1</h3>
-
 					<table class="table table-striped">
 						<thead>
 							<tr>
@@ -861,70 +860,6 @@
 						<tbody id="binding_sumaary_3"></tbody>
 					</table>
 					<br>
-					<?php if ($paket['id_kualifikasi']  == 22) { ?>
-						<h4 class="text-center">BUKTI CHAT BINDING</h4>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="card">
-									<div class="card-header bg-primary text-white">
-										BINDING 2
-									</div>
-									<div class="card-body" id="letakpesan_binding_2">
-
-									</div>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="card">
-									<div class="card-header bg-primary text-white">
-										BINDING 3
-									</div>
-									<div class="card-body" id="letakpesan_binding_3">
-
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3">
-
-							</div>
-							<div class="col-md-6">
-								<div class="card">
-									<div class="card-header bg-primary text-white">
-										NEGOSIASI
-									</div>
-									<div class="card-body" id="letakpesan2">
-
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3">
-
-							</div>
-						</div>
-					<?php } else { ?>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="card">
-									<div class="card-header bg-primary text-white">
-										PENJELASAN LELANG
-									</div>
-									<div class="card-body" id="letakpesan">
-
-									</div>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="card">
-									<div class="card-header bg-primary text-white">
-										NEGOSIASI
-									</div>
-									<div class="card-body" id="letakpesan2">
-
-									</div>
-								</div>
-							</div>
-						</div>
-					<?php } ?>
 				</div>
 		</form>
 	</div>
@@ -2064,8 +1999,7 @@
 						if (response['vendor1'][i].harga_penawaran_binding_1 == response['min_binding_1']) {
 							var menang = '' + formatRupiah(response['vendor1'][i].harga_penawaran_binding_1, 'Rp. ') + ' <i style="font-size:20px" class="fa fa-flag-checkered" aria-hidden="true"></i>';
 						} else {
-							// var menang = '' + formatRupiah(response['vendor1'][i].harga_penawaran_binding_1, 'Rp. ');
-							var menang = '-';
+							var menang = '' + formatRupiah(response['vendor1'][i].harga_penawaran_binding_1, 'Rp. ');
 						}
 						html += '<tr>' +
 							'<td>' + response['vendor1'][i].username_vendor + '</td>' +
@@ -2079,8 +2013,7 @@
 						if (response['vendor2'][i].harga_penawaran_binding_2 == response['min_binding_2']) {
 							var menang = '' + formatRupiah(response['vendor2'][i].harga_penawaran_binding_2, 'Rp. ') + ' <i style="font-size:20px" class="fa fa-flag-checkered" aria-hidden="true"></i>';
 						} else {
-							// var menang = '' + formatRupiah(response['vendor1'][i].harga_penawaran_binding_1, 'Rp. ');
-							var menang = '-';
+							var menang = '' + formatRupiah(response['vendor2'][i].harga_penawaran_binding_2, 'Rp. ');
 						}
 						html2 += '<tr>' +
 							'<td>' + response['vendor2'][i].username_vendor + '</td>' +
@@ -2094,8 +2027,7 @@
 						if (response['vendor3'][i].harga_penawaran_binding_3 == response['min_binding_3']) {
 							var menang = '' + formatRupiah(response['vendor3'][i].harga_penawaran_binding_3, 'Rp. ') + ' <i style="font-size:20px" class="fa fa-flag-checkered" aria-hidden="true"></i>';
 						} else {
-							// var menang = '' + formatRupiah(response['vendor1'][i].harga_penawaran_binding_1, 'Rp. ');
-							var menang = '-';
+							var menang = '' + formatRupiah(response['vendor3'][i].harga_penawaran_binding_3, 'Rp. ');
 						}
 						html3 += '<tr>' +
 							'<td>' + response['vendor3'][i].username_vendor + '</td>' +

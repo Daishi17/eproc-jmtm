@@ -3378,8 +3378,8 @@
 										<td> <a href="javascript:;" onclick="lihat_vendor_mengikuti(<?= $paket['id_paket'] ?>)" class="btn btn-sm btn-primary"> <b><?= $jumlah_peserta ?> Peserta</b></a></td>
 									</tr>
 									<tr>
-										<th>Summary Bidding</th>
-										<td> <a href="javascript:;" class="btn btn-sm btn-primary" onclick="lihat_sumary_binding(<?= $paket['id_paket'] ?>)"> <i class="fa fa-file" aria-hidden="true"></i> Lihat Summary Bidding</a></td>
+										<th>Hasil Bidding</th>
+										<td> <a href="javascript:;" class="btn btn-sm btn-primary" onclick="lihat_sumary_binding(<?= $paket['id_paket'] ?>)"> <i class="fa fa-file" aria-hidden="true"></i> Lihat Hasil Bidding</a></td>
 									</tr>
 									<tr>
 										<th>Dokumen Lelang</th>

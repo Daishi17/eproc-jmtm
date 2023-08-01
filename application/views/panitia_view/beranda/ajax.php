@@ -3485,7 +3485,7 @@
 						var menang = '' + formatRupiah(response['vendor1'][i].harga_penawaran_binding_1, 'Rp. ') + ' <i style="font-size:20px" class="fa fa-flag-checkered" aria-hidden="true"></i>';
 					} else {
 						// var menang = '' + formatRupiah(response['vendor1'][i].harga_penawaran_binding_1, 'Rp. ');
-						var menang = '-';
+						var menang = formatRupiah(response['vendor1'][i].harga_penawaran_binding_1, 'Rp. ');
 					}
 					html += '<tr>' +
 						'<td>' + response['vendor1'][i].username_vendor + '</td>' +
@@ -3500,7 +3500,7 @@
 						var menang = '' + formatRupiah(response['vendor2'][i].harga_penawaran_binding_2, 'Rp. ') + ' <i style="font-size:20px" class="fa fa-flag-checkered" aria-hidden="true"></i>';
 					} else {
 						// var menang = '' + formatRupiah(response['vendor1'][i].harga_penawaran_binding_1, 'Rp. ');
-						var menang = '-';
+						var menang = formatRupiah(response['vendor2'][i].harga_penawaran_binding_2, 'Rp. ');
 					}
 					html2 += '<tr>' +
 						'<td>' + response['vendor2'][i].username_vendor + '</td>' +
@@ -3515,7 +3515,7 @@
 						var menang = '' + formatRupiah(response['vendor3'][i].harga_penawaran_binding_3, 'Rp. ') + ' <i style="font-size:20px" class="fa fa-flag-checkered" aria-hidden="true"></i>';
 					} else {
 						// var menang = '' + formatRupiah(response['vendor1'][i].harga_penawaran_binding_1, 'Rp. ');
-						var menang = '-';
+						var menang = formatRupiah(response['vendor3'][i].harga_penawaran_binding_3, 'Rp. ');
 					}
 					html3 += '<tr>' +
 						'<td>' + response['vendor3'][i].username_vendor + '</td>' +

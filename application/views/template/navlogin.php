@@ -72,37 +72,37 @@ $this->role_login->cek_login();
 						</li>
 						<li style="font-size: 11px;font-weight:bold;"><a class="nav-link" href="<?= base_url('logakses') ?>"><i class="fas fa-user-lock"></i> LOG AKSES</a></li>
 						<li style="font-size: 11px;font-weight:bold;"><a class="nav-link" href="<?= base_url('gantipassword') ?>"><i class="fas fa-lock"></i> GANTI PASSWORD</a></li>
-						<li style="font-size: 13px;font-weight:bold;"><a class="nav-link" href="<?= base_url('upload_kontrak') ?>"><i class="fas fa-file"></i> UPLOAD KONTRAK</a></li>
-						<!-- <li style="font-size: 11px;font-weight:bold;"><a class="nav-link" href="<?= base_url('uat') ?>"><i class="fas fa-eye"></i> UAT</a></li> -->
+						<li style="font-size: 11px;font-weight:bold;"><a class="nav-link" href="<?= base_url('upload_kontrak') ?>"><i class="fas fa-file"></i> UPLOAD KONTRAK</a></li>
+						<li style="font-size: 11px;font-weight:bold;"><a class="nav-link" href="<?= base_url('tender_spm') ?>"><span id="notif_spm" class="badge badge-danger">1</span> TENDER SPM</a></li>
 					<?php } ?>
 					<?php if ($this->session->userdata('id_role') == 2) { ?>
-						<li style="font-size: 13px;font-weight:bold;"><a class="nav-link" href="<?= base_url('beranda') ?>"><i class="fas fa-home"></i> BERANDA</a></li>
-						<li style="font-size: 13px;font-weight:bold;"><a class="nav-link" href="<?= base_url('paket') ?>"><i class="fas fa-cubes"></i> PAKET</a></li>
-						<!-- <li style="font-size: 13px;font-weight:bold;"><a class="nav-link" href="<?= base_url('panitia') ?>"><i class="fas fa fa-users"></i> PANITIA PEMILHAN</a></li> -->
-						<li style="font-size: 13px;font-weight:bold;"><a class="nav-link" href="<?= base_url('beranda/penilaian_kinerja') ?>"><i class="fas fa-chart-line"></i> PENILAIAN KINERJA</a></li>
-						<li style="font-size: 13px;font-weight:bold;"><a class="nav-link" href="<?= base_url('beranda/progres_kinerja_vendor') ?>"><i class="far fa-chart-bar"></i> PROGRES KINERJA</a></li>
-						<li style="font-size: 13px;font-weight:bold;"><a class="nav-link" href="<?= base_url('index.php/vendor_agency') ?>"><i class="fas fa-chalkboard-teacher"></i> VENDOR</a></li>
-						<li style="font-size: 13px;font-weight:bold;"><a class="nav-link" href="<?= base_url('panitiajmtm/logakses') ?>"><i class="fas fa-user-lock"></i> LOG AKSES</a></li>
-						<li style="font-size: 13px;font-weight:bold;"><a class="nav-link" href="<?= base_url('gantipassword') ?>"><i class="fas fa-lock"></i> GANTI PASSWORD</a></li>
-						<li style="font-size: 13px;font-weight:bold;"><a class="nav-link" href="<?= base_url('upload_kontrak') ?>"><i class="fas fa-file"></i> UPLOAD KONTRAK</a></li>
+						<li style="font-size: 11px;font-weight:bold;"><a class="nav-link" href="<?= base_url('beranda') ?>"><i class="fas fa-home"></i> BERANDA</a></li>
+						<li style="font-size: 11px;font-weight:bold;"><a class="nav-link" href="<?= base_url('paket') ?>"><i class="fas fa-cubes"></i> PAKET</a></li>
+						<!-- <li style="font-size: 11px;font-weight:bold;"><a class="nav-link" href="<?= base_url('panitia') ?>"><i class="fas fa fa-users"></i> PANITIA PEMILHAN</a></li> -->
+						<li style="font-size: 11px;font-weight:bold;"><a class="nav-link" href="<?= base_url('beranda/penilaian_kinerja') ?>"><i class="fas fa-chart-line"></i> PENILAIAN KINERJA</a></li>
+						<li style="font-size: 11px;font-weight:bold;"><a class="nav-link" href="<?= base_url('beranda/progres_kinerja_vendor') ?>"><i class="far fa-chart-bar"></i> PROGRES KINERJA</a></li>
+						<li style="font-size: 11px;font-weight:bold;"><a class="nav-link" href="<?= base_url('index.php/vendor_agency') ?>"><i class="fas fa-chalkboard-teacher"></i> VENDOR</a></li>
+						<li style="font-size: 11px;font-weight:bold;"><a class="nav-link" href="<?= base_url('panitiajmtm/logakses') ?>"><i class="fas fa-user-lock"></i> LOG AKSES</a></li>
+						<li style="font-size: 11px;font-weight:bold;"><a class="nav-link" href="<?= base_url('gantipassword') ?>"><i class="fas fa-lock"></i> GANTI PASSWORD</a></li>
+						<li style="font-size: 11px;font-weight:bold;"><a class="nav-link" href="<?= base_url('upload_kontrak') ?>"><i class="fas fa-file"></i> UPLOAD KONTRAK</a></li>
 					<?php } ?>
 					<?php if ($this->session->userdata('id_role') == 6) { ?>
-						<li style="font-size: 13px;font-weight:bold;"><a class="nav-link" href="<?= base_url('beranda') ?>"><i class="fas fa-home"></i> BERANDA</a></li>
-						<li style="font-size: 13px;font-weight:bold;"><a class="nav-link" onclick="sudah_dibaca_notifikasi_manager()" href="#"><i class="fas fa-file-signature"></i> APPROVAL PAKET <span id="notifku" class="badge badge-danger"></span></a></li>
-						<li style="font-size: 13px;font-weight:bold;"><a class="nav-link" href="<?= base_url('panitiajmtm/logakses') ?>"><i class="fas fa-user-lock"></i> LOG AKSES</a></li>
-						<li style="font-size: 13px;font-weight:bold;"><a class="nav-link" href="<?= base_url('gantipassword') ?>"><i class="fas fa-lock"></i> GANTI PASSWORD</a></li>
-						<!-- <li style="font-size: 13px;font-weight:bold;"><a class="nav-link" href="<?= base_url('uat') ?>"><i class="fas fa-eye"></i> UAT</a></li> -->
+						<li style="font-size: 11px;font-weight:bold;"><a class="nav-link" href="<?= base_url('beranda') ?>"><i class="fas fa-home"></i> BERANDA</a></li>
+						<li style="font-size: 11px;font-weight:bold;"><a class="nav-link" onclick="sudah_dibaca_notifikasi_manager()" href="#"><i class="fas fa-file-signature"></i> APPROVAL PAKET <span id="notifku" class="badge badge-danger"></span></a></li>
+						<li style="font-size: 11px;font-weight:bold;"><a class="nav-link" href="<?= base_url('panitiajmtm/logakses') ?>"><i class="fas fa-user-lock"></i> LOG AKSES</a></li>
+						<li style="font-size: 11px;font-weight:bold;"><a class="nav-link" href="<?= base_url('gantipassword') ?>"><i class="fas fa-lock"></i> GANTI PASSWORD</a></li>
+						<!-- <li style="font-size: 11px;font-weight:bold;"><a class="nav-link" href="<?= base_url('uat') ?>"><i class="fas fa-eye"></i> UAT</a></li> -->
 					<?php } ?>
 					<?php if ($this->session->userdata('id_role') == 3) { ?>
-						<li style="font-size: 13px;font-weight:bold;"><a class="nav-link" href="<?= base_url('panitiajmtm/beranda') ?>"><i class="fas fa-home"></i> BERANDA</a></li>
-						<li style="font-size: 13px;font-weight:bold;"><a class="nav-link" href="<?= base_url('panitiajmtm/daftarpaket') ?>"><i class="fas fa-cubes"></i> DAFTAR PAKET</a></li>
-						<li style="font-size: 13px;font-weight:bold;"><a class="nav-link" href="<?= base_url('panitiajmtm/berita') ?>"><i class="far fa-newspaper"></i> BERITA</a></li>
+						<li style="font-size: 11px;font-weight:bold;"><a class="nav-link" href="<?= base_url('panitiajmtm/beranda') ?>"><i class="fas fa-home"></i> BERANDA</a></li>
+						<li style="font-size: 11px;font-weight:bold;"><a class="nav-link" href="<?= base_url('panitiajmtm/daftarpaket') ?>"><i class="fas fa-cubes"></i> DAFTAR PAKET</a></li>
+						<li style="font-size: 11px;font-weight:bold;"><a class="nav-link" href="<?= base_url('panitiajmtm/berita') ?>"><i class="far fa-newspaper"></i> BERITA</a></li>
 						<?php if ($status_penetapan_langsung) { ?>
-							<li style="font-size: 13px;font-weight:bold;"><a class="nav-link" href="<?= base_url('penetapanlangsung') ?>"><i class="far fa-handshake"></i> PENETAPAN LANGSUNG</a></li>
+							<li style="font-size: 11px;font-weight:bold;"><a class="nav-link" href="<?= base_url('penetapanlangsung') ?>"><i class="far fa-handshake"></i> PENETAPAN LANGSUNG</a></li>
 						<?php } ?>
-						<li style="font-size: 13px;font-weight:bold;"><a class="nav-link" href="<?= base_url('panitiajmtm/logakses') ?>"><i class="fas fa-unlock-alt"></i> LOG AKSES</a></li>
-						<li style="font-size: 13px;font-weight:bold;"><a class="nav-link" href="<?= base_url('gantipassword') ?>"><i class="fas fa-lock"></i> GANTI PASSWORD</a></li>
-						<!-- <li style="font-size: 13px;font-weight:bold;"><a class="nav-link" href="<?= base_url('uat') ?>"><i class="fas fa-eye"></i> UAT</a></li> -->
+						<li style="font-size: 11px;font-weight:bold;"><a class="nav-link" href="<?= base_url('panitiajmtm/logakses') ?>"><i class="fas fa-unlock-alt"></i> LOG AKSES</a></li>
+						<li style="font-size: 11px;font-weight:bold;"><a class="nav-link" href="<?= base_url('gantipassword') ?>"><i class="fas fa-lock"></i> GANTI PASSWORD</a></li>
+						<!-- <li style="font-size: 11px;font-weight:bold;"><a class="nav-link" href="<?= base_url('uat') ?>"><i class="fas fa-eye"></i> UAT</a></li> -->
 					<?php } ?>
 					<?php if ($this->session->userdata('id_role') == 4) { ?>
 						<li style="font-size: 17px;font-weight:bold;"><a class="nav-link mr-3" href="<?= base_url('index.php/vendor/dashboard') ?>"><i class="fa fa-home" aria-hidden="true"></i> BERANDA</a></li>
@@ -114,11 +114,11 @@ $this->role_login->cek_login();
 						<!-- <li style="font-size: 17px;font-weight:bold;"><a class="nav-link" href="<?= base_url('uat') ?>"><i class="fas fa-eye"></i> UAT</a></li> -->
 					<?php } ?>
 					<?php if ($this->session->userdata('id_role') == 8) {  ?>
-						<li style="font-size: 13px;font-weight:bold;"><a class="nav-link" href="<?= base_url('gm/beranda') ?>"><i class="fas fa-home"></i> BERANDA</a></li>
-						<li style="font-size: 13px;font-weight:bold;"><a class="nav-link" href="<?= base_url('paket') ?>"><i class="fas fa-cubes"></i> PAKET</a></li>
-						<li style="font-size: 13px;font-weight:bold;"><a class="nav-link" href="<?= base_url('index.php/vendor') ?>"><i class="fas fa-cubes"></i> VENDOR</a></li>
-						<!-- <li style="font-size: 13px;font-weight:bold;"><a class="nav-link" href="<?= base_url('logakses') ?>"><i class="fas fa-unlock-alt"></i> LOG AKSES</a></li>  -->
-						<li style="font-size: 13px;font-weight:bold;"><a class="nav-link" href="<?= base_url('gantipassword') ?>"><i class="fas fa-lock"></i> GANTI PASSWORD</a></li>
+						<li style="font-size: 11px;font-weight:bold;"><a class="nav-link" href="<?= base_url('gm/beranda') ?>"><i class="fas fa-home"></i> BERANDA</a></li>
+						<li style="font-size: 11px;font-weight:bold;"><a class="nav-link" href="<?= base_url('paket') ?>"><i class="fas fa-cubes"></i> PAKET</a></li>
+						<li style="font-size: 11px;font-weight:bold;"><a class="nav-link" href="<?= base_url('index.php/vendor') ?>"><i class="fas fa-cubes"></i> VENDOR</a></li>
+						<!-- <li style="font-size: 11px;font-weight:bold;"><a class="nav-link" href="<?= base_url('logakses') ?>"><i class="fas fa-unlock-alt"></i> LOG AKSES</a></li>  -->
+						<li style="font-size: 11px;font-weight:bold;"><a class="nav-link" href="<?= base_url('gantipassword') ?>"><i class="fas fa-lock"></i> GANTI PASSWORD</a></li>
 					<?php } ?>
 				</ul>
 				<ul class="navbar-nav ml-auto">

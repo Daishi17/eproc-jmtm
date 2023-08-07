@@ -508,19 +508,33 @@ class Daftarpaket extends CI_Controller
         $id_metode_dokumen = $this->input->post('id_metode_dokumen');
         $id_metode_evaluasi = $this->input->post('id_metode_evaluasi');
         $id_paket = $this->input->post('id_paket');
-
-
-        $data = [
-            'id_paket' => $id_paket
-        ];
-        $data2 = [
-            'id_paket' => $id_paket,
-            'id_jenis_pengadaan' => $id_jenis_pengadaan,
-            'id_metode_pemilihan' => $id_metode_pemilihan,
-            'id_kualifikasi' => $id_kualifikasi,
-            'id_metode_dokumen' => $id_metode_dokumen,
-            'id_metode_evaluasi' => $id_metode_evaluasi
-        ];
+        if ($id_kualifikasi == 23) {
+            $data = [
+                'id_paket' => $id_paket
+            ];
+            $data2 = [
+                'id_paket' => $id_paket,
+                'id_jenis_pengadaan' => $id_jenis_pengadaan,
+                'id_metode_pemilihan' => $id_metode_pemilihan,
+                'id_kualifikasi' => $id_kualifikasi,
+                'id_metode_dokumen' => $id_metode_dokumen,
+                'id_metode_evaluasi' => $id_metode_evaluasi,
+                'sts_spm' => 1,
+                'notif_spm' => 1
+            ];
+        } else {
+            $data = [
+                'id_paket' => $id_paket
+            ];
+            $data2 = [
+                'id_paket' => $id_paket,
+                'id_jenis_pengadaan' => $id_jenis_pengadaan,
+                'id_metode_pemilihan' => $id_metode_pemilihan,
+                'id_kualifikasi' => $id_kualifikasi,
+                'id_metode_dokumen' => $id_metode_dokumen,
+                'id_metode_evaluasi' => $id_metode_evaluasi,
+            ];
+        }
         // var_dump($data, $data2);
         // die;
         $tanggal_sekarang = date('Y-m-d');
@@ -2268,8 +2282,8 @@ class Daftarpaket extends CI_Controller
             $this->Rolepanitia_model->update_jadwal($data6, $where6);
         }
 
-          //row ketujuh
-          if (date('Y-m-d H:i', strtotime($jadwal13)) < date('Y-m-d H:i', strtotime($jadwal12)) || date('Y-m-d H:i', strtotime($jadwal13)) > date('Y-m-d H:i', strtotime($jadwal14))) {
+        //row ketujuh
+        if (date('Y-m-d H:i', strtotime($jadwal13)) < date('Y-m-d H:i', strtotime($jadwal12)) || date('Y-m-d H:i', strtotime($jadwal13)) > date('Y-m-d H:i', strtotime($jadwal14))) {
             $this->session->set_flashdata('jadwal_salah7', '<label  id="validasi_c7" class="text-danger"></label>');
         } else {
             $where7 = [

@@ -1863,7 +1863,7 @@
 			</div>
 		</div>
 	</div>
-<?php } else if ($paket['id_kualifikasi'] == 12 || $paket['id_kualifikasi'] == 9 || $paket['id_kualifikasi'] == 14 || $paket['id_kualifikasi'] == 18 || $paket['id_kualifikasi'] == 20 || $paket['id_kualifikasi'] == 21) { ?>
+<?php } else if ($paket['id_kualifikasi'] == 12 || $paket['id_kualifikasi'] == 9 || $paket['id_kualifikasi'] == 14 || $paket['id_kualifikasi'] == 18 || $paket['id_kualifikasi'] == 20 || $paket['id_kualifikasi'] == 21 || $paket['id_kualifikasi'] == 23) { ?>
 	<!-- INI JADWAL PASCAKUALIFIKASI -->
 	<div id="main" class="container">
 		<form action="javascript:;" id="form_tidak_lulus_dokumen_tambahan">

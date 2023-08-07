@@ -93,4 +93,24 @@
 	}
 </script>
 
+<script>
+	$(document).ready(function() {
+		function notifikasi_spm() {
+			$.ajax({
+				type: "post",
+				url: "<?= base_url() ?>paket/notifikasi_spm",
+				dataType: "json",
+				success: function(response) {
+					var nnn = response.dataku;
+					$("#notif_spm").html(nnn);
+				}
+			});
+
+		}
+		setInterval(() => {
+			notifikasi_spm()
+		}, 1000);
+	});
+</script>
+
 </html>

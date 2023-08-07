@@ -95,7 +95,7 @@
   										<select id="mySelecttender4" style="width: 100%;" name="id_metode_dokumen" class="form-control select2">
   											<option value="<?= $paket2['id_metode_dokumen'] ?>"><?= $paket2['nama_metode_dokumen'] ?></option>
   											<?php foreach ($metode_dokumen as $key => $value) { ?>
-  												<option id="cek_kualifikasi" value="<?= $value['id_metode_dokumen'] ?>"><?= $value['nama_metode_dokumen'] ?></option>
+  												<option value="<?= $value['id_metode_dokumen'] ?>"><?= $value['nama_metode_dokumen'] ?></option>
   											<?php	} ?>
   										</select>
   									<?php } else if ($paket2['status_paket_tender'] == 2) { ?>

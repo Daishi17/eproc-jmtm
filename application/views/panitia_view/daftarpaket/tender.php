@@ -1306,19 +1306,30 @@
 									<?php } ?>
 								</td>
 							</tr>
-							<tr>
-								<th>Buat Jadwal<span class="warning">*</span></th>
-								<!-- <td>
-																	<?php if ($id_kualifikasi['jam_mulai'] == NULL || $id_kualifikasi['jam_selesai'] == NULL) { ?>
-																																				<a href="<?= base_url('panitiajmtm/daftarpaket/jadwaltender/' . $paket['id_paket']) ?>" class="btn btn-sm btn-secondary"> Belum Ada Jadwal</a>
-																	<?php } else { ?>
-																																				<a href="<?= base_url('panitiajmtm/daftarpaket/jadwaltender/' . $paket['id_paket']) ?>" class="bbtn btn-sm btn-success"><span class="text-black"><i class="fa fa-check"></i></span> Sudah Ada Jadwal</a>
-																	<?php } ?>
-																									</td> -->
-								<td>
-									<a href="<?= base_url('panitiajmtm/daftarpaket/jadwaltender/' . $paket['id_paket']) ?>" class="btn btn-sm btn-grad100">Edit Jadwal</a>
-								</td>
-							</tr>
+							<?php if ($paket['id_kualifikasi'] == 23) { ?>
+								<?php if ($paket['sts_spm'] == 1) { ?>
+									<tr>
+									<th>Buat Jadwal<span class="warning">*</span></th>
+									<td>
+										<a class="btn btn-sm btn-grad100 text-white">Menunggu Konfirmasi Admin Mengenai Tender Spm</a>
+									</td>
+								</tr>
+								<?php } else { ?>
+									<tr>
+									<th>Buat Jadwal<span class="warning">*</span></th>
+									<td>
+										<a href="<?= base_url('panitiajmtm/daftarpaket/jadwaltender/' . $paket['id_paket']) ?>" class="btn btn-sm btn-grad100">Edit Jadwal</a>
+									</td>
+								</tr>
+								<?php } ?>
+							<?php } else { ?>
+								<tr>
+									<th>Buat Jadwal<span class="warning">*</span></th>
+									<td>
+										<a href="<?= base_url('panitiajmtm/daftarpaket/jadwaltender/' . $paket['id_paket']) ?>" class="btn btn-sm btn-grad100">Edit Jadwal</a>
+									</td>
+								</tr>
+							<?php } ?>
 							<tr>
 								<th class="bgwarning">Pilih Penyedia<span class="warning">*</span></th>
 								<td colspan="3">
@@ -1415,28 +1426,28 @@
 								<?php if ($paket['id_kualifikasi'] == 22) { ?>
 								<?php } else { ?>
 									<tr>
-									<th class="bgwarning" width="20%">Bobot Teknis<span class="warning">*</span></th>
-									<td>
-										<div class="row">
-											<div class="col-md-2">
-												<input type="text" maxlength="2" class="form-control" id="bobot_teknis" value="<?= $paket['bobot_teknis'] ?>" onkeyup="bobot_teknis_ajax()" name="bobot_teknis" onkeypress="return hanyaAngka(event)">
-												<p class="text-danger" id="bobot_teknis_error"></p>
+										<th class="bgwarning" width="20%">Bobot Teknis<span class="warning">*</span></th>
+										<td>
+											<div class="row">
+												<div class="col-md-2">
+													<input type="text" maxlength="2" class="form-control" id="bobot_teknis" value="<?= $paket['bobot_teknis'] ?>" onkeyup="bobot_teknis_ajax()" name="bobot_teknis" onkeypress="return hanyaAngka(event)">
+													<p class="text-danger" id="bobot_teknis_error"></p>
+												</div>
 											</div>
-										</div>
 
-									</td>
-								</tr>
-								<tr>
-									<th class="bgwarning" width="20%">Bobot Biaya<span class="warning">*</span></th>
-									<td>
-										<div class="row">
-											<div class="col-md-2">
-												<input type="text" maxlength="2" class="form-control" id="bobot_biaya" name="bobot_biaya" value="<?= $paket['bobot_biaya'] ?>">
-												<p class="text-danger" id="bobot_biaya_error" onkeypress="return hanyaAngka(event)"></p>
+										</td>
+									</tr>
+									<tr>
+										<th class="bgwarning" width="20%">Bobot Biaya<span class="warning">*</span></th>
+										<td>
+											<div class="row">
+												<div class="col-md-2">
+													<input type="text" maxlength="2" class="form-control" id="bobot_biaya" name="bobot_biaya" value="<?= $paket['bobot_biaya'] ?>">
+													<p class="text-danger" id="bobot_biaya_error" onkeypress="return hanyaAngka(event)"></p>
+												</div>
 											</div>
-										</div>
-									</td>
-								</tr>
+										</td>
+									</tr>
 								<?php } ?>
 							</form>
 						</table>

@@ -2125,7 +2125,6 @@ class Beranda extends CI_Controller
 
         // INI UNTUK TAHAPAN EAUCTIUON
         $data['get_tahap_download_dokumen_pengadaan_eauction'] = $this->Rolepanitia_model->get_tahap_download_dokumen_pengadaan_eauction($id_paket, $id_kualifikasi);
-        $data['upload_dokumen_prakualifikasi_2_file'] = $this->Rolepanitia_model->upload_dokumen_prakualifikasi_2_file($id_paket, $id_kualifikasi);
         $data['upload_dokumen_eauction'] = $this->Rolepanitia_model->upload_dokumen_eauction($id_paket, $id_kualifikasi);
         $data['tahap_jadwal_binding'] = $this->Rolepanitia_model->tahap_jadwal_binding($id_paket, $id_kualifikasi);
         $data['tahap_evaluasi_eauction'] = $this->Rolepanitia_model->tahap_evaluasi_eauction($id_paket, $id_kualifikasi);

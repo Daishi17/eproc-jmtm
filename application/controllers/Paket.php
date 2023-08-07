@@ -3904,4 +3904,15 @@ class Paket extends CI_Controller
 		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>');
 		redirect('paket/jadwal_transaksi_langsung/' . $id_paket);
 	}
+
+		// ini untuk notifikasi spm
+		public function notifikasi_spm()
+		{
+			$data = $this->Paket_model->total_notif_spm();
+			$output = [
+				'dataku' => $data
+			];
+			$this->output->set_content_type('application/json')->set_output(json_encode($output));
+		}
+		// sudah di baca
 }

@@ -3325,4 +3325,97 @@ class Paket_model extends CI_Model
 		$query = $this->db->get();
 		return $query->row_array();
 	}
+
+	var $order_spm = array('id_paket', 'nama_paket', 'kode_tender', 'nama_jenis_pengadaan', 'nama_metode_pemilihan', 'status_tahap_tender', 'id_paket', 'id_paket');
+	private function _get_data_query_spm()
+	{
+		$i = 0;
+		$this->db->select('*');
+		$this->db->from('tbl_paket');
+		$this->db->join('tbl_unit_kerja', 'id_unit_kerja', 'left');
+		$this->db->join('tbl_panitia', 'id_panitia', 'left');
+		$this->db->join('tbl_detail_panitia', 'id_panitia', 'left');
+		$this->db->join('tbl_jenis_pengadaan', 'id_jenis_pengadaan', 'left');
+		$this->db->join('tbl_metode_pemilihan', 'tbl_paket.id_metode_pemilihan = tbl_metode_pemilihan.id_metode_pemilihan', 'left');
+		$this->db->join('tbl_pegawai', 'tbl_paket.id_pegawai = tbl_detail_panitia.id_pegawai2', 'left');
+		$this->db->where('tbl_paket.kode_tender_random !=', NULL);
+		$metopem = [4, 6];
+		$this->db->where_in('tbl_paket.id_metode_pemilihan', $metopem);
+		$this->db->where_in('tbl_paket.status_paket_tender', [1, 2]);
+		$this->db->where_in('tbl_paket.sts_spm', [1, 2]);
+		$this->db->where('status_finalisasi_draft', 1);
+		$this->db->where('status_soft_delete', 0);
+		$this->db->group_by('tbl_paket.id_paket');
+		$this->db->where_not_in('tbl_paket.kode_tender_random', '');
+		if (isset($_POST['id_unit_kerja'], $_POST['id_jenis_pengadaan']) && $_POST['id_unit_kerja'] != '' && $_POST['id_jenis_pengadaan'] != '') {
+			$this->db->like('tbl_paket.id_unit_kerja', $_POST['id_unit_kerja']);
+			$this->db->like('tbl_paket.id_jenis_pengadaan', $_POST['id_jenis_pengadaan']);
+		}
+		foreach ($this->order_spm as $item) // looping awal
+		{
+			if ($_POST['search']['value']) // jika datatable mengirimkan pencarian dengan metode POST
+			{
+
+				if ($i === 0) // looping awal
+				{
+					$this->db->group_start();
+					$this->db->like($item, $_POST['search']['value']);
+				} else {
+					$this->db->or_like(
+						$item,
+						$_POST['search']['value']
+					);
+				}
+
+				if (count($this->order_spm) - 1 == $i)
+					$this->db->group_end();
+			}
+			$i++;
+		}
+		if (isset($_POST['order'])) {
+			$this->db->order_by($this->order_spm[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
+		} else {
+			$this->db->order_by('id_paket', 'DESC');
+		}
+	}
+
+	public function getdatatable_spm() //nam[ilin data pake ini
+	{
+		$this->_get_data_query_spm(); //ambil data dari get yg di atas
+		if ($_POST['length'] != -1) {
+			$this->db->limit($_POST['length'], $_POST['start']);
+		}
+		$query = $this->db->get();
+		return $query->result();
+	}
+	public function count_filtered_data_spm()
+	{
+		$this->_get_data_query_spm(); //ambil data dari get yg di atas
+		$query = $this->db->get();
+		return $query->num_rows();
+	}
+
+	public function count_all_data_spm()
+	{
+		$this->db->from('tbl_paket');
+		return $this->db->count_all_results();
+	}
+
+	public function get_by_id_paket($id_paket)
+	{
+		$this->db->select('*');
+		$this->db->from('tbl_paket');
+		$this->db->where('id_paket', $id_paket);
+		$query = $this->db->get();
+		return $query->row_array();
+	}
+
+		// notifikasi spm
+		public function total_notif_spm()
+		{
+			$this->db->select('*');
+			$this->db->from('tbl_paket');
+			$this->db->where('notif_spm', 1);
+			return $this->db->count_all_results();
+		}
 }

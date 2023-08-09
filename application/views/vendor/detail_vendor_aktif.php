@@ -259,38 +259,72 @@
 
 								<!-- new update -->
 								<!-- <?php if ($vendor['id_jenis_pengadaan'] == 2 || $vendor['id_jenis_pengadaan'] == 3) { ?>
-									<?php $i = 1;
-											foreach ($persyaratan_vms_perorangan as $key => $value) { ?>
-										<li class="nav-item">
-											<a class="nav-link bg-info text-white" id="messages-tab" data-toggle="tab" href="#persyaratan_vms<?= $i++ ?>" role="tab" aria-controls="messages" aria-selected="false">
-												<?php
-												if ($value['nama_persyaratan_vms'] == 'SBU') {
-													if ($vendor['id_jenis_pengadaan'] == 2) {
-														echo $value['nama_persyaratan_vms'] . ' PEMBORONGAN';
-													} else {
-														echo $value['nama_persyaratan_vms'] . ' KONSULTANSI';
-													}
-												} else {
-													echo $value['nama_persyaratan_vms'];
-												}
+																																									<?php $i = 1;
+																																									foreach ($persyaratan_vms_perorangan as $key => $value) { ?>
+																																																										<li class="nav-item">
+																																																											<a class="nav-link bg-info text-white" id="messages-tab" data-toggle="tab" href="#persyaratan_vms<?= $i++ ?>" role="tab" aria-controls="messages" aria-selected="false">
+																																																												<?php
+																																																												if ($value['nama_persyaratan_vms'] == 'SBU') {
+																																																													if ($vendor['id_jenis_pengadaan'] == 2) {
+																																																														echo $value['nama_persyaratan_vms'] . ' PEMBORONGAN';
+																																																													} else {
+																																																														echo $value['nama_persyaratan_vms'] . ' KONSULTANSI';
+																																																													}
+																																																												} else {
+																																																													echo $value['nama_persyaratan_vms'];
+																																																												}
 
-												?>
-											</a>
-										</li>
-									<?php } ?>
-								<?php } else { ?>
-									<?php $i = 1;
-											foreach ($persyaratan_vms_perorangan as $key => $value) { ?>
-										<li class="nav-item">
-											<a class="nav-link bg-info text-white" id="messages-tab" data-toggle="tab" href="#persyaratan_vms<?= $i++ ?>" role="tab" aria-controls="messages" aria-selected="false">
-												<?= $value['nama_persyaratan_vms']
+																																																												?>
+																																																											</a>
+																																																										</li>
+																																									<?php } ?>
+																								<?php } else { ?>
+																																									<?php $i = 1;
+																																									foreach ($persyaratan_vms_perorangan as $key => $value) { ?>
+																																																										<li class="nav-item">
+																																																											<a class="nav-link bg-info text-white" id="messages-tab" data-toggle="tab" href="#persyaratan_vms<?= $i++ ?>" role="tab" aria-controls="messages" aria-selected="false">
+																																																												<?= $value['nama_persyaratan_vms']
 
-												?>
-											</a>
-										</li>
-									<?php } ?>
-								<?php } ?> -->
+																																																												?>
+																																																											</a>
+																																																										</li>
+																																									<?php } ?>
+																								<?php } ?> -->
 								<!-- end new update -->
+							<?php	} else if ($vendor['bentuk_usaha'] == 'Lembaga Pendidikan') { ?>
+								<li class="active  m-1">
+									<a class="nav-link bg-info text-white active" id="home-tab" data-toggle="tab" href="#identitas-perusahaan" role="tab" aria-controls="home" aria-selected="true">Identitas Perusahaan</a>
+								</li>
+								<li class="nav-item  m-1">
+									<a class="nav-link bg-info akta text-white " id="message-tab" data-toggle="tab" href="#akta1" role="tab" aria-controls="messages" aria-selected="false">Akta</a>
+								</li>
+								<li class="nav-item  m-1">
+									<a class="nav-link bg-info text-white pemilik" id="messages-tab" data-toggle="tab" href="#pemilik1" role="tab" aria-controls="messages" aria-selected="false">Pemilik</a>
+								</li>
+								<li class="nav-item  m-1">
+									<a class="nav-link bg-info text-white pengurus" id="messages-tab" data-toggle="tab" href="#pengurus1" role="tab" aria-controls="messages" aria-selected="false">Pengurus</a>
+								</li>
+								<li class="nav-item  m-1">
+									<a class="nav-link bg-info text-white  pengalaman" id="messages-tab" data-toggle="tab" href="#pengalaman1" role="tab" aria-controls="messages" aria-selected="false">Pengalaman</a>
+								</li>
+								<li class="nav-item  m-1">
+									<a class="nav-link bg-info text-white  pajak" id="messages-tab" data-toggle="tab" href="#pajak1" role="tab" aria-controls="messages" aria-selected="false">Pajak</a>
+								</li>
+								<li class="nav-item  m-1">
+									<a class="nav-link bg-info text-white  keuangan" id="messages-tab" data-toggle="tab" href="#keuangan1" role="tab" aria-controls="messages" aria-selected="false">Neraca Keuangan</a>
+								</li>
+								<li class="nav-item  m-1">
+									<a class="nav-link bg-info text-white  pajak" id="messages-tab" data-toggle="tab" href="#persyaratan_vms4" role="tab" aria-controls="messages" aria-selected="false">NPWP</a>
+								</li>
+								<li class="nav-item  m-1">
+									<a class="nav-link bg-info text-white  skpkp" id="messages-tab" data-toggle="tab" href="#persyaratan_vms5" role="tab" aria-controls="messages" aria-selected="false">SKPKP</a>
+								</li>
+								<li class="nav-item  m-1">
+									<a class="nav-link bg-info text-white  skpkp" id="messages-tab" data-toggle="tab" href="#persyaratan_vms6" role="tab" aria-controls="messages" aria-selected="false">SPT</a>
+								</li>
+								<li class="nav-item  m-1">
+									<a class="nav-link bg-info text-white  skpkp" id="messages-tab" data-toggle="tab" href="#persyaratan_vms10" role="tab" aria-controls="messages" aria-selected="false">BAGAN STRUKTUR ORGANISASI</a>
+								</li>
 							<?php	} else { ?>
 								<li class="nav-item active">
 									<a class="nav-link bg-info text-white ijin-usaha" id="ijin-usaha" data-toggle="tab" href="#ijinusaha1" role="tab" aria-controls="ijinusaha-tab" aria-selected="false">Ijin Usaha</a>
@@ -305,11 +339,11 @@
 									<a class="nav-link bg-info text-white pengurus" id="messages-tab" data-toggle="tab" href="#pengurus1" role="tab" aria-controls="messages" aria-selected="false">Pengurus</a>
 								</li>
 								<!-- <li class="nav-item">
-								<a class="nav-link bg-info text-white  tenaga-ahli" id="messages-tab" data-toggle="tab" href="#tenaga-ahli" role="tab" aria-controls="messages" aria-selected="false">Tenaga Ahli</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link bg-info text-white  peralatan" id="messages-tab" data-toggle="tab" href="#peralatan1" role="tab" aria-controls="messages" aria-selected="false">Peralatan</a>
-							</li> -->
+																								<a class="nav-link bg-info text-white  tenaga-ahli" id="messages-tab" data-toggle="tab" href="#tenaga-ahli" role="tab" aria-controls="messages" aria-selected="false">Tenaga Ahli</a>
+																							</li>
+																							<li class="nav-item">
+																								<a class="nav-link bg-info text-white  peralatan" id="messages-tab" data-toggle="tab" href="#peralatan1" role="tab" aria-controls="messages" aria-selected="false">Peralatan</a>
+																							</li> -->
 								<li class="nav-item">
 									<a class="nav-link bg-info text-white  pengalaman" id="messages-tab" data-toggle="tab" href="#pengalaman1" role="tab" aria-controls="messages" aria-selected="false">Pengalaman</a>
 								</li>
@@ -353,8 +387,7 @@
 									<?php } ?>
 								<?php } ?>
 								<!-- end new update -->
-							<?php	}
-							?>
+							<?php } ?>
 						</ul>
 
 						<div class="tab-content">

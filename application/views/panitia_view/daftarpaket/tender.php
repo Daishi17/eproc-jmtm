@@ -652,12 +652,12 @@
 							<tr>
 								<th>Buat Jadwal<span class="warning">*</span></th>
 								<!-- <td>
-																	<?php if ($id_kualifikasi['jam_mulai'] == NULL || $id_kualifikasi['jam_selesai'] == NULL) { ?>
-																											<a href="<?= base_url('panitiajmtm/daftarpaket/jadwaltender/' . $paket['id_paket']) ?>" class="btn btn-sm btn-secondary"> Belum Ada Jadwal</a>
-																	<?php } else { ?>
-																											<a href="<?= base_url('panitiajmtm/daftarpaket/jadwaltender/' . $paket['id_paket']) ?>" class="bbtn btn-sm btn-success"><span class="text-black"><i class="fa fa-check"></i></span> Sudah Ada Jadwal</a>
-																	<?php } ?>
-																</td> -->
+																				<?php if ($id_kualifikasi['jam_mulai'] == NULL || $id_kualifikasi['jam_selesai'] == NULL) { ?>
+																																	<a href="<?= base_url('panitiajmtm/daftarpaket/jadwaltender/' . $paket['id_paket']) ?>" class="btn btn-sm btn-secondary"> Belum Ada Jadwal</a>
+																				<?php } else { ?>
+																																	<a href="<?= base_url('panitiajmtm/daftarpaket/jadwaltender/' . $paket['id_paket']) ?>" class="bbtn btn-sm btn-success"><span class="text-black"><i class="fa fa-check"></i></span> Sudah Ada Jadwal</a>
+																				<?php } ?>
+																			</td> -->
 								<td>
 									<a href="<?= base_url('panitiajmtm/daftarpaket/jadwaltender/' . $paket['id_paket']) ?>" class="btn btn-sm btn-grad100">Edit Jadwal</a>
 								</td>
@@ -976,10 +976,10 @@
 								</div>
 							<?php } else if ($paket['status_persetujuan_manager'] == 4) { ?>
 								<!-- <div class="col-md-4">
-																																																															<a href="javascript:;" data-toggle="modal" data-target="#exampleModal" class="btn btn-grad btn-sm btn-block text-white">
-																																																																<h6><i class="fas fa-cube"></i> Paket Sudah Di Umumkan</h6>
-																																																															</a>
-																																																														</div> -->
+																																																																								<a href="javascript:;" data-toggle="modal" data-target="#exampleModal" class="btn btn-grad btn-sm btn-block text-white">
+																																																																									<h6><i class="fas fa-cube"></i> Paket Sudah Di Umumkan</h6>
+																																																																								</a>
+																																																																							</div> -->
 							<?php } else { ?>
 								<div class="col-md-6">
 									<a href="javascript:;" data-toggle="modal" data-target="#exampleModal" class="btn btn-grad3 btn-sm btn-block text-white">
@@ -989,9 +989,9 @@
 							<?php } ?>
 						</div>
 						<!-- <form method="post" action="#">
-																												<input type="hidden" name="id_paket" value="<?= $paket['id_paket'] ?>" id="id_paket_save_tender">
-																												<a href="javascript:;" id="btnSave" onclick="SimpanTenderPenunjukanLangsung()" class="btn btn-grad100 btn-block">Umumkan Paket Penunjukan Langsung</a>
-																											</form> -->
+																																		<input type="hidden" name="id_paket" value="<?= $paket['id_paket'] ?>" id="id_paket_save_tender">
+																																		<a href="javascript:;" id="btnSave" onclick="SimpanTenderPenunjukanLangsung()" class="btn btn-grad100 btn-block">Umumkan Paket Penunjukan Langsung</a>
+																																	</form> -->
 					<?php } else { ?>
 
 					<?php } ?>
@@ -1309,18 +1309,18 @@
 							<?php if ($paket['id_kualifikasi'] == 23) { ?>
 								<?php if ($paket['sts_spm'] == 1) { ?>
 									<tr>
-									<th>Buat Jadwal<span class="warning">*</span></th>
-									<td>
-										<a class="btn btn-sm btn-grad100 text-white">Menunggu Konfirmasi Admin Mengenai Tender Spm</a>
-									</td>
-								</tr>
+										<th>Buat Jadwal<span class="warning">*</span></th>
+										<td>
+											<a class="btn btn-sm btn-grad100 text-white">Menunggu Konfirmasi Admin Mengenai Tender Spm</a>
+										</td>
+									</tr>
 								<?php } else { ?>
 									<tr>
-									<th>Buat Jadwal<span class="warning">*</span></th>
-									<td>
-										<a href="<?= base_url('panitiajmtm/daftarpaket/jadwaltender/' . $paket['id_paket']) ?>" class="btn btn-sm btn-grad100">Edit Jadwal</a>
-									</td>
-								</tr>
+										<th>Buat Jadwal<span class="warning">*</span></th>
+										<td>
+											<a href="<?= base_url('panitiajmtm/daftarpaket/jadwaltender/' . $paket['id_paket']) ?>" class="btn btn-sm btn-grad100">Edit Jadwal</a>
+										</td>
+									</tr>
 								<?php } ?>
 							<?php } else { ?>
 								<tr>
@@ -1424,6 +1424,10 @@
 								<?php } ?>
 
 								<?php if ($paket['id_kualifikasi'] == 22) { ?>
+									<input type="hidden" maxlength="2" class="form-control" id="bobot_teknis" value="50" onkeyup="bobot_teknis_ajax()" name="bobot_teknis" onkeypress="return hanyaAngka(event)">
+									<p class="text-danger" id="bobot_teknis_error"></p>
+									<input type="hidden" maxlength="2" class="form-control" id="bobot_biaya" name="bobot_biaya" value="50">
+									<p class="text-danger" id="bobot_biaya_error" onkeypress="return hanyaAngka(event)"></p>
 								<?php } else { ?>
 									<tr>
 										<th class="bgwarning" width="20%">Bobot Teknis<span class="warning">*</span></th>
@@ -1967,12 +1971,12 @@
 							<tr>
 								<th>Buat Jadwal<span class="warning">*</span></th>
 								<!-- <td>
-																	<?php if ($id_kualifikasi['jam_mulai'] == NULL || $id_kualifikasi['jam_selesai'] == NULL) { ?>
-																																													<a href="<?= base_url('panitiajmtm/daftarpaket/jadwaltender/' . $paket['id_paket']) ?>" class="btn btn-sm btn-secondary"> Belum Ada Jadwal</a>
-																	<?php } else { ?>
-																																													<a href="<?= base_url('panitiajmtm/daftarpaket/jadwaltender/' . $paket['id_paket']) ?>" class="bbtn btn-sm btn-success"><span class="text-black"><i class="fa fa-check"></i></span> Sudah Ada Jadwal</a>
-																	<?php } ?>
-																																		</td> -->
+																				<?php if ($id_kualifikasi['jam_mulai'] == NULL || $id_kualifikasi['jam_selesai'] == NULL) { ?>
+																																																			<a href="<?= base_url('panitiajmtm/daftarpaket/jadwaltender/' . $paket['id_paket']) ?>" class="btn btn-sm btn-secondary"> Belum Ada Jadwal</a>
+																				<?php } else { ?>
+																																																			<a href="<?= base_url('panitiajmtm/daftarpaket/jadwaltender/' . $paket['id_paket']) ?>" class="bbtn btn-sm btn-success"><span class="text-black"><i class="fa fa-check"></i></span> Sudah Ada Jadwal</a>
+																				<?php } ?>
+																																					</td> -->
 								<td>
 									<a href="<?= base_url('panitiajmtm/daftarpaket/jadwaltender/' . $paket['id_paket']) ?>" class="btn btn-sm btn-grad100">Edit Jadwal</a>
 								</td>
@@ -2395,7 +2399,7 @@
 										<div class="card-header bg-primary" style="color: white;">Dokumen Lelang</div>
 										<div class="card-body text-primary">
 											<div class="row">
-												<?php if ($paket['id_kualifikasi'] == 15 || $paket['id_kualifikasi'] == 13 || $paket['id_kualifikasi'] == 11 || $paket['id_kualifikasi'] == 10 || $paket['id_kualifikasi'] == 8 || $paket['id_kualifikasi'] == 7 || $paket['id_kualifikasi'] == 17 || $paket['id_kualifikasi'] == 6 || $paket['id_kualifikasi'] == 5) { ?>
+												<?php if ($paket['id_kualifikasi'] == 15 || $paket['id_kualifikasi'] == 13 || $paket['id_kualifikasi'] == 11 || $paket['id_kualifikasi'] == 10 || $paket['id_kualifikasi'] == 8 || $paket['id_kualifikasi'] == 7 || $paket['id_kualifikasi'] == 17 || $paket['id_kualifikasi'] == 6 || $paket['id_kualifikasi'] == 5 ||  $paket['id_kualifikasi'] == 24) { ?>
 													<div class="col-md-6">
 														<div class="card">
 															<div class="card-header bg-danger">
@@ -3003,9 +3007,9 @@
 											<th>Nilai HPS</th>
 											<th> <?php if ($total_rincian_hps_pdf == null) { ?>
 													<?php $total = 0;
-														foreach ($total_rincian_hps as $key => $value) { ?>
+													foreach ($total_rincian_hps as $key => $value) { ?>
 														<?php
-															$total += $value['vol_rincian_hps'] * $value['harga_rincian_hps'] + ($value['persen_rincian_hps'] / 100) * $value['vol_rincian_hps'] * $value['harga_rincian_hps'];
+														$total += $value['vol_rincian_hps'] * $value['harga_rincian_hps'] + ($value['persen_rincian_hps'] / 100) * $value['vol_rincian_hps'] * $value['harga_rincian_hps'];
 														?>
 													<?php } ?>
 													<?= "Rp " . number_format($total, 2, ',', '.') ?>
@@ -3186,9 +3190,9 @@
 											<th>Nilai HPS</th>
 											<th> <?php if ($total_rincian_hps_pdf == null) { ?>
 													<?php $total = 0;
-														foreach ($total_rincian_hps as $key => $value) { ?>
+													foreach ($total_rincian_hps as $key => $value) { ?>
 														<?php
-															$total += $value['vol_rincian_hps'] * $value['harga_rincian_hps'] + ($value['persen_rincian_hps'] / 100) * $value['vol_rincian_hps'] * $value['harga_rincian_hps'];
+														$total += $value['vol_rincian_hps'] * $value['harga_rincian_hps'] + ($value['persen_rincian_hps'] / 100) * $value['vol_rincian_hps'] * $value['harga_rincian_hps'];
 														?>
 													<?php } ?>
 													<?= "Rp " . number_format($total, 2, ',', '.') ?>

@@ -1038,7 +1038,7 @@
   							<a href="<?= base_url('panitiajmtm/daftarpaket/tender/' . $paket2['id_paket']) ?>" class="btn btn-info ml-4 mb-5" style="width: 100px;"><i class="fas fa-arrow-circle-left mr-2"></i>Kembali</a>
   						</div>
   					</form>
-  				<?php } else if ($paket2['id_kualifikasi'] == 4) { ?>
+  				<?php } else if ($paket2['id_kualifikasi'] == 4 || $paket2['id_kualifikasi'] == 23) { ?>
   					<form action="<?= base_url('panitiajmtm/daftarpaket/simpanjadwal3/' . $paket2['id_paket']) ?>" method="POST">
   						<?= $this->session->flashdata('jadwal_salah1'); ?>
   						<?= $this->session->flashdata('jadwal_salah2'); ?>
@@ -1471,7 +1471,7 @@
   							<a href="<?= base_url('panitiajmtm/daftarpaket/tender/' . $paket2['id_paket']) ?>" class="btn btn-info ml-4 mb-5" style="width: 100px;"><i class="fas fa-arrow-circle-left mr-2"></i>Kembali</a>
   						</div>
   					</form>
-  				<?php } else if ($paket2['id_kualifikasi'] == 10) { ?>
+  				<?php } else if ($paket2['id_kualifikasi'] == 10 || $paket2['id_kualifikasi'] == 24) { ?>
   					<form action="<?= base_url('panitiajmtm/daftarpaket/simpanjadwal3/' . $paket2['id_paket']) ?>" method="POST">
   						<?= $this->session->flashdata('jadwal_salah1'); ?>
   						<?= $this->session->flashdata('jadwal_salah2'); ?>
@@ -3204,7 +3204,7 @@
   							<a href="<?= base_url('panitiajmtm/daftarpaket/tender/' . $paket2['id_paket']) ?>" class="btn btn-info ml-4 mb-5" style="width: 100px;"><i class="fas fa-arrow-circle-left mr-2"></i>Kembali</a>
   						</div>
   					</form>
-  				<?php } else if ($paket2['id_kualifikasi'] == 21 || $paket2['id_kualifikasi'] == 23) { ?>
+  				<?php } else if ($paket2['id_kualifikasi'] == 21) { ?>
   					<form action="<?= base_url('panitiajmtm/daftarpaket/simpanjadwal/' . $paket2['id_paket']) ?>" method="POST">
   						<?= $this->session->flashdata('jadwal_salah1'); ?>
   						<?= $this->session->flashdata('jadwal_salah2'); ?>

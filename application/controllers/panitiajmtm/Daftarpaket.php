@@ -22,8 +22,7 @@ class Daftarpaket extends CI_Controller
         $role = $this->session->userdata('id_role');
         if (!$role) {
             redirect('auth');
-        } else {
-        }
+        } else { }
     }
 
     public function index()
@@ -3016,8 +3015,7 @@ class Daftarpaket extends CI_Controller
                     'status_mengikuti_paket' => 1
                 ];
                 $this->Non_tender_model->tunjuk_penyedia(array('id_mengikuti_paket_vendor' => $id_paket), $data2);
-            } else {
-            }
+            } else { }
             $this->Rolepanitia_model->update_save_tender(array('id_paket' => $id_paket), $data);
             $this->output->set_content_type('application/json')->set_output(json_encode('success'));
             $this->session->set_flashdata('message', '<br> <div class="alert alert-primary alert-dismissible">' . '<div class="form-inline"><img width="100px" src=' . base_url('assets/img/logo_pengumuman.png') . ' > <h3>  PAKET TENDER BERHASIL DI UMUMKAN! </h3></div>' . '</div>');

@@ -359,13 +359,13 @@
                 <!-- Button trigger modal -->
                 <!-- <?php if ($paket['id_metode_pemilihan'] == 8) { ?>
 
-				<?php    } else { ?>
-					<center>
-						<button type="button" style="width: 300px;" class="btn btn-primary" onclick="lihat_vendor_ke_undang(<?= $paket['id_paket'] ?>)">
-							<i class="fas fa-users"></i> Detail Vendor Terundang
-						</button>
-					</center>
-				<?php } ?> -->
+				    <?php    } else { ?>
+					        <center>
+						        <button type="button" style="width: 300px;" class="btn btn-primary" onclick="lihat_vendor_ke_undang(<?= $paket['id_paket'] ?>)">
+							        <i class="fas fa-users"></i> Detail Vendor Terundang
+						        </button>
+					        </center>
+				    <?php } ?> -->
                 <br>
             </div>
         <?php } ?>
@@ -403,8 +403,8 @@
                                         </td>
                                         <td>
                                             <!-- <a href="javascript:;" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#exampleModal<?= $value['id_persyaratan_tender'] ?>">
-												<i class="fa fa-edit"></i>
-											</a> -->
+												    <i class="fa fa-edit"></i>
+											    </a> -->
                                             <a href="<?= base_url('panitiajmtm/daftarpaket/delete_persyaratan_tambahan/' . $value['id_persyaratan_tender']) ?>" class="btn btn-sm btn-danger"><i class="fa fa-trash-alt"></i></a>
                                         </td>
                                     </tr>

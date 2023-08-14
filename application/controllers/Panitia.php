@@ -289,7 +289,7 @@ class Panitia extends CI_Controller
 				$is_unique_nip = '';
 			}
 			$this->form_validation->set_rules('id_role_panitia', 'Role Ketua Sudah Ada Yang Punya', 'required|trim|xss_clean' . $is_unique_nip, ['required' => 'Role Wajib Diisi!', 'is_unique' => 'Role Ketua Sudah Ada Yang Punya']);
-
+			
 			if ($this->form_validation->run() == false) {
 				$data = [
 					// 'nama_pegawai' => form_error('nama_pegawai'),

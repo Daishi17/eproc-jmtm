@@ -57,8 +57,8 @@
                 $date_binding_22 = new DateTime($date_binding_2);
                 $date_binding_3 = $ambil_paket['start_time_binding'];
                 $date_binding_33 = new DateTime($date_binding_3);
-                $binding_2 = $date_binding_22->modify("+3 minutes");
-                $binding_3 = $date_binding_33->modify("+10 minutes");
+                $binding_2 = $date_binding_22->modify("+5 minutes");
+                $binding_3 = $date_binding_33->modify("+6 minutes");
                 // binding 2 mulai
                 $rem2 = strtotime($binding_2->format('Y-m-d H:i')) - time();
                 $min2 = floor(($rem2 % 3600) / 60);

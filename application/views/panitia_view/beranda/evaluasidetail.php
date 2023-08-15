@@ -58,7 +58,7 @@
 </div>
 
 <!-- PRAKUALIFIKASI DUA FILE -->
-<?php if ($paket['id_kualifikasi'] == 11 || $paket['id_kualifikasi'] == 7 || $paket['id_kualifikasi'] == 6 || $paket['id_kualifikasi'] == 4 || $paket['id_kualifikasi'] == 10 || $paket['id_kualifikasi'] == 17) { ?>
+<?php if ($paket['id_kualifikasi'] == 11 || $paket['id_kualifikasi'] == 7 || $paket['id_kualifikasi'] == 6 || $paket['id_kualifikasi'] == 4 || $paket['id_kualifikasi'] == 10 || $paket['id_kualifikasi'] == 17 || $paket['id_kualifikasi'] == 23) { ?>
 	<div id="main" class="container">
 		<input type="hidden" value="<?= $paket['id_paket'] ?>" id="id_paket">
 		<div class="float-right p-3">
@@ -252,12 +252,12 @@
 
 
 					<!-- <li class="nav-item">
-					<a class="nav-link" href="#kualifikasi">Kirim Undangan Pembuktian</a>
-				</li> -->
+						<a class="nav-link" href="#kualifikasi">Kirim Undangan Pembuktian</a>
+					</li> -->
 
 					<!-- <li class="nav-item">
-					<a class="nav-link" href="#pembuktian">Pembuktian Kualifikasi</a>
-				</li> -->
+						<a class="nav-link" href="#pembuktian">Pembuktian Kualifikasi</a>
+					</li> -->
 				</ul>
 
 				<div class="tab-content">
@@ -311,21 +311,21 @@
 										<i class="text-danger">Nilai Tidak Boleh Lebih 100 !!!</i>
 									</div>
 									<!-- <table class=" table table-striped" id="tbl_evaluasi_teknis">
-								<thead>
-									<tr>
-										<th>No</th>
-										<th style=" width: 60%;">Evaluasi Teknis</th>
-										<th>Nilai Teknis</th>
-									</tr>
-								</thead>
-								<tbody>
+									<thead>
+										<tr>
+											<th>No</th>
+											<th style=" width: 60%;">Evaluasi Teknis</th>
+											<th>Nilai Teknis</th>
+										</tr>
+									</thead>
+									<tbody>
 
-								</tbody>
-							</table>
-							<div class="form-group">
-								<label for="exampleFormControlTextarea1">Alasan Tidak Lulus</label>
-								<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-							</div> -->
+									</tbody>
+								</table>
+								<div class="form-group">
+									<label for="exampleFormControlTextarea1">Alasan Tidak Lulus</label>
+									<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+								</div> -->
 								</form><br>
 								<button type="button" onclick="save_nilai_seluruh_teknis()" id="btnSave" style="width: 200px;" class="btn btn-success"><i class="fa fa-save"></i>
 									Simpan
@@ -532,9 +532,9 @@
 						<div class="content">
 							<div class="card mt-3">
 								<div class="card-header bg-primary text-white"">
-									Evaluasi Persyaratan Dokumen Tambahan
-								</div>
-								<div class=" card-body">
+										Evaluasi Persyaratan Dokumen Tambahan
+									</div>
+									<div class=" card-body">
 									<table class="table">
 										<tr>
 											<th>Nama Persyaratan Tambahan</th>
@@ -1133,9 +1133,9 @@
 						<div class="content">
 							<div class="card mt-3">
 								<div class="card-header bg-primary text-white"">
-									Evaluasi Persyaratan Dokumen Tambahan
-								</div>
-								<div class=" card-body">
+										Evaluasi Persyaratan Dokumen Tambahan
+									</div>
+									<div class=" card-body">
 									<table class="table">
 										<tr>
 											<th>Nama Persyaratan Tambahan</th>
@@ -1393,8 +1393,8 @@
 
 					<?php if (date('Y-m-d H:i', strtotime($get_tahap_keluar_dokumen_kualifikasi['tanggal_mulai_jadwal'])) >= date('Y-m-d H:i')) { ?>
 						<!-- <li class="nav-item">
-							<a class="nav-link" href="#harga">5. Evaluasi Harga Terkoreksi</a>
-						</li> -->
+									<a class="nav-link" href="#harga">5. Evaluasi Harga Terkoreksi</a>
+								</li> -->
 					<?php	} else if (date('Y-m-d H:i', strtotime($get_tahap_keluar_dokumen_kualifikasi['tanggal_selesai_jadwal'])) >= date('Y-m-d H:i') || date('Y-m-d H:i', strtotime($get_tahap_keluar_dokumen_kualifikasi['tanggal_mulai_jadwal'])) == date('Y-m-d H:i')) { ?>
 
 						<li class="nav-item">
@@ -1409,11 +1409,11 @@
 
 					<?php if (date('Y-m-d H:i', strtotime($get_tahap_penetapan_pemenang['tanggal_mulai_jadwal'])) >= date('Y-m-d H:i')) { ?>
 						<!-- <li class="nav-item">
-							<a class="nav-link" href="#negosiasi">6. Negosiasi Harga</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#evaluasinilaiakhir">7. Evaluasi Nilai Akhir</a>
-						</li> -->
+									<a class="nav-link" href="#negosiasi">6. Negosiasi Harga</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#evaluasinilaiakhir">7. Evaluasi Nilai Akhir</a>
+								</li> -->
 					<?php	} else if (date('Y-m-d H:i', strtotime($get_tahap_penetapan_pemenang['tanggal_selesai_jadwal']))  >= date('Y-m-d H:i') || date('Y-m-d H:i', strtotime($get_tahap_penetapan_pemenang['tanggal_mulai_jadwal'])) == date('Y-m-d H:i')) { ?>
 
 						<li class="nav-item">
@@ -1744,9 +1744,9 @@
 						<div class="content">
 							<div class="card mt-3">
 								<div class="card-header bg-primary text-white"">
-									Evaluasi Persyaratan Dokumen Tambahan
-								</div>
-								<div class=" card-body">
+										Evaluasi Persyaratan Dokumen Tambahan
+									</div>
+									<div class=" card-body">
 									<table class="table">
 										<tr>
 											<th>Nama Persyaratan Tambahan</th>

@@ -19,8 +19,7 @@ class Beranda extends CI_Controller
         $role = $this->session->userdata('id_role');
         if (!$role) {
             redirect('auth');
-        } else {
-        }
+        } else { }
     }
 
     public function index()
@@ -586,7 +585,7 @@ class Beranda extends CI_Controller
     {
         $paket = $this->Rolepanitia_model->get_id_kualifikasi_nilai($id_paket);
 
-        if ($paket['id_kualifikasi'] == 11 || $paket['id_kualifikasi'] == 7 || $paket['id_kualifikasi'] == 6 || $paket['id_kualifikasi'] == 4 || $paket['id_kualifikasi'] == 10 || $paket['id_kualifikasi'] == 13 || $paket['id_kualifikasi'] == 15 || $paket['id_kualifikasi'] == 17) {
+        if ($paket['id_kualifikasi'] == 11 || $paket['id_kualifikasi'] == 7 || $paket['id_kualifikasi'] == 6 || $paket['id_kualifikasi'] == 4 || $paket['id_kualifikasi'] == 10 || $paket['id_kualifikasi'] == 13 || $paket['id_kualifikasi'] == 15 || $paket['id_kualifikasi'] == 17 || $paket['id_kualifikasi'] == 23) {
             $ambil_id_vendor_dan_paket = $this->Rolepanitia_model->get_vendor_by_id_dapet_id($id_paket);
             $get_vendor_by_id_dapet_id_result = $this->Rolepanitia_model->get_vendor_by_id_dapet_id_result($id_paket);
             $id_mengikuti_paket_vendor = $ambil_id_vendor_dan_paket['id_mengikuti_paket_vendor'];
@@ -597,11 +596,17 @@ class Beranda extends CI_Controller
             foreach ($resultss as $angga) {
                 $row = array();
                 $row[] = ++$no;
-                if (date('Y-m-d H:i', strtotime($angga->selesai_semua_tender)) > date('Y-m-d H:i')) {
+                if ($paket['id_kualifikasi'] == 23) {
                     $row[] = '<a href="javascript:;" onClick="byid_evaluasi_tender(' . "'" . $angga->id_mengikuti_vendor . "','evaluasi_nilai'" . ')"> ' . $angga->username_vendor . '</a>';
                 } else {
-                    $row[] = '<p> ' . $angga->username_vendor . '</p>';
+                    if (date('Y-m-d H:i', strtotime($angga->selesai_semua_tender)) > date('Y-m-d H:i')) {
+                        $row[] = '<a href="javascript:;" onClick="byid_evaluasi_tender(' . "'" . $angga->id_mengikuti_vendor . "','evaluasi_nilai'" . ')"> ' . $angga->username_vendor . '</a>';
+                    } else {
+                        $row[] = '<p> ' . $angga->username_vendor . '</p>';
+                    }
                 }
+
+
 
                 $row[] = '<a href="javascript:;" class="badge badge-success"><i class="fas fa fa-check"></i> Dokumen Lengkap</a>';
                 if ($angga->status_evaluasi_syarat_tambahan == null) {

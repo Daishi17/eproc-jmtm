@@ -371,27 +371,54 @@
 
 
 <script>
-	$('.tanggal_mulai_pascakualifikasi').datetimepicker({
-		timepicker: true,
-		datetimepicker: true,
-		format: 'd-m-Y H:i',
-		onShow: function(ct) {
-			// this.setOptions({
-			// 	minDate: $('.tanggal_selesai_pascakualifikasi').val() ? $('.tanggal_selesai_pascakualifikasi').val() : false
-			// })
-		}
-	})
+	var id_klfksi = $('[name="id_klfksi"]').val()
 
-	$('.tanggal_selesai_pascakualifikasi').datetimepicker({
-		timepicker: true,
-		datetimepicker: true,
-		format: 'd-m-Y H:i',
-		onShow: function(ct) {
-			// this.setOptions({
-			// 	minDate: $('.tanggal_mulai_pascakualifikasi').val() ? $('.tanggal_mulai_pascakualifikasi').val() : false
-			// })
-		}
-	})
+	if (id_klfksi == 23) {
+		$('.tanggal_mulai_pascakualifikasi').datetimepicker({
+			timepicker: true,
+			datetimepicker: true,
+			format: 'd-m-Y H:i',
+			onShow: function(ct) {
+				// this.setOptions({
+				// 	minDate: $('.tanggal_selesai_pascakualifikasi').val() ? $('.tanggal_selesai_pascakualifikasi').val() : false
+				// })
+			}
+		})
+
+		$('.tanggal_selesai_pascakualifikasi').datetimepicker({
+			timepicker: true,
+			datetimepicker: true,
+			format: 'd-m-Y H:i',
+			onShow: function(ct) {
+				// this.setOptions({
+				// 	minDate: $('.tanggal_mulai_pascakualifikasi').val() ? $('.tanggal_mulai_pascakualifikasi').val() : false
+				// })
+			}
+		})
+	} else {
+		$('.tanggal_mulai_pascakualifikasi').datetimepicker({
+			timepicker: true,
+			datetimepicker: true,
+			format: 'd-m-Y H:i',
+			onShow: function(ct) {
+				this.setOptions({
+					minDate: $('.tanggal_selesai_pascakualifikasi').val() ? $('.tanggal_selesai_pascakualifikasi').val() : false
+				})
+			}
+		})
+
+		$('.tanggal_selesai_pascakualifikasi').datetimepicker({
+			timepicker: true,
+			datetimepicker: true,
+			format: 'd-m-Y H:i',
+			onShow: function(ct) {
+				this.setOptions({
+					minDate: $('.tanggal_mulai_pascakualifikasi').val() ? $('.tanggal_mulai_pascakualifikasi').val() : false
+				})
+			}
+		})
+	}
+
 	// $('.tanggal_mulai').keyup(function() {
 	// 	$('span.error-keyup-2').remove();
 	// 	var tanggal_mulai = $('#tanggal_mulai').val();
@@ -898,9 +925,9 @@
 			var id_kualifikasi = $('#id_kualifikasi').val();
 			if (id_kualifikasi == 22) {
 				$('[name="id_metode_dokumen"]').val(4);
-				$('#cek_kualifikasi').attr("disabled", true); 
+				$('#cek_kualifikasi').attr("disabled", true);
 			} else {
-				$('#cek_kualifikasi').attr("disabled", false); 
+				$('#cek_kualifikasi').attr("disabled", false);
 			}
 		})
 	})

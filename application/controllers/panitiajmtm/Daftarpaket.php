@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 date_default_timezone_set("Asia/Jakarta");
-// error_reporting(0);
+error_reporting(0);
 class Daftarpaket extends CI_Controller
 {
 

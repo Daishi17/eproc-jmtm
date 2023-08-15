@@ -3,6 +3,7 @@
   		<img src="<?= base_url('assets/img/palsewait.gif') ?>" width="100%">
   	</div>
   </div>
+  <input type="hidden" name="id_klfksi" value="<?= $paket2['id_kualifikasi'] ?>">
   <div class="container">
   	<nav aria-label="breadcrumb" class="mt-3">
   		<ol class="breadcrumb bg-primary">

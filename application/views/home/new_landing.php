@@ -270,8 +270,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-8 col-lg-3 col-xl-5">
-                        <a class="navbar-brand" href="index.html">
+                        <a class="navbar-brand" href="<?= base_url('') ?>">
                             <img class="img-fluid" src="<?= base_url('assets/teamplate_transpo/img/JMTMLOGOKU.png') ?>" alt="logo">
+                            <img class="img-fluid" src="<?= base_url('assets/img//78.png') ?>" alt="logo">
+                            <a href="#"><img width="60px" src="https://www.gambaranimasi.org/data/media/781/animasi-bergerak-bendera-indonesia-0010.gif" border="0" alt="animasi-bergerak-bendera-indonesia-0010" /></a>
                         </a>
                     </div>
                     <div class="col-4 col-lg-9 col-xl-7">
@@ -548,7 +550,7 @@
     Banner -->
     <!-- https://www.youtube.com/embed/B1gdLHsK9_I -->
     <!-- https://www.youtube.com/embed/rdL6VIHEvmw -->
-    <section style="display: block;" id="video1" class="slider-04 bg-overlay-dark-50 bg-holder" data-jarallax='{"speed": 0.6}' data-jarallax-video="https://www.youtube.com/embed/nt9z_p5qV34">
+    <section style="display: block;" id="video1" class="slider-04 bg-overlay-dark-50 bg-holder" data-jarallax='{"speed": 0.6}' data-jarallax-video="https://www.youtube.com/watch?v=mVBfh9mLM1Q">
         <div class="banner-content">
             <div class="container">
                 <div class="row">
@@ -567,7 +569,7 @@
             </div>
         </div>
     </section>
-    <section style="display: none;" id="video2" class="slider-04 bg-overlay-dark-50 bg-holder jarallax" data-speed='1' data-video-src="https://www.youtube.com/embed/nt9z_p5qV34">
+    <section style="display: none;" id="video2" class="slider-04 bg-overlay-dark-50 bg-holder jarallax" data-speed='1' data-video-src="https://www.youtube.com/watch?v=mVBfh9mLM1Q">
         <div class="banner-content">
             <div class="container">
                 <div class="row">
@@ -603,7 +605,7 @@
         <div class="container">
             <!-- INI KHUSUS MODAL LOGIN -->
             <div class="row">
-                <div class="col-xl-6 mb-4 mb-xl-0">
+                <!-- <div class="col-xl-6 mb-4 mb-xl-0">
                     <div class="d-flex bg-holder bg-cover track-left" style="background-image: url();height:500px;border-radius:30px">
                         <div style="opacity:0.9" class="card">
                             <center>
@@ -614,8 +616,8 @@
                             </video>
                         </div>
                     </div>
-                </div>
-                <div class="col-xl-6 pl-xl-5">
+                </div> -->
+                <div class="col-xl-12 pl-xl-5">
                     <h3 class="text-white mb-4">Fitur-Fitur Dalam Aplikasi E-Procurement JMTM</h3>
                     <p></p>
                     <div class="row">
@@ -898,11 +900,11 @@
                                                     echo "Rp " . number_format($query['total_rincian_hps_pdf'], 2, ',', '.');
                                                     ?>
                                                     <?php if ($value['batas_pendaftaran'] == null) { ?>
-                                                <td><label for="" class="badge badge-info">Jadwal Belum Di Prosess</label></td>
-                                            <?php    } else { ?>
-                                                <td><?= date('d-F-Y H:i', strtotime($value['batas_pendaftaran']))  ?></td>
-                                            <?php } ?>
-                                            <td style="text-align:center;"> <a href="javascript:;" onclick="lihat_persyartaan(<?= $value['id_paket'] ?>)"> <i style="font-size:18px" class="fas fa fa-eye"> Lihat</i></a></td>
+                                                    <td><label for="" class="badge badge-info">Jadwal Belum Di Prosess</label></td>
+                                                <?php    } else { ?>
+                                                    <td><?= date('d-F-Y H:i', strtotime($value['batas_pendaftaran']))  ?></td>
+                                                <?php } ?>
+                                                <td style="text-align:center;"> <a href="javascript:;" onclick="lihat_persyartaan(<?= $value['id_paket'] ?>)"> <i style="font-size:18px" class="fas fa fa-eye"> Lihat</i></a></td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>

@@ -68,7 +68,6 @@
                 $rem3 = strtotime($binding_3->format('Y-m-d H:i')) - time();
                 $min3 = floor(($rem3 % 3600) / 60);
                 $sec3 = ($rem3 % 60);
-
                 ?>
                 <input type="hidden" class="form-control time_waktu_binding" value="<?= $min2 . ':' . $sec2 ?>">
                 <input type="hidden" class="form-control time_waktu_binding3" value="<?= $min3 . ':' . $sec3 ?>">

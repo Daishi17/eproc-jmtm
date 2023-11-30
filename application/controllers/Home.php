@@ -38,6 +38,27 @@ class Home extends CI_Controller
 		// $this->load->view('template/footer_landing');
 		$this->load->view('home/new_landing', $data);
 	}
+
+	public function new_index()
+	{
+		$data['berita'] = $this->Home_model->ambil_berita();
+		//tender
+		$data['ambil_paket'] = $this->Home_model->ambil_paket();
+		$data['hitung_pengadaan_barang'] = $this->Home_model->hitung_paket();
+		$data['ambil_paket2'] = $this->Home_model->ambil_paket2();
+		$data['hitung_pengadaan_jasa_konsultasi'] = $this->Home_model->hitung_paket2();
+		$data['ambil_paket3'] = $this->Home_model->ambil_paket3();
+		$data['hitung_jasa_pemborongan'] = $this->Home_model->hitung_paket3();
+		$data['ambil_paket4'] = $this->Home_model->ambil_paket4();
+		$data['hitung_jasa_lain'] = $this->Home_model->hitung_paket4();
+
+		// $this->load->view('template/header');
+		// $this->load->view('template/navbar', $data);
+		// $this->load->view('home/index', $data);
+		// $this->load->view('home/ajax');
+		// $this->load->view('template/footer_landing');
+		$this->load->view('home/revamp_landing', $data);
+	}
 	public function cari_paket()
 	{
 		$data['berita'] = $this->Home_model->ambil_berita();

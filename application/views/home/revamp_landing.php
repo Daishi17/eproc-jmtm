@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/teamplate_transpo/css/') ?>select2.css" />
 
     <!-- css rehan -->
-    <link rel="stylesheet" href="<?= base_url('assets/teamplate_transpo/css/style2.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/teamplate_transpo/css///style2.css') ?>">
 
 
     <!-- Template Style -->
@@ -789,16 +789,15 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Bekerja Sama Dengan</h5>
-                        <div id="card-owl-carousel" class="owl-carousel owl-theme text-center image-slider">
-                            <div><img src="https://www.bankmandiri.co.id/documents/20143/44881086/ag-branding-logo-2.png/30f0204c-d3c1-7237-0e97-6d9c137b2866?t=1623309819189" alt="" width="100px"></div>
-                            <div> Your Content 2</div>
-                            <div> Your Content 3</div>
-                            <div> Your Content 4</div>
-                        </div>
-                        <!-- <div class="beli mt-5 d-flex justify-content-between">
+                <div class="card
+                        <h5 class=" card-title">Bekerja Sama Dengan</h5>
+                    <div id="card-owl-carousel" class="owl-carousel owl-theme text-center image-slider card-bekerjasama">
+                        <img src="https://www.bankmandiri.co.id/documents/20143/44881086/ag-branding-logo-2.png/30f0204c-d3c1-7237-0e97-6d9c137b2866?t=1623309819189" alt="" width="100px">
+                        <img src="https://www.bankmandiri.co.id/documents/20143/44881086/ag-branding-logo-2.png/30f0204c-d3c1-7237-0e97-6d9c137b2866?t=1623309819189" alt="" width="100px">
+                        <img src="https://www.bankmandiri.co.id/documents/20143/44881086/ag-branding-logo-2.png/30f0204c-d3c1-7237-0e97-6d9c137b2866?t=1623309819189" alt="" width="100px">
+                        <img src="https://www.bankmandiri.co.id/documents/20143/44881086/ag-branding-logo-2.png/30f0204c-d3c1-7237-0e97-6d9c137b2866?t=1623309819189" alt="" width="100px">
+                    </div>
+                    <!-- <div class="beli mt-5 d-flex justify-content-between">
                             <p class="card-text">Beli</p>
                             <span id="carouselTextBeli"></span>
                         </div>
@@ -807,61 +806,59 @@
                             <p class="card-text">Jual</p>
                             <span id="carouselTextJual"></span>
                         </div> -->
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-                    </div>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
                 </div>
-
             </div>
-            <!-- <div class="col-md-4">
-                <h3 class="mb-3">Fitur-Fitur Dalam Aplikasi E-Procurement JMTM</h3>
-                <div class="row">
-                    <div class="col-sm-6 mb-4 mb-sm-5">
-                        <img src="<?= base_url('assets/img/proc.png') ?>" width="100px" class=" mr-3" alt="">
-                        <p class=" text-dark">Integrated Vendor Management System</p>
-                    </div>
-                    <div class="col-sm-6 mb-4 mb-sm-5">
-                        <img src="<?= base_url('assets/img/logo3.png') ?>" width="100px" class=" mr-3" alt="">
-                        <p class=" text-dark">Global supply Chain Solutions</p>
-                    </div>
-                    <div class="col-sm-6 mb-4 mb-sm-5">
-                        <img src="<?= base_url('assets/img/support.png') ?>" width="100px" class=" mr-3" alt="">
-                        <p class=" text-dark">Technical Support</p>
-                    </div>
-                    <div class="col-sm-6 mb-4 mb-sm-5">
-                        <img src="<?= base_url('assets/img/monitoring.png') ?>" width="100px" class=" mr-3" alt="">
-                        <p class=" text-dark">Solutions & Special Expertise</p>
-                    </div>
-                </div>
-            </div> -->
+
         </div>
+
+    </div>
     </div>
 
-    <!-- tes -->
-    <!-- tes -->
-    <!-- <?php
+    <!-- section berita tender -->
+    <section id="berita" class="berita">
+        <div class="container" data-aos="fade-up">
+
+            <div class="col-xl-12">
+                <div class="section-title text-center">
+                    <h2 class="mb-3">BERITA TENDER</h2>
+                    <p>Berita Terkini</p>
+                </div>
+            </div>
+
+            <?php
             $this->db->select('*');
             $this->db->from('tbl_berita');
             $data_berita = $this->db->get()->result_array();
             ?>
-    <div class="row">
-        <?php foreach ($data_berita as $key => $value) : ?>
-                    <div class="col-md-3">
-                        <div class="card">
-                            <img src="https://banner2.cleanpng.com/20180812/klg/kisspng-vector-graphics-clip-art-download-royalty-free-com--5b6fe048a74235.8130205015340585686851.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h6 class="card-title"><?= $value['nama_berita'] ?></h6>
-                                <small class="card-text"><?= date('d-F-Y H:i', strtotime($value['created_at']))  ?></small>
-                                <a href="<?= base_url('file_berita/' . $value['file_berita']) ?>" value="<?= $value['file_berita'] ?>" class="btn btn-primary">Selanjutnya</a>
+            <div id="cards_landscape_wrap-2">
+                <div class="container">
+                    <div class="row">
+                        <?php foreach ($data_berita as $key => $value) : ?>
+                            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                                <a href="<?= base_url('file_berita/') ?><?= $value['file_berita'] ?>">
+                                    <div class="card-flyer mt-3">
+                                        <div class="text-box">
+                                            <div class="image-box">
+                                                <img src="<?= base_url('assets/img/file-logo.png') ?>" alt="" />
+                                            </div>
+                                            <div class="text-container">
+                                                <h6><?= $value['nama_berita']; ?></h6>
+                                                <small><?= date('d-F-Y H:i', strtotime($value['created_at']))  ?></small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
-                        </div>
+                        <?php endforeach ?>
                     </div>
-        <?php endforeach; ?>
-    </div> -->
-    <!-- end tes -->
-    <!-- end tes -->
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- ======= Gallery Section ======= -->
-    <section id="gallery" class="gallery mt-5">
+    <!-- <section id="gallery" class="gallery mt-5">
         <div class="container" data-aos="fade-up">
 
             <div class="col-xl-12">
@@ -901,9 +898,7 @@
         </style>
         <div class="container">
 
-            <div class="card" style="box-shadow: -3px 2px 27px -6px rgba(13,158,158,0.94);
--webkit-box-shadow: -3px 2px 27px -6px rgba(13,158,158,0.94);
--moz-box-shadow: -3px 2px 27px -6px rgba(13,158,158,0.94);">
+            <div class="card" style="box-shadow: -3px 2px 27px -6px rgba(13,158,158,0.94);-webkit-box-shadow: -3px 2px 27px -6px rgba(13,158,158,0.94);-moz-box-shadow: -3px 2px 27px -6px rgba(13,158,158,0.94);">
                 <div class="card-header btn-grad11">
                     Berita Terkini
                     <div class="card-tools float-right">
@@ -932,13 +927,13 @@
                         <tbody>
                             <?php $i = 1;
                             foreach ($data_berita as $key => $value) { ?>
-                                <tr>
-                                    <td style="width: 10px;">
-                                        <center class="text-blue"><?= $i++ ?></center>
-                                    </td>
-                                    <td><label class="text-success"><a href="<?= base_url('file_berita/') ?><?= $value['file_berita'] ?>"><?= $value['nama_berita'] ?></a></label></td>
-                                    <td><label class="text-success"><?= date('d-F-Y H:i', strtotime($value['created_at']))  ?></label></td>
-                                </tr>
+                                        <tr>
+                                            <td style="width: 10px;">
+                                                <center class="text-blue"><?= $i++ ?></center>
+                                            </td>
+                                            <td><label class="text-success"><a href="<?= base_url('file_berita/') ?><?= $value['file_berita'] ?>"><?= $value['nama_berita'] ?></a></label></td>
+                                            <td><label class="text-success"><?= date('d-F-Y H:i', strtotime($value['created_at']))  ?></label></td>
+                                        </tr>
                             <?php } ?>
                         </tbody>
                     </table>
@@ -947,741 +942,7 @@
             <br>
 
         </div>
-    </section>
-
-    <!-- wew -->
-    <div class="container">
-        <div class="m-fitur-wrapper">
-            <p class="a-text a-text-subtitle my-32"></p>
-            <div class="row-productNav_wrapper">
-                <div class="m-tabs m-tabs-bottom m-tabs--with-link">
-                    <div class="row">
-                        <div class="col-md-9 col-xs-12 col-lg-9">
-                            <ul class="m-tabs-menu total-tabbing">
-                                <li class="m-tabs-item">
-                                    <a class="active" id="tab_232EF1E9824B4A54AEEDDD6A64E524D1" data-toggle="tab" href="javascript:void(0)" role="tab" aria-controls="t_232EF1E9824B4A54AEEDDD6A64E524D1" data-target="#t_232EF1E9824B4A54AEEDDD6A64E524D1" aria-selected="true">
-                                        <h2>News &amp; Features</h2>
-                                    </a>
-                                </li>
-                                <li class="m-tabs-item">
-                                    <a id="tab_CB622FF2A51647D6A789C80C46E94584" data-toggle="tab" href="javascript:void(0)" role="tab" aria-controls="t_CB622FF2A51647D6A789C80C46E94584" data-target="#t_CB622FF2A51647D6A789C80C46E94584" aria-selected="true" class="">
-                                        <h2>Edukatips</h2>
-                                    </a>
-                                </li>
-                                <li class="m-tabs-item">
-                                    <a id="tab_14CD52ECCE7F431DAEA015638D55B3C9" data-toggle="tab" href="javascript:void(0)" role="tab" aria-controls="t_14CD52ECCE7F431DAEA015638D55B3C9" data-target="#t_14CD52ECCE7F431DAEA015638D55B3C9" aria-selected="true">
-                                        <h2>#AwasModus</h2>
-                                    </a>
-                                </li>
-                            </ul>
-                            <div class="scrolling custom m2 bg-gray tabs-first"></div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="link-group">
-                                <div class="fr link" data-target="#t_232EF1E9824B4A54AEEDDD6A64E524D1" style="">
-                                    <a class="next-button undefined" href="/id/informasi/news-and-features">
-                                        <span class="tb-cell va-middle">Semua News &amp; Features</span>
-                                        <i class="tb-cell va-middle a-system-icon icon-chevron-next"></i>
-                                    </a>
-                                </div>
-                                <div class="fr link" data-target="#t_CB622FF2A51647D6A789C80C46E94584" style="display: none;">
-                                    <a class="next-button undefined" href="/id/informasi/Edukatips">
-                                        <span class="tb-cell va-middle">Semua Edukatips</span>
-                                        <i class="tb-cell va-middle a-system-icon icon-chevron-next"></i>
-                                    </a>
-                                </div>
-                                <div class="fr link" data-target="#t_14CD52ECCE7F431DAEA015638D55B3C9" style="display: none;">
-                                    <a class="next-button undefined" href="/id/informasi/awas-modus">
-                                        <span class="tb-cell va-middle">Semua #AwasModus</span>
-                                        <i class="tb-cell va-middle a-system-icon icon-chevron-next"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="m-tabs-wrapper my-24 active-state">
-                    <div class="tab-content">
-                        <div class="tab-pane mb-24 fade active-state is-active" id="t_232EF1E9824B4A54AEEDDD6A64E524D1" role="tabpanel" aria-labelledby="tab_232EF1E9824B4A54AEEDDD6A64E524D1">
-
-                            <script>
-                                var itemCount = 7;
-                                document.addEventListener('DOMContentLoaded', function() {
-                                    var lat = bca.modules.lokasi.userLocation.lat;
-                                    var long = bca.modules.lokasi.userLocation.lng;
-                                    $.ajax({
-                                        type: 'POST',
-                                        url: '/api/sitecore/News/GetBeritaEduAwasEventHomepage',
-                                        data: {
-                                            'dsID': '{5ED8491A-E56B-4770-8D0C-59C716F5C0F5}',
-                                            'longitude': long,
-                                            'latitude': lat
-                                        },
-                                        success: function(results) {
-                                            if (7 == 3) {
-                                                $.each(JSON.parse(results), function(index, value) {
-                                                    //var title = value.Title.length > 22 ? value.Title.substring(0, 19) + "..." : value.Title.substring(0, 22);
-                                                    var item = `<div class="col-md-4">
-										<div class="a-card a-card--landscape shine--load shadow0">
-											<a href="` + value.Link + `">
-												<div class="a-card--img shine"><img loading="lazy" src="` + value.Image + `"></div>
-												<div class="a-card--content">
-													<div class="a-card--date shine">
-														<p class="a-text a-text-small">` + value.Date + ` | Berita</p>
-													</div>
-													<div class="a-card--title shine">
-														<h3 class="a-text a-text-body a-text-ellipsis">` + value.Title + `</h3>
-													</div>
-												</div>
-											</a>
-										</div>
-									</div>`;
-
-                                                    $('#beritaeduawas_5ED8491AE56B47708D0C59C716F5C0F5').append(item);
-                                                    setTimeout(function() {
-                                                        $('#beritaeduawas_5ED8491AE56B47708D0C59C716F5C0F5').find('.shine--load').removeClass('shine--load');
-                                                        $('.a-card--landscape .a-text-ellipsis').ellipsis({
-                                                            type: 'lines',
-                                                            count: 3,
-                                                            responsive: true,
-                                                            destroy: true
-                                                        });
-
-                                                    }, 500)
-
-                                                });
-                                            } else {
-                                                $.each(JSON.parse(results), function(index, value) {
-                                                    //var title = value.Title.length > 22 ? value.Title.substring(0, 19) + "..." : value.Title.substring(0, 22);
-                                                    if (index == 0) {
-                                                        var item = `<div class="col-md-4">
-										<div class="a-card a-card--news-new">
-											<a href="` + value.Link + `">
-												<div class="a-card--img shine"><img loading="lazy" src="` + value.Image + `"></div>
-												<div class="a-card--content">
-													<div class="a-card--date shine">
-														<p class="a-text a-text-small">` + value.Date + ` | Berita</p>
-													</div>
-													<div class="a-card--title shine">
-														<h3 class="a-text a-text-subtitle a-text-ellipsis">` + value.Title + `</h3>
-													</div>
-												</div>
-											</a>
-										</div>
-									</div>`;
-                                                    } else {
-                                                        var item = `<div class="col-md-4">
-										<div class="a-card a-card--landscape shine--load shadow0">
-											<a href="` + value.Link + `">
-												<div class="a-card--img shine"><img loading="lazy" src="` + value.Image + `"></div>
-												<div class="a-card--content">
-													<div class="a-card--date shine">
-														<p class="a-text a-text-small">` + value.Date + ` | Berita</p>
-													</div>
-													<div class="a-card--title shine">
-														<h3 class="a-text a-text-body a-text-ellipsis">` + value.Title + `</h3>
-													</div>
-												</div>
-											</a>
-										</div>
-									</div>`;
-                                                    }
-
-                                                    $('#beritaeduawas_5ED8491AE56B47708D0C59C716F5C0F5').append(item);
-                                                    setTimeout(function() {
-                                                        $('#beritaeduawas_5ED8491AE56B47708D0C59C716F5C0F5').find('.shine--load').removeClass('shine--load');
-                                                        $('.a-card--landscape .a-text-ellipsis').ellipsis({
-                                                            type: 'lines',
-                                                            count: 3,
-                                                            responsive: true,
-                                                            destroy: true
-                                                        });
-
-                                                    }, 500)
-
-                                                });
-                                            }
-                                        },
-                                        error: function(err) {
-                                            console.log(err);
-                                        }
-                                    });
-                                }, false);
-                            </script>
-                            <div class="row mb-24" id="beritaeduawas_5ED8491AE56B47708D0C59C716F5C0F5">
-                                <!--Items From AJAX-->
-                                <div class="col-md-4">
-                                    <div class="a-card a-card--news-new">
-                                        <a href="/id/informasi/news-and-features/2023/11/21/06/36/aktivasi-finansial-nomor-hp-e-banking-bca-via-halo-bca">
-                                            <div class="a-card--img shine"><img loading="lazy" src="/-/media/Feature/News/News-And-Features/Page/2023/11/20231121-aktivasi-finansial-nomor-hp-e-banking-bca-via-halo-bca-thu.jpg?h=152&amp;w=262&amp;hash=B4E08FF7D2AE872CA89873F5433CD215"></div>
-                                            <div class="a-card--content">
-                                                <div class="a-card--date shine">
-                                                    <p class="a-text a-text-small">21 Nov 2023 | Berita</p>
-                                                </div>
-                                                <div class="a-card--title shine">
-                                                    <h3 class="a-text a-text-subtitle a-text-ellipsis">Aktivasi Finansial Nomor HP e-Banking BCA via Halo BCA</h3>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="a-card a-card--landscape shadow0">
-                                        <a href="/id/informasi/news-and-features/2023/10/30/10/55/layanan-sertifikasi-halal-self-declare-bagi-umkm-melalui-bca">
-                                            <div class="a-card--img shine"><img loading="lazy" src="/-/media/Feature/News/News-And-Features/Page/2023/11/20231113-sertifikasi-halal-thumb-rev.jpg?h=202&amp;w=200&amp;hash=13ED5FF086197DD6CFF830DFB03B1328"></div>
-                                            <div class="a-card--content">
-                                                <div class="a-card--date shine">
-                                                    <p class="a-text a-text-small">13 Nov 2023 | Berita</p>
-                                                </div>
-                                                <div class="a-card--title shine">
-                                                    <h3 class="a-text a-text-body a-text-ellipsis">Layanan Sertifikasi Halal Sel...</h3>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="a-card a-card--landscape shadow0">
-                                        <a href="/id/informasi/news-and-features/2023/11/09/03/30/Pembayaran-Kartu-Kredit-Citibank-Dialihkan-Ke-Menu-Bayar-Kartu-Kredit-UOB">
-                                            <div class="a-card--img shine"><img loading="lazy" src="/-/media/Feature/News/News-And-Features/Page/2023/11/20231109-KARTU-KREDIT-UOB-thumb.jpg?h=152&amp;w=262&amp;hash=95AD8537EA57A300B282D651C6274CA3"></div>
-                                            <div class="a-card--content">
-                                                <div class="a-card--date shine">
-                                                    <p class="a-text a-text-small">09 Nov 2023 | Berita</p>
-                                                </div>
-                                                <div class="a-card--title shine">
-                                                    <h3 class="a-text a-text-body a-text-ellipsis">Pembayaran Kartu Kredit Citibank D...</h3>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="a-card a-card--landscape shadow0">
-                                        <a href="/id/informasi/news-and-features/2023/11/06/02/47/himbauan-untuk-tidak-mengenakan-biaya-tambahan-surcharge-atas-transaksi">
-                                            <div class="a-card--img shine"><img loading="lazy" src="/-/media/Feature/News/News-And-Features/Page/2023/11/20230611-mdr-thu.png?h=152&amp;w=152&amp;hash=774E7FE60B7F7DE0DD9F74CEB09D8EE7"></div>
-                                            <div class="a-card--content">
-                                                <div class="a-card--date shine">
-                                                    <p class="a-text a-text-small">06 Nov 2023 | Berita</p>
-                                                </div>
-                                                <div class="a-card--title shine">
-                                                    <h3 class="a-text a-text-body a-text-ellipsis">Himbauan untuk Tidak M...</h3>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="a-card a-card--landscape shadow0">
-                                        <a href="/id/informasi/news-and-features/2023/11/01/07/57/st011-yang-ditunggu-tunggu-akhirnya-datang">
-                                            <div class="a-card--img shine"><img loading="lazy" src="/-/media/Feature/News/News-And-Features/Page/2023/11/20231101-st011-thumb.jpg?h=200&amp;w=200&amp;hash=185E092BD0E6891B49A49BE53F2EA56F"></div>
-                                            <div class="a-card--content">
-                                                <div class="a-card--date shine">
-                                                    <p class="a-text a-text-small">03 Nov 2023 | Berita</p>
-                                                </div>
-                                                <div class="a-card--title shine">
-                                                    <h3 class="a-text a-text-body a-text-ellipsis">ST011 yang Ditunggu – Tunggu ...</h3>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="a-card a-card--landscape shadow0">
-                                        <a href="/id/informasi/news-and-features/2023/11/01/09/34/Informasi-Perubahan-Masa-Berlaku-Kode-Transaksi-Tarik-Tunai-Cardless">
-                                            <div class="a-card--img shine"><img loading="lazy" src="/-/media/Feature/News/News-And-Features/Page/2023/11/20231101-myBCA-FITUR-CARDLESS-thumb.jpg?h=152&amp;w=262&amp;hash=033CAD73705E8BD9969EE9F52B4BB2C4"></div>
-                                            <div class="a-card--content">
-                                                <div class="a-card--date shine">
-                                                    <p class="a-text a-text-small">01 Nov 2023 | Berita</p>
-                                                </div>
-                                                <div class="a-card--title shine">
-                                                    <h3 class="a-text a-text-body a-text-ellipsis">Informasi Perubahan Masa Be...</h3>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="a-card a-card--landscape shadow0">
-                                        <a href="/id/informasi/news-and-features/2023/11/01/08/42/informasi-perubahan-mdr-qris-usaha-mikro-umi">
-                                            <div class="a-card--img shine"><img loading="lazy" src="/-/media/Feature/News/News-And-Features/Page/2023/11/20231101-qris-mdr-thumb.jpg?h=200&amp;w=200&amp;hash=E5CF4F312CF8D36325D1CAC61B4926F5"></div>
-                                            <div class="a-card--content">
-                                                <div class="a-card--date shine">
-                                                    <p class="a-text a-text-small">01 Nov 2023 | Berita</p>
-                                                </div>
-                                                <div class="a-card--title shine">
-                                                    <h3 class="a-text a-text-body a-text-ellipsis">Informasi Perubahan MDR QRI...</h3>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row justify-content-center">
-                                <div class="col-xs-12 text-center">
-                                    <div class="m-tabs next">
-                                        <a class="next-button undefined" href="/id/informasi/news-and-features"><span class="tb-cell va-middle">Semua Berita</span><i class="tb-cell va-middle a-system-icon icon-chevron-next"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="tab-content">
-                        <div class="tab-pane mb-24 fade active-state" id="t_CB622FF2A51647D6A789C80C46E94584" role="tabpanel" aria-labelledby="tab_CB622FF2A51647D6A789C80C46E94584">
-
-                            <script>
-                                var itemCount = 7;
-                                document.addEventListener('DOMContentLoaded', function() {
-                                    var lat = bca.modules.lokasi.userLocation.lat;
-                                    var long = bca.modules.lokasi.userLocation.lng;
-                                    $.ajax({
-                                        type: 'POST',
-                                        url: '/api/sitecore/News/GetBeritaEduAwasEventHomepage',
-                                        data: {
-                                            'dsID': '{88FDC110-80CD-4387-8182-E1A6AC3BD90F}',
-                                            'longitude': long,
-                                            'latitude': lat
-                                        },
-                                        success: function(results) {
-                                            if (7 == 3) {
-                                                $.each(JSON.parse(results), function(index, value) {
-                                                    //var title = value.Title.length > 22 ? value.Title.substring(0, 19) + "..." : value.Title.substring(0, 22);
-                                                    var item = `<div class="col-md-4">
-										<div class="a-card a-card--landscape shine--load shadow0">
-											<a href="` + value.Link + `">
-												<div class="a-card--img shine"><img loading="lazy" src="` + value.Image + `"></div>
-												<div class="a-card--content">
-													<div class="a-card--date shine">
-														<p class="a-text a-text-small">` + value.Date + ` | Edukatips</p>
-													</div>
-													<div class="a-card--title shine">
-														<h3 class="a-text a-text-body a-text-ellipsis">` + value.Title + `</h3>
-													</div>
-												</div>
-											</a>
-										</div>
-									</div>`;
-
-                                                    $('#beritaeduawas_88FDC11080CD43878182E1A6AC3BD90F').append(item);
-                                                    setTimeout(function() {
-                                                        $('#beritaeduawas_88FDC11080CD43878182E1A6AC3BD90F').find('.shine--load').removeClass('shine--load');
-                                                        $('.a-card--landscape .a-text-ellipsis').ellipsis({
-                                                            type: 'lines',
-                                                            count: 3,
-                                                            responsive: true,
-                                                            destroy: true
-                                                        });
-
-                                                    }, 500)
-
-                                                });
-                                            } else {
-                                                $.each(JSON.parse(results), function(index, value) {
-                                                    //var title = value.Title.length > 22 ? value.Title.substring(0, 19) + "..." : value.Title.substring(0, 22);
-                                                    if (index == 0) {
-                                                        var item = `<div class="col-md-4">
-										<div class="a-card a-card--news-new">
-											<a href="` + value.Link + `">
-												<div class="a-card--img shine"><img loading="lazy" src="` + value.Image + `"></div>
-												<div class="a-card--content">
-													<div class="a-card--date shine">
-														<p class="a-text a-text-small">` + value.Date + ` | Edukatips</p>
-													</div>
-													<div class="a-card--title shine">
-														<h3 class="a-text a-text-subtitle a-text-ellipsis">` + value.Title + `</h3>
-													</div>
-												</div>
-											</a>
-										</div>
-									</div>`;
-                                                    } else {
-                                                        var item = `<div class="col-md-4">
-										<div class="a-card a-card--landscape shine--load shadow0">
-											<a href="` + value.Link + `">
-												<div class="a-card--img shine"><img loading="lazy" src="` + value.Image + `"></div>
-												<div class="a-card--content">
-													<div class="a-card--date shine">
-														<p class="a-text a-text-small">` + value.Date + ` | Edukatips</p>
-													</div>
-													<div class="a-card--title shine">
-														<h3 class="a-text a-text-body a-text-ellipsis">` + value.Title + `</h3>
-													</div>
-												</div>
-											</a>
-										</div>
-									</div>`;
-                                                    }
-
-                                                    $('#beritaeduawas_88FDC11080CD43878182E1A6AC3BD90F').append(item);
-                                                    setTimeout(function() {
-                                                        $('#beritaeduawas_88FDC11080CD43878182E1A6AC3BD90F').find('.shine--load').removeClass('shine--load');
-                                                        $('.a-card--landscape .a-text-ellipsis').ellipsis({
-                                                            type: 'lines',
-                                                            count: 3,
-                                                            responsive: true,
-                                                            destroy: true
-                                                        });
-
-                                                    }, 500)
-
-                                                });
-                                            }
-                                        },
-                                        error: function(err) {
-                                            console.log(err);
-                                        }
-                                    });
-                                }, false);
-                            </script>
-                            <div class="row mb-24" id="beritaeduawas_88FDC11080CD43878182E1A6AC3BD90F">
-                                <!--Items From AJAX-->
-                                <div class="col-md-4">
-                                    <div class="a-card a-card--news-new">
-                                        <a href="/id/informasi/Edukatips/2023/11/30/15/36/Pakai-QRIS-TUNTAS-fitur-Transfer-di-BCA-mobile-Kirim-Uang-Anti-Ribet">
-                                            <div class="a-card--img shine"><img loading="lazy" src="/-/media/Feature/News/Edukatips/2023/11/Thumbnail-Edukatips-QRIS-Transfer.jpg?h=200&amp;w=200&amp;hash=722D989FE8E644D8406C5D869662AD49"></div>
-                                            <div class="a-card--content">
-                                                <div class="a-card--date shine">
-                                                    <p class="a-text a-text-small">30 Nov 2023 | Edukatips</p>
-                                                </div>
-                                                <div class="a-card--title shine">
-                                                    <h3 class="a-text a-text-subtitle a-text-ellipsis">Pakai QRIS TUNTAS fitur Transfer di BCA mobile, Kirim Uang Anti Ribet</h3>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="a-card a-card--landscape shadow0">
-                                        <a href="/id/informasi/Edukatips/2023/11/20/07/15/Cara-Mengatur-Bahasa-di-Aplikasi-myBCA">
-                                            <div class="a-card--img shine"><img loading="lazy" src="/-/media/Feature/News/Edukatips/2023/11/20231120-cara-mengatur-bahasa-di-aplikasi-mybca-thumb.jpg?h=200&amp;w=200&amp;hash=D1AE574D97A17A21DF938E29AF37A2DB"></div>
-                                            <div class="a-card--content">
-                                                <div class="a-card--date shine">
-                                                    <p class="a-text a-text-small">20 Nov 2023 | Edukatips</p>
-                                                </div>
-                                                <div class="a-card--title shine">
-                                                    <h3 class="a-text a-text-body a-text-ellipsis">Cara Mengatur Bahasa di Aplikasi myBCA</h3>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="a-card a-card--landscape shadow0">
-                                        <a href="/id/informasi/Edukatips/2023/11/14/08/16/solusi-saat-kartu-atm-bca-tertelan-di-mesin-atm">
-                                            <div class="a-card--img shine"><img loading="lazy" src="/-/media/Feature/News/Edukatips/2023/11/20231114-mengenai-cara-mengatasi-kartu-atm-tertelan-thumb.jpg?h=200&amp;w=200&amp;hash=6D38418439AF53AB06F58D4F24B501D3"></div>
-                                            <div class="a-card--content">
-                                                <div class="a-card--date shine">
-                                                    <p class="a-text a-text-small">14 Nov 2023 | Edukatips</p>
-                                                </div>
-                                                <div class="a-card--title shine">
-                                                    <h3 class="a-text a-text-body a-text-ellipsis">Solusi Saat Kartu ATM BCA Tertelan di Mesin ATM</h3>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="a-card a-card--landscape shadow0">
-                                        <a href="/id/informasi/Edukatips/2023/11/01/07/31/Ga-Perlu-Ragu-Ambil-KPR-Asal-Tahu-Informasi-Ini">
-                                            <div class="a-card--img shine"><img loading="lazy" src="/-/media/Feature/News/Edukatips/2023/11/20231101-KPR-Tips-thumb.jpg?h=200&amp;w=200&amp;hash=6B361CD88A6D4ED53D4D6F6D92BFC831"></div>
-                                            <div class="a-card--content">
-                                                <div class="a-card--date shine">
-                                                    <p class="a-text a-text-small">01 Nov 2023 | Edukatips</p>
-                                                </div>
-                                                <div class="a-card--title shine">
-                                                    <h3 class="a-text a-text-body a-text-ellipsis">Ga Perlu Ragu Ambil KPR Asal Tahu Informasi Ini</h3>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="a-card a-card--landscape shadow0">
-                                        <a href="/id/informasi/Edukatips/2023/11/01/07/10/cara-mudah-mengecek-informasi-e-statement-di-mybca">
-                                            <div class="a-card--img shine"><img loading="lazy" src="/-/media/Feature/News/Edukatips/2023/11/20231101-estatment-thumb.jpg?h=200&amp;w=200&amp;hash=3199BFB892B907A038963967DD2A0B60"></div>
-                                            <div class="a-card--content">
-                                                <div class="a-card--date shine">
-                                                    <p class="a-text a-text-small">01 Nov 2023 | Edukatips</p>
-                                                </div>
-                                                <div class="a-card--title shine">
-                                                    <h3 class="a-text a-text-body a-text-ellipsis">Cara Mudah Mengecek Informasi e-Statement di myBCA</h3>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="a-card a-card--landscape shadow0">
-                                        <a href="/id/informasi/Edukatips/2023/11/01/04/48/perbedaan-jenis-surat-berharga-negara-sr-ori-dan-st">
-                                            <div class="a-card--img shine"><img loading="lazy" src="/-/media/Feature/News/Edukatips/2023/10/20231101-st011-thumb.jpg?h=200&amp;w=200&amp;hash=E6E5F00E1C07B63D7CE9F0FAA9D720F9"></div>
-                                            <div class="a-card--content">
-                                                <div class="a-card--date shine">
-                                                    <p class="a-text a-text-small">01 Nov 2023 | Edukatips</p>
-                                                </div>
-                                                <div class="a-card--title shine">
-                                                    <h3 class="a-text a-text-body a-text-ellipsis">Perbedaan Jenis Surat Berharga Negara SR, ORI, dan ST</h3>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="a-card a-card--landscape shadow0">
-                                        <a href="/id/informasi/Edukatips/2023/10/30/04/29/untuk-para-kepala-keluarga-kenali-4-love-language-ini">
-                                            <div class="a-card--img shine"><img loading="lazy" src="/-/media/Feature/News/Edukatips/2023/10/20231030-love-language-kepala-keluarga-thumb.png?h=200&amp;w=200&amp;hash=F54B1D067C7734F3F76ED53E5563475B"></div>
-                                            <div class="a-card--content">
-                                                <div class="a-card--date shine">
-                                                    <p class="a-text a-text-small">30 Okt 2023 | Edukatips</p>
-                                                </div>
-                                                <div class="a-card--title shine">
-                                                    <h3 class="a-text a-text-body a-text-ellipsis">Untuk Para Kepala Keluarga, Kenali 5 Love Language Ini!</h3>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row justify-content-center">
-                                <div class="col-xs-12 text-center">
-                                    <div class="m-tabs next">
-                                        <a class="next-button undefined" href="/id/informasi/Edukatips"><span class="tb-cell va-middle">Semua Edukatips</span><i class="tb-cell va-middle a-system-icon icon-chevron-next"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="tab-content">
-                        <div class="tab-pane mb-24 fade" id="t_14CD52ECCE7F431DAEA015638D55B3C9" role="tabpanel" aria-labelledby="tab_14CD52ECCE7F431DAEA015638D55B3C9">
-
-                            <script>
-                                var itemCount = 7;
-                                document.addEventListener('DOMContentLoaded', function() {
-                                    var lat = bca.modules.lokasi.userLocation.lat;
-                                    var long = bca.modules.lokasi.userLocation.lng;
-                                    $.ajax({
-                                        type: 'POST',
-                                        url: '/api/sitecore/News/GetBeritaEduAwasEventHomepage',
-                                        data: {
-                                            'dsID': '{6CD5DEDA-B5B2-418F-AC38-1A80FBB02BB7}',
-                                            'longitude': long,
-                                            'latitude': lat
-                                        },
-                                        success: function(results) {
-                                            if (7 == 3) {
-                                                $.each(JSON.parse(results), function(index, value) {
-                                                    //var title = value.Title.length > 22 ? value.Title.substring(0, 19) + "..." : value.Title.substring(0, 22);
-                                                    var item = `<div class="col-md-4">
-										<div class="a-card a-card--landscape shine--load shadow0">
-											<a href="` + value.Link + `">
-												<div class="a-card--img shine"><img loading="lazy" src="` + value.Image + `"></div>
-												<div class="a-card--content">
-													<div class="a-card--date shine">
-														<p class="a-text a-text-small">` + value.Date + ` | AwasModus</p>
-													</div>
-													<div class="a-card--title shine">
-														<h3 class="a-text a-text-body a-text-ellipsis">` + value.Title + `</h3>
-													</div>
-												</div>
-											</a>
-										</div>
-									</div>`;
-
-                                                    $('#beritaeduawas_6CD5DEDAB5B2418FAC381A80FBB02BB7').append(item);
-                                                    setTimeout(function() {
-                                                        $('#beritaeduawas_6CD5DEDAB5B2418FAC381A80FBB02BB7').find('.shine--load').removeClass('shine--load');
-                                                        $('.a-card--landscape .a-text-ellipsis').ellipsis({
-                                                            type: 'lines',
-                                                            count: 3,
-                                                            responsive: true,
-                                                            destroy: true
-                                                        });
-
-                                                    }, 500)
-
-                                                });
-                                            } else {
-                                                $.each(JSON.parse(results), function(index, value) {
-                                                    //var title = value.Title.length > 22 ? value.Title.substring(0, 19) + "..." : value.Title.substring(0, 22);
-                                                    if (index == 0) {
-                                                        var item = `<div class="col-md-4">
-										<div class="a-card a-card--news-new">
-											<a href="` + value.Link + `">
-												<div class="a-card--img shine"><img loading="lazy" src="` + value.Image + `"></div>
-												<div class="a-card--content">
-													<div class="a-card--date shine">
-														<p class="a-text a-text-small">` + value.Date + ` | AwasModus</p>
-													</div>
-													<div class="a-card--title shine">
-														<h3 class="a-text a-text-subtitle a-text-ellipsis">` + value.Title + `</h3>
-													</div>
-												</div>
-											</a>
-										</div>
-									</div>`;
-                                                    } else {
-                                                        var item = `<div class="col-md-4">
-										<div class="a-card a-card--landscape shine--load shadow0">
-											<a href="` + value.Link + `">
-												<div class="a-card--img shine"><img loading="lazy" src="` + value.Image + `"></div>
-												<div class="a-card--content">
-													<div class="a-card--date shine">
-														<p class="a-text a-text-small">` + value.Date + ` | AwasModus</p>
-													</div>
-													<div class="a-card--title shine">
-														<h3 class="a-text a-text-body a-text-ellipsis">` + value.Title + `</h3>
-													</div>
-												</div>
-											</a>
-										</div>
-									</div>`;
-                                                    }
-
-                                                    $('#beritaeduawas_6CD5DEDAB5B2418FAC381A80FBB02BB7').append(item);
-                                                    setTimeout(function() {
-                                                        $('#beritaeduawas_6CD5DEDAB5B2418FAC381A80FBB02BB7').find('.shine--load').removeClass('shine--load');
-                                                        $('.a-card--landscape .a-text-ellipsis').ellipsis({
-                                                            type: 'lines',
-                                                            count: 3,
-                                                            responsive: true,
-                                                            destroy: true
-                                                        });
-
-                                                    }, 500)
-
-                                                });
-                                            }
-                                        },
-                                        error: function(err) {
-                                            console.log(err);
-                                        }
-                                    });
-                                }, false);
-                            </script>
-                            <div class="row mb-24" id="beritaeduawas_6CD5DEDAB5B2418FAC381A80FBB02BB7">
-                                <!--Items From AJAX-->
-                                <div class="col-md-4">
-                                    <div class="a-card a-card--news-new">
-                                        <a href="/id/informasi/awas-modus/2022/12/15/10/15/tolak-dengan-anggun-yang-minta-data-pribadi-perbankan">
-                                            <div class="a-card--img shine"><img loading="lazy" src="/-/media/Feature/News/Awas-Modus/2022/12/FA-BCATolak-dengan-AnggunKV-GeneralHORI--Banner---Thumbnail--262-x-152.jpg?h=152&amp;w=262&amp;hash=A3D2428590DA0AF7A1B1EC209E4CCC13"></div>
-                                            <div class="a-card--content">
-                                                <div class="a-card--date shine">
-                                                    <p class="a-text a-text-small">15 Des 2022 | AwasModus</p>
-                                                </div>
-                                                <div class="a-card--title shine">
-                                                    <h3 class="a-text a-text-subtitle a-text-ellipsis">Tolak Dengan Anggun Yang Minta Data Pribadi Perbankan</h3>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="a-card a-card--landscape shadow0">
-                                        <a href="/id/informasi/awas-modus/2023/11/27/07/57/Waspada-Soceng-dengan-Modus-Penipuan-Jasa-Pengiriman-Barang">
-                                            <div class="a-card--img shine"><img loading="lazy" src="/-/media/Feature/News/Awas-Modus/2023/11/20231127-Social-Engineering-Penipuan-Jasa-Pengiriman-Barang-thumb.jpg?h=200&amp;w=200&amp;hash=1253A1B3DCE3F246932014DFD3EC5C24"></div>
-                                            <div class="a-card--content">
-                                                <div class="a-card--date shine">
-                                                    <p class="a-text a-text-small">27 Nov 2023 | AwasModus</p>
-                                                </div>
-                                                <div class="a-card--title shine">
-                                                    <h3 class="a-text a-text-body a-text-ellipsis">Awas Social Engineering Jebakan Link Phising Penipuan Jasa Pengiriman Barang</h3>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="a-card a-card--landscape shadow0">
-                                        <a href="/id/informasi/awas-modus/2023/11/08/02/30/waspada-penipuan-phishing-karena-maraknya-spyware">
-                                            <div class="a-card--img shine"><img loading="lazy" src="/-/media/Feature/News/Awas-Modus/2023/11/20231108-waspada-penipuan-phishing-karena-maraknya-spyware-thumb.jpg?h=200&amp;w=200&amp;hash=66633F321470DB0387A87ADDD0C2919E"></div>
-                                            <div class="a-card--content">
-                                                <div class="a-card--date shine">
-                                                    <p class="a-text a-text-small">08 Nov 2023 | AwasModus</p>
-                                                </div>
-                                                <div class="a-card--title shine">
-                                                    <h3 class="a-text a-text-body a-text-ellipsis">Waspada Penipuan Phishing Karena Maraknya Spyware</h3>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="a-card a-card--landscape shadow0">
-                                        <a href="/id/informasi/awas-modus/2023/11/07/09/27/awas-modus-investasi-bodong-pilih-yang-terpercaya">
-                                            <div class="a-card--img shine"><img loading="lazy" src="/-/media/Feature/News/Awas-Modus/2023/11/20231107-investasi-bodong-thum.jpeg?h=200&amp;w=200&amp;hash=EC16D53C0A5CED32E6F7DB8258EA349A"></div>
-                                            <div class="a-card--content">
-                                                <div class="a-card--date shine">
-                                                    <p class="a-text a-text-small">07 Nov 2023 | AwasModus</p>
-                                                </div>
-                                                <div class="a-card--title shine">
-                                                    <h3 class="a-text a-text-body a-text-ellipsis">Awas Modus Investasi Bodong, Pilih yang Terpercaya</h3>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="a-card a-card--landscape shadow0">
-                                        <a href="/id/informasi/awas-modus/2023/10/17/03/47/waspada-modus-penipuan-menggunakan-qr-code">
-                                            <div class="a-card--img shine"><img loading="lazy" src="/-/media/Feature/News/Awas-Modus/2023/10/20231017-Awas-Modus-Penipuan-QR-Thumb.jpg?h=200&amp;w=200&amp;hash=8E373AC67946C96AB9F9A8A415B79161"></div>
-                                            <div class="a-card--content">
-                                                <div class="a-card--date shine">
-                                                    <p class="a-text a-text-small">17 Okt 2023 | AwasModus</p>
-                                                </div>
-                                                <div class="a-card--title shine">
-                                                    <h3 class="a-text a-text-body a-text-ellipsis">Waspada Modus Penipuan Menggunakan QR Code! </h3>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="a-card a-card--landscape shadow0">
-                                        <a href="/id/informasi/awas-modus/2023/10/16/09/52/awasmodus-catfishing-mengincar-kamu-dan-orang-terdekatmu">
-                                            <div class="a-card--img shine"><img loading="lazy" src="/-/media/Feature/News/Awas-Modus/2023/10/20231016-awas-modus-catfishing-thu.jpg?h=200&amp;w=200&amp;hash=06987C38CFE489D91210602A96A5E341"></div>
-                                            <div class="a-card--content">
-                                                <div class="a-card--date shine">
-                                                    <p class="a-text a-text-small">16 Okt 2023 | AwasModus</p>
-                                                </div>
-                                                <div class="a-card--title shine">
-                                                    <h3 class="a-text a-text-body a-text-ellipsis">#AwasModus Catfishing Mengincar Kamu dan Orang Terdekatmu!</h3>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="a-card a-card--landscape shadow0">
-                                        <a href="/id/informasi/awas-modus/2023/10/12/03/52/kenali-modus-penipuan-brand-impersonation-dan-tips-keamanannya">
-                                            <div class="a-card--img shine"><img loading="lazy" src="/-/media/Feature/News/Awas-Modus/2023/10/20231012-thumbnail-awas-modus-brand-impersonation.jpg?h=200&amp;w=200&amp;hash=CA70B60AFFFF976BB0D0745B05A9FD12"></div>
-                                            <div class="a-card--content">
-                                                <div class="a-card--date shine">
-                                                    <p class="a-text a-text-small">12 Okt 2023 | AwasModus</p>
-                                                </div>
-                                                <div class="a-card--title shine">
-                                                    <h3 class="a-text a-text-body a-text-ellipsis">Kenali Modus Penipuan Brand Impersonation dan Tips Keamanannya</h3>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row justify-content-center">
-                                <div class="col-xs-12 text-center">
-                                    <div class="m-tabs next">
-                                        <a class="next-button undefined" href="/id/informasi/awas-modus"><span class="tb-cell va-middle">Semua #AwasModus</span><i class="tb-cell va-middle a-system-icon icon-chevron-next"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
+    </section> -->
 
     <!--=================================
     Testimonial -->
@@ -2271,27 +1532,27 @@
             items: 1,
         })
 
-        // Menanggapi perubahan pada Owl Carousel
-        owl.on('changed.owl.carousel', function(event) {
-            // Mendapatkan indeks item yang sedang aktif
-            var currentIndex = event.item.index;
+        // // Menanggapi perubahan pada Owl Carousel
+        // owl.on('changed.owl.carousel', function(event) {
+        //     // Mendapatkan indeks item yang sedang aktif
+        //     var currentIndex = event.item.index;
 
-            // Mengupdate teks pada elemen span berdasarkan indeks
-            updateSpanText(currentIndex);
-        });
+        //     // Mengupdate teks pada elemen span berdasarkan indeks
+        //     updateSpanText(currentIndex);
+        // });
 
-        // Fungsi untuk mengupdate teks pada elemen span
-        function updateSpanText(index) {
-            let spanTextBeli = document.getElementById('carouselTextBeli');
-            let spanTextJual = document.getElementById('carouselTextJual');
-            // Menentukan teks berdasarkan indeks
-            let textsBeli = ["10", "11", '12', '13', '14', '15', '16', '17'];
-            let textsJual = ["10", "11", '2', '3', '4', '5', '6', '7'];
+        // // Fungsi untuk mengupdate teks pada elemen span
+        // function updateSpanText(index) {
+        //     let spanTextBeli = document.getElementById('carouselTextBeli');
+        //     let spanTextJual = document.getElementById('carouselTextJual');
+        //     // Menentukan teks berdasarkan indeks
+        //     let textsBeli = ["10", "11", '12', '13', '14', '15', '16', '17'];
+        //     let textsJual = ["10", "11", '2', '3', '4', '5', '6', '7'];
 
-            // Mengatur teks pada elemen span berdasarkan indeks
-            spanTextBeli.innerHTML = textsBeli[index];
-            spanTextJual.innerHTML = textsJual[index];
-        }
+        //     // Mengatur teks pada elemen span berdasarkan indeks
+        //     spanTextBeli.innerHTML = textsBeli[index];
+        //     spanTextJual.innerHTML = textsJual[index];
+        // }
     </script>
 </body>
 

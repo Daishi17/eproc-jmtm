@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/teamplate_transpo/css/') ?>select2.css" />
 
     <!-- css rehan -->
-    <link rel="stylesheet" href="<?= base_url('assets/teamplate_transpo/css/style2.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/teamplate_transpo/css//style2.css') ?>">
 
 
     <!-- Template Style -->
@@ -789,8 +789,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="card">
-                    <div class="card-body">
+                <div class="card
                         <h5 class="card-title">Bekerja Sama Dengan</h5>
                         <div id="card-owl-carousel" class="owl-carousel owl-theme text-center image-slider card-bekerjasama">
                             <img src="https://www.bankmandiri.co.id/documents/20143/44881086/ag-branding-logo-2.png/30f0204c-d3c1-7237-0e97-6d9c137b2866?t=1623309819189" alt="" width="100px">
@@ -812,53 +811,51 @@
                 </div>
 
             </div>
-            <!-- <div class="col-md-4">
-                <h3 class="mb-3">Fitur-Fitur Dalam Aplikasi E-Procurement JMTM</h3>
-                <div class="row">
-                    <div class="col-sm-6 mb-4 mb-sm-5">
-                        <img src="<?= base_url('assets/img/proc.png') ?>" width="100px" class=" mr-3" alt="">
-                        <p class=" text-dark">Integrated Vendor Management System</p>
-                    </div>
-                    <div class="col-sm-6 mb-4 mb-sm-5">
-                        <img src="<?= base_url('assets/img/logo3.png') ?>" width="100px" class=" mr-3" alt="">
-                        <p class=" text-dark">Global supply Chain Solutions</p>
-                    </div>
-                    <div class="col-sm-6 mb-4 mb-sm-5">
-                        <img src="<?= base_url('assets/img/support.png') ?>" width="100px" class=" mr-3" alt="">
-                        <p class=" text-dark">Technical Support</p>
-                    </div>
-                    <div class="col-sm-6 mb-4 mb-sm-5">
-                        <img src="<?= base_url('assets/img/monitoring.png') ?>" width="100px" class=" mr-3" alt="">
-                        <p class=" text-dark">Solutions & Special Expertise</p>
-                    </div>
-                </div>
-            </div> -->
+
         </div>
     </div>
 
-    <!-- tes -->
-    <!-- tes -->
-    <!-- <?php
+    <!-- section berita tender -->
+    <section id="berita" class="berita">
+        <div class="container" data-aos="fade-up">
+
+            <div class="col-xl-12">
+                <div class="section-title text-center">
+                    <h2 class="mb-3">BERITA TENDER</h2>
+                    <p>Berita Terkini</p>
+                </div>
+            </div>
+
+            <?php
             $this->db->select('*');
             $this->db->from('tbl_berita');
             $data_berita = $this->db->get()->result_array();
             ?>
-    <div class="row">
-        <?php foreach ($data_berita as $key => $value) : ?>
-                    <div class="col-md-3">
-                        <div class="card">
-                            <img src="https://banner2.cleanpng.com/20180812/klg/kisspng-vector-graphics-clip-art-download-royalty-free-com--5b6fe048a74235.8130205015340585686851.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h6 class="card-title"><?= $value['nama_berita'] ?></h6>
-                                <small class="card-text"><?= date('d-F-Y H:i', strtotime($value['created_at']))  ?></small>
-                                <a href="<?= base_url('file_berita/' . $value['file_berita']) ?>" value="<?= $value['file_berita'] ?>" class="btn btn-primary">Selanjutnya</a>
+            <div id="cards_landscape_wrap-2">
+                <div class="container">
+                    <div class="row">
+                        <?php foreach ($data_berita as $key => $value) : ?>
+                            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                                <a href="<?= base_url('file_berita/') ?><?= $value['file_berita'] ?>">
+                                    <div class="card-flyer mt-3">
+                                        <div class="text-box">
+                                            <div class="image-box">
+                                                <img src="<?= base_url('assets/img/file-logo.png') ?>" alt="" />
+                                            </div>
+                                            <div class="text-container">
+                                                <h6><?= $value['nama_berita']; ?></h6>
+                                                <small><?= date('d-F-Y H:i', strtotime($value['created_at']))  ?></small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
-                        </div>
+                        <?php endforeach ?>
                     </div>
-        <?php endforeach; ?>
-    </div> -->
-    <!-- end tes -->
-    <!-- end tes -->
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- ======= Gallery Section ======= -->
     <section id="gallery" class="gallery mt-5">

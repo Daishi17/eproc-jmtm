@@ -927,13 +927,13 @@
                         <tbody>
                             <?php $i = 1;
                             foreach ($data_berita as $key => $value) { ?>
-                                        <tr>
-                                            <td style="width: 10px;">
-                                                <center class="text-blue"><?= $i++ ?></center>
-                                            </td>
-                                            <td><label class="text-success"><a href="<?= base_url('file_berita/') ?><?= $value['file_berita'] ?>"><?= $value['nama_berita'] ?></a></label></td>
-                                            <td><label class="text-success"><?= date('d-F-Y H:i', strtotime($value['created_at']))  ?></label></td>
-                                        </tr>
+                                            <tr>
+                                                <td style="width: 10px;">
+                                                    <center class="text-blue"><?= $i++ ?></center>
+                                                </td>
+                                                <td><label class="text-success"><a href="<?= base_url('file_berita/') ?><?= $value['file_berita'] ?>"><?= $value['nama_berita'] ?></a></label></td>
+                                                <td><label class="text-success"><?= date('d-F-Y H:i', strtotime($value['created_at']))  ?></label></td>
+                                            </tr>
                             <?php } ?>
                         </tbody>
                     </table>

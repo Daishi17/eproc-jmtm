@@ -792,11 +792,11 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Bekerja Sama Dengan</h5>
-                        <div id="card-owl-carousel" class="owl-carousel owl-theme text-center image-slider">
-                            <div><img src="https://www.bankmandiri.co.id/documents/20143/44881086/ag-branding-logo-2.png/30f0204c-d3c1-7237-0e97-6d9c137b2866?t=1623309819189" alt="" width="100px"></div>
-                            <div> Your Content 2</div>
-                            <div> Your Content 3</div>
-                            <div> Your Content 4</div>
+                        <div id="card-owl-carousel" class="owl-carousel owl-theme text-center image-slider card-bekerjasama">
+                            <img src="https://www.bankmandiri.co.id/documents/20143/44881086/ag-branding-logo-2.png/30f0204c-d3c1-7237-0e97-6d9c137b2866?t=1623309819189" alt="" width="100px">
+                            <img src="https://www.bankmandiri.co.id/documents/20143/44881086/ag-branding-logo-2.png/30f0204c-d3c1-7237-0e97-6d9c137b2866?t=1623309819189" alt="" width="100px">
+                            <img src="https://www.bankmandiri.co.id/documents/20143/44881086/ag-branding-logo-2.png/30f0204c-d3c1-7237-0e97-6d9c137b2866?t=1623309819189" alt="" width="100px">
+                            <img src="https://www.bankmandiri.co.id/documents/20143/44881086/ag-branding-logo-2.png/30f0204c-d3c1-7237-0e97-6d9c137b2866?t=1623309819189" alt="" width="100px">
                         </div>
                         <!-- <div class="beli mt-5 d-flex justify-content-between">
                             <p class="card-text">Beli</p>
@@ -1830,11 +1830,11 @@
                                                     echo "Rp " . number_format($query['total_rincian_hps_pdf'], 2, ',', '.');
                                                     ?>
                                                     <?php if ($value['batas_pendaftaran'] == null) { ?>
-                                                    <td><label for="" class="badge badge-info">Jadwal Belum Di Prosess</label></td>
-                                                <?php    } else { ?>
-                                                    <td><?= date('d-F-Y H:i', strtotime($value['batas_pendaftaran']))  ?></td>
-                                                <?php } ?>
-                                                <td style="text-align:center;"> <a href="javascript:;" onclick="lihat_persyartaan(<?= $value['id_paket'] ?>)"> <i style="font-size:18px" class="fas fa fa-eye"> Lihat</i></a></td>
+                                                <td><label for="" class="badge badge-info">Jadwal Belum Di Prosess</label></td>
+                                            <?php    } else { ?>
+                                                <td><?= date('d-F-Y H:i', strtotime($value['batas_pendaftaran']))  ?></td>
+                                            <?php } ?>
+                                            <td style="text-align:center;"> <a href="javascript:;" onclick="lihat_persyartaan(<?= $value['id_paket'] ?>)"> <i style="font-size:18px" class="fas fa fa-eye"> Lihat</i></a></td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>
@@ -2271,27 +2271,27 @@
             items: 1,
         })
 
-        // Menanggapi perubahan pada Owl Carousel
-        owl.on('changed.owl.carousel', function(event) {
-            // Mendapatkan indeks item yang sedang aktif
-            var currentIndex = event.item.index;
+        // // Menanggapi perubahan pada Owl Carousel
+        // owl.on('changed.owl.carousel', function(event) {
+        //     // Mendapatkan indeks item yang sedang aktif
+        //     var currentIndex = event.item.index;
 
-            // Mengupdate teks pada elemen span berdasarkan indeks
-            updateSpanText(currentIndex);
-        });
+        //     // Mengupdate teks pada elemen span berdasarkan indeks
+        //     updateSpanText(currentIndex);
+        // });
 
-        // Fungsi untuk mengupdate teks pada elemen span
-        function updateSpanText(index) {
-            let spanTextBeli = document.getElementById('carouselTextBeli');
-            let spanTextJual = document.getElementById('carouselTextJual');
-            // Menentukan teks berdasarkan indeks
-            let textsBeli = ["10", "11", '12', '13', '14', '15', '16', '17'];
-            let textsJual = ["10", "11", '2', '3', '4', '5', '6', '7'];
+        // // Fungsi untuk mengupdate teks pada elemen span
+        // function updateSpanText(index) {
+        //     let spanTextBeli = document.getElementById('carouselTextBeli');
+        //     let spanTextJual = document.getElementById('carouselTextJual');
+        //     // Menentukan teks berdasarkan indeks
+        //     let textsBeli = ["10", "11", '12', '13', '14', '15', '16', '17'];
+        //     let textsJual = ["10", "11", '2', '3', '4', '5', '6', '7'];
 
-            // Mengatur teks pada elemen span berdasarkan indeks
-            spanTextBeli.innerHTML = textsBeli[index];
-            spanTextJual.innerHTML = textsJual[index];
-        }
+        //     // Mengatur teks pada elemen span berdasarkan indeks
+        //     spanTextBeli.innerHTML = textsBeli[index];
+        //     spanTextJual.innerHTML = textsJual[index];
+        // }
     </script>
 </body>
 

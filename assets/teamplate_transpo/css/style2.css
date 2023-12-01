@@ -219,6 +219,10 @@ button span {
 	outline: none;
 }
 
+.owl-carousel .owl-item img {
+	width: 100% !important;
+}
+
 #carousel .item img {
 	display: block;
 	width: 100%;
@@ -257,6 +261,10 @@ button span {
 #card-owl-carousel .owl-nav button {
 	margin-left: -50px !important;
 	margin-right: -50px !important;
+}
+
+.card-bekerjasama .owl-nav button {
+	color: black !important;
 }
 
 /* bottom bar */

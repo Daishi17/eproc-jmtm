@@ -30,11 +30,11 @@
     <link rel="stylesheet" href="<?= base_url('assets/teamplate_transpo/css/') ?>select2.css" />
 
     <!-- css rehan -->
-    <link rel="stylesheet" href="<?= base_url('assets/teamplate_transpo/css///style2.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/teamplate_transpo/css//style2.css') ?>">
 
 
     <!-- Template Style -->
-    <link rel="stylesheet" href="<?= base_url('assets/teamplate_transpo/css//style.css') ?>" />
+    <link rel="stylesheet" href="<?= base_url('assets/teamplate_transpo/css///style.css') ?>" />
     <link rel="stylesheet" href="<?= base_url() ?>assets/boostrapnew/DataTables/media/css/jquery.dataTables.min.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
     <link href="<?= base_url('assets/teamplate_transpo/css/') ?>glightbox.min.css" rel="stylesheet">
@@ -389,55 +389,55 @@
     <div id="bottomBar" class="bottom-bar fixed-bottom w-100 bg-warning">
         <div class="d-flex text-center justify-content-around">
             <a href="<?= base_url('') ?>" class="item-wrapper ">
-                <div class="text-dark item-wrapper-content">
+                <div class="text-white item-wrapper-content">
                     <i class="fas fa-home"></i>
                     <div class="bottom-bar-caption">Beranda</div>
                 </div>
             </a>
-            <a href="#" class="item-wrapper">
-                <div class="text-dark item-wrapper-content">
+            <!-- <a href="#" class="item-wrapper">
+                <div class="text-white item-wrapper-content">
                     <i class="fas fa-box-open"></i>
                     <div class="bottom-bar-caption ">Paket</div>
                 </div>
-            </a>
+            </a> -->
             <a href="#" class="item-wrapper">
-                <div class="text-dark item-wrapper-content">
+                <div class="text-white item-wrapper-content">
                     <i class="fas fa-newspaper" aria-hidden="true"></i>
                     <div class="bottom-bar-caption ">Berita</div>
                 </div>
             </a>
             <a href="<?= base_url('home/cari_paket') ?>" class="item-wrapper">
-                <div class="text-dark item-wrapper-content">
+                <div class="text-white item-wrapper-content">
                     <i class="fas fa-box-open"></i>
                     <div class="bottom-bar-caption ">Cari Paket</div>
                 </div>
             </a>
             <a href="#" class="item-wrapper" data-toggle="modal" data-target="#regulasi">
-                <div class="text-dark item-wrapper-content">
+                <div class="text-white item-wrapper-content">
                     <i class="fas fa-gavel"></i>
                     <div class="bottom-bar-caption ">Regulasi</div>
                 </div>
             </a>
             <a target="_blank" href="https://www.instagram.com/jmtm.official/" class="item-wrapper">
-                <div class="text-dark item-wrapper-content">
+                <div class="text-white item-wrapper-content">
                     <i class="fab fa-instagram"></i>
                     <div class="bottom-bar-caption ">Konten Khusus</div>
                 </div>
             </a>
             <a href="https://api.whatsapp.com/send?phone=+6281526804622&text=HALLO JASAMARGA TOLLROAD MAINTENANCE" class="item-wrapper">
-                <div class="text-dark item-wrapper-content">
+                <div class="text-white item-wrapper-content">
                     <i class="fab fa-whatsapp"></i>
                     <div class="bottom-bar-caption ">WhatsApp</div>
                 </div>
             </a>
             <a target="_blank" href="https://vms.jmtm.co.id/home/daftarvendor" class="item-wrapper">
-                <div class="text-dark item-wrapper-content">
+                <div class="text-white item-wrapper-content">
                     <i class="fas fa-fw fa-file"></i>
                     <div class="bottom-bar-caption ">Daftar Penyedia</div>
                 </div>
             </a>
             <a href="javascript:;" onclick="modal_login()" class="item-wrapper">
-                <div class="text-dark item-wrapper-content">
+                <div class="text-white item-wrapper-content">
                     <i class="fas fa-sign-in-alt"></i>
                     <div class="bottom-bar-caption ">Login</div>
                 </div>
@@ -724,31 +724,31 @@
                     </div>
                 </div> -->
                 <div class="col-xl-12 pl-xl-5">
-                    <h3 class="text-white mb-4">Fitur-Fitur Dalam Aplikasi E-Procurement JMTM</h3>
+                    <h3 class="text-white mb-5 text-center">Fitur-Fitur Dalam Aplikasi E-Procurement JMTM</h3>
                     <p></p>
                     <div class="row">
-                        <div class="col-sm-6 mb-4 mb-sm-5">
-                            <div class="d-flex">
-                                <img src="<?= base_url('assets/img/proc.png') ?>" width="180px" class=" mr-3" alt="">
-                                <h5 class=" text-white">Integrated Vendor Management System</h5>
+                        <div class="col-sm-3 mb-4 mb-sm-5">
+                            <div class="d-flex flex-column">
+                                <img src="<?= base_url('assets/img/proc.png') ?>" width="180px" class="mx-auto" alt="">
+                                <h5 class=" text-white text-center">Integrated Vendor Management System</h5>
                             </div>
                         </div>
-                        <div class="col-sm-6 mb-4 mb-sm-5">
-                            <div class="d-flex">
-                                <img src="<?= base_url('assets/img/logo3.png') ?>" width="160px" class=" mr-3" alt="">
-                                <h5 class=" text-white">Global supply Chain Solutions</h5>
+                        <div class="col-sm-3 mb-4 mb-sm-5">
+                            <div class="d-flex flex-column">
+                                <img src="<?= base_url('assets/img/logo3.png') ?>" width="160px" class="mx-auto" alt="">
+                                <h5 class=" text-white text-center">Global supply Chain Solutions</h5>
                             </div>
                         </div>
-                        <div class="col-sm-6 mb-4 mb-sm-5">
-                            <div class="d-flex">
-                                <img src="<?= base_url('assets/img/support.png') ?>" width="180px" class=" mr-3" alt="">
-                                <h5 class=" text-white">Technical Support</h5>
+                        <div class="col-sm-3 mb-4 mb-sm-5">
+                            <div class="d-flex flex-column">
+                                <img src="<?= base_url('assets/img/support.png') ?>" width="180px" class="mx-auto" alt="">
+                                <h5 class=" text-white text-center">Technical Support</h5>
                             </div>
                         </div>
-                        <div class="col-sm-6 mb-4 mb-sm-5">
-                            <div class="d-flex">
-                                <img src="<?= base_url('assets/img/monitoring.png') ?>" width="180px" class=" mr-3" alt="">
-                                <h5 class=" text-white">Solutions & Special Expertise</h5>
+                        <div class="col-sm-3 mb-4 mb-sm-5">
+                            <div class="d-flex flex-column">
+                                <img src="<?= base_url('assets/img/monitoring.png') ?>" width="180px" class="mx-auto" alt="">
+                                <h5 class=" text-white text-center">Solutions & Special Expertise</h5>
                             </div>
                         </div>
                     </div>
@@ -789,8 +789,8 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="card
-                        <h5 class=" card-title">Bekerja Sama Dengan</h5>
+                <div class="card card-iklan p-3">
+                    <h5 class="card-title">Bekerja Sama Dengan</h5>
                     <div id="card-owl-carousel" class="owl-carousel owl-theme text-center image-slider card-bekerjasama">
                         <img src="https://www.bankmandiri.co.id/documents/20143/44881086/ag-branding-logo-2.png/30f0204c-d3c1-7237-0e97-6d9c137b2866?t=1623309819189" alt="" width="100px">
                         <img src="https://www.bankmandiri.co.id/documents/20143/44881086/ag-branding-logo-2.png/30f0204c-d3c1-7237-0e97-6d9c137b2866?t=1623309819189" alt="" width="100px">
@@ -829,6 +829,7 @@
             <?php
             $this->db->select('*');
             $this->db->from('tbl_berita');
+            $this->db->limit(4);
             $data_berita = $this->db->get()->result_array();
             ?>
             <div id="cards_landscape_wrap-2">
@@ -851,6 +852,11 @@
                                 </a>
                             </div>
                         <?php endforeach ?>
+                        <a href="#" class="mt-3 mr-3 ml-auto text-center">
+                            <p>
+                                Lihat berita lainnya
+                            </p>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -1091,11 +1097,11 @@
                                                     echo "Rp " . number_format($query['total_rincian_hps_pdf'], 2, ',', '.');
                                                     ?>
                                                     <?php if ($value['batas_pendaftaran'] == null) { ?>
-                                                    <td><label for="" class="badge badge-info">Jadwal Belum Di Prosess</label></td>
-                                                <?php    } else { ?>
-                                                    <td><?= date('d-F-Y H:i', strtotime($value['batas_pendaftaran']))  ?></td>
-                                                <?php } ?>
-                                                <td style="text-align:center;"> <a href="javascript:;" onclick="lihat_persyartaan(<?= $value['id_paket'] ?>)"> <i style="font-size:18px" class="fas fa fa-eye"> Lihat</i></a></td>
+                                                <td><label for="" class="badge badge-info">Jadwal Belum Di Prosess</label></td>
+                                            <?php    } else { ?>
+                                                <td><?= date('d-F-Y H:i', strtotime($value['batas_pendaftaran']))  ?></td>
+                                            <?php } ?>
+                                            <td style="text-align:center;"> <a href="javascript:;" onclick="lihat_persyartaan(<?= $value['id_paket'] ?>)"> <i style="font-size:18px" class="fas fa fa-eye"> Lihat</i></a></td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>

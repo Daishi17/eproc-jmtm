@@ -663,7 +663,7 @@ iframe {
 }
 
 .bg-overlay-dark-50:before {
-	background: rgba(5, 44, 82, 0.5);
+	background: rgba(5, 44, 82, 0.15);
 	content: "";
 	height: 100%;
 	left: 0;

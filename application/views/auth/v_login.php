@@ -77,7 +77,7 @@
 </head>
 <!--  class="hold-transition login-page" style=" background-image: linear-gradient(to top, rgb(252, 252, 252), rgb(75, 136, 250)) !important;asdads" -->
 
-<body style="background-image: url('assets/img/login page.png');background-repeat: no-repeat;
+<body style="background-image: url('assets/img/login-page3.jpg');background-repeat: no-repeat;
 			background-size: cover;">
 	<center>
 		<div class="login-box" style="margin-top:100px">
@@ -98,7 +98,7 @@
 				echo ' </div>';
 			} ?>
 
-            <?php if ($this->session->flashdata('tidak_aktif')) {
+			<?php if ($this->session->flashdata('tidak_aktif')) {
 				echo '  <div class="alert alert-danger alert-dismissible">
                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                <h5><i class="icon fas fa-exclamation-triangle"></i> Maaf !</h5>';

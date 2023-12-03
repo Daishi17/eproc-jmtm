@@ -83,6 +83,13 @@ class Home extends CI_Controller
 		//$this->load->view('template/footer_landing');
 	}
 
+	public function berita_tender()
+	{
+		$data['berita'] = $this->Home_model->ambil_berita();
+
+		$this->load->view('home/berita_tender', $data);
+	}
+
 	public function datatable()
 	{
 		$resultss = $this->Home_model->getdatatable();

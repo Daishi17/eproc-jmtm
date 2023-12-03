@@ -252,7 +252,7 @@
 	<div id="myNav" class="overlay bg-dark ">
 		<nav class="navbar bg-dark navbar-dark">
 			<div class="container">
-				<a class="navbar-brand" href="#">
+				<a class="navbar-brand" href="<?= base_url('home') ?>">
 					<img width="200" src="<?= base_url('assets/teamplate_transpo/img/JMTMLOGOKU.png') ?>" alt="logo">
 				</a>
 				<a href="#" id="ham" onclick="closeNav()">
@@ -356,7 +356,7 @@
 
 	<nav class="navbar position-fixed w-100 bg-dark z-index-9">
 		<div class="container">
-			<a class="navbar-brand" href="#">
+			<a class="navbar-brand" href="<?= base_url('home') ?>">
 				<img width="200" src="<?= base_url('assets/teamplate_transpo/img/JMTMLOGOKU.png') ?>" alt="logo">
 				<!-- <img width="450" src="<?= base_url('assets/img/JasaMarga_logobumn.png') ?>" alt="logo"> -->
 			</a>
@@ -389,7 +389,7 @@
 					<div class="bottom-bar-caption ">Paket</div>
 				</div>
 			</a> -->
-			<a href="#" class="item-wrapper">
+			<a href="<?= base_url('home/berita_tender') ?>" class="item-wrapper">
 				<div class="text-white item-wrapper-content">
 					<i class="fas fa-newspaper" aria-hidden="true"></i>
 					<div class="bottom-bar-caption ">Berita</div>

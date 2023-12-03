@@ -264,7 +264,15 @@ button span {
 }
 
 .card-bekerjasama .owl-nav button {
-	color: black !important;
+	color: #052c52 !important;
+}
+
+.slider-profile .owl-dots button.owl-dot.active {
+	background: #052c52 !important;
+	opacity: 0.9;
+	width: 12.5px;
+	height: 12.5px;
+	transition: 0.2s all;
 }
 
 /* bottom bar */

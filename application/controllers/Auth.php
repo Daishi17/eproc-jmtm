@@ -20,10 +20,10 @@ class Auth extends CI_Controller
 			if (isset($response['success']) and $response['success'] === true) {
 				if ($this->form_validation->run() == false) {
 					$data['title'] = 'LOGIN';
-					$this->load->view('auth/v_login', $data);
+					$this->load->view('auth/login_baru', $data);
 					$this->load->view('auth/ajax', $data);
 					$this->session->set_flashdata('salah', 'Username Atau Password Salah');
-					redirect('auth');
+					redirect('auth/login_baru');
 				} else {
 					$username = $this->input->post('username');
 					$password = $this->input->post('password');
@@ -31,9 +31,11 @@ class Auth extends CI_Controller
 				}
 			}
 		}
+
 		$data['widget'] = $this->recaptcha->getWidget();
 		$data['script'] = $this->recaptcha->getScriptTag();
-		$this->load->view('auth/v_login', $data);
+
+		$this->load->view('auth/login_baru', $data);
 	}
 
 	public function logout()

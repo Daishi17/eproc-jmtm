@@ -31,9 +31,10 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: linear-gradient(-45deg, #E7CD11, #e73c7e, #052c52, #23d5ab);
-            background-size: 400% 400%;
-            animation: gradient 10s ease infinite;
+            /* background: linear-gradient(-45deg, #E7CD11, #e73c7e, #052c52, #23d5ab); */
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), url('assets/img/bg.jpg');
+            background-size: cover;
+            /* animation: gradient 10s ease infinite; */
         }
 
         @keyframes gradient {
@@ -131,10 +132,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.3);
             backdrop-filter: blur(5px);
             border-radius: 10px;
-            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.7);
         }
 
         .container::after {

@@ -5456,7 +5456,7 @@ ul.list li a:hover {
 	-ms-flex-align: center;
 	align-items: center;
 	position: fixed;
-	bottom: 50px;
+	bottom: 100px;
 	right: 40px;
 	width: 40px;
 	height: 40px;

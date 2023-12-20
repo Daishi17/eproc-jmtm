@@ -1,3 +1,11 @@
+html {
+	scroll-behavior: smooth !important;
+}
+
+body {
+	scroll-behavior: smooth !important;
+}
+
 .modal-backdrop {
 	z-index: 999;
 }
@@ -392,4 +400,49 @@ button span {
 	-ms-transition: all 0.2s ease-in;
 	-o-transition: all 0.2s ease-in;
 	transition: all 0.2s ease-in;
+}
+
+/* to bottom */
+.to-bottom-icon {
+	animation: jump-arrow 2.5s infinite;
+	bottom: 0;
+	color: #efb225;
+	display: block;
+	font-size: 2.5em;
+	height: 1.5em;
+	left: 50%;
+	line-height: 1.5em;
+	position: absolute;
+	text-align: center;
+	transform: translatex(-50%);
+	width: 1.5em;
+}
+
+.to-bottom-icon:hover,
+.to-bottom-icon:focus,
+.to-bottom-icon:active {
+	color: #052c52;
+}
+
+@keyframes jump-arrow {
+
+	0%,
+	20%,
+	55%,
+	80%,
+	100% {
+		transform: translate3d(-50%, 0, 0);
+	}
+
+	40% {
+		transform: translate3d(-50%, -15px, 0);
+	}
+
+	70% {
+		transform: translate3d(-50%, -10px, 0);
+	}
+
+	90% {
+		transform: translate3d(-50%, -5px, 0);
+	}
 }

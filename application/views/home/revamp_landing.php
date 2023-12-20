@@ -30,11 +30,11 @@
     <link rel="stylesheet" href="<?= base_url('assets/teamplate_transpo/css/') ?>select2.css" />
 
     <!-- css rehan -->
-    <link rel="stylesheet" href="<?= base_url('assets/teamplate_transpo/css//style2.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/teamplate_transpo/css///style2.css') ?>">
 
 
     <!-- Template Style -->
-    <link rel="stylesheet" href="<?= base_url('assets/teamplate_transpo/css///style.css') ?>" />
+    <link rel="stylesheet" href="<?= base_url('assets/teamplate_transpo/css//style.css') ?>" />
     <link rel="stylesheet" href="<?= base_url() ?>assets/boostrapnew/DataTables/media/css/jquery.dataTables.min.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
     <link href="<?= base_url('assets/teamplate_transpo/css/') ?>glightbox.min.css" rel="stylesheet">
@@ -665,12 +665,21 @@
                             <h5 class="animated text-white text-left mb-0"><span class="text-primary">SELAMAT DATANG</span> <br> DI SISTEM E-PROCUREMENT</h5>
                         </div>
                     </div>
-
-
                     <div class="col-lg-6 offset-xl-1 col-xl-5">
                         <div class="float-right">
                             <a style="font-size: 20px;" href="javascript:;" onclick="hidupkan()"><i class="fa fa-volume-up"></i></a>
                         </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col">
+                        <!-- to bottom -->
+                        <div id="to-bottom">
+                            <a href="#landing-slider" class="to-bottom-icon">
+                                <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        <!-- end to botom -->
                     </div>
                 </div>
             </div>
@@ -765,8 +774,8 @@
     features -->
 
     <!-- Set up your HTML -->
-    <div class="container pt-5 pb-5">
-        <div class="row justify-content-center">
+    <div id="landing-slider" class="container pt-5 pb-5">
+        <div class="row justify-content-center pt-5">
             <div class="col-md-7 mb-5">
                 <div class="owl-slider">
                     <div id="carousel" class="owl-carousel shadow-lg rounded bg-white slider-profile">
@@ -792,10 +801,10 @@
                 <div class="card card-iklan p-3">
                     <h5 class="card-title">Bekerja Sama Dengan</h5>
                     <div id="card-owl-carousel" class="owl-carousel owl-theme text-center image-slider card-bekerjasama">
-                        <img src="https://www.bankmandiri.co.id/documents/20143/44881086/ag-branding-logo-2.png/30f0204c-d3c1-7237-0e97-6d9c137b2866?t=1623309819189" alt="" width="100px">
-                        <img src="https://www.bankmandiri.co.id/documents/20143/44881086/ag-branding-logo-2.png/30f0204c-d3c1-7237-0e97-6d9c137b2866?t=1623309819189" alt="" width="100px">
-                        <img src="https://www.bankmandiri.co.id/documents/20143/44881086/ag-branding-logo-2.png/30f0204c-d3c1-7237-0e97-6d9c137b2866?t=1623309819189" alt="" width="100px">
-                        <img src="https://www.bankmandiri.co.id/documents/20143/44881086/ag-branding-logo-2.png/30f0204c-d3c1-7237-0e97-6d9c137b2866?t=1623309819189" alt="" width="100px">
+                        <img src="<?= base_url('assets/img/jmtm2.png') ?>" alt="" width="100px">
+                        <img src="<?= base_url('assets/img/jmtm2.png') ?>" alt="" width="100px">
+                        <img src="<?= base_url('assets/img/jmtm2.png') ?>" alt="" width="100px">
+                        <img src="<?= base_url('assets/img/jmtm2.png') ?>" alt="" width="100px">
                     </div>
                     <!-- <div class="beli mt-5 d-flex justify-content-between">
                             <p class="card-text">Beli</p>
@@ -816,53 +825,7 @@
     </div>
 
     <!-- section berita tender -->
-    <section id="berita" class="berita">
-        <div class="container" data-aos="fade-up">
-
-            <div class="col-xl-12">
-                <div class="section-title text-center">
-                    <h2 class="mb-3">BERITA TENDER</h2>
-                    <p>Berita Terkini</p>
-                </div>
-            </div>
-
-            <?php
-            $this->db->select('*');
-            $this->db->from('tbl_berita');
-            $this->db->limit(4);
-            $data_berita = $this->db->get()->result_array();
-            ?>
-            <div id="cards_landscape_wrap-2">
-                <div class="container">
-                    <div class="row">
-                        <?php foreach ($data_berita as $key => $value) : ?>
-                            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                                <a href="<?= base_url('file_berita/') ?><?= $value['file_berita'] ?>">
-                                    <div class="card-flyer mt-3">
-                                        <div class="text-box">
-                                            <div class="image-box">
-                                                <img src="<?= base_url('assets/img/file-logo.png') ?>" alt="" />
-                                            </div>
-                                            <div class="text-container">
-                                                <h6><?= $value['nama_berita']; ?></h6>
-                                                <small><?= date('d-F-Y H:i', strtotime($value['created_at']))  ?></small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        <?php endforeach ?>
-                        <a href="<?= base_url('home/berita_tender') ?>" class="mt-4 mr-3 ml-auto text-center" style="font-size: 1.2rem;">
-                            Lihat berita lainnya
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ======= Gallery Section ======= -->
-    <!-- <section id="gallery" class="gallery mt-5">
+    <section id="gallery" class="gallery mt-5">
         <div class="container" data-aos="fade-up">
 
             <div class="col-xl-12">
@@ -902,7 +865,9 @@
         </style>
         <div class="container">
 
-            <div class="card" style="box-shadow: -3px 2px 27px -6px rgba(13,158,158,0.94);-webkit-box-shadow: -3px 2px 27px -6px rgba(13,158,158,0.94);-moz-box-shadow: -3px 2px 27px -6px rgba(13,158,158,0.94);">
+            <div class="card" style="box-shadow: -3px 2px 27px -6px rgba(13,158,158,0.94);
+-webkit-box-shadow: -3px 2px 27px -6px rgba(13,158,158,0.94);
+-moz-box-shadow: -3px 2px 27px -6px rgba(13,158,158,0.94);">
                 <div class="card-header btn-grad11">
                     Berita Terkini
                     <div class="card-tools float-right">
@@ -931,13 +896,13 @@
                         <tbody>
                             <?php $i = 1;
                             foreach ($data_berita as $key => $value) { ?>
-                                            <tr>
-                                                <td style="width: 10px;">
-                                                    <center class="text-blue"><?= $i++ ?></center>
-                                                </td>
-                                                <td><label class="text-success"><a href="<?= base_url('file_berita/') ?><?= $value['file_berita'] ?>"><?= $value['nama_berita'] ?></a></label></td>
-                                                <td><label class="text-success"><?= date('d-F-Y H:i', strtotime($value['created_at']))  ?></label></td>
-                                            </tr>
+                                <tr>
+                                    <td style="width: 10px;">
+                                        <center class="text-blue"><?= $i++ ?></center>
+                                    </td>
+                                    <td><label class="text-success"><a href="<?= base_url('file_berita/') ?><?= $value['file_berita'] ?>"><?= $value['nama_berita'] ?></a></label></td>
+                                    <td><label class="text-success"><?= date('d-F-Y H:i', strtotime($value['created_at']))  ?></label></td>
+                                </tr>
                             <?php } ?>
                         </tbody>
                     </table>
@@ -946,7 +911,7 @@
             <br>
 
         </div>
-    </section> -->
+    </section>
 
     <!--=================================
     Testimonial -->
@@ -1272,10 +1237,10 @@
 
     <!--=================================
     Back To Top -->
-    <!-- <div id="back-to-top" class="back-to-top">
+    <div id="back-to-top" class="back-to-top">
         <a href="#"><i class="fas fa-chevron-up"></i></a>
     </div>
-    <div id="back-to-top" class="back-to-top2">
+    <!-- <div id="back-to-top" class="back-to-top2">
         <a target="_blank" href="https://api.whatsapp.com/send?phone=+6281526804622&text=HALLO JASAMARGA TOLLROAD MAINTENANCE" style="color: white;"> <img src="<?= base_url('assets/img/wqa.png') ?>" class="mr-2" width="30px" alt=""> WhatsApp</a>
     </div> -->
     <!--=================================
@@ -1301,7 +1266,7 @@
     <script src="<?= base_url('assets/teamplate_transpo/js/') ?>select2.full.js"></script>
 
     <!-- Template Scripts (Do not remove)-->
-    <script src="<?= base_url('assets/teamplate_transpo/js/') ?>custom.js"></script>
+    <script src="<?= base_url('assets/teamplate_transpo/js//') ?>custom.js"></script>
     <script type="text/javascript" src="<?= base_url('assets/') ?>boostrapnew/DataTables/media/js/jquery.dataTables.min.js"></script>
     <script src="<?= base_url('assets/teamplate_transpo/js/') ?>glightbox.min.js"></script>
     <script src="<?= base_url('assets/teamplate_transpo/js/') ?>swiper-bundle.min.js"></script>
@@ -1495,6 +1460,16 @@
         function closeNav() {
             document.getElementById("myNav").style.height = "0%";
             document.getElementById("nav-icon3").classList.remove('open');
+        }
+
+        function scrollToSection(sectionId) {
+            var targetSection = document.getElementById(sectionId);
+
+            if (targetSection) {
+                targetSection.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
         }
     </script>
 

@@ -656,7 +656,7 @@
     <!-- https://www.youtube.com/embed/B1gdLHsK9_I -->
     <!-- https://www.youtube.com/embed/rdL6VIHEvmw -->
 
-    <section style="display: block;" id="video1" class="slider-04 bg-overlay-dark-50 bg-holder" data-jarallax='{"speed": 0.6}' data-jarallax-video="https://youtu.be/UjtH9Z2tXn8?si=DbuJmZqAXgy824j-">
+    <section style="display: block;" id="video1" class="slider-04 bg-overlay-dark-50 bg-holder" data-jarallax='{"speed": 0.6}' data-jarallax-video="https://www.youtube.com/watch?v=cVUJsfaz0PA">
         <div class="banner-content">
             <div class="container">
                 <div class="row">
@@ -827,89 +827,88 @@
     <!-- section berita tender -->
     <section id="gallery" class="gallery mt-5">
         <div class="container" data-aos="fade-up">
-
-            <div class="col-xl-12">
-                <div class="section-title text-center">
-                    <h2 class="mb-3">BERITA TENDER</h2>
-                    <p>Berita Terkini</p>
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="section-title text-center">
+                        <h2 class="mb-3">BERITA TENDER</h2>
+                        <p>Berita Terkini</p>
+                    </div>
                 </div>
+
             </div>
-
-        </div>
-        <style>
-            .card {
-                flex: 1;
-
-                /*Style for presentation purpose*/
-                font-family: 'calibri';
-                border: 1px solid #ccc;
-                background: #fff;
-                margin: 12px;
-                padding: 12px
-            }
-
-            @media screen and (min-width:747px) {
-
-                .card-container {
-                    display: flex;
-                    flex-wrap: wrap;
-                    border-color: black;
-                    border-width: 1;
-                }
-
+            <style>
                 .card {
                     flex: 1;
+
+                    /*Style for presentation purpose*/
+                    font-family: 'calibri';
+                    border: 1px solid #ccc;
+                    background: #fff;
+                    margin: 12px;
+                    padding: 12px
                 }
 
-            }
-        </style>
-        <div class="container">
+                @media screen and (min-width:747px) {
 
-            <div class="card" style="box-shadow: -3px 2px 27px -6px rgba(13,158,158,0.94);
+                    .card-container {
+                        display: flex;
+                        flex-wrap: wrap;
+                        border-color: black;
+                        border-width: 1;
+                    }
+
+                    .card {
+                        flex: 1;
+                    }
+
+                }
+            </style>
+            <div class="col-md-10 mx-auto">
+                <div class="card" style="box-shadow: -3px 2px 27px -6px rgba(13,158,158,0.94);
 -webkit-box-shadow: -3px 2px 27px -6px rgba(13,158,158,0.94);
 -moz-box-shadow: -3px 2px 27px -6px rgba(13,158,158,0.94);">
-                <div class="card-header btn-grad11">
-                    Berita Terkini
-                    <div class="card-tools float-right">
+                    <div class="card-header btn-grad11">
+                        Berita Terkini
+                        <div class="card-tools float-right">
+                            <?php
+                            $this->db->select('*');
+                            $this->db->from('tbl_berita');
+                            $hitung_berita =  $this->db->count_all_results();
+                            ?>
+                            <span class="badge pull-right badge-secondary">TOTAL BERITA TERKINI : <?= $hitung_berita ?></span>
+                        </div>
+                    </div>
+                    <div class="card-body">
                         <?php
                         $this->db->select('*');
                         $this->db->from('tbl_berita');
-                        $hitung_berita =  $this->db->count_all_results();
+                        $data_berita = $this->db->get()->result_array();
                         ?>
-                        <span class="badge pull-right badge-secondary">TOTAL BERITA TERKINI : <?= $hitung_berita ?></span>
+                        <table class="table table-striped" id="table10" style="font-size: 11px;">
+                            <thead>
+                                <tr>
+                                    <th style="width: 10px;">No</th>
+                                    <th style="text-align:center">Nama Berita</th>
+                                    <th style="text-align:center">Tanggal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $i = 1;
+                                foreach ($data_berita as $key => $value) { ?>
+                                    <tr>
+                                        <td style="width: 10px;">
+                                            <center class="text-blue"><?= $i++ ?></center>
+                                        </td>
+                                        <td><label class="text-success"><a href="<?= base_url('file_berita/') ?><?= $value['file_berita'] ?>"><?= $value['nama_berita'] ?></a></label></td>
+                                        <td><label class="text-success"><?= date('d-F-Y H:i', strtotime($value['created_at']))  ?></label></td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                <div class="card-body">
-                    <?php
-                    $this->db->select('*');
-                    $this->db->from('tbl_berita');
-                    $data_berita = $this->db->get()->result_array();
-                    ?>
-                    <table class="table table-striped" id="table10" style="font-size: 11px;">
-                        <thead>
-                            <tr>
-                                <th style="width: 10px;">No</th>
-                                <th style="text-align:center">Nama Berita</th>
-                                <th style="text-align:center">Tanggal</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php $i = 1;
-                            foreach ($data_berita as $key => $value) { ?>
-                                <tr>
-                                    <td style="width: 10px;">
-                                        <center class="text-blue"><?= $i++ ?></center>
-                                    </td>
-                                    <td><label class="text-success"><a href="<?= base_url('file_berita/') ?><?= $value['file_berita'] ?>"><?= $value['nama_berita'] ?></a></label></td>
-                                    <td><label class="text-success"><?= date('d-F-Y H:i', strtotime($value['created_at']))  ?></label></td>
-                                </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
-                </div>
+                <br>
             </div>
-            <br>
-
         </div>
     </section>
 

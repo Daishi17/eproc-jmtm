@@ -656,7 +656,7 @@
     <!-- https://www.youtube.com/embed/B1gdLHsK9_I -->
     <!-- https://www.youtube.com/embed/rdL6VIHEvmw -->
 
-    <section style="display: block;" id="video1" class="slider-04 bg-overlay-dark-50 bg-holder" data-jarallax='{"speed": 0.6}' data-jarallax-video="https://www.youtube.com/watch?v=cVUJsfaz0PA">
+    <section style="display: block;" id="video1" class="slider-04 bg-overlay-dark-50 bg-holder" data-jarallax='{"speed": 0.6}' data-jarallax-video="https://youtu.be/5-WzkZgycDg">
         <div class="banner-content">
             <div class="container">
                 <div class="row">
@@ -671,12 +671,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="row mt-3">
-                    <div class="col">
+                <div class="row">
+                    <div class="col mt-3">
                         <!-- to bottom -->
                         <div id="to-bottom">
-                            <a href="#landing-slider" class="to-bottom-icon">
-                                <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+                            <a href="#landing-slider" class="to-bottom-icon " style="margin-top: -220px">
+                                <i class="fa fa-angle-double-down" aria-hidden="true"><br>
+                                    <p style="font-size: 24px">Berita Tender</p>
+                                </i>
                             </a>
                         </div>
                         <!-- end to botom -->
@@ -685,18 +687,18 @@
             </div>
         </div>
     </section>
-    <section style="display: none;" id="video2" class="slider-04 bg-overlay-dark-50 bg-holder jarallax" data-speed='1' data-video-src="https://youtu.be/UjtH9Z2tXn8?si=DbuJmZqAXgy824j-">
+    <section style="display: none;" id="video2" class="slider-04 bg-overlay-dark-50 bg-holder jarallax" data-speed='1' data-video-src="https://youtu.be/5-WzkZgycDg">
         <div class="banner-content">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-xl-6 mb-4 mb-lg-0">
                         <div class="banner-inner-title">
-                            <h2 class="animated text-white text-left mb-0"><span class="text-primary">SELAMAT DATANG</span> <br> DI SISTEM E-PROCUREMENT</h2>
+                            <h5 class="animated text-white text-left mb-0"><span class="text-primary">SELAMAT DATANG</span> <br> DI SISTEM E-PROCUREMENT</h5>
                         </div>
                     </div>
                     <div class="col-lg-6 offset-xl-1 col-xl-5">
                         <div class="float-right">
-                            <a style="font-size: 50px;" href="javascript:;" onclick="matikan()"><i class="fa fa-volume-off"></i></a>
+                            <a style="font-size: 20px;" href="javascript:;" onclick="matikan()"><i class="fa fa-volume-off"></i></a>
                         </div>
                     </div>
                 </div>
@@ -822,11 +824,29 @@
         </div>
 
     </div>
+
     </div>
 
+    <div class="container pb-3">
+        <div class="row">
+            <div class="col">
+                <!-- to bottom -->
+                <div id="to-bottom">
+                    <a href="#gallery" class="to-bottom-icon " style="margin-top: -220px">
+                        <i class="fa fa-angle-double-down" aria-hidden="true"><br>
+                            <!-- <p style="font-size: 24px">Berita Tender</p> -->
+                        </i>
+                    </a>
+                </div>
+                <!-- end to botom -->
+            </div>
+        </div>
+    </div>
+
+
     <!-- section berita tender -->
-    <section id="gallery" class="gallery mt-5">
-        <div class="container" data-aos="fade-up">
+    <section id="gallery" class="gallery pt-5">
+        <div class="container pt-5" data-aos="fade-up">
             <div class="row">
                 <div class="col-xl-12">
                     <div class="section-title text-center">

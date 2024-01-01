@@ -453,11 +453,12 @@
                     <div class="row">
                         <?php foreach ($berita as $key => $value) : ?>
                             <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 mt-3">
-                                <a href="<?= base_url('file_berita/') ?><?= $value['file_berita'] ?>">
+                                <a data-toggle="modal" data-target="#myModal<?= $key; ?>" href="#">
+                                    <!-- href="<?= base_url('file_berita/') ?><?= $value['file_berita'] ?>"> -->
                                     <div class="card-flyer mt-3">
                                         <div class="text-box">
                                             <div class="image-box">
-                                                <img src="<?= base_url('assets/img/file-logo.png') ?>" alt="" />
+                                                <img src="<?= base_url('assets/img/sayaku.png') ?>" alt="" />
                                             </div>
                                             <div class="text-container">
                                                 <h6><?= $value['nama_berita']; ?></h6>
@@ -467,6 +468,25 @@
                                     </div>
                                 </a>
                             </div>
+
+                            <!-- Modal -->
+                            <div id="myModal<?= $key; ?>" style="margin-top: -10px;" class="modal fade" role="dialog">
+                                <div class="modal-dialog modal-lg">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <iframe src="<?= base_url('file_berita/' . $value['file_berita']) ?>" frameborder="0" style="width:100%; height:500px;"></iframe>
+                                            <!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div> -->
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
                         <?php endforeach ?>
                     </div>
                 </div>
@@ -474,6 +494,7 @@
         </div>
     </section>
     <!-- end secntion berita tender -->
+
 
     <!--=================================
     Contact -->

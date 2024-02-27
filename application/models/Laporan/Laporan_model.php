@@ -127,7 +127,7 @@ class Laporan_model extends CI_Model
 		$query = $this->db->query("SELECT SUM(hps) AS total_hps FROM tbl_sumber_dana
 		LEFT JOIN tbl_paket ON tbl_sumber_dana.id_paket = tbl_paket.id_paket
 		WHERE id_metode_pemilihan = 10
-		AND id_unit_kerja = 85 
+		AND id_unit_kerja = 85
 		AND status_paket_tender IN (1,2)");
 		return $query->row_array();
 	}
@@ -137,7 +137,7 @@ class Laporan_model extends CI_Model
 		$query = $this->db->query("SELECT SUM(hps) AS total_hps FROM tbl_sumber_dana
 		LEFT JOIN tbl_paket ON tbl_sumber_dana.id_paket = tbl_paket.id_paket
 		WHERE id_metode_pemilihan = 9
-		AND id_unit_kerja = 85 
+		AND id_unit_kerja = 85
 		AND status_paket_tender IN (1,2)");
 		return $query->row_array();
 	}
@@ -237,7 +237,7 @@ class Laporan_model extends CI_Model
 	{
 		$query = $this->db->query("SELECT SUM(negosiasi) AS total_kontrak FROM tbl_paket
 		LEFT JOIN tbl_vendor_mengikuti_paket ON tbl_paket.id_paket = tbl_vendor_mengikuti_paket.id_mengikuti_paket_vendor
-		WHERE status_paket_tender IN (1,2) 
+		WHERE status_paket_tender IN (1,2)
 		AND id_metode_pemilihan != 9
 		AND id_metode_pemilihan != 10
 		AND id_metode_pemilihan != 8
@@ -249,7 +249,7 @@ class Laporan_model extends CI_Model
 	{
 		$query = $this->db->query("SELECT SUM(negosiasi) AS total_kontrak FROM tbl_paket
 		LEFT JOIN tbl_vendor_mengikuti_paket ON tbl_paket.id_paket = tbl_vendor_mengikuti_paket.id_mengikuti_paket_vendor
-		AND id_unit_kerja = 69 AND status_paket_tender IN (1,2) 
+		AND id_unit_kerja = 69 AND status_paket_tender IN (1,2)
 		");
 		return $query->row_array();
 	}
@@ -2664,14 +2664,14 @@ class Laporan_model extends CI_Model
 		LEFT JOIN tbl_paket ON tbl_vendor_mengikuti_paket.id_mengikuti_paket_vendor = tbl_paket.id_paket
 		LEFT JOIN tbl_unit_kerja ON tbl_unit_kerja.id_unit_kerja = tbl_paket.id_unit_kerja
 		LEFT JOIN tbl_panitia ON tbl_panitia.id_panitia = tbl_paket.id_panitia
-		LEFT JOIN tbl_jenis_anggaran ON tbl_jenis_anggaran.id_jenis_anggaran = tbl_paket.id_jenis_anggaran 
+		LEFT JOIN tbl_jenis_anggaran ON tbl_jenis_anggaran.id_jenis_anggaran = tbl_paket.id_jenis_anggaran
 		LEFT JOIN tbl_jenis_pengadaan ON tbl_jenis_pengadaan.id_jenis_pengadaan = tbl_paket.id_jenis_pengadaan
 		LEFT JOIN tbl_metode_pemilihan ON tbl_metode_pemilihan.id_metode_pemilihan = tbl_paket.id_metode_pemilihan
 		LEFT JOIN tbl_vendor ON tbl_vendor_mengikuti_paket.id_mengikuti_vendor = tbl_vendor.id_vendor
 		LEFT JOIN tbl_vendor_identitas_prusahaan ON tbl_vendor.id_vendor = tbl_vendor_identitas_prusahaan.id_vendor
 		LEFT JOIN tbl_provinsi ON tbl_vendor_identitas_prusahaan.id_provinsi = tbl_provinsi.id_provinsi
 		LEFT JOIN tbl_kabupaten ON tbl_vendor_identitas_prusahaan.id_kabupaten = tbl_kabupaten.id_kabupaten
-		WHERE tbl_vendor_mengikuti_paket.pemenang_tender = 1 
+		WHERE tbl_vendor_mengikuti_paket.pemenang_tender = 1
 		ORDER BY rating_nilai_akhir DESC");
 		return $query->result_array();
 	}
@@ -2684,11 +2684,12 @@ class Laporan_model extends CI_Model
 
 
 	var $table = 'tbl_paket';
-	var $order = array('tbl_paket.id_paket', 'kode_tender', 'nama_jenis_pengadaan', 'nama_metode_pemilihan', 'tanggal_buat_rup', 'tanggal_buat_rup', 'nama_paket', 'nama_unit_kerja', 'hps', 'username_vendor', 'negosiasi', 'pembuat_paket');
-	var $column_search = array('tbl_paket.id_paket', 'kode_tender', 'nama_jenis_pengadaan', 'nama_metode_pemilihan', 'tanggal_buat_rup', 'tanggal_buat_rup', 'nama_paket', 'nama_unit_kerja', 'hps', 'username_vendor', 'negosiasi', 'pembuat_paket');
+	var $order = array('id_paket', 'kode_tender', 'nama_jenis_pengadaan', 'nama_metode_pemilihan', 'tanggal_buat_rup', 'tanggal_buat_rup', 'nama_paket', 'nama_unit_kerja', 'hps', 'username_vendor', 'negosiasi', 'pembuat_paket');
+	var $column_search = array('id_paket', 'kode_tender', 'nama_jenis_pengadaan', 'nama_metode_pemilihan', 'tanggal_buat_rup', 'tanggal_buat_rup', 'nama_paket', 'nama_unit_kerja', 'hps', 'username_vendor', 'negosiasi', 'pembuat_paket');
 
 	private function _get_data_query()
 	{
+		$i = 0;
 		// $sekarang = date('d-m-Y H:i');
 		$this->db->select('*');
 		$this->db->from('tbl_paket');
@@ -2701,8 +2702,7 @@ class Laporan_model extends CI_Model
 		$this->db->join('tbl_sumber_dana', 'tbl_paket.id_paket = tbl_sumber_dana.id_paket');
 		$this->db->join('tbl_pegawai', 'tbl_paket.pembuat_paket = tbl_pegawai.username', 'left');
 		$this->db->join('tbl_jenis_anggaran', 'tbl_paket.id_jenis_anggaran = tbl_jenis_anggaran.id_jenis_anggaran', 'left');
-		$this->db->where('tbl_vendor_mengikuti_paket.pemenang_tender =', 1);
-		$this->db->or_where('tbl_paket.status_paket_tender', 2);
+		$this->db->where('(tbl_vendor_mengikuti_paket.pemenang_tender = 1 OR tbl_paket.status_paket_tender = 2)');
 		$this->db->group_by('tbl_paket.id_paket');
 		$this->db->order_by('tbl_vendor.username_vendor', 'DESC');
 		if (isset($_POST['id_unit_kerja'], $_POST['id_jenis_pengadaan'], $_POST['tanggal_buat_rup']) && $_POST['id_unit_kerja'] != '' && $_POST['id_jenis_pengadaan'] != '' && $_POST['tanggal_buat_rup'] != '') {
@@ -2710,7 +2710,6 @@ class Laporan_model extends CI_Model
 			$this->db->like('tbl_paket.id_jenis_pengadaan', $_POST['id_jenis_pengadaan']);
 			$this->db->like('tanggal_buat_rup', $_POST['tanggal_buat_rup']);
 		}
-		$i = 0;
 		foreach ($this->order as $item) // looping awal
 		{
 			if ($_POST['search']['value']) // jika datatable mengirimkan pencarian dengan metode POST

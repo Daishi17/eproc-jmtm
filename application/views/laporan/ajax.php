@@ -72,11 +72,12 @@
 			var id_unit_kerja = $('#id_unit_kerja').val();
 			var id_jenis_pengadaan = $('#id_jenis_pengadaan').val();
 			var tanggal_buat_rup = $('#tanggal_buat_rup').val();
+			console.log(id_unit_kerja, id_jenis_pengadaan, tanggal_buat_rup);
 			if (id_unit_kerja != '' && id_jenis_pengadaan != '' && tanggal_buat_rup != '') {
 				$('#danang2').DataTable().destroy();
 				fill_datatable_get_rup(id_unit_kerja, id_jenis_pengadaan, tanggal_buat_rup);
 			} else {
-				// alert('select Bosth Filter option');
+				alert('select Bosth Filter option');
 				$('#danang2').DataTable().destroy();
 				fill_datatable_get_rup();
 			}
@@ -335,7 +336,7 @@
 
 	})
 </script>
-<!-- 
+<!--
 <script>
 	$(document).ready(function() {
 		$('#example').DataTable({

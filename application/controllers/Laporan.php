@@ -1070,82 +1070,88 @@ class Laporan extends CI_Controller
 
 	public function getdata()
 	{
-		$resultss = $this->Laporan_model->getdatatable();
-		$data = [];
-		$no = $_POST['start'];
-		foreach ($resultss as $isi) {
-			$get_pemenang = $this->Laporan_model->get_pemenang($isi->id_paket);
-			$row = array();
-			$row[] = ++$no;
-			$row[] = $isi->kode_tender;
-			$row[] = $isi->nama_jenis_pengadaan;
-			$row[] = $isi->nama_metode_pemilihan;
-			$row[] = date('F', strtotime($isi->tanggal_buat_rup));
-			$row[] = date('Y', strtotime($isi->tanggal_buat_rup));
-			$row[] = $isi->nama_paket;
-			$row[] = $isi->nama_unit_kerja;
-			if ($isi->hps) {
-				$row[] = number_format($isi->hps, 2, ',', '.');
-			} else {
-				$row[] = 0;
-			}
+		if (isset($_POST['start'], $_POST['draw'])) {
 
-
-			if ($get_pemenang) {
-				$row[] = $get_pemenang->username_vendor;
-			} else {
-				$row[] = '';
-			}
-			if ($isi->id_metode_pemilihan == 10 || $isi->id_metode_pemilihan == 9 || $isi->id_metode_pemilihan == 8) {
-				$row[] = number_format($isi->negosiasi, 2, ',', '.');
-			} else {
-				if ($get_pemenang) {
-					$row[] = number_format($get_pemenang->negosiasi, 2, ',', '.');
-				} else {
-					$row[] = '';
-				}
-			}
-
-
-			if ($isi->id_metode_pemilihan == 10 || $isi->id_metode_pemilihan == 9 || $isi->id_metode_pemilihan == 8) {
+			$resultss = $this->Laporan_model->getdatatable();
+			$data = [];
+			$no = $_POST['start'];
+			foreach ($resultss as $isi) {
+				$get_pemenang = $this->Laporan_model->get_pemenang($isi->id_paket);
+				$row = array();
+				$row[] = ++$no;
+				$row[] = $isi->kode_tender;
+				$row[] = $isi->nama_jenis_pengadaan;
+				$row[] = $isi->nama_metode_pemilihan;
+				$row[] = date('F', strtotime($isi->tanggal_buat_rup));
+				$row[] =
+					date("Y", strtotime($isi->tanggal_buat_rup));
+				$row[] = $isi->nama_paket;
+				$row[] = $isi->nama_unit_kerja;
 				if ($isi->hps) {
-					$row[] = number_format($isi->hps - $isi->negosiasi, 2, ',', '.');
+					$row[] = number_format($isi->hps, 2, ',', '.');
 				} else {
 					$row[] = 0;
 				}
-			} else {
+
+
 				if ($get_pemenang) {
-					$row[] = number_format($isi->hps - $get_pemenang->negosiasi, 2, ',', '.');
+					$row[] = $get_pemenang->username_vendor;
 				} else {
 					$row[] = '';
 				}
+				if ($isi->id_metode_pemilihan == 10 || $isi->id_metode_pemilihan == 9 || $isi->id_metode_pemilihan == 8) {
+					$row[] = number_format($isi->negosiasi, 2, ',', '.');
+				} else {
+					if ($get_pemenang) {
+						$row[] = number_format($get_pemenang->negosiasi, 2, ',', '.');
+					} else {
+						$row[] = '';
+					}
+				}
+
+
+				if ($isi->id_metode_pemilihan == 10 || $isi->id_metode_pemilihan == 9 || $isi->id_metode_pemilihan == 8) {
+					if ($isi->hps) {
+						$row[] = number_format($isi->hps - $isi->negosiasi, 2, ',', '.');
+					} else {
+						$row[] = 0;
+					}
+				} else {
+					if ($get_pemenang) {
+						$row[] = number_format($isi->hps - $get_pemenang->negosiasi, 2, ',', '.');
+					} else {
+						$row[] = '';
+					}
+				}
+
+
+
+				if ($isi->hps) {
+					$total = $isi->hps - $get_pemenang->negosiasi;
+				} else {
+					$row[] = 0;
+				}
+
+				if ($isi->hps) {
+					$row[] =  number_format($total / $isi->hps, 2);
+				} else {
+					$row[] = 0;
+				}
+
+				$row[] = $isi->nama_pegawai;
+				$row[] = $isi->alasan_tender_batal . '' . $isi->alasan_tender_pengulanagan;
+				$data[] = $row;
 			}
-
-
-
-			if ($isi->hps) {
-				$total = $isi->hps - $get_pemenang->negosiasi;
-			} else {
-				$row[] = 0;
-			}
-
-			if ($isi->hps) {
-				$row[] =  number_format($total / $isi->hps, 2);
-			} else {
-				$row[] = 0;
-			}
-
-			$row[] = $isi->nama_pegawai;
-			$row[] = $isi->alasan_tender_batal . '' . $isi->alasan_tender_pengulanagan;
-			$data[] = $row;
+			$output = array(
+				"draw" => $_POST['draw'],
+				"recordsTotal" => $this->Laporan_model->count_all_data(),
+				"recordsFiltered" => $this->Laporan_model->count_filtered_data(),
+				"data" => $data
+			);
+			$this->output->set_content_type('application/json')->set_output(json_encode($output));
+		} else {
+			$this->output->set_content_type('application/json')->set_output(json_encode(['error' => 'Missing parameters']));
 		}
-		$output = array(
-			"draw" => $_POST['draw'],
-			"recordsTotal" => $this->Laporan_model->count_all_data(),
-			"recordsFiltered" => $this->Laporan_model->count_filtered_data(),
-			"data" => $data
-		);
-		$this->output->set_content_type('application/json')->set_output(json_encode($output));
 	}
 
 	// LAPORAN TKDN
